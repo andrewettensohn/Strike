@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://biot2mfm3rnpa"]
+
+[ext_resource type="Script" path="res://Scripts/Ships/ProtoCruiser.cs" id="1_om8v4"]
+[ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_kxcbc"]
+[ext_resource type="Script" path="res://Scripts/MissileLauncher.cs" id="3_0b7le"]
+[ext_resource type="PackedScene" uid="uid://cg7lvqrr18nao" path="res://Scenes/Missile.tscn" id="4_ru1oc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
+radius = 62.0
+height = 202.0
+
+[node name="ProtoCruiser" type="CharacterBody2D"]
+script = ExtResource("1_om8v4")
+Health = 1
+MaxSpeed = 50
+Weight = 5000.0
+SpeedWhileTurning = 5
+TurnModifier = 0.005
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l5s7l")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -1.00001)
+rotation = 1.5708
+scale = Vector2(0.15, 0.120217)
+texture = ExtResource("2_kxcbc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -94.0
+offset_top = -62.0
+offset_right = 113.0
+offset_bottom = 65.0
+
+[node name="MissileLauncher" type="Node" parent="."]
+script = ExtResource("3_0b7le")
+MissileScene = ExtResource("4_ru1oc")
+CoolDownTime = 10.0
+MissileAmmoCount = 100
+MissileRange = 5000.0
+MissilesPerSalvo = 1
+
+[connection signal="mouse_entered" from="Control" to="." method="Hovered"]
+[connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

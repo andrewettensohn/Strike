@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://chpbceb2c02qx"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
+
+[node name="PlayerView" type="Node"]
+script = ExtResource("1_vqiwb")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b423nlx2ojng4"]
+
+[ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
+[ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
+[ext_resource type="PackedScene" uid="uid://chpbceb2c02qx" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
+[ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="3_wja3o"]
+[ext_resource type="PackedScene" uid="uid://biot2mfm3rnpa" path="res://Scenes/ProtoCruiser.tscn" id="4_ond51"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_csjpg"]
+vertices = PackedVector2Array(-1727, -1677, 2286, -1677, 2309, 2346, -1723, 2328)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1727, -1677, 2286, -1677, 2309, 2346, -1723, 2328)])
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_8p6y1")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(294, 323)
+texture = ExtResource("1_ajgjb")
+
+[node name="PlayerView" parent="." instance=ExtResource("1_kvrpu")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_csjpg")
+
+[node name="Field1" type="Sprite2D" parent="."]
+position = Vector2(-521, -42)
+scale = Vector2(0.220603, 0.252294)
+texture = ExtResource("3_wja3o")
+
+[node name="ProtoCrusier" parent="." instance=ExtResource("4_ond51")]
+position = Vector2(653, 119)
+IsPlayerSide = true
+HostileTargetGroup = 1
+
+[node name="EnemyCruiser" parent="." instance=ExtResource("4_ond51")]
+position = Vector2(340, 613)
+MyTargetGroup = 1
