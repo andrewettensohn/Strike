@@ -28,11 +28,11 @@ position = Vector2(-521, -42)
 scale = Vector2(0.220603, 0.252294)
 texture = ExtResource("3_wja3o")
 
-[node name="ProtoCrusier" parent="." instance=ExtResource("4_ond51")]
+[node name="ProtoCrusier" parent="." groups=["PlayerUnits"] instance=ExtResource("4_ond51")]
 position = Vector2(653, 119)
 IsPlayerSide = true
 HostileTargetGroup = 1
 
-[node name="EnemyCruiser" parent="." instance=ExtResource("4_ond51")]
+[node name="EnemyCruiser" parent="." groups=["EnemyUnits"] instance=ExtResource("4_ond51")]
 position = Vector2(100, 954)
 MyTargetGroup = 1

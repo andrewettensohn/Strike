@@ -37,8 +37,6 @@ public partial class Unit : CharacterBody2D
 
 	public Unit Target;
 
-	public Vector2 Destination;
-
 	public List<Vector2> Path = new List<Vector2>();
 
 	public Vector2 MovementTarget
@@ -94,6 +92,7 @@ public partial class Unit : CharacterBody2D
 		}
 		else
 		{
+			HandleOffenseBehavior();
 			//TODO: Make a decision based on behavior.
 			//Should I go on offensive or be defensive?
 			//Offensive: go after player units
@@ -130,12 +129,27 @@ public partial class Unit : CharacterBody2D
 		}
 	}
 	
-	protected void HandleBehavior()
+	protected void HandleOffenseBehavior()
 	{
-		if(UnitBehavior == UnitBehavior.Offense)
+		//TODO: Maybe have buttons to change the player units behavior, then this logic can be used.
+		if(UnitBehavior != UnitBehavior.Offense || IsInstanceValid(Target) || IsPlayerSide) return;
+
+		Unit newTargetDestination = null;
+
+		//TODO: Make distance calculation to determine best target to go after
+		if(!IsPlayerSide)
 		{
-			//TODO: Find the unit in the hostile target group that's closest to me
-			//Maybe the level manager keeps two lists of units, one for each side to pull from, then do a distance calculation?
+			newTargetDestination = _levelManager.PlayerUnits.FirstOrDefault();
+		}
+		else
+		{
+			newTargetDestination = _levelManager.EnemyUnits.FirstOrDefault();
+		}
+
+		if(newTargetDestination != null)
+		{
+			GD.Print("Dest set");
+			MovementTarget = newTargetDestination.GlobalPosition;
 		}
 	}
 
@@ -171,7 +185,7 @@ public partial class Unit : CharacterBody2D
 			if(_levelManager.SelectedShip != null)
 			{
 				_levelManager.SelectedShip.Target = this;
-				_levelManager.SelectedShip.Destination = GlobalPosition;
+				_levelManager.SelectedShip.MovementTarget = GlobalPosition;
 				GD.Print("Ship targeted");
 			}
 		}
@@ -264,6 +278,14 @@ public partial class Unit : CharacterBody2D
 
 	protected void HandleDeath()
     {
+		if(IsPlayerSide)
+		{
+			_levelManager.PlayerUnits.Remove(this);
+		}
+		else
+		{
+			_levelManager.EnemyUnits.Remove(this);
+		}
         // Sprite2D largeBoom = (Sprite)LargeExplosion.Instance();
         // largeBoom.GlobalPosition = GlobalPosition;
         // GetTree().Root.AddChild(largeBoom);
