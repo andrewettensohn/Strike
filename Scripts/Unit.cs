@@ -19,9 +19,6 @@ public partial class Unit : CharacterBody2D
     public int SpeedWhileTurning = 50;
 
 	[Export]
-    public float TurnModifier;
-
-	[Export]
 	public bool IsPlayerSide;
 
 	[Export]
@@ -33,11 +30,18 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public UnitBehavior UnitBehavior;
 
+	[Export]
+	public float PathDesiredDistance;
+
+	[Export]
+	public float TargetDesiredDistance;
+
+	[Export]
+	public float TurningAngleThreshold;
+
 	public int CurrentSpeed;
 
 	public Unit Target;
-
-	public List<Vector2> Path = new List<Vector2>();
 
 	public Vector2 MovementTarget
     {
@@ -69,6 +73,8 @@ public partial class Unit : CharacterBody2D
 
 	protected List<Unit> _targetsInWeaponRange = new List<Unit>();
 
+	protected List<Missile> _missilesInRange = new List<Missile>();
+
 	protected void BaseReady()
 	{
 		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
@@ -76,8 +82,8 @@ public partial class Unit : CharacterBody2D
 
 		_movementTargetPosition = GlobalTransform.Origin;
 
-		_navigationAgent.PathDesiredDistance = 10.0f;
-        _navigationAgent.TargetDesiredDistance = 10.0f;
+		_navigationAgent.PathDesiredDistance = PathDesiredDistance;
+        _navigationAgent.TargetDesiredDistance = TargetDesiredDistance;
 
 		Callable.From(ActorSetup).CallDeferred();
 	}
@@ -93,8 +99,7 @@ public partial class Unit : CharacterBody2D
 		else
 		{
 			HandleOffenseBehavior();
-			//TODO: Make a decision based on behavior.
-			//Should I go on offensive or be defensive?
+
 			//Offensive: go after player units
 			//Defensive: Should I hold my position
 			//Sentry: Should I chase player units after they enter my weapon range
@@ -103,36 +108,77 @@ public partial class Unit : CharacterBody2D
 		Navigate();
 
 		await HandleCombat();
+		await HandleDefense();
+
+		//TODO: Handle Defense, all units have point defense.
 	}
 
 	public void WeaponRangeEntered(Node2D node)
 	{
-		if(node as Unit == null) return;
-
-		Unit target = (Unit)node;
-	
-		if(target.MyTargetGroup == HostileTargetGroup)
-		{
-			_targetsInWeaponRange.Add(target);
-		}
+		CheckUnitInRange(node, true);
 	}
 
+	public void DefenseRangeEntered(Area2D area)
+	{
+		CheckMissileInRange(area, true);
+	} 
+
 	public void WeaponRangeExitted(Node2D node)
+	{
+		CheckUnitInRange(node, false);
+	}
+
+	public void DefenseRangeExitted(Area2D area)
+	{
+		CheckMissileInRange(area, false);
+	}
+
+	protected void CheckUnitInRange(Node2D node, bool shouldAdd)
 	{
 		if(node as Unit == null) return;
 
 		Unit target = (Unit)node;
 	
-		if(target.MyTargetGroup == HostileTargetGroup)
+		if(target.MyTargetGroup != HostileTargetGroup) return;
+		
+		if(shouldAdd)
+		{
+			_targetsInWeaponRange.Add(target);
+		}
+		else
 		{
 			_targetsInWeaponRange.Remove(target);
+		}
+	}
+
+	protected void CheckMissileInRange(Node2D node, bool shouldAdd)
+	{
+		if(node as Missile == null) return;
+
+		Missile missile = (Missile)node;
+	
+		if(missile.MyTargetGroup != HostileTargetGroup) return;
+		
+		if(shouldAdd)
+		{
+			_missilesInRange.Add(missile);
+		}
+		else
+		{
+			_missilesInRange.Remove(missile);
 		}
 	}
 	
 	protected void HandleOffenseBehavior()
 	{
 		//TODO: Maybe have buttons to change the player units behavior, then this logic can be used.
-		if(UnitBehavior != UnitBehavior.Offense || IsInstanceValid(Target) || IsPlayerSide) return;
+		if(UnitBehavior != UnitBehavior.Offense || IsPlayerSide) return;
+
+		if(IsInstanceValid(Target))
+		{
+			MovementTarget = Target.GlobalPosition;
+			return;
+		}
 
 		Unit newTargetDestination = null;
 
@@ -148,7 +194,6 @@ public partial class Unit : CharacterBody2D
 
 		if(newTargetDestination != null)
 		{
-			GD.Print("Dest set");
 			MovementTarget = newTargetDestination.GlobalPosition;
 		}
 	}
@@ -193,15 +238,17 @@ public partial class Unit : CharacterBody2D
 
 	protected void Navigate()
 	{
-		if (_navigationAgent.IsNavigationFinished())
+		float distanceToTarget = MovementTarget.DistanceTo(GlobalPosition);
+
+		if (_navigationAgent.IsNavigationFinished() || distanceToTarget <= TargetDesiredDistance)
         {
             return;
         }
 
+		LookAtNextPathPoint();
+
 		Vector2 currentAgentPosition = GlobalTransform.Origin;
         Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
-
-		LookAtNextPathPoint();
 
 		Vector2 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
         newVelocity *= CurrentSpeed;
@@ -223,21 +270,35 @@ public partial class Unit : CharacterBody2D
 
 	protected virtual void LookAtNextPathPoint()
     {
-
-        Vector2 vectorToPoint = _navigationAgent.GetNextPathPosition();
-        float angle = vectorToPoint.Angle();
-        float rotation = GlobalRotation;
-
-        if(Math.Abs(angle) - Math.Abs(rotation) < 0.25f)
+        if(!IsLookingAtTarget())
         {
-            CurrentSpeed = MaxSpeed;
+			CurrentSpeed = SpeedWhileTurning;
         }
         else
         {
-            CurrentSpeed = SpeedWhileTurning;
+			CurrentSpeed = MaxSpeed;
         }
 
-        GlobalRotation = Mathf.LerpAngle(rotation, angle, TurnModifier);
+		float angleTo = GlobalPosition.AngleToPoint(_navigationAgent.GetNextPathPosition());
+        float currentAngle = GlobalRotation;
+
+		GlobalRotation = Mathf.LerpAngle(currentAngle, angleTo, Weight);
+    }
+
+	public bool IsLookingAtTarget()
+    {
+        // Get the direction the CharacterBody is facing
+        Vector2 forwardDirection = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation));
+
+        // Calculate the direction to the target vector
+        Vector2 directionToTarget = (_navigationAgent.GetNextPathPosition() - GlobalPosition).Normalized();
+
+        // Calculate the dot product between the forward direction and the direction to the target
+        float dotProduct = forwardDirection.Dot(directionToTarget);
+
+        // Check if the dot product is close to 1.0 (within a tolerance) to determine if the CharacterBody is looking at the target
+        float tolerance = TurningAngleThreshold;
+        return dotProduct >= tolerance;
     }
 
 	private async void ActorSetup()
@@ -295,7 +356,6 @@ public partial class Unit : CharacterBody2D
 
 	public virtual void Damage(int damage)
     {
-		GD.Print("Damage");
         Health -= damage;
 
         // Sprite2D smallBoom = (Sprite2D)SmallExplosion.Instance();

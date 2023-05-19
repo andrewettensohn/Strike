@@ -13,7 +13,7 @@ public partial class Missile : Area2D
 
     private Sprite2D sprite;
 
-    // public TargetGroup HostileBulletTargetGroup;
+    public TargetGroup MyTargetGroup;
 
     public override void _Ready()
     {
@@ -35,7 +35,6 @@ public partial class Missile : Area2D
 
     public virtual void UnitEntered(Node2D node)
     {
-        GD.Print("Entered");
         if(IsInstanceValid(Target) && node.Name == Target.Name)
         {
             if(node as Unit != null)
@@ -55,14 +54,22 @@ public partial class Missile : Area2D
 
     public virtual void BulletEntered(Area2D area)
     {
-        // if(body.Name.Contains("Bullet") && body.IsInGroup(HostileBulletTargetGroup.ToString()))
-        // {
-        //     Health -= 1;
+        if(area as Bullet == null) return;
 
-        //     if(Health <= 0)
-        //     {
-        //         QueueFree();
-        //     }
-        // }
+        Bullet bullet = (Bullet)area;
+        
+        if(bullet.HostileTargetGroup != MyTargetGroup)
+        {
+            return;
+        }
+        
+        bullet.QueueFree();
+
+        Health -= 1;
+
+        if(Health <= 0)
+        {
+            QueueFree();
+        }
     }
 }

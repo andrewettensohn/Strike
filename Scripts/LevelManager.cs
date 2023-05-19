@@ -15,7 +15,5 @@ public partial class LevelManager : Node
     {
         PlayerUnits = GetTree().GetNodesInGroup("PlayerUnits").Select(x => (Unit)x).ToList();
         EnemyUnits = GetTree().GetNodesInGroup("EnemyUnits").Select(x => (Unit)x).ToList();
-
-        GD.Print(PlayerUnits.Count);
     }
 }

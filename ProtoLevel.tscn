@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=8 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
 [ext_resource type="PackedScene" uid="uid://chpbceb2c02qx" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
 [ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="3_wja3o"]
 [ext_resource type="PackedScene" uid="uid://biot2mfm3rnpa" path="res://Scenes/ProtoCruiser.tscn" id="4_ond51"]
+[ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="6_vg0eb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_csjpg"]
 vertices = PackedVector2Array(-1727, -1677, 2286, -1677, 2309, 2346, -1723, 2328)
@@ -30,9 +31,40 @@ texture = ExtResource("3_wja3o")
 
 [node name="ProtoCrusier" parent="." groups=["PlayerUnits"] instance=ExtResource("4_ond51")]
 position = Vector2(653, 119)
+Health = 10
+Weight = 0.005
 IsPlayerSide = true
 HostileTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 100.0
+TurningAngleThreshold = 0.97
+
+[node name="ProtoCrusier2" parent="." groups=["PlayerUnits"] instance=ExtResource("4_ond51")]
+position = Vector2(968, 48)
+Health = 10
+Weight = 0.005
+IsPlayerSide = true
+HostileTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 100.0
+TurningAngleThreshold = 0.97
 
 [node name="EnemyCruiser" parent="." groups=["EnemyUnits"] instance=ExtResource("4_ond51")]
-position = Vector2(100, 954)
+position = Vector2(570, 1610)
+Health = 10
+Weight = 0.005
 MyTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 400.0
+TurningAngleThreshold = 0.97
+
+[node name="EnemyCruiser2" parent="." groups=["EnemyUnits"] instance=ExtResource("4_ond51")]
+position = Vector2(1452, 1335)
+Health = 10
+Weight = 0.005
+MyTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 400.0
+TurningAngleThreshold = 0.97
+
+[node name="FlakTurret" parent="." instance=ExtResource("6_vg0eb")]

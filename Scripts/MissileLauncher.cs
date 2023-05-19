@@ -49,14 +49,14 @@ public partial class MissileLauncher : Node
     {
         Missile missile = (Missile)MissileScene.Instantiate();
 
-        float xPos = (float)GD.RandRange(spawnPosition.X - 300, spawnPosition.X + 300);
-        float yPos = (float)GD.RandRange(spawnPosition.Y - 300, spawnPosition.Y + 300);
+        float xPos = (float)GD.RandRange(spawnPosition.X, spawnPosition.X);
+        float yPos = (float)GD.RandRange(spawnPosition.Y, spawnPosition.Y);
 
         missile.GlobalPosition = new Vector2(xPos, yPos);
         missile.Target = targetShip;
+        missile.MyTargetGroup = myTargetGroup;
 
         missile.AddToGroup(myTargetGroup.ToString());
-        //missile.HostileBulletTargetGroup = hostileTargetGroup;
 
         GetTree().Root.AddChild(missile);
     }
