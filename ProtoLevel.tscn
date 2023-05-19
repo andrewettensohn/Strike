@@ -34,5 +34,5 @@ IsPlayerSide = true
 HostileTargetGroup = 1
 
 [node name="EnemyCruiser" parent="." instance=ExtResource("4_ond51")]
-position = Vector2(340, 613)
+position = Vector2(100, 954)
 MyTargetGroup = 1

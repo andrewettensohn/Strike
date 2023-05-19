@@ -30,6 +30,9 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public TargetGroup HostileTargetGroup;
 
+	[Export]
+	public UnitBehavior UnitBehavior;
+
 	public int CurrentSpeed;
 
 	public Unit Target;
@@ -66,12 +69,7 @@ public partial class Unit : CharacterBody2D
 
 	protected bool _isDefenseOnCoolDown;
 
-
-	// // Called when the node enters the scene tree for the first time.
-	// public override void _Ready()
-	// {
-
-	// }
+	protected List<Unit> _targetsInWeaponRange = new List<Unit>();
 
 	protected void BaseReady()
 	{
@@ -88,11 +86,65 @@ public partial class Unit : CharacterBody2D
 
 	public override async void _PhysicsProcess(double delta)
 	{
-		GetUserInput();
+		CheckForTarget();
+
+		if(IsPlayerSide)
+		{
+			GetUserInput();
+		}
+		else
+		{
+			//TODO: Make a decision based on behavior.
+			//Should I go on offensive or be defensive?
+			//Offensive: go after player units
+			//Defensive: Should I hold my position
+			//Sentry: Should I chase player units after they enter my weapon range
+		}
 
 		Navigate();
 
 		await HandleCombat();
+	}
+
+	public void WeaponRangeEntered(Node2D node)
+	{
+		if(node as Unit == null) return;
+
+		Unit target = (Unit)node;
+	
+		if(target.MyTargetGroup == HostileTargetGroup)
+		{
+			_targetsInWeaponRange.Add(target);
+		}
+	}
+
+	public void WeaponRangeExitted(Node2D node)
+	{
+		if(node as Unit == null) return;
+
+		Unit target = (Unit)node;
+	
+		if(target.MyTargetGroup == HostileTargetGroup)
+		{
+			_targetsInWeaponRange.Remove(target);
+		}
+	}
+	
+	protected void HandleBehavior()
+	{
+		if(UnitBehavior == UnitBehavior.Offense)
+		{
+			//TODO: Find the unit in the hostile target group that's closest to me
+			//Maybe the level manager keeps two lists of units, one for each side to pull from, then do a distance calculation?
+		}
+	}
+
+	protected void CheckForTarget()
+	{
+		if(!IsInstanceValid(Target))
+		{
+			Target = _targetsInWeaponRange.FirstOrDefault();
+		}
 	}
 
 	protected void GetUserInput()
