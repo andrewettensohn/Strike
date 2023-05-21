@@ -77,6 +77,8 @@ public partial class Unit : CharacterBody2D
 
 	protected void BaseReady()
 	{
+		AddToGroup(MyTargetGroup.ToString());
+
 		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
 		_navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 
@@ -109,8 +111,6 @@ public partial class Unit : CharacterBody2D
 
 		await HandleCombat();
 		await HandleDefense();
-
-		//TODO: Handle Defense, all units have point defense.
 	}
 
 	public void WeaponRangeEntered(Node2D node)

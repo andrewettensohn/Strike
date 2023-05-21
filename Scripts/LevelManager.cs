@@ -13,7 +13,7 @@ public partial class LevelManager : Node
 
     public override void _Ready()
     {
-        PlayerUnits = GetTree().GetNodesInGroup("PlayerUnits").Select(x => (Unit)x).ToList();
-        EnemyUnits = GetTree().GetNodesInGroup("EnemyUnits").Select(x => (Unit)x).ToList();
+        PlayerUnits = GetTree().GetNodesInGroup("Player").Select(x => (Unit)x).ToList();
+        EnemyUnits = GetTree().GetNodesInGroup("Enemy").Select(x => (Unit)x).ToList();
     }
 }

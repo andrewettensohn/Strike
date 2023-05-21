@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://biot2mfm3rnpa"]
+[gd_scene load_steps=7 format=3 uid="uid://ckp3jinc33dod"]
 
-[ext_resource type="Script" path="res://Scripts/Ships/ProtoCruiser.cs" id="1_om8v4"]
-[ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_kxcbc"]
-[ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_gn4hb"]
-[ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="5_btv7f"]
+[ext_resource type="Script" path="res://Scripts/Ships/ProtoCruiser.cs" id="1_w0epu"]
+[ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
+[ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_ydoo7"]
+[ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_c7ggc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -12,12 +12,17 @@ height = 202.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
 radius = 756.518
 
-[node name="ProtoCruiser" type="CharacterBody2D"]
-script = ExtResource("1_om8v4")
-Health = 1
+[node name="PlayerCruiser" type="CharacterBody2D"]
+script = ExtResource("1_w0epu")
+Health = 10
 MaxSpeed = 50
-Weight = 5000.0
+Weight = 0.005
 SpeedWhileTurning = 5
+IsPlayerSide = true
+HostileTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 100.0
+TurningAngleThreshold = 0.97
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)
@@ -30,7 +35,7 @@ shape = SubResource("CapsuleShape2D_l5s7l")
 position = Vector2(-3.8147e-06, -1.00001)
 rotation = 1.5708
 scale = Vector2(0.15, 0.120217)
-texture = ExtResource("2_kxcbc")
+texture = ExtResource("2_ffcae")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -40,9 +45,9 @@ offset_top = -62.0
 offset_right = 113.0
 offset_bottom = 65.0
 
-[node name="MissileLauncher" parent="." instance=ExtResource("3_gn4hb")]
+[node name="MissileLauncher" parent="." instance=ExtResource("3_ydoo7")]
 
-[node name="FlakTurret" parent="." instance=ExtResource("5_btv7f")]
+[node name="FlakTurret" parent="." instance=ExtResource("4_c7ggc")]
 
 [node name="WeaponRange" type="Area2D" parent="."]
 
