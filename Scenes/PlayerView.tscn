@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=3 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
+[ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
 
 [node name="PlayerView" type="Node"]
 script = ExtResource("1_vqiwb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="WaypointSprite" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 9.53674e-07)
+scale = Vector2(0.4, 0.416)
+texture = ExtResource("2_enj2k")

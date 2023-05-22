@@ -5,11 +5,15 @@ using System.Collections.Generic;
 public partial class PlayerView : Node
 {
     private Camera2D _cam;
+    private LevelManager _levelManager;
+    private Sprite2D _waypoint;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
         _cam = GetNode<Camera2D>("Camera2D");
+        _levelManager = GetTree().Root.GetNode<LevelManager>("Level");
+        _waypoint = GetNode<Sprite2D>("WaypointSprite");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,6 +21,7 @@ public partial class PlayerView : Node
 	{
         HandleCameraMovement();
 		HandleCameraZoom();
+        PlaceWaypoint();
 	}
 
     private void HandleCameraMovement()
@@ -64,5 +69,17 @@ public partial class PlayerView : Node
         }
 
         _cam.Zoom = newZoom;
+    }
+
+    private void PlaceWaypoint()
+    {
+        if(_levelManager.SelectedShip == null || _levelManager.SelectedShip.MovementTarget == _levelManager.SelectedShip.GlobalPosition || _levelManager.SelectedShip.NavigationAgent.IsTargetReached())
+        {
+            _waypoint.Visible = false;
+            return;
+        }
+
+        _waypoint.GlobalPosition = _levelManager.SelectedShip.MovementTarget;
+        _waypoint.Visible = true;
     }
 }

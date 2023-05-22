@@ -45,11 +45,11 @@ public partial class Unit : CharacterBody2D
 
 	public Vector2 MovementTarget
     {
-        get { return _navigationAgent.TargetPosition; }
-        set { _navigationAgent.TargetPosition = value; }
+        get { return NavigationAgent.TargetPosition; }
+        set { NavigationAgent.TargetPosition = value; }
     }
 
-	private NavigationAgent2D _navigationAgent;
+	public NavigationAgent2D NavigationAgent;
 
 	private LevelManager _levelManager;
 
@@ -80,12 +80,12 @@ public partial class Unit : CharacterBody2D
 		AddToGroup(MyTargetGroup.ToString());
 
 		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
-		_navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+		NavigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 
 		_movementTargetPosition = GlobalTransform.Origin;
 
-		_navigationAgent.PathDesiredDistance = PathDesiredDistance;
-        _navigationAgent.TargetDesiredDistance = TargetDesiredDistance;
+		NavigationAgent.PathDesiredDistance = PathDesiredDistance;
+        NavigationAgent.TargetDesiredDistance = TargetDesiredDistance;
 
 		Callable.From(ActorSetup).CallDeferred();
 	}
@@ -211,13 +211,11 @@ public partial class Unit : CharacterBody2D
 
 		if (Input.IsActionJustPressed("ui_select") && _isHovered && IsPlayerSide)
 		{
-			GD.Print("Unit Selected");
 			_isSelected = true;
 			_levelManager.SelectedShip = this;
 		}
 		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide)
 		{
-			GD.Print("Unit Unselected");
 			_isSelected = false;
 		}
 
@@ -231,7 +229,6 @@ public partial class Unit : CharacterBody2D
 			{
 				_levelManager.SelectedShip.Target = this;
 				_levelManager.SelectedShip.MovementTarget = GlobalPosition;
-				GD.Print("Ship targeted");
 			}
 		}
 	}
@@ -240,7 +237,7 @@ public partial class Unit : CharacterBody2D
 	{
 		float distanceToTarget = MovementTarget.DistanceTo(GlobalPosition);
 
-		if (_navigationAgent.IsNavigationFinished() || distanceToTarget <= TargetDesiredDistance)
+		if (NavigationAgent.IsNavigationFinished() || distanceToTarget <= TargetDesiredDistance)
         {
             return;
         }
@@ -248,7 +245,7 @@ public partial class Unit : CharacterBody2D
 		LookAtNextPathPoint();
 
 		Vector2 currentAgentPosition = GlobalTransform.Origin;
-        Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
+        Vector2 nextPathPosition = NavigationAgent.GetNextPathPosition();
 
 		Vector2 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
         newVelocity *= CurrentSpeed;
@@ -279,7 +276,7 @@ public partial class Unit : CharacterBody2D
 			CurrentSpeed = MaxSpeed;
         }
 
-		float angleTo = GlobalPosition.AngleToPoint(_navigationAgent.GetNextPathPosition());
+		float angleTo = GlobalPosition.AngleToPoint(NavigationAgent.GetNextPathPosition());
         float currentAngle = GlobalRotation;
 
 		GlobalRotation = Mathf.LerpAngle(currentAngle, angleTo, Weight);
@@ -291,7 +288,7 @@ public partial class Unit : CharacterBody2D
         Vector2 forwardDirection = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation));
 
         // Calculate the direction to the target vector
-        Vector2 directionToTarget = (_navigationAgent.GetNextPathPosition() - GlobalPosition).Normalized();
+        Vector2 directionToTarget = (NavigationAgent.GetNextPathPosition() - GlobalPosition).Normalized();
 
         // Calculate the dot product between the forward direction and the direction to the target
         float dotProduct = forwardDirection.Dot(directionToTarget);
