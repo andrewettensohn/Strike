@@ -7,6 +7,7 @@ public partial class PlayerView : Node
     private Camera2D _cam;
     private LevelManager _levelManager;
     private Sprite2D _waypoint;
+    private ShipDetails _shipDetails;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -14,6 +15,10 @@ public partial class PlayerView : Node
         _cam = GetNode<Camera2D>("Camera2D");
         _levelManager = GetTree().Root.GetNode<LevelManager>("Level");
         _waypoint = GetNode<Sprite2D>("WaypointSprite");
+        _shipDetails = GetNode<ShipDetails>("ShipDetails");
+
+        _waypoint.Visible = false;
+        _shipDetails.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,6 +27,7 @@ public partial class PlayerView : Node
         HandleCameraMovement();
 		HandleCameraZoom();
         PlaceWaypoint();
+        HandleShipDetails();
 	}
 
     private void HandleCameraMovement()
@@ -81,5 +87,18 @@ public partial class PlayerView : Node
 
         _waypoint.GlobalPosition = _levelManager.SelectedShip.MovementTarget;
         _waypoint.Visible = true;
+    }
+
+    public void HandleShipDetails()
+    {
+        if(_levelManager.SelectedShip == null || !_levelManager.SelectedShip.IsSelected)
+        {
+            _shipDetails.Visible = false;
+            return;
+        }
+
+        _shipDetails.Visible = true;
+        _shipDetails.UpdateForShipDetails(_levelManager.SelectedShip);
+        _shipDetails.GlobalPosition = _levelManager.SelectedShip.GlobalPosition;
     }
 }

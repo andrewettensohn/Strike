@@ -1,19 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckp3jinc33dod"]
+[gd_scene load_steps=8 format=3 uid="uid://ckp3jinc33dod"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/ProtoCruiser.cs" id="1_w0epu"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_ydoo7"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_c7ggc"]
+[ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_88frr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
 height = 202.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
-radius = 756.518
+radius = 1597.26
 
 [node name="PlayerCruiser" type="CharacterBody2D"]
 script = ExtResource("1_w0epu")
+ClassName = "Crusier"
 Health = 10
 MaxSpeed = 50
 Weight = 0.005
@@ -53,6 +55,11 @@ offset_bottom = 65.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 shape = SubResource("CircleShape2D_26hnr")
+
+[node name="WeaponRangeIcon" type="Sprite2D" parent="."]
+position = Vector2(-6.50003, 13)
+scale = Vector2(2.58894, 3.26694)
+texture = ExtResource("5_88frr")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

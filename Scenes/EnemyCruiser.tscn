@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqpgei7g1qov8"]
+[gd_scene load_steps=8 format=3 uid="uid://bqpgei7g1qov8"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/ProtoCruiser.cs" id="1_d3ytv"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_sedoa"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_hk0th"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_li7ox"]
+[ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_w1r67"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -52,6 +53,11 @@ offset_bottom = 65.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 shape = SubResource("CircleShape2D_26hnr")
+
+[node name="WeaponRangeIcon" type="Sprite2D" parent="."]
+position = Vector2(8.99995, 8.00012)
+scale = Vector2(2.16827, 2.75154)
+texture = ExtResource("5_w1r67")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

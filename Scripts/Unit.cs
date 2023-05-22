@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 public partial class Unit : CharacterBody2D
 {
+	[Export]
+	public string ClassName;
+
     [Export]
     public int Health;
 
@@ -53,9 +56,11 @@ public partial class Unit : CharacterBody2D
 
 	private LevelManager _levelManager;
 
-	private bool _isSelected;
+	public bool IsSelected { get; private set;}
 
 	private bool _isHovered;
+
+	private Sprite2D _weaponRangeIcon;
 
 	private Vector2 _movementTargetPosition;
 
@@ -81,11 +86,14 @@ public partial class Unit : CharacterBody2D
 
 		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
 		NavigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+		_weaponRangeIcon = GetNode<Sprite2D>("WeaponRangeIcon");
 
 		_movementTargetPosition = GlobalTransform.Origin;
 
 		NavigationAgent.PathDesiredDistance = PathDesiredDistance;
         NavigationAgent.TargetDesiredDistance = TargetDesiredDistance;
+
+		_weaponRangeIcon.Visible = false;
 
 		Callable.From(ActorSetup).CallDeferred();
 	}
@@ -211,15 +219,17 @@ public partial class Unit : CharacterBody2D
 
 		if (Input.IsActionJustPressed("ui_select") && _isHovered && IsPlayerSide)
 		{
-			_isSelected = true;
+			IsSelected = true;
 			_levelManager.SelectedShip = this;
+			_weaponRangeIcon.Visible = true;
 		}
 		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide)
 		{
-			_isSelected = false;
+			IsSelected = false;
+			_weaponRangeIcon.Visible = false;
 		}
 
-		if(Input.IsActionJustPressed("ui_action") && _isSelected)
+		if(Input.IsActionJustPressed("ui_action") && IsSelected)
 		{
 			MovementTarget = GetGlobalMousePosition();
 		}
@@ -258,11 +268,21 @@ public partial class Unit : CharacterBody2D
 	protected void Hovered()
 	{
 		_isHovered = true;
+
+		if(!IsPlayerSide)
+		{
+			_weaponRangeIcon.Visible = true;
+		}
 	}
 
 	protected void Unhovered()
 	{
 		_isHovered = false;
+
+		if(!IsPlayerSide)
+		{
+			_weaponRangeIcon.Visible = false;
+		}
 	}
 
 	protected virtual void LookAtNextPathPoint()

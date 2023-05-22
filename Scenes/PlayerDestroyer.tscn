@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://by1orq3e0q54c"]
+[gd_scene load_steps=8 format=3 uid="uid://by1orq3e0q54c"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerDestroyer.cs" id="1_cde6v"]
 [ext_resource type="Texture2D" uid="uid://ch441nfto7nen" path="res://Art/Sprites/Ships/Ship4.png" id="2_oy8ru"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_essf2"]
 [ext_resource type="PackedScene" uid="uid://byyqiqbkm886h" path="res://Scenes/Rocket.tscn" id="4_luq2i"]
+[ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_gimcv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -14,6 +15,7 @@ radius = 4017.02
 
 [node name="PlayerDestroyer" type="CharacterBody2D"]
 script = ExtResource("1_cde6v")
+ClassName = "Destroyer"
 Health = 2
 MaxSpeed = 30
 Weight = 0.005
@@ -55,6 +57,11 @@ MissilesPerSalvo = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 shape = SubResource("CircleShape2D_26hnr")
+
+[node name="WeaponRangeIcon" type="Sprite2D" parent="."]
+position = Vector2(-29.0001, 13.4999)
+scale = Vector2(6.47115, 8.31519)
+texture = ExtResource("5_gimcv")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
