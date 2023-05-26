@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=8 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
-[ext_resource type="Texture2D" uid="uid://bw1vwtxkdk26v" path="res://Art/UI/Frame3.png" id="3_svdav"]
+[ext_resource type="Script" path="res://Scripts/UI/UnitSlot.cs" id="4_0kkje"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_4oj8o"]
 [ext_resource type="Script" path="res://Scripts/ShipDetails.cs" id="5_kfwwg"]
+[ext_resource type="PackedScene" uid="uid://c0nm7aw2y4t05" path="res://Scenes/UnitSlot.tscn" id="5_xivxb"]
 
 [sub_resource type="Theme" id="Theme_75ik2"]
 default_font = ExtResource("4_4oj8o")
@@ -21,35 +22,17 @@ scale = Vector2(0.4, 0.416)
 texture = ExtResource("2_enj2k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -496.0
-offset_top = -203.0
-offset_right = 500.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
-texture = ExtResource("3_svdav")
+[node name="FleetDetails" type="Panel" parent="CanvasLayer"]
+offset_right = 175.0
+offset_bottom = 430.0
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-visible = false
-offset_right = 428.0
-offset_bottom = 273.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel"]
-visible = false
-layout_mode = 0
-offset_right = 224.0
-offset_bottom = 71.0
-theme = SubResource("Theme_75ik2")
-text = "STRUCTURE - 5"
+[node name="UnitSlot" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 23.0
+script = ExtResource("4_0kkje")
 
 [node name="ShipDetails" type="Control" parent="."]
 layout_mode = 3

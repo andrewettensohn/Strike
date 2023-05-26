@@ -42,6 +42,8 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public float TurningAngleThreshold;
 
+	public Sprite2D Sprite;
+
 	public int CurrentSpeed;
 
 	public Unit Target;
@@ -83,6 +85,8 @@ public partial class Unit : CharacterBody2D
 	protected void BaseReady()
 	{
 		AddToGroup(MyTargetGroup.ToString());
+
+		Sprite = GetNode<Sprite2D>("Sprite2D");
 
 		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
 		NavigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");

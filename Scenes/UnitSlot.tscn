@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0nm7aw2y4t05"]
+
+[ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="1_yekhq"]
+[ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="2_w3umr"]
+
+[sub_resource type="Theme" id="Theme_4ksnf"]
+default_font = ExtResource("2_w3umr")
+default_font_size = 24
+
+[node name="UnitSlot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Portrait" type="Sprite2D" parent="."]
+position = Vector2(49, 39)
+rotation = 3.14159
+scale = Vector2(0.0745865, 0.0659231)
+texture = ExtResource("1_yekhq")
+
+[node name="Health" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.025
+anchor_right = 0.025
+anchor_bottom = 0.025
+offset_right = 157.0
+offset_bottom = 18.0
+theme = SubResource("Theme_4ksnf")
+text = "STRUCTURE 100%"
+fit_content = true
