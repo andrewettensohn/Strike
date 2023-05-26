@@ -7,6 +7,8 @@ public partial class LevelManager : Node
 {
     public Unit SelectedShip;
 
+    public UnitSlot SelectedUnitSlot;
+
     public List<Unit> EnemyUnits = new List<Unit>();
 
     public List<Unit> PlayerUnits = new List<Unit>();

@@ -41,11 +41,9 @@ public partial class FleetOverview : Control
 
     public void AddUnitToOverview(Unit unit)
     {
-        GD.Print("tyo");
         UnitSlot unitSlot = _unitSlots.FirstOrDefault(x => x.Unit == null);
         if(unitSlot != null)
         {
-            GD.Print("slot update");
             unitSlot.UpdateSlotForUnit(unit);
         }
     }

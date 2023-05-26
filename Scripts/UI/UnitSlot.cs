@@ -9,7 +9,7 @@ public partial class UnitSlot : Control
 
 	public Unit Unit { get; private set; }
 
-    private bool _isHovered;
+    public  bool IsHovered { get; private set; }
 
     private bool _isSelected;
 
@@ -26,18 +26,20 @@ public partial class UnitSlot : Control
 	public override void _Process(double delta)
 	{
         //Check if ship selected already?
+        //_isSelected = Unit.LevelManager.SelectedShip == Unit;
         GetUserInput();
 	}
 
 	protected void GetUserInput()
 	{
 
-		if (Input.IsActionJustPressed("ui_select") && _isHovered)
+		if (Input.IsActionJustPressed("ui_select") && IsHovered)
 		{
 			_isSelected = true;
+            Unit.LevelManager.SelectedUnitSlot = this;
             Unit.OnSelected();
 		}
-		else if (Input.IsActionJustPressed("ui_select") && !_isHovered)
+		else if (Input.IsActionJustPressed("ui_select") && !IsHovered)
 		{
 			_isSelected = false;
 		}
@@ -49,7 +51,7 @@ public partial class UnitSlot : Control
 		_portrait.Texture = Unit.Sprite.Texture;
         _portrait.Rotation = Unit.Sprite.Rotation;
         Visible = true;
-		//_health.Text = $"${_unit.Sprite.Structur}";
+		_health.Text = $"STRUCTURE {unit.Health}";
 	}
 
 	public void EmptySlot()
@@ -61,11 +63,11 @@ public partial class UnitSlot : Control
 
     public void Hovered()
 	{
-		_isHovered = true;
+		IsHovered = true;
 	}
 
 	public void Unhovered()
 	{
-		_isHovered = false;
+		IsHovered = false;
 	}
 }

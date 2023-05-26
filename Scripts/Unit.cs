@@ -56,7 +56,7 @@ public partial class Unit : CharacterBody2D
 
 	public NavigationAgent2D NavigationAgent;
 
-	private LevelManager _levelManager;
+	public LevelManager LevelManager { get; private set; }
 
 	public bool IsSelected { get; private set;}
 
@@ -88,7 +88,7 @@ public partial class Unit : CharacterBody2D
 
 		Sprite = GetNode<Sprite2D>("Sprite2D");
 
-		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
+		LevelManager = GetTree().Root.GetNode<LevelManager>("Level");
 		NavigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_weaponRangeIcon = GetNode<Sprite2D>("WeaponRangeIcon");
 
@@ -197,11 +197,11 @@ public partial class Unit : CharacterBody2D
 		//TODO: Make distance calculation to determine best target to go after
 		if(!IsPlayerSide)
 		{
-			newTargetDestination = _levelManager.PlayerUnits.FirstOrDefault();
+			newTargetDestination = LevelManager.PlayerUnits.FirstOrDefault();
 		}
 		else
 		{
-			newTargetDestination = _levelManager.EnemyUnits.FirstOrDefault();
+			newTargetDestination = LevelManager.EnemyUnits.FirstOrDefault();
 		}
 
 		if(newTargetDestination != null)
@@ -225,7 +225,7 @@ public partial class Unit : CharacterBody2D
 		{
 			OnSelected();
 		}
-		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide)
+		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && !(LevelManager.SelectedUnitSlot.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
 		{
 			OnUnselected();
 		}
@@ -236,10 +236,10 @@ public partial class Unit : CharacterBody2D
 		}
 		else if(Input.IsActionJustPressed("ui_action") && _isHovered && !IsPlayerSide)
 		{
-			if(_levelManager.SelectedShip != null)
+			if(LevelManager.SelectedShip != null)
 			{
-				_levelManager.SelectedShip.Target = this;
-				_levelManager.SelectedShip.MovementTarget = GlobalPosition;
+				LevelManager.SelectedShip.Target = this;
+				LevelManager.SelectedShip.MovementTarget = GlobalPosition;
 			}
 		}
 	}
@@ -247,7 +247,7 @@ public partial class Unit : CharacterBody2D
 	public void OnSelected()
 	{
 		IsSelected = true;
-		_levelManager.SelectedShip = this;
+		LevelManager.SelectedShip = this;
 		_weaponRangeIcon.Visible = true;	
 	}
 
@@ -372,11 +372,11 @@ public partial class Unit : CharacterBody2D
     {
 		if(IsPlayerSide)
 		{
-			_levelManager.PlayerUnits.Remove(this);
+			LevelManager.PlayerUnits.Remove(this);
 		}
 		else
 		{
-			_levelManager.EnemyUnits.Remove(this);
+			LevelManager.EnemyUnits.Remove(this);
 		}
         // Sprite2D largeBoom = (Sprite)LargeExplosion.Instance();
         // largeBoom.GlobalPosition = GlobalPosition;
