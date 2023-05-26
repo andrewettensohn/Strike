@@ -1,12 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=16 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
+[ext_resource type="Script" path="res://Scripts/UI/UILayer.cs" id="3_0u2l5"]
 [ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
-[ext_resource type="Script" path="res://Scripts/UI/UnitSlot.cs" id="4_0kkje"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_4oj8o"]
 [ext_resource type="Script" path="res://Scripts/ShipDetails.cs" id="5_kfwwg"]
+[ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="5_w06ox"]
 [ext_resource type="PackedScene" uid="uid://c0nm7aw2y4t05" path="res://Scenes/UnitSlot.tscn" id="5_xivxb"]
+[ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="6_hqc52"]
+[ext_resource type="Script" path="res://Scripts/UI/ReinforceSlot.cs" id="6_hx3n3"]
+[ext_resource type="Texture2D" uid="uid://ch441nfto7nen" path="res://Art/Sprites/Ships/Ship4.png" id="9_rdhxw"]
+[ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
+
+[sub_resource type="Theme" id="Theme_dg5gf"]
+default_base_scale = 12.0
+default_font = ExtResource("5_w06ox")
+
+[sub_resource type="Theme" id="Theme_58ahi"]
 
 [sub_resource type="Theme" id="Theme_75ik2"]
 default_font = ExtResource("4_4oj8o")
@@ -23,6 +34,7 @@ scale = Vector2(0.4, 0.416)
 texture = ExtResource("2_enj2k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_0u2l5")
 
 [node name="FleetDetails" type="Panel" parent="CanvasLayer"]
 offset_right = 175.0
@@ -34,7 +46,6 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 174.0
 offset_bottom = 65.0
-script = ExtResource("4_0kkje")
 
 [node name="UnitSlot2" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
@@ -45,7 +56,6 @@ offset_left = 2.0
 offset_top = 0.189995
 offset_right = 174.0
 offset_bottom = 63.19
-script = ExtResource("4_0kkje")
 
 [node name="UnitSlot3" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
@@ -57,7 +67,6 @@ offset_left = 2.0
 offset_top = -0.0599976
 offset_right = 172.075
 offset_bottom = 62.94
-script = ExtResource("4_0kkje")
 
 [node name="UnitSlot4" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
@@ -68,7 +77,6 @@ offset_left = 1.0
 offset_top = 2.0
 offset_right = 173.0
 offset_bottom = 62.85
-script = ExtResource("4_0kkje")
 
 [node name="UnitSlot5" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
@@ -79,7 +87,6 @@ offset_left = 1.0
 offset_top = 0.179993
 offset_right = 173.0
 offset_bottom = 63.18
-script = ExtResource("4_0kkje")
 
 [node name="UnitSlot6" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
@@ -90,7 +97,92 @@ offset_left = 1.0
 offset_top = 0.0899963
 offset_right = 173.0
 offset_bottom = 63.09
-script = ExtResource("4_0kkje")
+
+[node name="ReinforceDetails" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.044
+anchor_right = 1.0
+anchor_bottom = 0.044
+offset_left = -220.0
+offset_top = 7.488
+offset_bottom = 222.488
+grow_horizontal = 0
+
+[node name="ReinforceSlot" type="Control" parent="CanvasLayer/ReinforceDetails"]
+anchors_preset = 0
+offset_right = 98.0
+offset_bottom = 80.0
+script = ExtResource("6_hx3n3")
+ShipClass = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot"]
+position = Vector2(47, 43)
+scale = Vector2(0.0698755, 0.0757946)
+texture = ExtResource("6_hqc52")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 100.0
+offset_bottom = 31.0
+theme = SubResource("Theme_dg5gf")
+text = "PICKET 1000"
+
+[node name="ReinforceSlot2" type="Control" parent="CanvasLayer/ReinforceDetails"]
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 2.0
+offset_right = 216.0
+offset_bottom = 82.0
+script = ExtResource("6_hx3n3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
+position = Vector2(47, 43)
+rotation = 4.71239
+scale = Vector2(0.0698755, 0.0757946)
+texture = ExtResource("9_rdhxw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 100.0
+offset_bottom = 31.0
+theme = SubResource("Theme_dg5gf")
+text = "DESTROYER 1000"
+
+[node name="ReinforceSlot3" type="Control" parent="CanvasLayer/ReinforceDetails"]
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 88.0
+offset_right = 100.0
+offset_bottom = 168.0
+script = ExtResource("6_hx3n3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]
+position = Vector2(53.3138, 43.5612)
+rotation = 4.71239
+scale = Vector2(0.0683986, 0.0677413)
+texture = ExtResource("10_nvobt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 100.0
+offset_bottom = 31.0
+theme = SubResource("Theme_dg5gf")
+text = "CRUISER 1000"
+
+[node name="ReinforceButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -219.0
+offset_bottom = 35.0
+grow_horizontal = 0
+theme = SubResource("Theme_58ahi")
+theme_override_fonts/font = ExtResource("5_w06ox")
+text = "Reinforce"
 
 [node name="ShipDetails" type="Control" parent="."]
 layout_mode = 3
@@ -122,3 +214,11 @@ offset_right = 352.0
 offset_bottom = 69.0
 theme = SubResource("Theme_75ik2")
 text = "Class - Crusier"
+
+[connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Hovered"]
+[connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Unhovered"]
+[connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot2" to="CanvasLayer/ReinforceDetails/ReinforceSlot2" method="Hovered"]
+[connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot2" to="CanvasLayer/ReinforceDetails/ReinforceSlot2" method="Unhovered"]
+[connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot3" to="CanvasLayer/ReinforceDetails/ReinforceSlot3" method="Hovered"]
+[connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot3" to="CanvasLayer/ReinforceDetails/ReinforceSlot3" method="Unhovered"]
+[connection signal="pressed" from="CanvasLayer/ReinforceButton" to="CanvasLayer" method="ReinforceButtonPressed"]

@@ -82,6 +82,12 @@ public partial class Unit : CharacterBody2D
 
 	protected List<Missile> _missilesInRange = new List<Missile>();
 
+	private bool _isWarping;
+
+	private Vector2 _warpTarget;
+
+	private CollisionShape2D _collision;
+
 	protected void BaseReady()
 	{
 		AddToGroup(MyTargetGroup.ToString());
@@ -91,6 +97,7 @@ public partial class Unit : CharacterBody2D
 		LevelManager = GetTree().Root.GetNode<LevelManager>("Level");
 		NavigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_weaponRangeIcon = GetNode<Sprite2D>("WeaponRangeIcon");
+		_collision = GetNode<CollisionShape2D>("CollisionShape2D");
 
 		_movementTargetPosition = GlobalTransform.Origin;
 
@@ -225,7 +232,7 @@ public partial class Unit : CharacterBody2D
 		{
 			OnSelected();
 		}
-		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && !(LevelManager.SelectedUnitSlot.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
+		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && !(LevelManager.SelectedUnitSlot?.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
 		{
 			OnUnselected();
 		}
@@ -257,12 +264,29 @@ public partial class Unit : CharacterBody2D
 		_weaponRangeIcon.Visible = false;
 	}
 
+	public void WarpTo(Vector2 location)
+	{
+		_isWarping = true;
+		_warpTarget = location;
+		MovementTarget = location;
+		_movementTargetPosition = location;
+
+		_collision.Disabled = true;
+	}
+
 	protected void Navigate()
 	{
 		float distanceToTarget = MovementTarget.DistanceTo(GlobalPosition);
 
 		if (NavigationAgent.IsNavigationFinished() || distanceToTarget <= TargetDesiredDistance)
         {
+			if(_isWarping)
+			{
+				GD.Print("no warp");
+				_isWarping = false;
+				_collision.Disabled = false;
+			}
+
             return;
         }
 
@@ -307,7 +331,15 @@ public partial class Unit : CharacterBody2D
         }
         else
         {
-			CurrentSpeed = MaxSpeed;
+			if(_isWarping)
+			{
+				GD.Print("Warp");
+				CurrentSpeed = 1000;
+			}
+			else
+			{
+				CurrentSpeed = MaxSpeed;
+			}
         }
 
 		float angleTo = GlobalPosition.AngleToPoint(NavigationAgent.GetNextPathPosition());

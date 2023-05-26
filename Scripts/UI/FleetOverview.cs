@@ -20,8 +20,6 @@ public partial class FleetOverview : Control
 				_unitSlots.Add(unitSlot);
 			}
 		}
-
-        GD.Print(_unitSlots.Count);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
