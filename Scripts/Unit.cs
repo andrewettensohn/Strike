@@ -223,14 +223,11 @@ public partial class Unit : CharacterBody2D
 
 		if (Input.IsActionJustPressed("ui_select") && _isHovered && IsPlayerSide)
 		{
-			IsSelected = true;
-			_levelManager.SelectedShip = this;
-			_weaponRangeIcon.Visible = true;
+			OnSelected();
 		}
 		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide)
 		{
-			IsSelected = false;
-			_weaponRangeIcon.Visible = false;
+			OnUnselected();
 		}
 
 		if(Input.IsActionJustPressed("ui_action") && IsSelected)
@@ -245,6 +242,19 @@ public partial class Unit : CharacterBody2D
 				_levelManager.SelectedShip.MovementTarget = GlobalPosition;
 			}
 		}
+	}
+
+	public void OnSelected()
+	{
+		IsSelected = true;
+		_levelManager.SelectedShip = this;
+		_weaponRangeIcon.Visible = true;	
+	}
+
+	public void OnUnselected()
+	{
+		IsSelected = false;
+		_weaponRangeIcon.Visible = false;
 	}
 
 	protected void Navigate()

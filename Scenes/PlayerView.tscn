@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=9 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
+[ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
 [ext_resource type="Script" path="res://Scripts/UI/UnitSlot.cs" id="4_0kkje"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_4oj8o"]
 [ext_resource type="Script" path="res://Scripts/ShipDetails.cs" id="5_kfwwg"]
@@ -26,12 +27,69 @@ texture = ExtResource("2_enj2k")
 [node name="FleetDetails" type="Panel" parent="CanvasLayer"]
 offset_right = 175.0
 offset_bottom = 430.0
+script = ExtResource("3_ck51i")
 
 [node name="UnitSlot" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 38.0
-offset_bottom = 23.0
+offset_right = 174.0
+offset_bottom = 65.0
+script = ExtResource("4_0kkje")
+
+[node name="UnitSlot2" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.167
+anchor_bottom = 0.167
+offset_left = 2.0
+offset_top = 0.189995
+offset_right = 174.0
+offset_bottom = 63.19
+script = ExtResource("4_0kkje")
+
+[node name="UnitSlot3" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.342
+anchor_right = 0.011
+anchor_bottom = 0.342
+offset_left = 2.0
+offset_top = -0.0599976
+offset_right = 172.075
+offset_bottom = 62.94
+script = ExtResource("4_0kkje")
+
+[node name="UnitSlot4" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.505
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 173.0
+offset_bottom = 62.85
+script = ExtResource("4_0kkje")
+
+[node name="UnitSlot5" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.674
+anchor_bottom = 0.674
+offset_left = 1.0
+offset_top = 0.179993
+offset_right = 173.0
+offset_bottom = 63.18
+script = ExtResource("4_0kkje")
+
+[node name="UnitSlot6" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.837
+anchor_bottom = 0.837
+offset_left = 1.0
+offset_top = 0.0899963
+offset_right = 173.0
+offset_bottom = 63.09
 script = ExtResource("4_0kkje")
 
 [node name="ShipDetails" type="Control" parent="."]
