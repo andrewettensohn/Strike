@@ -130,11 +130,14 @@ theme = SubResource("Theme_dg5gf")
 text = "PICKET 1000"
 
 [node name="ReinforceSlot2" type="Control" parent="CanvasLayer/ReinforceDetails"]
-anchors_preset = 0
-offset_left = 118.0
+layout_mode = 1
+anchor_left = 0.536
+anchor_right = 0.536
+anchor_bottom = 0.009
+offset_left = 0.0799942
 offset_top = 2.0
-offset_right = 216.0
-offset_bottom = 82.0
+offset_right = 98.08
+offset_bottom = 80.065
 script = ExtResource("6_hx3n3")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
@@ -152,11 +155,13 @@ theme = SubResource("Theme_dg5gf")
 text = "DESTROYER 1000"
 
 [node name="ReinforceSlot3" type="Control" parent="CanvasLayer/ReinforceDetails"]
-anchors_preset = 0
+layout_mode = 1
+anchor_top = 0.409
+anchor_bottom = 0.409
 offset_left = 2.0
-offset_top = 88.0
+offset_top = 0.0649948
 offset_right = 100.0
-offset_bottom = 168.0
+offset_bottom = 80.065
 script = ExtResource("6_hx3n3")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]

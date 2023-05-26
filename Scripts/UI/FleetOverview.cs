@@ -37,6 +37,15 @@ public partial class FleetOverview : Control
         }
     }
 
+    public void EmptyUnitSlot(Unit unit)
+    {
+        UnitSlot slot = _unitSlots.FirstOrDefault(x => x.Unit == unit);
+        if(slot != null)
+        {
+            slot.EmptySlot();
+        }  
+    }
+
     public void AddUnitToOverview(Unit unit)
     {
         UnitSlot unitSlot = _unitSlots.FirstOrDefault(x => x.Unit == null);

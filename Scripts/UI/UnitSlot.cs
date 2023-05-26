@@ -25,9 +25,12 @@ public partial class UnitSlot : Control
     // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        //Check if ship selected already?
-        //_isSelected = Unit.LevelManager.SelectedShip == Unit;
         GetUserInput();
+
+		if(Unit != null)
+		{
+			_health.Text = $"STRUCTURE {Unit.Health}";
+		}
 	}
 
 	protected void GetUserInput()
@@ -51,7 +54,6 @@ public partial class UnitSlot : Control
 		_portrait.Texture = Unit.Sprite.Texture;
         _portrait.Rotation = Unit.Sprite.Rotation;
         Visible = true;
-		_health.Text = $"STRUCTURE {unit.Health}";
 	}
 
 	public void EmptySlot()

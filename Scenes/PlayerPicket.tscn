@@ -17,14 +17,14 @@ height = 122.0
 script = ExtResource("1_gtimr")
 ClassName = "Picket"
 Health = 3
-MaxSpeed = 100
+MaxSpeed = 70
 Weight = 0.005
 SpeedWhileTurning = 20
 IsPlayerSide = true
 HostileTargetGroup = 1
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
-TurningAngleThreshold = 0.95
+TurningAngleThreshold = 0.93
 
 [node name="WeaponRange" type="Area2D" parent="."]
 

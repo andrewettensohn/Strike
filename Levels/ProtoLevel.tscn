@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=10 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
 [ext_resource type="PackedScene" uid="uid://chpbceb2c02qx" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
 [ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="3_wja3o"]
+[ext_resource type="PackedScene" uid="uid://bqpgei7g1qov8" path="res://Scenes/EnemyCruiser.tscn" id="5_j2pc5"]
 [ext_resource type="PackedScene" uid="uid://ckp3jinc33dod" path="res://Scenes/PlayerCruiser.tscn" id="6_neyy0"]
 [ext_resource type="PackedScene" uid="uid://b5hqwhsdavaf4" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
@@ -19,7 +20,8 @@ CruiserScene = ExtResource("6_neyy0")
 PicketScene = ExtResource("7_sxxyc")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(294, 323)
+position = Vector2(942, -36.9999)
+scale = Vector2(2.98828, 2.43359)
 texture = ExtResource("1_ajgjb")
 
 [node name="PlayerView" parent="." instance=ExtResource("1_kvrpu")]
@@ -42,3 +44,12 @@ texture = ExtResource("9_y65ug")
 position = Vector2(-2292, -4558)
 scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_y65ug")
+
+[node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
+position = Vector2(422, 519)
+
+[node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
+position = Vector2(1458, -111)
+
+[node name="EnemyCruiser3" parent="." instance=ExtResource("5_j2pc5")]
+position = Vector2(1859, -741)

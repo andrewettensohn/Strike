@@ -404,6 +404,7 @@ public partial class Unit : CharacterBody2D
     {
 		if(IsPlayerSide)
 		{
+			LevelManager.PlayerShipDestroyed(this);
 			LevelManager.PlayerUnits.Remove(this);
 		}
 		else

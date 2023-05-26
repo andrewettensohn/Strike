@@ -41,24 +41,35 @@ public partial class LevelManager : Node
         }
     }
 
+    public void PlayerShipDestroyed(Unit unit)
+    {
+        FleetOverview.EmptyUnitSlot(unit);
+    }
+
     public void ReinforceShip(ShipClass shipClass)
     {
         if(shipClass == ShipClass.Picket)
         {
-            SpawnShip(PicketScene, _playerReinforceCorridorStart.GlobalPosition);
+            SpawnShip(PicketScene);
+        }
+        else if(shipClass == ShipClass.Crusier)
+        {
+            SpawnShip(CruiserScene);
         }
     }
 
-    private void SpawnShip(PackedScene scene, Vector2 spawnLocation)
+    private void SpawnShip(PackedScene scene)
     {
-        Unit unit = (Unit)PicketScene.Instantiate();
+        Unit unit = (Unit)scene.Instantiate();
 
         float xPos = GD.Randf() * 500;
         float yPos = GD.Randf() * 500;
 
-        unit.GlobalPosition = new Vector2(spawnLocation.X + xPos, spawnLocation.Y + yPos);
+        unit.GlobalPosition = new Vector2(_playerReinforceCorridorStart.GlobalPosition.X + xPos, _playerReinforceCorridorStart.GlobalPosition.Y + yPos);
 
         GetTree().Root.AddChild(unit);
+
+        FleetOverview.AddUnitToOverview(unit);
 
         unit.WarpTo(new Vector2(_playerReinforceCorridorEnd.GlobalPosition.X + xPos, _playerReinforceCorridorEnd.GlobalPosition.Y + yPos));
     }
