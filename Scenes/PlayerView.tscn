@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=17 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
@@ -18,6 +18,9 @@ default_base_scale = 12.0
 default_font = ExtResource("5_w06ox")
 
 [sub_resource type="Theme" id="Theme_58ahi"]
+
+[sub_resource type="Theme" id="Theme_n8xg8"]
+default_font = ExtResource("5_w06ox")
 
 [sub_resource type="Theme" id="Theme_75ik2"]
 default_font = ExtResource("4_4oj8o")
@@ -189,6 +192,31 @@ theme = SubResource("Theme_58ahi")
 theme_override_fonts/font = ExtResource("5_w06ox")
 text = "Reinforce"
 
+[node name="ShipAbilityDetails" type="Panel" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -221.0
+offset_top = -119.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="RetreatButton" type="Button" parent="CanvasLayer/ShipAbilityDetails"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.58
+anchor_right = 0.48
+anchor_bottom = 0.58
+offset_left = -0.0800018
+offset_top = -0.0200043
+offset_right = 106.92
+offset_bottom = 36.98
+theme = SubResource("Theme_n8xg8")
+text = "RETREAT"
+
 [node name="ShipDetails" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -227,3 +255,4 @@ text = "Class - Crusier"
 [connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot3" to="CanvasLayer/ReinforceDetails/ReinforceSlot3" method="Hovered"]
 [connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot3" to="CanvasLayer/ReinforceDetails/ReinforceSlot3" method="Unhovered"]
 [connection signal="pressed" from="CanvasLayer/ReinforceButton" to="CanvasLayer" method="ReinforceButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/RetreatButton" to="CanvasLayer" method="RetreatButtonPressed"]

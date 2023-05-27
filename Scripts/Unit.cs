@@ -88,6 +88,8 @@ public partial class Unit : CharacterBody2D
 
 	private CollisionShape2D _collision;
 
+	private bool _isRetreating;
+
 	protected void BaseReady()
 	{
 		AddToGroup(MyTargetGroup.ToString());
@@ -128,8 +130,11 @@ public partial class Unit : CharacterBody2D
 
 		Navigate();
 
-		await HandleCombat();
-		await HandleDefense();
+		if(!_isWarping)
+		{
+			await HandleCombat();
+			await HandleDefense();
+		}
 	}
 
 	public void WeaponRangeEntered(Node2D node)
@@ -270,8 +275,17 @@ public partial class Unit : CharacterBody2D
 		_warpTarget = location;
 		MovementTarget = location;
 		_movementTargetPosition = location;
+	}
 
-		_collision.Disabled = true;
+	public void WarpOut(Vector2 location)
+	{
+		TurningAngleThreshold = 0.99f;
+		SpeedWhileTurning = 1;
+		_isWarping = true;
+		_warpTarget = location;
+		MovementTarget = location;
+
+		_isRetreating = true;
 	}
 
 	protected void Navigate()
@@ -282,9 +296,13 @@ public partial class Unit : CharacterBody2D
         {
 			if(_isWarping)
 			{
-				GD.Print("no warp");
 				_isWarping = false;
 				_collision.Disabled = false;
+			}
+
+			if(_isRetreating)
+			{
+				HandlePostRetreat();
 			}
 
             return;
@@ -333,8 +351,8 @@ public partial class Unit : CharacterBody2D
         {
 			if(_isWarping)
 			{
-				GD.Print("Warp");
-				CurrentSpeed = 1000;
+				_collision.Disabled = true;
+				CurrentSpeed = 2000;
 			}
 			else
 			{
@@ -417,6 +435,21 @@ public partial class Unit : CharacterBody2D
 
         QueueFree();
     }
+
+	protected void HandlePostRetreat()
+	{
+		if(IsPlayerSide)
+		{
+			LevelManager.PlayerShipDestroyed(this);
+			LevelManager.PlayerUnits.Remove(this);
+		}
+		else
+		{
+			LevelManager.EnemyUnits.Remove(this);
+		}
+
+		QueueFree();
+	}
 
 	public virtual void Damage(int damage)
     {

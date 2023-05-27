@@ -23,17 +23,17 @@ public partial class LevelManager : Node
 
     private bool _isFleetOverviewSetup;
 
-    private Sprite2D _playerReinforceCorridorEnd;
+    public Sprite2D PlayerReinforceCorridorEnd { get; private set; }
 
-    private Sprite2D _playerReinforceCorridorStart;
+    public Sprite2D PlayerReinforceCorridorStart { get; private set; }
 
     public override void _Ready()
     {
         PlayerUnits = GetTree().GetNodesInGroup("Player").Select(x => (Unit)x).ToList();
         EnemyUnits = GetTree().GetNodesInGroup("Enemy").Select(x => (Unit)x).ToList();
         FleetOverview = GetNode("PlayerView").GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
-        _playerReinforceCorridorEnd = GetNode<Sprite2D>("PlayerReinforceCorridorEnd");
-        _playerReinforceCorridorStart = GetNode<Sprite2D>("PlayerReinforceCorridorStart");
+        PlayerReinforceCorridorEnd = GetNode<Sprite2D>("PlayerReinforceCorridorEnd");
+        PlayerReinforceCorridorStart = GetNode<Sprite2D>("PlayerReinforceCorridorStart");
 
         foreach(Unit unit in PlayerUnits)
         {
@@ -65,13 +65,13 @@ public partial class LevelManager : Node
         float xPos = GD.Randf() * 500;
         float yPos = GD.Randf() * 500;
 
-        unit.GlobalPosition = new Vector2(_playerReinforceCorridorStart.GlobalPosition.X + xPos, _playerReinforceCorridorStart.GlobalPosition.Y + yPos);
+        unit.GlobalPosition = new Vector2(PlayerReinforceCorridorStart.GlobalPosition.X + xPos, PlayerReinforceCorridorStart.GlobalPosition.Y + yPos);
 
         GetTree().Root.AddChild(unit);
 
         FleetOverview.AddUnitToOverview(unit);
 
-        unit.WarpTo(new Vector2(_playerReinforceCorridorEnd.GlobalPosition.X + xPos, _playerReinforceCorridorEnd.GlobalPosition.Y + yPos));
+        unit.WarpTo(new Vector2(PlayerReinforceCorridorEnd.GlobalPosition.X + xPos, PlayerReinforceCorridorEnd.GlobalPosition.Y + yPos));
     }
     
 }
