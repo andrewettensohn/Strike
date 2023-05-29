@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=18 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/ReinforceSlot.cs" id="6_hx3n3"]
 [ext_resource type="Texture2D" uid="uid://ch441nfto7nen" path="res://Art/Sprites/Ships/Ship4.png" id="9_rdhxw"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
+[ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
 
 [sub_resource type="Theme" id="Theme_dg5gf"]
 default_base_scale = 12.0
@@ -24,7 +25,7 @@ default_font = ExtResource("5_w06ox")
 
 [sub_resource type="Theme" id="Theme_75ik2"]
 default_font = ExtResource("4_4oj8o")
-default_font_size = 35
+default_font_size = 20
 
 [node name="PlayerView" type="Node"]
 script = ExtResource("1_vqiwb")
@@ -117,7 +118,7 @@ anchors_preset = 0
 offset_right = 98.0
 offset_bottom = 80.0
 script = ExtResource("6_hx3n3")
-ShipClass = 1
+ShipClass = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot"]
 position = Vector2(47, 43)
@@ -142,6 +143,7 @@ offset_top = 2.0
 offset_right = 98.08
 offset_bottom = 80.065
 script = ExtResource("6_hx3n3")
+ShipClass = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
 position = Vector2(47, 43)
@@ -166,6 +168,7 @@ offset_top = 0.0649948
 offset_right = 100.0
 offset_bottom = 80.065
 script = ExtResource("6_hx3n3")
+ShipClass = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]
 position = Vector2(53.3138, 43.5612)
@@ -180,6 +183,31 @@ offset_right = 100.0
 offset_bottom = 31.0
 theme = SubResource("Theme_dg5gf")
 text = "CRUISER 1000"
+
+[node name="ReinforceSlot4" type="Control" parent="CanvasLayer/ReinforceDetails"]
+layout_mode = 1
+anchor_top = 0.409
+anchor_bottom = 0.409
+offset_left = 114.0
+offset_top = 0.0649948
+offset_right = 212.0
+offset_bottom = 80.065
+script = ExtResource("6_hx3n3")
+ShipClass = 200
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot4"]
+position = Vector2(48.1225, 45.9209)
+rotation = 4.71239
+scale = Vector2(0.193606, 0.121215)
+texture = ExtResource("11_t2tlb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot4"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 100.0
+offset_bottom = 31.0
+theme = SubResource("Theme_dg5gf")
+text = "REPAIR 1000"
 
 [node name="ReinforceButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 1
@@ -254,5 +282,7 @@ text = "Class - Crusier"
 [connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot2" to="CanvasLayer/ReinforceDetails/ReinforceSlot2" method="Unhovered"]
 [connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot3" to="CanvasLayer/ReinforceDetails/ReinforceSlot3" method="Hovered"]
 [connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot3" to="CanvasLayer/ReinforceDetails/ReinforceSlot3" method="Unhovered"]
+[connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot4" to="CanvasLayer/ReinforceDetails/ReinforceSlot4" method="Hovered"]
+[connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot4" to="CanvasLayer/ReinforceDetails/ReinforceSlot4" method="Unhovered"]
 [connection signal="pressed" from="CanvasLayer/ReinforceButton" to="CanvasLayer" method="ReinforceButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/RetreatButton" to="CanvasLayer" method="RetreatButtonPressed"]

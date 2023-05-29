@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6jh7bn888pgs"]
+
+[ext_resource type="Texture2D" uid="uid://bcpbjk63pddfa" path="res://Art/Sprites/FX/power_glow_08.png" id="1_ammaq"]
+[ext_resource type="Script" path="res://Scripts/Weapons/HealBubble.cs" id="1_kkpld"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uflw8"]
+radius = 18.1108
+
+[node name="HealBubble" type="Area2D"]
+script = ExtResource("1_kkpld")
+Speed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ammaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uflw8")

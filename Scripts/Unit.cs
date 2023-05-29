@@ -42,6 +42,11 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public float TurningAngleThreshold;
 
+	[Export]
+	public ShipClass ShipClass;
+
+	public int MaxHealth { get; private set; }
+
 	public Sprite2D Sprite;
 
 	public int CurrentSpeed;
@@ -92,6 +97,8 @@ public partial class Unit : CharacterBody2D
 
 	protected void BaseReady()
 	{
+		MaxHealth = Health;
+		
 		AddToGroup(MyTargetGroup.ToString());
 
 		Sprite = GetNode<Sprite2D>("Sprite2D");

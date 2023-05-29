@@ -11,6 +11,18 @@ public partial class LevelManager : Node
     [Export]
     public PackedScene PicketScene;
 
+    [Export]
+    public PackedScene DestroyerScene;
+
+    [Export]
+    public PackedScene RepairScene;
+
+    [Export]
+    public int PlayerReinforcePoints;
+
+    [Export]
+    public int EnemyReinforcePoints;
+
     public Unit SelectedShip;
 
     public UnitSlot SelectedUnitSlot;
@@ -44,17 +56,38 @@ public partial class LevelManager : Node
     public void PlayerShipDestroyed(Unit unit)
     {
         FleetOverview.EmptyUnitSlot(unit);
+
+        if(unit.ShipClass == ShipClass.Picket)
+        {
+            PlayerReinforcePoints += (int)ShipClass.Picket;
+        }
+        else if(unit.ShipClass == ShipClass.Crusier)
+        {
+            PlayerReinforcePoints += (int)ShipClass.Crusier;
+        }
     }
 
     public void ReinforceShip(ShipClass shipClass)
     {
-        if(shipClass == ShipClass.Picket)
+        if(shipClass == ShipClass.Picket && PlayerReinforcePoints >= (int)ShipClass.Picket)
         {
+            PlayerReinforcePoints -= (int)ShipClass.Picket;
             SpawnShip(PicketScene);
         }
-        else if(shipClass == ShipClass.Crusier)
+        else if(shipClass == ShipClass.Crusier && PlayerReinforcePoints >= (int)ShipClass.Crusier)
         {
+            PlayerReinforcePoints -= (int)ShipClass.Crusier;
             SpawnShip(CruiserScene);
+        }
+        else if(shipClass == ShipClass.Destroyer && PlayerReinforcePoints >= (int)ShipClass.Destroyer)
+        {
+            PlayerReinforcePoints -= (int)ShipClass.Destroyer;
+            SpawnShip(DestroyerScene);
+        }
+        else if(shipClass == ShipClass.Repair && PlayerReinforcePoints >= (int)ShipClass.Repair)
+        {
+            PlayerReinforcePoints -= (int)ShipClass.Repair;
+            SpawnShip(RepairScene);
         }
     }
 

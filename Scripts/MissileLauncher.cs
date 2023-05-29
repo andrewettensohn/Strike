@@ -20,31 +20,6 @@ public partial class MissileLauncher : Node
 
     public int MissilesFired { get; private set; }
 
-    // public void FireSalvo(Unit targetShip, TargetGroup myTargetGroup, TargetGroup hostileTargetGroup, Vector2 spawnPosition, bool isRocket = false)
-    // {
-    //     if(MissilesFired >= MissileAmmoCount)
-    //     {
-    //         return;
-    //     }
-
-    //     if(spawnPosition.DistanceTo(targetShip.GlobalPosition) > MissileRange)
-    //     {
-    //         return;
-    //     }
-
-    //     MissilesFired += 1;
-
-    //     int missilesSpawned = 0;
-    //     while (missilesSpawned < MissilesPerSalvo)
-    //     {
-    //         FireMissile(targetShip, myTargetGroup, hostileTargetGroup, spawnPosition);
-    //         missilesSpawned += 1;
-    //     }
-
-
-    //     //GetNode<AudioStreamPlayer2D>("MissileLaunchAudioPlayer").Play();
-    // }
-
     public void FireMissile(Unit targetShip, TargetGroup myTargetGroup, TargetGroup hostileTargetGroup, Vector2 spawnPosition)
     {
         Missile missile = (Missile)MissileScene.Instantiate();

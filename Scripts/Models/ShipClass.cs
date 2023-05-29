@@ -1,7 +1,7 @@
 public enum ShipClass
 {
-    Crusier,
-    Picket,
-    Destroyer,
-    Repair
+    Crusier = 500,
+    Picket = 150,
+    Destroyer = 300,
+    Repair = 200
 }
