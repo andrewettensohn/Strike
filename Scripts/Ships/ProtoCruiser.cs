@@ -20,7 +20,7 @@ public partial class ProtoCruiser : Unit
 
     protected override async Task HandleCombat()
     {
-        if(_isCombatOnCoolDown || Target == null) return;
+        if(_isCombatOnCoolDown || Target == null || !TargetsInWeaponRange.Any(x => x == Target)) return;
 
         _missileLauncher.FireMissile(Target, MyTargetGroup, HostileTargetGroup, GlobalPosition);
 

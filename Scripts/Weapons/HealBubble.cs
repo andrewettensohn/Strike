@@ -27,5 +27,9 @@ public partial class HealBubble : Area2D
 			}
 			QueueFree();
 		}
+		else if(!IsInstanceValid(Target))
+		{
+			QueueFree();
+		}
     }
 }

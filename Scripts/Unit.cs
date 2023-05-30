@@ -83,7 +83,7 @@ public partial class Unit : CharacterBody2D
 
 	protected bool _isDefenseOnCoolDown;
 
-	protected List<Unit> _targetsInWeaponRange = new List<Unit>();
+	protected List<Unit> TargetsInWeaponRange { get; private set; } = new List<Unit>();
 
 	protected List<Missile> _missilesInRange = new List<Missile>();
 
@@ -122,18 +122,9 @@ public partial class Unit : CharacterBody2D
 	{
 		CheckForTarget();
 
-		if(IsPlayerSide)
-		{
-			GetUserInput();
-		}
-		else
-		{
-			HandleOffenseBehavior();
+		GetUserInput();
 
-			//Offensive: go after player units
-			//Defensive: Should I hold my position
-			//Sentry: Should I chase player units after they enter my weapon range
-		}
+		HandleOffenseBehavior();
 
 		Navigate();
 
@@ -174,11 +165,11 @@ public partial class Unit : CharacterBody2D
 		
 		if(shouldAdd)
 		{
-			_targetsInWeaponRange.Add(target);
+			TargetsInWeaponRange.Add(target);
 		}
 		else
 		{
-			_targetsInWeaponRange.Remove(target);
+			TargetsInWeaponRange.Remove(target);
 		}
 	}
 
@@ -208,6 +199,7 @@ public partial class Unit : CharacterBody2D
 		if(IsInstanceValid(Target))
 		{
 			MovementTarget = Target.GlobalPosition;
+			TargetDesiredDistance = 200;
 			return;
 		}
 
@@ -231,10 +223,15 @@ public partial class Unit : CharacterBody2D
 
 	protected void CheckForTarget()
 	{
-		if(!IsInstanceValid(Target))
+		if(IsInstanceValid(Target) && IsPlayerSide) return;
+
+		if(IsPlayerSide)
 		{
-			Target = _targetsInWeaponRange.FirstOrDefault();
+			Target = TargetsInWeaponRange.FirstOrDefault();
+			return;
 		}
+
+		Target = LevelManager.EnemyCommander.GetTargetForUnit(this, LevelManager.PlayerUnits);	
 	}
 
 	protected void GetUserInput()
@@ -249,18 +246,36 @@ public partial class Unit : CharacterBody2D
 			OnUnselected();
 		}
 
-		if(Input.IsActionJustPressed("ui_action") && IsSelected)
+		if(Input.IsActionJustPressed("ui_action") && _isHovered && !IsPlayerSide)
 		{
-			MovementTarget = GetGlobalMousePosition();
-		}
-		else if(Input.IsActionJustPressed("ui_action") && _isHovered && !IsPlayerSide)
-		{
-			if(LevelManager.SelectedShip != null)
+			// The unit is hovered, the action button is pressed, set the hostile target for selected ship
+			if(LevelManager.SelectedShip != null && LevelManager.SelectedShip.TargetsInWeaponRange.Any(x => x == this))
 			{
 				LevelManager.SelectedShip.Target = this;
-				LevelManager.SelectedShip.MovementTarget = GlobalPosition;
+				LevelManager.SelectedShip.MovementTarget = LevelManager.SelectedShip.GlobalPosition;
 			}
 		}
+		else if(Input.IsActionJustPressed("ui_action") && _isHovered && IsPlayerSide)
+		{
+			// The unit is hovered, the action button is pressed, set the target for a selected repair ship
+			if(LevelManager.SelectedShip != null && LevelManager.SelectedShip.ShipClass == ShipClass.Repair && LevelManager.SelectedShip.TargetsInWeaponRange.Any(x => x == this))
+			{
+				LevelManager.SelectedShip.Target = this;
+				LevelManager.SelectedShip.MovementTarget = LevelManager.SelectedShip.GlobalPosition;
+			}
+		}
+		else if(Input.IsActionJustPressed("ui_action") && IsSelected)
+		{
+			// The unit is selected, the action button is pressed, do a movement command
+			Vector2 mouseClickPos = GetGlobalMousePosition();
+			if(Target == null || mouseClickPos.DistanceTo(Target.MovementTarget) > 200)
+			{
+				MovementTarget = GetGlobalMousePosition();
+			}
+			
+		}
+
+		//TODO: Need to stop movement when selecting target. Maybe do a check against the pos of target and the movement target?
 	}
 
 	public void OnSelected()

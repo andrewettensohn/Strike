@@ -39,8 +39,11 @@ public partial class LevelManager : Node
 
     public Sprite2D PlayerReinforceCorridorStart { get; private set; }
 
+    public EnemyCommander EnemyCommander { get; private set; }
+
     public override void _Ready()
     {
+        EnemyCommander = GetNode<EnemyCommander>("EnemyCommander");
         PlayerUnits = GetTree().GetNodesInGroup("Player").Select(x => (Unit)x).ToList();
         EnemyUnits = GetTree().GetNodesInGroup("Enemy").Select(x => (Unit)x).ToList();
         FleetOverview = GetNode("PlayerView").GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
@@ -56,6 +59,7 @@ public partial class LevelManager : Node
     public void PlayerShipDestroyed(Unit unit)
     {
         FleetOverview.EmptyUnitSlot(unit);
+        PlayerUnits.Remove(unit);
 
         if(unit.ShipClass == ShipClass.Picket)
         {
@@ -105,6 +109,8 @@ public partial class LevelManager : Node
         FleetOverview.AddUnitToOverview(unit);
 
         unit.WarpTo(new Vector2(PlayerReinforceCorridorEnd.GlobalPosition.X + xPos, PlayerReinforceCorridorEnd.GlobalPosition.Y + yPos));
+
+        PlayerUnits.Add(unit);
     }
     
 }

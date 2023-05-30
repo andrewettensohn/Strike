@@ -59,7 +59,7 @@ texture = ExtResource("5_gjwtb")
 [node name="RepairModule" type="Node2D" parent="."]
 script = ExtResource("4_bg3jp")
 HealBubbleScene = ExtResource("5_n77fa")
-CoolDownTime = 5.0
+CoolDownTime = 3.0
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

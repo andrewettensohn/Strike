@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=13 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ckp3jinc33dod" path="res://Scenes/PlayerCruiser.tscn" id="6_neyy0"]
 [ext_resource type="PackedScene" uid="uid://b5hqwhsdavaf4" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
+[ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)
@@ -52,10 +53,13 @@ scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_y65ug")
 
 [node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(1128, -384)
+position = Vector2(3183, 1080)
+
+[node name="EnemyCommander" type="Node" parent="."]
+script = ExtResource("11_6j8rj")
 
 [node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(1849, -1071)
+position = Vector2(3525, -688)
 
 [node name="EnemyCruiser3" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(1407, -731)
+position = Vector2(1052, 1781)
