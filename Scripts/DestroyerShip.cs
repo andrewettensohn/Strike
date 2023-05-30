@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Linq;
 
-public partial class PlayerDestroyer : Unit
+public partial class DestroyerShip : Unit
 {
     private MissileLauncher _missileLauncher;
 

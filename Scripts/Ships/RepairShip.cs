@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class PlayerRepair : Unit
+public partial class RepairShip : Unit
 {
 
 	private RepairModule _repairModule;

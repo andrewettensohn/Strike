@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://by1orq3e0q54c"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://Scripts/PlayerDestroyer.cs" id="1_cde6v"]
+[ext_resource type="Script" path="res://Scripts/DestroyerShip.cs" id="1_cde6v"]
 [ext_resource type="Texture2D" uid="uid://ch441nfto7nen" path="res://Art/Sprites/Ships/Ship4.png" id="2_oy8ru"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_essf2"]
 [ext_resource type="PackedScene" uid="uid://byyqiqbkm886h" path="res://Scenes/Rocket.tscn" id="4_luq2i"]

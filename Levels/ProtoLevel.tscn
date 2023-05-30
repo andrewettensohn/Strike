@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
 [ext_resource type="PackedScene" uid="uid://chpbceb2c02qx" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
 [ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="3_wja3o"]
-[ext_resource type="PackedScene" uid="uid://by1orq3e0q54c" path="res://Scenes/PlayerDestroyer.tscn" id="4_pok8q"]
-[ext_resource type="PackedScene" uid="uid://cbt7atfx8n33f" path="res://Scenes/PlayerRepair.tscn" id="5_5h5bn"]
-[ext_resource type="PackedScene" uid="uid://bqpgei7g1qov8" path="res://Scenes/EnemyCruiser.tscn" id="5_j2pc5"]
-[ext_resource type="PackedScene" uid="uid://ckp3jinc33dod" path="res://Scenes/PlayerCruiser.tscn" id="6_neyy0"]
-[ext_resource type="PackedScene" uid="uid://b5hqwhsdavaf4" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
+[ext_resource type="PackedScene" path="res://Scenes/PlayerDestroyer.tscn" id="4_pok8q"]
+[ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_5h5bn"]
+[ext_resource type="PackedScene" path="res://Scenes/EnemyCruiser.tscn" id="5_j2pc5"]
+[ext_resource type="PackedScene" path="res://Scenes/PlayerCruiser.tscn" id="6_neyy0"]
+[ext_resource type="PackedScene" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
 [ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
 
@@ -52,14 +52,11 @@ position = Vector2(-2292, -4558)
 scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_y65ug")
 
-[node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(3183, 1080)
-
 [node name="EnemyCommander" type="Node" parent="."]
 script = ExtResource("11_6j8rj")
 
-[node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(3525, -688)
+[node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
+position = Vector2(2398, 1038)
 
-[node name="EnemyCruiser3" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(1052, 1781)
+[node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
+position = Vector2(2649, 422)

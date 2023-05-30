@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqpgei7g1qov8"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Ships/ProtoCruiser.cs" id="1_d3ytv"]
+[ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_d3ytv"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_sedoa"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_hk0th"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_li7ox"]

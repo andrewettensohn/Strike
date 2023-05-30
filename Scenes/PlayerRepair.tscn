@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbt7atfx8n33f"]
+[gd_scene load_steps=8 format=3 uid="uid://wjh2hqbxkaps"]
 
-[ext_resource type="Script" path="res://Scripts/Ships/PlayerRepair.cs" id="1_ma7ci"]
+[ext_resource type="Script" path="res://Scripts/Ships/RepairShip.cs" id="1_p6kla"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="2_e4o7r"]
 [ext_resource type="Script" path="res://Scripts/Weapons/RepairModule.cs" id="4_bg3jp"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_gjwtb"]
@@ -14,12 +14,16 @@ height = 202.0
 radius = 573.132
 
 [node name="PlayerRepair" type="CharacterBody2D"]
-script = ExtResource("1_ma7ci")
+script = ExtResource("1_p6kla")
 ClassName = "Repair Ship"
 Health = 3
 MaxSpeed = 30
 Weight = 0.005
+SpeedWhileTurning = null
 IsPlayerSide = true
+MyTargetGroup = null
+HostileTargetGroup = null
+UnitBehavior = null
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97

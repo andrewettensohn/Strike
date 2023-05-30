@@ -1,29 +1,26 @@
 using Godot;
-using System;
 using System.Threading.Tasks;
 using System.Linq;
 
-public partial class PlayerPicket : Unit
+public partial class CruiserShip : Unit
 {
     private MissileLauncher _missileLauncher;
-    private FlakTurret _flakTurretOne;
-	private FlakTurret _flakTurretTwo;
+    private FlakTurret _flakTurret;
 
     public override void _Ready()
     {
         _missileLauncher = GetNode<MissileLauncher>("MissileLauncher");
         CombatCoolDownTime = _missileLauncher.CoolDownTime;
 
-        _flakTurretOne = GetNode<FlakTurret>("FlakTurret");
-		_flakTurretTwo = GetNode<FlakTurret>("FlakTurret2");
-        DefenseCoolDownTime = _flakTurretOne.CoolDownTime;
+        _flakTurret = GetNode<FlakTurret>("FlakTurret");
+        DefenseCoolDownTime = _flakTurret.CoolDownTime;
 
         BaseReady();
     }
 
     protected override async Task HandleCombat()
     {
-        if(_isCombatOnCoolDown || Target == null) return;
+        if(_isCombatOnCoolDown || Target == null || !TargetsInWeaponRange.Any(x => x == Target)) return;
 
         _missileLauncher.FireMissile(Target, MyTargetGroup, HostileTargetGroup, GlobalPosition);
 
@@ -39,8 +36,7 @@ public partial class PlayerPicket : Unit
 
         if(missile != null)
         {
-            _flakTurretOne.FireBullet(missile, MyTargetGroup, HostileTargetGroup, GlobalPosition);
-			_flakTurretTwo.FireBullet(missile, MyTargetGroup, HostileTargetGroup, GlobalPosition);
+            _flakTurret.FireBullet(missile, MyTargetGroup, HostileTargetGroup, GlobalPosition);
         }
 
         await base.HandleDefense();
