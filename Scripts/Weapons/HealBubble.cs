@@ -16,6 +16,11 @@ public partial class HealBubble : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _PhysicsProcess(double delta)
     {
+		if(!IsInstanceValid(Target) || Target == null)
+		{
+			QueueFree();
+		}
+		
 		LookAt(Target.GlobalPosition);
 		GlobalPosition = GlobalPosition.MoveToward(Target.GlobalPosition, (float)delta * Speed);
 
@@ -25,11 +30,9 @@ public partial class HealBubble : Area2D
 			{
 				Target.Health += 1;
 			}
+			
 			QueueFree();
 		}
-		else if(!IsInstanceValid(Target))
-		{
-			QueueFree();
-		}
+		
     }
 }

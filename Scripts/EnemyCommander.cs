@@ -38,7 +38,7 @@ public partial class EnemyCommander : Node
 
 			if(unit.ShipClass == ShipClass.Repair)
 			{
-				classValue = 4;
+				classValue = 4; 
 			}
 			else if(unit.ShipClass == ShipClass.Crusier)
 			{
@@ -59,6 +59,18 @@ public partial class EnemyCommander : Node
 		Unit newTarget = targetHeirarchy.OrderByDescending(x => x.Value).FirstOrDefault().Key;
 
 		return newTarget;
+	}
+
+	public Unit GetHealTargetForUnit(Unit enemyUnit, List<Unit> enemyShips)
+	{
+		if(!enemyShips.Any())
+		{
+			return null;
+		}
+		
+		return enemyShips.OrderByDescending(x => x.GlobalPosition.DistanceTo(enemyUnit.GlobalPosition))
+		.ThenBy(x => x.Health)
+		.FirstOrDefault();
 	}
 
 }

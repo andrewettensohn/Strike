@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 public partial class RepairShip : Unit
 {
@@ -17,7 +18,7 @@ public partial class RepairShip : Unit
 
     protected override async Task HandleCombat()
     {
-        if(_isCombatOnCoolDown || Target == null) return;
+        if(_isCombatOnCoolDown || Target == null || !TargetsInWeaponRange.Any(x => x == Target)) return;
 
 		//repair module
         _repairModule.RepairShip(Target);

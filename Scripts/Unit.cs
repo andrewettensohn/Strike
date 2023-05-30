@@ -231,7 +231,14 @@ public partial class Unit : CharacterBody2D
 			return;
 		}
 
-		Target = LevelManager.EnemyCommander.GetTargetForUnit(this, LevelManager.PlayerUnits);	
+		if(ShipClass == ShipClass.Repair)
+		{
+			Target = LevelManager.EnemyCommander.GetHealTargetForUnit(this, LevelManager.EnemyUnits);	
+		}
+		else
+		{
+			Target = LevelManager.EnemyCommander.GetTargetForUnit(this, LevelManager.PlayerUnits);
+		}
 	}
 
 	protected void GetUserInput()

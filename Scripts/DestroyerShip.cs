@@ -17,7 +17,7 @@ public partial class DestroyerShip : Unit
 
     protected override async Task HandleCombat()
     {
-        if(_isCombatOnCoolDown || Target == null) return;
+        if(_isCombatOnCoolDown || Target == null || !TargetsInWeaponRange.Any(x => x == Target)) return;
 
         _missileLauncher.FireRocketBarrage(Target, MyTargetGroup, HostileTargetGroup, GlobalPosition);
 

@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8jfyoplty6fa"]
+
+[ext_resource type="Script" path="res://Scripts/Ships/RepairShip.cs" id="1_t3jj3"]
+[ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="2_hsaax"]
+[ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="3_asp2b"]
+[ext_resource type="Script" path="res://Scripts/Weapons/RepairModule.cs" id="4_8p4i2"]
+[ext_resource type="PackedScene" uid="uid://b6jh7bn888pgs" path="res://Scenes/HealBubble.tscn" id="5_55g2w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
+radius = 62.0
+height = 202.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
+radius = 573.132
+
+[node name="EnemyRepair" type="CharacterBody2D"]
+script = ExtResource("1_t3jj3")
+ClassName = "Repair Ship"
+Health = 3
+MaxSpeed = 30
+Weight = 0.005
+MyTargetGroup = 1
+HostileTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 100.0
+TurningAngleThreshold = 0.97
+ShipClass = 200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l5s7l")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.749996, -0.50001)
+rotation = 1.5708
+scale = Vector2(0.384693, 0.21442)
+texture = ExtResource("2_hsaax")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -94.0
+offset_top = -62.0
+offset_right = 113.0
+offset_bottom = 65.0
+
+[node name="WeaponRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
+shape = SubResource("CircleShape2D_26hnr")
+
+[node name="WeaponRangeIcon" type="Sprite2D" parent="."]
+position = Vector2(-1.52588e-05, 1.49994)
+scale = Vector2(0.927885, 1.18172)
+texture = ExtResource("3_asp2b")
+
+[node name="RepairModule" type="Node2D" parent="."]
+script = ExtResource("4_8p4i2")
+HealBubbleScene = ExtResource("5_55g2w")
+CoolDownTime = 3.0
+
+[connection signal="mouse_entered" from="Control" to="." method="Hovered"]
+[connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
+[connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]
+[connection signal="area_exited" from="WeaponRange" to="." method="DefenseRangeExitted"]
+[connection signal="body_entered" from="WeaponRange" to="." method="WeaponRangeEntered"]
+[connection signal="body_exited" from="WeaponRange" to="." method="WeaponRangeExitted"]
