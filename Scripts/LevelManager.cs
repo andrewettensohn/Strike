@@ -31,6 +31,8 @@ public partial class LevelManager : Node
 
     public List<Unit> PlayerUnits = new List<Unit>();
 
+    public bool IsUnitUIHovered;
+
     public FleetOverview FleetOverview;
 
     private bool _isFleetOverviewSetup;

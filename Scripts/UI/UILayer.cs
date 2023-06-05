@@ -39,4 +39,11 @@ public partial class UILayer : CanvasLayer
 	{
 		_levelManager.SelectedShip.WarpOut(_levelManager.PlayerReinforceCorridorStart.GlobalPosition);
 	}
+
+	public void TacticalAbilityButtonPressed()
+	{
+		_levelManager.SelectedShip.IsTacticalAbilityPressed = true;
+
+		//TODO: Handle displaying cooldown, make it so the button can't be pressed during cooldown or while ability is active
+	}
 }

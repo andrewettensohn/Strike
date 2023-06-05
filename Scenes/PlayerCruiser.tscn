@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://2hcy5ewe6q6w"]
 
-[ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_w0epu"]
+[ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_ydoo7"]
+[ext_resource type="Texture2D" uid="uid://cxiq4bhnulix0" path="res://Art/Sprites/FX/Shield.png" id="3_yp0d0"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_c7ggc"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_88frr"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Shield.cs" id="6_1pvcm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hfcl6"]
+radius = 188.215
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -14,7 +19,7 @@ height = 202.0
 radius = 1597.26
 
 [node name="PlayerCruiser" type="CharacterBody2D"]
-script = ExtResource("1_w0epu")
+script = ExtResource("1_k1ts2")
 ClassName = "Crusier"
 Health = 10
 MaxSpeed = 50
@@ -25,6 +30,18 @@ HostileTargetGroup = 1
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97
+
+[node name="Shield" type="Area2D" parent="."]
+script = ExtResource("6_1pvcm")
+CoolDownTime = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+shape = SubResource("CircleShape2D_hfcl6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield"]
+position = Vector2(-1.49999, 3.8147e-06)
+scale = Vector2(1.42602, 1.39945)
+texture = ExtResource("3_yp0d0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)
@@ -61,6 +78,7 @@ position = Vector2(-6.50003, 13)
 scale = Vector2(2.58894, 3.26694)
 texture = ExtResource("5_88frr")
 
+[connection signal="area_entered" from="Shield" to="Shield" method="MissileEntered"]
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
 [connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]

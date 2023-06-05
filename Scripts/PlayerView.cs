@@ -8,6 +8,7 @@ public partial class PlayerView : Node
     private LevelManager _levelManager;
     private Sprite2D _waypoint;
     private ShipDetails _shipDetails;
+    private bool _isHovered;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -101,4 +102,14 @@ public partial class PlayerView : Node
         _shipDetails.UpdateForShipDetails(_levelManager.SelectedShip);
         _shipDetails.GlobalPosition = _levelManager.SelectedShip.GlobalPosition;
     }
+
+    public void Hovered()
+	{
+		_levelManager.IsUnitUIHovered = true;
+	}
+
+	public void Unhovered()
+	{
+		_levelManager.IsUnitUIHovered = false;
+	}
 }

@@ -65,6 +65,8 @@ public partial class Unit : CharacterBody2D
 
 	public bool IsSelected { get; private set;}
 
+	public bool IsTacticalAbilityPressed;
+
 	private bool _isHovered;
 
 	private Sprite2D _weaponRangeIcon;
@@ -132,6 +134,7 @@ public partial class Unit : CharacterBody2D
 		{
 			await HandleCombat();
 			await HandleDefense();
+			await HandleTactical();
 		}
 	}
 
@@ -205,7 +208,6 @@ public partial class Unit : CharacterBody2D
 
 		Unit newTargetDestination = null;
 
-		//TODO: Make distance calculation to determine best target to go after
 		if(!IsPlayerSide)
 		{
 			newTargetDestination = LevelManager.PlayerUnits.FirstOrDefault();
@@ -231,11 +233,11 @@ public partial class Unit : CharacterBody2D
 			return;
 		}
 
-		if(ShipClass == ShipClass.Repair)
+		if(ShipClass == ShipClass.Repair && LevelManager.EnemyUnits?.Any() == true)
 		{
 			Target = LevelManager.EnemyCommander.GetHealTargetForUnit(this, LevelManager.EnemyUnits);	
 		}
-		else
+		else if(LevelManager.PlayerUnits?.Any() == true)
 		{
 			Target = LevelManager.EnemyCommander.GetTargetForUnit(this, LevelManager.PlayerUnits);
 		}
@@ -248,7 +250,7 @@ public partial class Unit : CharacterBody2D
 		{
 			OnSelected();
 		}
-		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && !(LevelManager.SelectedUnitSlot?.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
+		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && LevelManager.IsUnitUIHovered && !(LevelManager.SelectedUnitSlot?.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
 		{
 			OnUnselected();
 		}
@@ -281,8 +283,6 @@ public partial class Unit : CharacterBody2D
 			}
 			
 		}
-
-		//TODO: Need to stop movement when selecting target. Maybe do a check against the pos of target and the movement target?
 	}
 
 	public void OnSelected()
