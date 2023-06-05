@@ -357,6 +357,7 @@ public partial class Unit : CharacterBody2D
 		if(!IsPlayerSide)
 		{
 			_weaponRangeIcon.Visible = true;
+			LevelManager.HoveredEnemy = this;
 		}
 	}
 
@@ -367,6 +368,11 @@ public partial class Unit : CharacterBody2D
 		if(!IsPlayerSide)
 		{
 			_weaponRangeIcon.Visible = false;
+			
+			if(LevelManager.HoveredEnemy == this)
+			{
+				LevelManager.HoveredEnemy = null;
+			}
 		}
 	}
 

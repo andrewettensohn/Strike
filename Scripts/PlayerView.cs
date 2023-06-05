@@ -8,6 +8,7 @@ public partial class PlayerView : Node
     private LevelManager _levelManager;
     private Sprite2D _waypoint;
     private ShipDetails _shipDetails;
+    private ShipDetails _enemyShipDetails;
     private bool _isHovered;
 
 	// Called when the node enters the scene tree for the first time.
@@ -17,6 +18,7 @@ public partial class PlayerView : Node
         _levelManager = GetTree().Root.GetNode<LevelManager>("Level");
         _waypoint = GetNode<Sprite2D>("WaypointSprite");
         _shipDetails = GetNode<ShipDetails>("ShipDetails");
+        _enemyShipDetails = GetNode<ShipDetails>("EnemyShipDetails");
 
         _waypoint.Visible = false;
         _shipDetails.Visible = false;
@@ -29,6 +31,7 @@ public partial class PlayerView : Node
 		HandleCameraZoom();
         PlaceWaypoint();
         HandleShipDetails();
+        HandleEnemyShipDetails();
 	}
 
     private void HandleCameraMovement()
@@ -92,7 +95,7 @@ public partial class PlayerView : Node
 
     public void HandleShipDetails()
     {
-        if(_levelManager.SelectedShip == null || !_levelManager.SelectedShip.IsSelected)
+        if(!IsInstanceValid(_levelManager.SelectedShip) || _levelManager.SelectedShip == null || !_levelManager.SelectedShip.IsSelected)
         {
             _shipDetails.Visible = false;
             return;
@@ -101,6 +104,19 @@ public partial class PlayerView : Node
         _shipDetails.Visible = true;
         _shipDetails.UpdateForShipDetails(_levelManager.SelectedShip);
         _shipDetails.GlobalPosition = _levelManager.SelectedShip.GlobalPosition;
+    }
+
+    public void HandleEnemyShipDetails()
+    {
+        if(!IsInstanceValid(_levelManager.HoveredEnemy) || _levelManager.HoveredEnemy == null)
+        {
+            _enemyShipDetails.Visible = false;
+            return;
+        }
+
+        _enemyShipDetails.Visible = true;
+        _enemyShipDetails.UpdateForShipDetails(_levelManager.HoveredEnemy);
+        _enemyShipDetails.GlobalPosition = _levelManager.HoveredEnemy.GlobalPosition;
     }
 
     public void Hovered()

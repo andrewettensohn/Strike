@@ -27,6 +27,8 @@ public partial class LevelManager : Node
 
     public UnitSlot SelectedUnitSlot;
 
+    public Unit HoveredEnemy;
+
     public List<Unit> EnemyUnits = new List<Unit>();
 
     public List<Unit> PlayerUnits = new List<Unit>();
