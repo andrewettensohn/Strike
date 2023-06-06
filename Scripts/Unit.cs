@@ -13,7 +13,7 @@ public partial class Unit : CharacterBody2D
 	public string AbilityDescription;
 
     [Export]
-    public int Health;
+    public float Health;
 
     [Export]
     public int MaxSpeed;
@@ -51,7 +51,7 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public int TacticalAbilityDuration;
 
-	public int MaxHealth { get; private set; }
+	public float MaxHealth { get; private set; }
 
 	public Sprite2D Sprite;
 
@@ -87,13 +87,15 @@ public partial class Unit : CharacterBody2D
 
 	protected bool _isCombatOnCoolDown;
 
-	protected bool _isTacticalOnCoolDown;
+	public bool IsTacticalOnCoolDown { get; protected set; }
 
 	protected bool _isDefenseOnCoolDown;
 
 	public bool IsTacticalInUse { get; protected set; }
 
-	public SceneTreeTimer TacticalCooldownTimer { get; protected set; }
+	public SceneTreeTimer TacticalDurationTimer { get; protected set; }
+
+	public SceneTreeTimer TacticalCoolDownTimer { get; protected set; }
 
 	protected List<Unit> TargetsInWeaponRange { get; private set; } = new List<Unit>();
 
@@ -447,11 +449,12 @@ public partial class Unit : CharacterBody2D
 
     protected virtual async Task HandleTactical()
     {
-        _isTacticalOnCoolDown = true;
+        IsTacticalOnCoolDown = true;
 
-        await ToSignal(GetTree().CreateTimer(TacticalCoolDownTime), "timeout");
+		TacticalCoolDownTimer = GetTree().CreateTimer(TacticalCoolDownTime);
+        await ToSignal(TacticalCoolDownTimer, "timeout");
 
-        _isTacticalOnCoolDown = false;
+        IsTacticalOnCoolDown = false;
     }
 
     protected virtual async Task HandleDefense()

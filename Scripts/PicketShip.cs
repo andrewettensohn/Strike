@@ -53,15 +53,15 @@ public partial class PicketShip : Unit
     protected override async Task HandleTactical()
     {
         
-        if(_isTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed) return;
+        if(IsTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed) return;
 
         IsTacticalInUse = true;
         IsTacticalAbilityPressed = false;
 
         _shield.ToggleShield(true);
 
-        TacticalCooldownTimer = GetTree().CreateTimer(TacticalAbilityDuration);
-        await ToSignal(TacticalCooldownTimer, "timeout");
+        TacticalDurationTimer = GetTree().CreateTimer(TacticalAbilityDuration);
+        await ToSignal(TacticalDurationTimer, "timeout");
 
         _shield.ToggleShield(false);
 

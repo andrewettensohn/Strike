@@ -9,6 +9,9 @@ public partial class Missile : Area2D
     [Export]
     public int Health;
 
+    [Export]
+    public int DamageCaused;
+
     public Unit Target;
 
     private Sprite2D sprite;
@@ -50,7 +53,7 @@ public partial class Missile : Area2D
             if(node as Unit != null)
             {
                 Unit target = (Unit)node;
-                target.Damage(1);
+                target.Damage(DamageCaused);
             }
             // else if(node as Unit != null)
             // {

@@ -15,7 +15,7 @@ radius = 752.096
 [node name="PlayerFighter" type="CharacterBody2D"]
 script = ExtResource("1_x11nx")
 ClassName = "Fighter"
-Health = 3
+Health = 1.0
 MaxSpeed = 150
 Weight = 0.01
 SpeedWhileTurning = 100

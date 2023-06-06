@@ -333,4 +333,5 @@ text = "Class - Crusier"
 [connection signal="mouse_entered" from="CanvasLayer/ShipAbilityDetails" to="." method="Hovered"]
 [connection signal="mouse_exited" from="CanvasLayer/ShipAbilityDetails" to="." method="Unhovered"]
 [connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/RetreatButton" to="CanvasLayer" method="RetreatButtonPressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ShipAbilityDetails/TacticalAbilityButton" to="." method="Hovered"]
 [connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/TacticalAbilityButton" to="CanvasLayer" method="TacticalAbilityButtonPressed"]

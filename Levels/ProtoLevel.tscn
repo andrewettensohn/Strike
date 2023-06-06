@@ -58,6 +58,7 @@ script = ExtResource("11_6j8rj")
 
 [node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
 position = Vector2(2029, 1053)
+Health = 0.0
 
 [node name="EnemyPicket" parent="." instance=ExtResource("12_ony8d")]
 position = Vector2(1723, 1331)

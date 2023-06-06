@@ -17,7 +17,7 @@ height = 122.0
 [node name="PlayerPicket" type="CharacterBody2D"]
 script = ExtResource("1_gtimr")
 ClassName = "Picket"
-Health = 3
+Health = 3.0
 MaxSpeed = 70
 Weight = 0.005
 SpeedWhileTurning = 20

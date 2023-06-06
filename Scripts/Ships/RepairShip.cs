@@ -33,15 +33,15 @@ public partial class RepairShip : Unit
 
     protected override async Task HandleTactical()
     {
-        if(_isTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed) return;
+        if(IsTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed) return;
 
         IsTacticalInUse = true;
         IsTacticalAbilityPressed = false;
 
         MaxSpeed = MaxSpeed * 5;
 
-        TacticalCooldownTimer = GetTree().CreateTimer(TacticalAbilityDuration);
-        await ToSignal(TacticalCooldownTimer, "timeout");
+        TacticalDurationTimer = GetTree().CreateTimer(TacticalAbilityDuration);
+        await ToSignal(TacticalDurationTimer, "timeout");
 
         MaxSpeed = _initalMaxSpeed;
 

@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg7lvqrr18nao"]
+[gd_scene load_steps=4 format=3 uid="uid://cy3muxwbbj467"]
 
-[ext_resource type="Script" path="res://Scripts/Missile.cs" id="1_jpcar"]
-[ext_resource type="Texture2D" uid="uid://c2m01slol02uq" path="res://Art/Sprites/Misc/MissileRadarIcon.png" id="2_k6ogu"]
+[ext_resource type="Script" path="res://Scripts/Missile.cs" id="1_637qq"]
+[ext_resource type="Texture2D" uid="uid://c2m01slol02uq" path="res://Art/Sprites/Misc/MissileRadarIcon.png" id="2_j8xcv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0a2u"]
 radius = 24.0
 
 [node name="Missile" type="Area2D"]
-script = ExtResource("1_jpcar")
+script = ExtResource("1_637qq")
 Speed = 100.0
 Health = 10
 DamageCaused = 1
@@ -19,7 +19,7 @@ shape = SubResource("CircleShape2D_n0a2u")
 position = Vector2(-1.5, -6.5)
 rotation = 1.5708
 scale = Vector2(0.136564, 0.139932)
-texture = ExtResource("2_k6ogu")
+texture = ExtResource("2_j8xcv")
 
 [connection signal="area_entered" from="." to="." method="BulletEntered"]
 [connection signal="body_entered" from="." to="." method="UnitEntered"]

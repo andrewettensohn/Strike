@@ -16,7 +16,6 @@ radius = 1315.01
 [node name="EnemyCruiser" type="CharacterBody2D"]
 script = ExtResource("1_gpx3y")
 ClassName = "Cruiser"
-Health = 10
 MaxSpeed = 50
 Weight = 0.005
 SpeedWhileTurning = 5

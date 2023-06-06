@@ -54,9 +54,13 @@ public partial class UILayer : CanvasLayer
 
 	private void HandleAbilityButtonText()
 	{
-		if(_levelManager.SelectedShip != null && _levelManager.SelectedShip.IsTacticalInUse && _levelManager.SelectedShip.TacticalCooldownTimer != null && IsInstanceValid(_levelManager.SelectedShip.TacticalCooldownTimer))
+		if(_levelManager.SelectedShip != null && _levelManager.SelectedShip.IsTacticalInUse && _levelManager.SelectedShip.TacticalDurationTimer != null && IsInstanceValid(_levelManager.SelectedShip.TacticalDurationTimer))
 		{
-			_shipAbilityButton.Text = $"{Math.Round(_levelManager.SelectedShip.TacticalCooldownTimer.TimeLeft)}s";
+			_shipAbilityButton.Text = $"Active {Math.Round(_levelManager.SelectedShip.TacticalDurationTimer.TimeLeft)}s";
+		}
+		else if(IsInstanceValid(_levelManager.SelectedShip) && _levelManager.SelectedShip.IsTacticalOnCoolDown && IsInstanceValid(_levelManager.SelectedShip.TacticalCoolDownTimer))
+		{
+			_shipAbilityButton.Text = $"Cool Down {Math.Round(_levelManager.SelectedShip.TacticalCoolDownTimer.TimeLeft)}s";
 		}
 		else
 		{
