@@ -9,6 +9,9 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public string ClassName;
 
+	[Export]
+	public string AbilityDescription;
+
     [Export]
     public int Health;
 
@@ -44,6 +47,9 @@ public partial class Unit : CharacterBody2D
 
 	[Export]
 	public ShipClass ShipClass;
+
+	[Export]
+	public int TacticalAbilityDuration;
 
 	public int MaxHealth { get; private set; }
 
@@ -84,6 +90,10 @@ public partial class Unit : CharacterBody2D
 	protected bool _isTacticalOnCoolDown;
 
 	protected bool _isDefenseOnCoolDown;
+
+	public bool IsTacticalInUse { get; protected set; }
+
+	public SceneTreeTimer TacticalCooldownTimer { get; protected set; }
 
 	protected List<Unit> TargetsInWeaponRange { get; private set; } = new List<Unit>();
 
@@ -250,7 +260,7 @@ public partial class Unit : CharacterBody2D
 		{
 			OnSelected();
 		}
-		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && LevelManager.IsUnitUIHovered && !(LevelManager.SelectedUnitSlot?.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
+		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && !LevelManager.IsUnitUIHovered && !(LevelManager.SelectedUnitSlot?.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
 		{
 			OnUnselected();
 		}
@@ -368,7 +378,7 @@ public partial class Unit : CharacterBody2D
 		if(!IsPlayerSide)
 		{
 			_weaponRangeIcon.Visible = false;
-			
+
 			if(LevelManager.HoveredEnemy == this)
 			{
 				LevelManager.HoveredEnemy = null;

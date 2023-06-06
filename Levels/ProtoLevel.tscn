@@ -1,18 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=14 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
 [ext_resource type="PackedScene" uid="uid://chpbceb2c02qx" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
 [ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="3_wja3o"]
-[ext_resource type="PackedScene" path="res://Scenes/PlayerDestroyer.tscn" id="4_pok8q"]
+[ext_resource type="PackedScene" uid="uid://dxl5etg5m8bnf" path="res://Scenes/PlayerFighter.tscn" id="4_fft5q"]
 [ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_5h5bn"]
 [ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="5_j2pc5"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="6_neyy0"]
-[ext_resource type="PackedScene" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
+[ext_resource type="PackedScene" uid="uid://cfe0h4r0c43gm" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
 [ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
 [ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="12_ony8d"]
-[ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="13_1xtlq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)
@@ -23,7 +22,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(9254, -3987, 9362, 5794
 script = ExtResource("1_8p6y1")
 CruiserScene = ExtResource("6_neyy0")
 PicketScene = ExtResource("7_sxxyc")
-DestroyerScene = ExtResource("4_pok8q")
+DestroyerScene = ExtResource("4_fft5q")
 RepairScene = ExtResource("5_5h5bn")
 PlayerReinforcePoints = 2000
 EnemyReinforcePoints = 1000
@@ -58,16 +57,13 @@ texture = ExtResource("9_y65ug")
 script = ExtResource("11_6j8rj")
 
 [node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(2398, 1038)
-
-[node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(2649, 422)
+position = Vector2(2029, 1053)
 
 [node name="EnemyPicket" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(1377, 1296)
+position = Vector2(1723, 1331)
 
 [node name="EnemyPicket2" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(4222, 458)
+position = Vector2(2667, 968)
 
-[node name="EnemyRepair" parent="." instance=ExtResource("13_1xtlq")]
-position = Vector2(3664, 1362)
+[node name="EnemyPicket3" parent="." instance=ExtResource("12_ony8d")]
+position = Vector2(1972, 611)

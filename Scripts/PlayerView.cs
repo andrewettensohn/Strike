@@ -83,7 +83,7 @@ public partial class PlayerView : Node
 
     private void PlaceWaypoint()
     {
-        if(_levelManager.SelectedShip == null || _levelManager.SelectedShip.MovementTarget == _levelManager.SelectedShip.GlobalPosition || _levelManager.SelectedShip.NavigationAgent.IsTargetReached())
+        if(!IsInstanceValid(_levelManager.SelectedShip) || _levelManager.SelectedShip == null || _levelManager.SelectedShip.MovementTarget == _levelManager.SelectedShip.GlobalPosition || _levelManager.SelectedShip.NavigationAgent.IsTargetReached())
         {
             _waypoint.Visible = false;
             return;

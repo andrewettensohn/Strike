@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://tt8m30hpcmgv"]
+[gd_scene load_steps=9 format=3 uid="uid://tt8m30hpcmgv"]
 
 [ext_resource type="Script" path="res://Scripts/PicketShip.cs" id="1_gtimr"]
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="2_tshww"]
+[ext_resource type="PackedScene" uid="uid://ckgbsxmogtylv" path="res://Scenes/Shield.tscn" id="2_ve5it"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_of3eh"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_smt02"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_uw3wa"]
@@ -25,6 +26,8 @@ PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.93
 ShipClass = 150
+
+[node name="Shield" parent="." instance=ExtResource("2_ve5it")]
 
 [node name="WeaponRange" type="Area2D" parent="."]
 

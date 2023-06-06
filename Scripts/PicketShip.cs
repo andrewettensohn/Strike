@@ -8,6 +8,7 @@ public partial class PicketShip : Unit
     private MissileLauncher _missileLauncher;
     private FlakTurret _flakTurretOne;
 	private FlakTurret _flakTurretTwo;
+    private Shield _shield;
 
     public override void _Ready()
     {
@@ -17,6 +18,9 @@ public partial class PicketShip : Unit
         _flakTurretOne = GetNode<FlakTurret>("FlakTurret");
 		_flakTurretTwo = GetNode<FlakTurret>("FlakTurret2");
         DefenseCoolDownTime = _flakTurretOne.CoolDownTime;
+     
+        _shield = GetNode<Shield>("Shield");
+        TacticalCoolDownTime = _shield.CoolDownTime;
 
         BaseReady();
     }
@@ -44,5 +48,25 @@ public partial class PicketShip : Unit
         }
 
         await base.HandleDefense();
+    }
+
+    protected override async Task HandleTactical()
+    {
+        
+        if(_isTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed) return;
+
+        IsTacticalInUse = true;
+        IsTacticalAbilityPressed = false;
+
+        _shield.ToggleShield(true);
+
+        TacticalCooldownTimer = GetTree().CreateTimer(TacticalAbilityDuration);
+        await ToSignal(TacticalCooldownTimer, "timeout");
+
+        _shield.ToggleShield(false);
+
+        IsTacticalInUse = false;
+        
+        await base.HandleTactical();
     }
 }

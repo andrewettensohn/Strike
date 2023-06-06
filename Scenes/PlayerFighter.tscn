@@ -1,43 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://2hcy5ewe6q6w"]
+[gd_scene load_steps=7 format=3 uid="uid://dxl5etg5m8bnf"]
 
-[ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
-[ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
-[ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_ydoo7"]
-[ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_c7ggc"]
-[ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_88frr"]
+[ext_resource type="Script" path="res://Scripts/Ships/Fighter.cs" id="1_x11nx"]
+[ext_resource type="Texture2D" uid="uid://dsu3sjt1pul5b" path="res://Art/Sprites/Ships/Fighter1.png" id="2_e4gjq"]
+[ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_ucet8"]
+[ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_w1q4p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
-radius = 62.0
-height = 202.0
+radius = 23.0
+height = 73.9999
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
-radius = 1597.26
+radius = 752.096
 
-[node name="PlayerCruiser" type="CharacterBody2D"]
-script = ExtResource("1_k1ts2")
-ClassName = "Crusier"
-Health = 10
-MaxSpeed = 50
-Weight = 0.005
-SpeedWhileTurning = 5
+[node name="PlayerFighter" type="CharacterBody2D"]
+script = ExtResource("1_x11nx")
+ClassName = "Fighter"
+Health = 3
+MaxSpeed = 150
+Weight = 0.01
+SpeedWhileTurning = 100
 IsPlayerSide = true
 HostileTargetGroup = 1
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
-TurningAngleThreshold = 0.97
+TurningAngleThreshold = 0.85
+ShipClass = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-10, -4)
+position = Vector2(0, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l5s7l")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -1.00001)
+position = Vector2(-0.743253, -0.354289)
 rotation = 1.5708
-scale = Vector2(0.15, 0.120217)
-texture = ExtResource("2_ffcae")
+scale = Vector2(0.0570997, 0.0471116)
+texture = ExtResource("2_e4gjq")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -47,19 +47,19 @@ offset_top = -62.0
 offset_right = 113.0
 offset_bottom = 65.0
 
-[node name="MissileLauncher" parent="." instance=ExtResource("3_ydoo7")]
-
-[node name="FlakTurret" parent="." instance=ExtResource("4_c7ggc")]
+[node name="MissileLauncher" parent="." instance=ExtResource("3_ucet8")]
+CoolDownTime = 7.0
 
 [node name="WeaponRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
+position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_26hnr")
 
 [node name="WeaponRangeIcon" type="Sprite2D" parent="."]
-position = Vector2(-6.50003, 13)
-scale = Vector2(2.58894, 3.26694)
-texture = ExtResource("5_88frr")
+position = Vector2(-6.50003, 10.9999)
+scale = Vector2(1.22894, 1.55441)
+texture = ExtResource("5_w1q4p")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

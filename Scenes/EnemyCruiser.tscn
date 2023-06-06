@@ -1,15 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv2n67n30fno5"]
+[gd_scene load_steps=8 format=3 uid="uid://cv2n67n30fno5"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_gpx3y"]
-[ext_resource type="Script" path="res://Scripts/Weapons/Shield.cs" id="2_iokq4"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_sedoa"]
-[ext_resource type="Texture2D" uid="uid://cxiq4bhnulix0" path="res://Art/Sprites/FX/Shield.png" id="3_c201j"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_hk0th"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_li7ox"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_w1r67"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_temak"]
-radius = 188.215
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -29,18 +24,6 @@ MyTargetGroup = 1
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97
-
-[node name="Shield" type="Area2D" parent="."]
-script = ExtResource("2_iokq4")
-CoolDownTime = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
-shape = SubResource("CircleShape2D_temak")
-
-[node name="Sprite2D" type="Sprite2D" parent="Shield"]
-position = Vector2(-1.49999, 3.8147e-06)
-scale = Vector2(1.42602, 1.39945)
-texture = ExtResource("3_c201j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)

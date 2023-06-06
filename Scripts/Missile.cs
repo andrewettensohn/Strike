@@ -15,12 +15,14 @@ public partial class Missile : Area2D
 
     public TargetGroup MyTargetGroup;
 
+    private bool _isLifetimeTimerActive;
+
     public override void _Ready()
     {
         sprite = GetNode<Sprite2D>("Sprite");
     }
 
-    public override void _PhysicsProcess(double delta)
+    public override async void _PhysicsProcess(double delta)
     {
         if(IsInstanceValid(Target))
         {
@@ -29,6 +31,14 @@ public partial class Missile : Area2D
         }
         else
         {
+            QueueFree();
+        }
+
+        if(!_isLifetimeTimerActive)
+        {
+            _isLifetimeTimerActive = true;
+            await ToSignal(GetTree().CreateTimer(20.0f), "timeout");
+
             QueueFree();
         }
     }

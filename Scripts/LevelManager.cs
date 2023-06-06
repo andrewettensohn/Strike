@@ -97,6 +97,12 @@ public partial class LevelManager : Node
             PlayerReinforcePoints -= (int)ShipClass.Repair;
             SpawnShip(RepairScene);
         }
+        else if(shipClass == ShipClass.Fighter && PlayerReinforcePoints >= (int)ShipClass.Fighter)
+        {
+            //TODO: Change this to fighter scene
+            PlayerReinforcePoints -= (int)ShipClass.Fighter;
+            SpawnShip(DestroyerScene);
+        }
     }
 
     private void SpawnShip(PackedScene scene)

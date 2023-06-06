@@ -7,7 +7,7 @@ public partial class CruiserShip : Unit
 
     private MissileLauncher _missileLauncher;
     private FlakTurret _flakTurret;
-    private Shield _shield;
+    //private Shield _shield;
 
     public override void _Ready()
     {
@@ -17,9 +17,8 @@ public partial class CruiserShip : Unit
         _flakTurret = GetNode<FlakTurret>("FlakTurret");
         DefenseCoolDownTime = _flakTurret.CoolDownTime;
 
-        _shield = GetNode<Shield>("Shield");
-        GD.Print(_shield == null);
-        TacticalCoolDownTime = _shield.CoolDownTime;
+        // _shield = GetNode<Shield>("Shield");
+        // TacticalCoolDownTime = _shield.CoolDownTime;
 
         BaseReady();
     }
@@ -45,22 +44,5 @@ public partial class CruiserShip : Unit
         }
 
         await base.HandleDefense();
-    }
-
-    protected override async Task HandleTactical()
-    {
-        if(_isTacticalOnCoolDown) return;
-
-        if(IsTacticalAbilityPressed)
-        {
-            _isTacticalOnCoolDown = true;
-            IsTacticalAbilityPressed = false;
-            _shield.ToggleShield(true);
-
-            await ToSignal(GetTree().CreateTimer(TacticalCoolDownTime), "timeout");
-
-            _isTacticalOnCoolDown = false;
-            _shield.ToggleShield(false);
-        }
     }
 }

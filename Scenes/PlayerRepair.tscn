@@ -15,19 +15,17 @@ radius = 573.132
 
 [node name="PlayerRepair" type="CharacterBody2D"]
 script = ExtResource("1_p6kla")
+TacticalCoolDownTime = 10
 ClassName = "Repair Ship"
 Health = 3
 MaxSpeed = 30
 Weight = 0.005
-SpeedWhileTurning = null
 IsPlayerSide = true
-MyTargetGroup = null
-HostileTargetGroup = null
-UnitBehavior = null
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97
 ShipClass = 200
+TacticalAbilityDuration = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)
