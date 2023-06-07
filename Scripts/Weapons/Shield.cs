@@ -7,7 +7,8 @@ public partial class Shield : Area2D
     public float CoolDownTime;
 
 	private Sprite2D _sprite;
-	private CollisionShape2D _collision; 
+	private CollisionShape2D _collision;
+	private TargetGroup _myTargetGroup;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,8 +25,10 @@ public partial class Shield : Area2D
 	{
 	}
 
-	public void ToggleShield(bool isActive)
+	public void ToggleShield(bool isActive, TargetGroup friendlyTargetGroup)
 	{
+		_myTargetGroup = friendlyTargetGroup;
+
 		if(isActive)
 		{
 			_sprite.Visible = true;
@@ -44,10 +47,10 @@ public partial class Shield : Area2D
 
         Missile missile = (Missile)area;
         
-        // if(missile.HostileTargetGroup != MyTargetGroup)
-        // {
-        //     return;
-        // }
+        if(missile.MyTargetGroup == _myTargetGroup)
+        {
+            return;
+        }
         
         missile.QueueFree();
     }

@@ -7,7 +7,7 @@ public partial class CruiserShip : Unit
 
     private MissileLauncher _missileLauncher;
     private FlakTurret _flakTurret;
-    //private Shield _shield;
+    private Webifier _webifier;
 
     public override void _Ready()
     {
@@ -17,8 +17,8 @@ public partial class CruiserShip : Unit
         _flakTurret = GetNode<FlakTurret>("FlakTurret");
         DefenseCoolDownTime = _flakTurret.CoolDownTime;
 
-        // _shield = GetNode<Shield>("Shield");
-        // TacticalCoolDownTime = _shield.CoolDownTime;
+        _webifier = GetNode<Webifier>("Webifier");
+        TacticalCoolDownTime = _webifier.CoolDownTime;
 
         BaseReady();
     }
@@ -44,5 +44,25 @@ public partial class CruiserShip : Unit
         }
 
         await base.HandleDefense();
+    }
+
+    protected override async Task HandleTactical()
+    {
+        
+        if(IsTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed) return;
+
+        IsTacticalInUse = true;
+        IsTacticalAbilityPressed = false;
+
+        _webifier.ToggleWeb(true, Target, this);
+
+        TacticalDurationTimer = GetTree().CreateTimer(TacticalAbilityDuration);
+        await ToSignal(TacticalDurationTimer, "timeout");
+
+        _webifier.ToggleWeb(false, Target, this);
+
+        IsTacticalInUse = false;
+        
+        await base.HandleTactical();
     }
 }

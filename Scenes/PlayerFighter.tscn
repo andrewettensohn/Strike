@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxl5etg5m8bnf"]
+[gd_scene load_steps=8 format=3 uid="uid://dxl5etg5m8bnf"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/Fighter.cs" id="1_x11nx"]
 [ext_resource type="Texture2D" uid="uid://dsu3sjt1pul5b" path="res://Art/Sprites/Ships/Fighter1.png" id="2_e4gjq"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_ucet8"]
+[ext_resource type="PackedScene" uid="uid://do7ftk2rjnuhv" path="res://Scenes/PlayerMissile.tscn" id="4_ghwkx"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_w1q4p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
@@ -48,6 +49,7 @@ offset_right = 113.0
 offset_bottom = 65.0
 
 [node name="MissileLauncher" parent="." instance=ExtResource("3_ucet8")]
+MissileScene = ExtResource("4_ghwkx")
 CoolDownTime = 7.0
 
 [node name="WeaponRange" type="Area2D" parent="."]

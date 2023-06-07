@@ -58,12 +58,12 @@ public partial class PicketShip : Unit
         IsTacticalInUse = true;
         IsTacticalAbilityPressed = false;
 
-        _shield.ToggleShield(true);
+        _shield.ToggleShield(true, MyTargetGroup);
 
         TacticalDurationTimer = GetTree().CreateTimer(TacticalAbilityDuration);
         await ToSignal(TacticalDurationTimer, "timeout");
 
-        _shield.ToggleShield(false);
+        _shield.ToggleShield(false, MyTargetGroup);
 
         IsTacticalInUse = false;
         

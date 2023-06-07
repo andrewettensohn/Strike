@@ -24,4 +24,9 @@ public partial class Fighter : Unit
 
         await base.HandleCombat();
     }
+
+    protected override async Task HandleTactical()
+    {
+        //No ability for now
+    }
 }

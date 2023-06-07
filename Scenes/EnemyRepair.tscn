@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b8jfyoplty6fa"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/RepairShip.cs" id="1_t3jj3"]
-[ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="2_hsaax"]
+[ext_resource type="Texture2D" uid="uid://b3c1d6jdbwaxv" path="res://Art/Sprites/Ships/EnemyRepair.png" id="2_hkvmo"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="3_asp2b"]
 [ext_resource type="Script" path="res://Scripts/Weapons/RepairModule.cs" id="4_8p4i2"]
 [ext_resource type="PackedScene" uid="uid://b6jh7bn888pgs" path="res://Scenes/HealBubble.tscn" id="5_55g2w"]
@@ -16,7 +16,7 @@ radius = 573.132
 [node name="EnemyRepair" type="CharacterBody2D"]
 script = ExtResource("1_t3jj3")
 ClassName = "Repair Ship"
-Health = 3
+Health = 5.0
 MaxSpeed = 30
 Weight = 0.005
 MyTargetGroup = 1
@@ -34,10 +34,10 @@ shape = SubResource("CapsuleShape2D_l5s7l")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.749996, -0.50001)
+position = Vector2(-1.08369, 0.83485)
 rotation = 1.5708
-scale = Vector2(0.384693, 0.21442)
-texture = ExtResource("2_hsaax")
+scale = Vector2(0.101877, 0.157745)
+texture = ExtResource("2_hkvmo")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

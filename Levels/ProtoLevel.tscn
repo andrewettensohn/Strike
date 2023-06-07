@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=15 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
 [ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
 [ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="12_ony8d"]
+[ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="13_uwlk7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)
@@ -56,15 +57,20 @@ texture = ExtResource("9_y65ug")
 [node name="EnemyCommander" type="Node" parent="."]
 script = ExtResource("11_6j8rj")
 
-[node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(2029, 1053)
-Health = 0.0
-
 [node name="EnemyPicket" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(1723, 1331)
+position = Vector2(4574, 1907)
 
 [node name="EnemyPicket2" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(2667, 968)
+position = Vector2(4484, 2528)
 
-[node name="EnemyPicket3" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(1972, 611)
+[node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
+position = Vector2(5558, 2357)
+
+[node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
+position = Vector2(5158, 2733)
+
+[node name="EnemyRepair" parent="." instance=ExtResource("13_uwlk7")]
+position = Vector2(5068, 3151)
+
+[node name="EnemyRepair2" parent="." instance=ExtResource("13_uwlk7")]
+position = Vector2(5539, 2620)

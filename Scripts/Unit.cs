@@ -51,6 +51,8 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public int TacticalAbilityDuration;
 
+	public int InitalMaxSpeed { get; private set; }
+
 	public float MaxHealth { get; private set; }
 
 	public Sprite2D Sprite;
@@ -112,6 +114,7 @@ public partial class Unit : CharacterBody2D
 	protected void BaseReady()
 	{
 		MaxHealth = Health;
+		InitalMaxSpeed = MaxSpeed;
 		
 		AddToGroup(MyTargetGroup.ToString());
 

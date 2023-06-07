@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv2n67n30fno5"]
+[gd_scene load_steps=10 format=3 uid="uid://cv2n67n30fno5"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_gpx3y"]
-[ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_sedoa"]
+[ext_resource type="Texture2D" uid="uid://cexxt6v0a6gmx" path="res://Art/Sprites/Ships/EnemyCruiser.png" id="2_7s6je"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_hk0th"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_li7ox"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_w1r67"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_dykp7"]
+[ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_63yyo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -16,6 +18,7 @@ radius = 1315.01
 [node name="EnemyCruiser" type="CharacterBody2D"]
 script = ExtResource("1_gpx3y")
 ClassName = "Cruiser"
+Health = 10.0
 MaxSpeed = 50
 Weight = 0.005
 SpeedWhileTurning = 5
@@ -32,10 +35,10 @@ shape = SubResource("CapsuleShape2D_l5s7l")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -1.00001)
+position = Vector2(-15.9099, -1.35356)
 rotation = 1.5708
-scale = Vector2(0.15, 0.120217)
-texture = ExtResource("2_sedoa")
+scale = Vector2(0.150841, 0.151691)
+texture = ExtResource("2_7s6je")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -58,6 +61,15 @@ shape = SubResource("CircleShape2D_26hnr")
 position = Vector2(8.99995, 8.00012)
 scale = Vector2(2.16827, 2.75154)
 texture = ExtResource("5_w1r67")
+
+[node name="Webifier" type="Node" parent="."]
+script = ExtResource("6_dykp7")
+
+[node name="WebSprite" type="Sprite2D" parent="Webifier"]
+visible = false
+position = Vector2(0.5, 5.72205e-06)
+scale = Vector2(0.326279, 0.487455)
+texture = ExtResource("7_63yyo")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
