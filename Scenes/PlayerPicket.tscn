@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_rv4eh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
-radius = 649.003
+radius = 1087.47
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 18.0
@@ -70,8 +70,8 @@ CoolDownTime = 6.0
 CoolDownTime = 0.7
 
 [node name="WeaponRangeIcon" type="Sprite2D" parent="."]
-position = Vector2(-10.4999, -4)
-scale = Vector2(1.0601, 1.34497)
+position = Vector2(-4.49998, -1.49994)
+scale = Vector2(1.78606, 2.22895)
 texture = ExtResource("5_rv4eh")
 
 [connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]

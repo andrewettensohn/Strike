@@ -13,7 +13,7 @@ radius = 62.0
 height = 202.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
-radius = 1315.01
+radius = 2083.06
 
 [node name="EnemyCruiser" type="CharacterBody2D"]
 script = ExtResource("1_gpx3y")
@@ -58,8 +58,8 @@ offset_bottom = 65.0
 shape = SubResource("CircleShape2D_26hnr")
 
 [node name="WeaponRangeIcon" type="Sprite2D" parent="."]
-position = Vector2(8.99995, 8.00012)
-scale = Vector2(2.16827, 2.75154)
+position = Vector2(-2.99977, 5.49982)
+scale = Vector2(3.3734, 4.29261)
 texture = ExtResource("5_w1r67")
 
 [node name="Webifier" type="Node" parent="."]

@@ -15,7 +15,7 @@ radius = 62.0
 height = 202.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
-radius = 1597.26
+radius = 2717.32
 
 [node name="PlayerCruiser" type="CharacterBody2D"]
 script = ExtResource("1_k1ts2")
@@ -63,8 +63,8 @@ MissileScene = ExtResource("4_iw01x")
 shape = SubResource("CircleShape2D_26hnr")
 
 [node name="WeaponRangeIcon" type="Sprite2D" parent="."]
-position = Vector2(-6.50003, 13)
-scale = Vector2(2.58894, 3.26694)
+position = Vector2(-6.5, 32.9999)
+scale = Vector2(4.38381, 5.6078)
 texture = ExtResource("5_88frr")
 
 [node name="Webifier" type="Node" parent="."]
