@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c1nbyves1v7s"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_ygka7"]
-[ext_resource type="Texture2D" uid="uid://cexxt6v0a6gmx" path="res://Art/Sprites/Ships/EnemyCruiser.png" id="2_nppdv"]
+[ext_resource type="Texture2D" uid="uid://c5avspklp0ssu" path="res://Art/Sprites/Ships/EnemyCapital.png" id="2_vda5e"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_rsv2x"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_uvayr"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_3vjuk"]
@@ -10,16 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="8_50g48"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
-radius = 62.0
-height = 202.0
+radius = 737.0
+height = 1898.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
-radius = 2083.06
+radius = 6088.11
 
-[node name="EnemyCruiser" type="CharacterBody2D"]
+[node name="EnemyCapital" type="CharacterBody2D"]
 script = ExtResource("1_ygka7")
 ClassName = "Cruiser"
-Health = 10.0
+Health = 100.0
 MaxSpeed = 50
 Weight = 0.005
 SpeedWhileTurning = 5
@@ -36,10 +36,9 @@ shape = SubResource("CapsuleShape2D_l5s7l")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-15.9099, -1.35356)
-rotation = 1.5708
-scale = Vector2(0.150841, 0.151691)
-texture = ExtResource("2_nppdv")
+position = Vector2(-2.00009, -1.00006)
+scale = Vector2(1.76078, 2.26074)
+texture = ExtResource("2_vda5e")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -50,6 +49,7 @@ offset_right = 113.0
 offset_bottom = 65.0
 
 [node name="MissileLauncher" parent="." instance=ExtResource("3_rsv2x")]
+MissileAmmoCount = 1000
 
 [node name="FlakTurret" parent="." instance=ExtResource("4_uvayr")]
 
@@ -59,8 +59,8 @@ offset_bottom = 65.0
 shape = SubResource("CircleShape2D_26hnr")
 
 [node name="WeaponRangeIcon" type="Sprite2D" parent="."]
-position = Vector2(-2.99977, 5.49982)
-scale = Vector2(3.3734, 4.29261)
+position = Vector2(-11, 21.5005)
+scale = Vector2(9.92468, 12.539)
 texture = ExtResource("5_3vjuk")
 
 [node name="Webifier" type="Node" parent="."]

@@ -222,7 +222,16 @@ public partial class Unit : CharacterBody2D
 		if(IsInstanceValid(Target))
 		{
 			MovementTarget = Target.GlobalPosition;
-			TargetDesiredDistance = 200;
+			
+			if(TargetsInWeaponRange.Any(x => x == Target))
+			{
+				MaxSpeed = 0;
+			}
+			else
+			{
+				MaxSpeed = InitalMaxSpeed;
+			}
+
 			return;
 		}
 
@@ -499,9 +508,6 @@ public partial class Unit : CharacterBody2D
 		{
 			LevelManager.EnemyUnits.Remove(this);
 		}
-        // Sprite2D largeBoom = (Sprite)LargeExplosion.Instance();
-        // largeBoom.GlobalPosition = GlobalPosition;
-        // GetTree().Root.AddChild(largeBoom);
 
 		//_audioStreamPlayer.PlayAudio(_audioStreamPlayer.ShipDestroyedSoundClip);
 
@@ -528,14 +534,6 @@ public partial class Unit : CharacterBody2D
 	public virtual async Task Damage(int damage)
     {
         Health -= damage;
-
-        // Sprite2D smallBoom = (Sprite2D)SmallExplosion.Instance();
-        // smallBoom.GlobalPosition = GlobalPosition;
-        // GetTree().Root.AddChild(smallBoom);
-        
-
-        // GetNode<AudioStreamPlayer2D>("ImpactAudioPlayer").Stream = ImpactSounds[(int)GD.Randi() % (ImpactSounds.Count - 1)];
-        // GetNode<AudioStreamPlayer2D>("ImpactAudioPlayer").Play();
         
         if(Health <= 0)
         {
