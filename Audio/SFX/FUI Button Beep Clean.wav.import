@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://f5cuikt7ehcj"
+path="res://.godot/imported/FUI Button Beep Clean.wav-e39e6e7bd9feff553208593d727c84f6.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/FUI Button Beep Clean.wav"
+dest_files=["res://.godot/imported/FUI Button Beep Clean.wav-e39e6e7bd9feff553208593d727c84f6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

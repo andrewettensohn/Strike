@@ -67,15 +67,15 @@ public partial class PlayerView : Node
 
         Vector2 newZoom = _cam.Zoom;
 
-        if(isZoomIn && _cam.Zoom.X >= -1.0f)
+        if(isZoomIn)
         {
-            newZoom.X -= 0.5f;
-            newZoom.Y -= 0.5f;
+            newZoom.X -= 0.1f;
+            newZoom.Y -= 0.1f;
         }
-        else if(isZoomOut && _cam.Zoom.X <= 100f)
+        else if(isZoomOut)
         {
-            newZoom.X += 0.5f;
-            newZoom.Y += 0.5f;
+            newZoom.X += 0.1f;
+            newZoom.Y += 0.1f;
         }
 
         _cam.Zoom = newZoom;

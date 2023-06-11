@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2hcy5ewe6q6w"]
+[gd_scene load_steps=13 format=3 uid="uid://2hcy5ewe6q6w"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
@@ -9,10 +9,11 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_8hhyl"]
 [ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_i4cwf"]
 [ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_tsaio"]
+[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="10_ytluu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
-radius = 62.0
-height = 202.0
+radius = 93.0
+height = 380.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
 radius = 2717.32
@@ -39,9 +40,9 @@ shape = SubResource("CapsuleShape2D_l5s7l")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -1.00001)
+position = Vector2(-6.67419, -3.66969)
 rotation = 1.5708
-scale = Vector2(0.15, 0.120217)
+scale = Vector2(0.230792, 0.235994)
 texture = ExtResource("2_ffcae")
 
 [node name="Control" type="Control" parent="."]
@@ -78,6 +79,8 @@ texture = ExtResource("7_i4cwf")
 
 [node name="WebEffect" type="Sprite2D" parent="Webifier"]
 texture = ExtResource("8_tsaio")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("10_ytluu")]
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

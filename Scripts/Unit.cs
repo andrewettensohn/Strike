@@ -111,6 +111,10 @@ public partial class Unit : CharacterBody2D
 
 	private bool _isRetreating;
 
+	private StrikeAudioPlayer _audioStreamPlayer;
+
+	private bool _isDying;
+
 	protected void BaseReady()
 	{
 		MaxHealth = Health;
@@ -124,6 +128,7 @@ public partial class Unit : CharacterBody2D
 		NavigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_weaponRangeIcon = GetNode<Sprite2D>("WeaponRangeIcon");
 		_collision = GetNode<CollisionShape2D>("CollisionShape2D");
+		_audioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
 
 		_movementTargetPosition = GlobalTransform.Origin;
 
@@ -238,7 +243,7 @@ public partial class Unit : CharacterBody2D
 		}
 	}
 
-	protected void CheckForTarget()
+	protected virtual void CheckForTarget()
 	{
 		if(IsInstanceValid(Target) && IsPlayerSide) return;
 
@@ -275,6 +280,8 @@ public partial class Unit : CharacterBody2D
 			// The unit is hovered, the action button is pressed, set the hostile target for selected ship
 			if(LevelManager.SelectedShip != null && LevelManager.SelectedShip.TargetsInWeaponRange.Any(x => x == this))
 			{
+				_audioStreamPlayer.PlayAudio(_audioStreamPlayer.SetTargetSoundClip);
+
 				LevelManager.SelectedShip.Target = this;
 				LevelManager.SelectedShip.MovementTarget = LevelManager.SelectedShip.GlobalPosition;
 			}
@@ -330,6 +337,7 @@ public partial class Unit : CharacterBody2D
 		MovementTarget = location;
 
 		_isRetreating = true;
+		_audioStreamPlayer.PlayAudio(_audioStreamPlayer.RetreatClickedSoundClip);
 	}
 
 	protected void Navigate()
@@ -340,6 +348,8 @@ public partial class Unit : CharacterBody2D
         {
 			if(_isWarping)
 			{
+				_audioStreamPlayer.PlayAudio(_audioStreamPlayer.WarpInSoundClip);
+
 				_isWarping = false;
 				_collision.Disabled = false;
 			}
@@ -469,8 +479,17 @@ public partial class Unit : CharacterBody2D
         _isDefenseOnCoolDown = false;
     }
 
-	protected void HandleDeath()
+	protected async Task HandleDeath()
     {
+		if(_isDying)
+		{
+			return;
+		}
+		else
+		{
+			_isDying = true;
+		}
+
 		if(IsPlayerSide)
 		{
 			LevelManager.PlayerShipDestroyed(this);
@@ -483,6 +502,10 @@ public partial class Unit : CharacterBody2D
         // Sprite2D largeBoom = (Sprite)LargeExplosion.Instance();
         // largeBoom.GlobalPosition = GlobalPosition;
         // GetTree().Root.AddChild(largeBoom);
+
+		//_audioStreamPlayer.PlayAudio(_audioStreamPlayer.ShipDestroyedSoundClip);
+
+        await ToSignal(GetTree().CreateTimer(1), "timeout");
 
         QueueFree();
     }
@@ -502,7 +525,7 @@ public partial class Unit : CharacterBody2D
 		QueueFree();
 	}
 
-	public virtual void Damage(int damage)
+	public virtual async Task Damage(int damage)
     {
         Health -= damage;
 
@@ -516,7 +539,7 @@ public partial class Unit : CharacterBody2D
         
         if(Health <= 0)
         {
-            HandleDeath();
+            await HandleDeath();
         }
     }
 }

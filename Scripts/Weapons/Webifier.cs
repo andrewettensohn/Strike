@@ -33,6 +33,8 @@ public partial class Webifier : Node
 		}
 		else
 		{
+			_webSprite.Visible = false;
+			_webEffect.Visible = false;
 			_target = null;
 		}
 	}

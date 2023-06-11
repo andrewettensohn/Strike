@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class Rocket : Area2D
 {
@@ -40,7 +41,7 @@ public partial class Rocket : Area2D
 		// No friendly fire
 		if(target.MyTargetGroup == MyTargetGroup) return;
 
-		target.Damage(1);
+		Task.Run(() => target.Damage(1));
 		QueueFree();
 		
     }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class Missile : Area2D
 {
@@ -53,7 +54,7 @@ public partial class Missile : Area2D
             if(node as Unit != null)
             {
                 Unit target = (Unit)node;
-                target.Damage(DamageCaused);
+                Task.Run(() => target.Damage(DamageCaused));
             }
             // else if(node as Unit != null)
             // {

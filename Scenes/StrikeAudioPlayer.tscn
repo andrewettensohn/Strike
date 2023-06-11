@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://544aqypv6kvy"]
+
+[ext_resource type="Script" path="res://Scripts/StrikeAudioPlayer.cs" id="1_4fhtm"]
+[ext_resource type="AudioStream" uid="uid://dwklellfxag5r" path="res://Audio/SFX/BEEP_Targeting Loop_06.wav" id="2_bv3tq"]
+[ext_resource type="AudioStream" uid="uid://be0tyxqgtoahp" path="res://Audio/SFX/SUB_DROP_DEEP.wav" id="3_xc5lg"]
+[ext_resource type="AudioStream" uid="uid://f5cuikt7ehcj" path="res://Audio/SFX/FUI Button Beep Clean.wav" id="4_iktxi"]
+[ext_resource type="AudioStream" uid="uid://ie0lj0ci56sj" path="res://Audio/SFX/Old Terminal Alarm Loop.wav" id="5_xxtrk"]
+[ext_resource type="AudioStream" uid="uid://bh5n0bbvtl4v" path="res://Audio/SFX/EXPLDsgn_Explosion Rumble Distorted_01.wav" id="6_fbd54"]
+
+[node name="StrikeAudioPlayer" type="AudioStreamPlayer2D"]
+script = ExtResource("1_4fhtm")
+SetTargetSoundClip = ExtResource("2_bv3tq")
+WarpInSoundClip = ExtResource("3_xc5lg")
+ReinforceSoundClip = ExtResource("4_iktxi")
+RetreatClickedSoundClip = ExtResource("5_xxtrk")
+ShipDestroyedSoundClip = ExtResource("6_fbd54")

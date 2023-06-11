@@ -45,6 +45,8 @@ public partial class LevelManager : Node
 
     public EnemyCommander EnemyCommander { get; private set; }
 
+    private StrikeAudioPlayer _audioStreamPlayer;
+
     public override void _Ready()
     {
         EnemyCommander = GetNode<EnemyCommander>("EnemyCommander");
@@ -53,6 +55,7 @@ public partial class LevelManager : Node
         FleetOverview = GetNode("PlayerView").GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
         PlayerReinforceCorridorEnd = GetNode<Sprite2D>("PlayerReinforceCorridorEnd");
         PlayerReinforceCorridorStart = GetNode<Sprite2D>("PlayerReinforceCorridorStart");
+        _audioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
 
         foreach(Unit unit in PlayerUnits)
         {
@@ -77,6 +80,8 @@ public partial class LevelManager : Node
 
     public void ReinforceShip(ShipClass shipClass)
     {
+        _audioStreamPlayer.PlayAudio(_audioStreamPlayer.ReinforceSoundClip);
+
         if(shipClass == ShipClass.Picket && PlayerReinforcePoints >= (int)ShipClass.Picket)
         {
             PlayerReinforcePoints -= (int)ShipClass.Picket;

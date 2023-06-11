@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://boc75fvyby85w"
+path="res://.godot/imported/EXPLDsgn_Explosion Impact_14.wav-5da5ff867b116a9b182b5db3553d2be6.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/EXPLDsgn_Explosion Impact_14.wav"
+dest_files=["res://.godot/imported/EXPLDsgn_Explosion Impact_14.wav-5da5ff867b116a9b182b5db3553d2be6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

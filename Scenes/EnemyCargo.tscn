@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cujv3u60b5fi3"]
+
+[ext_resource type="Script" path="res://Scripts/Ships/EnemyCargo.cs" id="1_wjhn7"]
+[ext_resource type="Texture2D" uid="uid://bme53peptfef0" path="res://Art/Sprites/Ships/EnemyCargo.png" id="2_2ft0h"]
+[ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="3_77r6i"]
+[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_i3316"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
+radius = 62.0
+height = 202.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
+radius = 140.513
+
+[node name="EnemyCargo" type="CharacterBody2D"]
+script = ExtResource("1_wjhn7")
+ClassName = "Freighter"
+Health = 5.0
+MaxSpeed = 50
+Weight = 0.005
+SpeedWhileTurning = 5
+MyTargetGroup = 1
+UnitBehavior = 2
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 1.0
+TurningAngleThreshold = 0.94
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l5s7l")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-10, -4)
+scale = Vector2(0.213516, 0.304183)
+texture = ExtResource("2_2ft0h")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -94.0
+offset_top = -62.0
+offset_right = 113.0
+offset_bottom = 65.0
+
+[node name="WeaponRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
+shape = SubResource("CircleShape2D_26hnr")
+
+[node name="WeaponRangeIcon" type="Sprite2D" parent="."]
+position = Vector2(-0.999969, -5.72205e-06)
+scale = Vector2(0.224359, 0.289528)
+texture = ExtResource("3_77r6i")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("4_i3316")]
+
+[connection signal="mouse_entered" from="Control" to="." method="Hovered"]
+[connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
+[connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]
+[connection signal="area_exited" from="WeaponRange" to="." method="DefenseRangeExitted"]
+[connection signal="body_entered" from="WeaponRange" to="." method="WeaponRangeEntered"]
+[connection signal="body_exited" from="WeaponRange" to="." method="WeaponRangeExitted"]
