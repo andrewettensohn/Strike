@@ -18,10 +18,16 @@ public partial class LevelManager : Node
     public PackedScene RepairScene;
 
     [Export]
+    public PackedScene EnemyCapitalScene;
+
+    [Export]
     public int PlayerReinforcePoints;
 
     [Export]
     public int EnemyReinforcePoints;
+
+    [Export]
+    public int DoomsdayTime;
 
     public Unit SelectedShip;
 
@@ -43,6 +49,10 @@ public partial class LevelManager : Node
 
     public Sprite2D PlayerReinforceCorridorStart { get; private set; }
 
+    public Sprite2D EnemyReinforceCorridorEnd { get; private set; }
+
+    public Sprite2D EnemyReinforceCorridorStart { get; private set; }
+
     public EnemyCommander EnemyCommander { get; private set; }
 
     private StrikeAudioPlayer _audioStreamPlayer;
@@ -50,17 +60,21 @@ public partial class LevelManager : Node
     public override void _Ready()
     {
         EnemyCommander = GetNode<EnemyCommander>("EnemyCommander");
+
         PlayerUnits = GetTree().GetNodesInGroup("Player").Select(x => (Unit)x).ToList();
         EnemyUnits = GetTree().GetNodesInGroup("Enemy").Select(x => (Unit)x).ToList();
+
         FleetOverview = GetNode("PlayerView").GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
+
         PlayerReinforceCorridorEnd = GetNode<Sprite2D>("PlayerReinforceCorridorEnd");
         PlayerReinforceCorridorStart = GetNode<Sprite2D>("PlayerReinforceCorridorStart");
+
+        EnemyReinforceCorridorEnd = GetNode<Sprite2D>("EnemyReinforceCorridorEnd");
+        EnemyReinforceCorridorStart = GetNode<Sprite2D>("EnemyReinforceCorridorStart");
+        
         _audioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
 
-        foreach(Unit unit in PlayerUnits)
-        {
-            FleetOverview.AddUnitToOverview(unit);
-        }
+        SetupFleetOverviewForInitalPlayerShips();
     }
 
     public void PlayerShipDestroyed(Unit unit)
@@ -78,44 +92,57 @@ public partial class LevelManager : Node
         }
     }
 
-    public void ReinforceShip(ShipClass shipClass)
+    public void OnDoomsdayClockExpired()
+    {
+        SpawnEnemyShip(EnemyCapitalScene);
+    }
+
+    public void ReinforcePlayerShip(ShipClass shipClass)
     {
         _audioStreamPlayer.PlayAudio(_audioStreamPlayer.ReinforceSoundClip);
 
         if(shipClass == ShipClass.Picket && PlayerReinforcePoints >= (int)ShipClass.Picket)
         {
             PlayerReinforcePoints -= (int)ShipClass.Picket;
-            SpawnShip(PicketScene);
+            SpawnPlayerShip(PicketScene);
         }
         else if(shipClass == ShipClass.Crusier && PlayerReinforcePoints >= (int)ShipClass.Crusier)
         {
             PlayerReinforcePoints -= (int)ShipClass.Crusier;
-            SpawnShip(CruiserScene);
+            SpawnPlayerShip(CruiserScene);
         }
         else if(shipClass == ShipClass.Destroyer && PlayerReinforcePoints >= (int)ShipClass.Destroyer)
         {
             PlayerReinforcePoints -= (int)ShipClass.Destroyer;
-            SpawnShip(DestroyerScene);
+            SpawnPlayerShip(DestroyerScene);
         }
         else if(shipClass == ShipClass.Repair && PlayerReinforcePoints >= (int)ShipClass.Repair)
         {
             PlayerReinforcePoints -= (int)ShipClass.Repair;
-            SpawnShip(RepairScene);
+            SpawnPlayerShip(RepairScene);
         }
         else if(shipClass == ShipClass.Fighter && PlayerReinforcePoints >= (int)ShipClass.Fighter)
         {
             //TODO: Change this to fighter scene
             PlayerReinforcePoints -= (int)ShipClass.Fighter;
-            SpawnShip(DestroyerScene);
+            SpawnPlayerShip(DestroyerScene);
         }
     }
 
-    private void SpawnShip(PackedScene scene)
+    private void SetupFleetOverviewForInitalPlayerShips()
+    {
+        foreach(Unit unit in PlayerUnits)
+        {
+            FleetOverview.AddUnitToOverview(unit);
+        }
+    }
+
+    private void SpawnPlayerShip(PackedScene scene)
     {
         Unit unit = (Unit)scene.Instantiate();
 
-        float xPos = GD.Randf() * 500;
-        float yPos = GD.Randf() * 500;
+        float xPos = GD.Randf() * 1000;
+        float yPos = GD.Randf() * 1000;
 
         unit.GlobalPosition = new Vector2(PlayerReinforceCorridorStart.GlobalPosition.X + xPos, PlayerReinforceCorridorStart.GlobalPosition.Y + yPos);
 
@@ -126,6 +153,22 @@ public partial class LevelManager : Node
         unit.WarpTo(new Vector2(PlayerReinforceCorridorEnd.GlobalPosition.X + xPos, PlayerReinforceCorridorEnd.GlobalPosition.Y + yPos));
 
         PlayerUnits.Add(unit);
+    }
+
+    private void SpawnEnemyShip(PackedScene scene)
+    {
+        Unit unit = (Unit)scene.Instantiate();
+
+        float xPos = GD.Randf() * 1000;
+        float yPos = GD.Randf() * 1000;
+
+        unit.GlobalPosition = new Vector2(EnemyReinforceCorridorStart.GlobalPosition.X + xPos, EnemyReinforceCorridorStart.GlobalPosition.Y + yPos);
+
+        GetTree().Root.AddChild(unit);
+
+        unit.WarpTo(new Vector2(EnemyReinforceCorridorEnd.GlobalPosition.X + xPos, EnemyReinforceCorridorEnd.GlobalPosition.Y + yPos));
+
+        EnemyUnits.Add(unit);
     }
     
 }

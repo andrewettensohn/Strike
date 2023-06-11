@@ -142,20 +142,20 @@ public partial class Unit : CharacterBody2D
 
 	public override async void _PhysicsProcess(double delta)
 	{
+		Navigate();
+
+		if(_isWarping) return;
+
 		CheckForTarget();
 
 		GetUserInput();
 
 		HandleOffenseBehavior();
 
-		Navigate();
-
-		if(!_isWarping)
-		{
-			await HandleCombat();
-			await HandleDefense();
-			await HandleTactical();
-		}
+		await HandleCombat();
+		await HandleDefense();
+		await HandleTactical();
+		
 	}
 
 	public void WeaponRangeEntered(Node2D node)

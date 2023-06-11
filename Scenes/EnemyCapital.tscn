@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1nbyves1v7s"]
+[gd_scene load_steps=12 format=3 uid="uid://c1nbyves1v7s"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_ygka7"]
 [ext_resource type="Texture2D" uid="uid://c5avspklp0ssu" path="res://Art/Sprites/Ships/EnemyCapital.png" id="2_vda5e"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_sqny8"]
 [ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_dlfyk"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="8_50g48"]
+[ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_pwoif"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 737.0
@@ -71,6 +72,11 @@ visible = false
 position = Vector2(0.5, 5.72205e-06)
 scale = Vector2(0.326279, 0.487455)
 texture = ExtResource("7_dlfyk")
+
+[node name="WebEffect" type="Sprite2D" parent="Webifier"]
+position = Vector2(-1.52588e-05, 3.05176e-05)
+scale = Vector2(3.33971, 2.83256)
+texture = ExtResource("8_pwoif")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("8_50g48")]
 

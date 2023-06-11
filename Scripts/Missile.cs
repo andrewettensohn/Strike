@@ -41,7 +41,7 @@ public partial class Missile : Area2D
         if(!_isLifetimeTimerActive)
         {
             _isLifetimeTimerActive = true;
-            await ToSignal(GetTree().CreateTimer(20.0f), "timeout");
+            await ToSignal(GetTree().CreateTimer(45.0f), "timeout");
 
             QueueFree();
         }
@@ -56,10 +56,6 @@ public partial class Missile : Area2D
                 Unit target = (Unit)node;
                 Task.Run(() => target.Damage(DamageCaused));
             }
-            // else if(node as Unit != null)
-            // {
-            //     node.QueueFree();
-            // }
 
             QueueFree();
             Target = null;

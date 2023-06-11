@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=18 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
 [ext_resource type="PackedScene" uid="uid://chpbceb2c02qx" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
-[ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="3_wja3o"]
 [ext_resource type="PackedScene" uid="uid://dxl5etg5m8bnf" path="res://Scenes/PlayerFighter.tscn" id="4_fft5q"]
 [ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_5h5bn"]
 [ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="5_j2pc5"]
@@ -29,32 +28,40 @@ CruiserScene = ExtResource("6_neyy0")
 PicketScene = ExtResource("7_sxxyc")
 DestroyerScene = ExtResource("4_fft5q")
 RepairScene = ExtResource("5_5h5bn")
+EnemyCapitalScene = ExtResource("17_cq1oq")
 PlayerReinforcePoints = 2000
 EnemyReinforcePoints = 1000
+DoomsdayTime = 5
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(942, -36.9999)
-scale = Vector2(2.98828, 2.43359)
+scale = Vector2(11.3883, 7.59359)
 texture = ExtResource("1_ajgjb")
 
 [node name="PlayerView" parent="." instance=ExtResource("1_kvrpu")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-2297, -849)
+scale = Vector2(2.625, 2.76769)
 navigation_polygon = SubResource("NavigationPolygon_tgi5t")
 
-[node name="Field1" type="Sprite2D" parent="."]
-position = Vector2(-521, -42)
-scale = Vector2(0.220603, 0.252294)
-texture = ExtResource("3_wja3o")
-
 [node name="PlayerReinforceCorridorEnd" type="Sprite2D" parent="."]
-position = Vector2(260, -917)
+position = Vector2(-1700, -3757)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("9_y65ug")
+
+[node name="EnemyReinforceCorridorEnd" type="Sprite2D" parent="."]
+position = Vector2(5849, 1482)
 scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_y65ug")
 
 [node name="PlayerReinforceCorridorStart" type="Sprite2D" parent="."]
-position = Vector2(-2292, -4558)
+position = Vector2(-8452, -11383)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("9_y65ug")
+
+[node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(21275, 14177)
 scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_y65ug")
 
@@ -62,22 +69,22 @@ texture = ExtResource("9_y65ug")
 script = ExtResource("11_6j8rj")
 
 [node name="EnemyPicket" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(2104, 1404)
+position = Vector2(1688, -1596)
 
 [node name="EnemyPicket2" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(2014, 2025)
+position = Vector2(1598, -975)
 
 [node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(3088, 1854)
+position = Vector2(2672, -1146)
 
 [node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(2688, 2230)
+position = Vector2(2272, -770)
 
 [node name="EnemyRepair" parent="." instance=ExtResource("13_uwlk7")]
-position = Vector2(2598, 2648)
+position = Vector2(2182, -352)
 
 [node name="EnemyRepair2" parent="." instance=ExtResource("13_uwlk7")]
-position = Vector2(3069, 2117)
+position = Vector2(2653, -883)
 
 [node name="CargoDest" type="Sprite2D" parent="."]
 position = Vector2(5734, -1512)
@@ -87,6 +94,3 @@ texture = ExtResource("14_alapb")
 position = Vector2(1234, 3421)
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("16_u32in")]
-
-[node name="EnemyCruiser3" parent="." instance=ExtResource("17_cq1oq")]
-position = Vector2(5396, 3375)

@@ -21,8 +21,7 @@ public partial class ReinforceSlot : Control
 	{
 		if (Input.IsActionJustPressed("ui_select") && _isHovered)
 		{
-            //Reinforce from LevelManager?
-			_levelManager.ReinforceShip(ShipClass);
+			_levelManager.ReinforcePlayerShip(ShipClass);
 		}
 	}
 

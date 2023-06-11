@@ -14,6 +14,11 @@ public partial class EnemyCargo : Unit
     protected override void CheckForTarget()
     {
 		MovementTarget = GetTree().Root.GetNode<LevelManager>("Level").GetNode<Sprite2D>("CargoDest").GlobalPosition;
+
+        if(NavigationAgent.DistanceToTarget() < 10f)
+        {
+            WarpOut(LevelManager.EnemyReinforceCorridorStart.GlobalPosition);
+        }
     }
 
     protected override async Task HandleCombat()

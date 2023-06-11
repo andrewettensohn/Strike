@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cujv3u60b5fi3"]
+[gd_scene load_steps=8 format=3 uid="uid://cujv3u60b5fi3"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/EnemyCargo.cs" id="1_wjhn7"]
 [ext_resource type="Texture2D" uid="uid://bme53peptfef0" path="res://Art/Sprites/Ships/EnemyCargo.png" id="2_2ft0h"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="3_77r6i"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_i3316"]
+[ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="5_016dx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -56,6 +57,11 @@ scale = Vector2(0.224359, 0.289528)
 texture = ExtResource("3_77r6i")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("4_i3316")]
+
+[node name="ObjectiveMarker" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.479999, 0.6)
+texture = ExtResource("5_016dx")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

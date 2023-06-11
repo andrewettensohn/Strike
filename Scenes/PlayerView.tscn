@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=19 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
@@ -22,6 +22,10 @@ default_font = ExtResource("5_w06ox")
 
 [sub_resource type="Theme" id="Theme_n8xg8"]
 default_font = ExtResource("5_w06ox")
+
+[sub_resource type="Theme" id="Theme_uk4j0"]
+default_font = ExtResource("5_w06ox")
+default_font_size = 30
 
 [sub_resource type="Theme" id="Theme_75ik2"]
 default_font = ExtResource("4_4oj8o")
@@ -259,6 +263,34 @@ offset_right = 106.96
 offset_bottom = 37.004
 theme = SubResource("Theme_n8xg8")
 text = "ABILITY"
+
+[node name="DoomsdayClock" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.954
+anchor_right = 0.034
+anchor_bottom = 0.954
+offset_left = -0.168003
+offset_top = -7.19202
+offset_right = 407.832
+offset_bottom = 28.808
+grow_vertical = 0
+theme = SubResource("Theme_uk4j0")
+text = "2:00 UNTIL ENEMY REINFORCEMENTS"
+
+[node name="ObjectiveText" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.954
+anchor_right = 0.034
+anchor_bottom = 0.954
+offset_left = -2.168
+offset_top = -49.192
+offset_right = 405.832
+offset_bottom = -13.192
+grow_vertical = 0
+theme = SubResource("Theme_uk4j0")
+text = "Destroy Freighter Then Retreat"
 
 [node name="ShipDetails" type="Control" parent="."]
 layout_mode = 3

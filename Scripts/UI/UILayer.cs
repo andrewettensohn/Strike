@@ -10,6 +10,9 @@ public partial class UILayer : CanvasLayer
 	private Button _reinforceButton;
 	private Button _shipAbilityButton;
 
+	private RichTextLabel _doomsdayClockText;
+	private SceneTreeTimer _doomsdayClock;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -24,15 +27,32 @@ public partial class UILayer : CanvasLayer
 		_reinforceButton = GetNode<Button>("ReinforceButton");
 
 		_shipAbilityButton = _shipAbilityDetails.GetNode<Button>("TacticalAbilityButton");
+
+		_doomsdayClockText = GetNode<RichTextLabel>("DoomsdayClock");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public async override void _Process(double delta)
 	{
+		if(_doomsdayClock == null)
+		{
+			_doomsdayClock = GetTree().CreateTimer(_levelManager.DoomsdayTime);
+
+			await ToSignal(_doomsdayClock, "timeout");
+
+			_levelManager.OnDoomsdayClockExpired();
+		}
+
 		_shipAbilityDetails.Visible = _levelManager.SelectedShip != null;
 		_reinforceButton.Text = $"Reinforce - {_levelManager.PlayerReinforcePoints}";
 		
 		HandleAbilityButtonText();
+		HandleDoomsDayTimerText();
+	}
+
+	public void HandleDoomsDayTimerText()
+	{
+		_doomsdayClockText.Text = $"{Math.Round(_doomsdayClock.TimeLeft)} UNTIL ENEMY REINFORCEMENTS";
 	}
 
 	public void ReinforceButtonPressed()
