@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://dmitvhxsykjaj"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_om8v4"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_kxcbc"]
@@ -14,7 +14,6 @@ radius = 756.518
 
 [node name="ProtoCruiser" type="CharacterBody2D"]
 script = ExtResource("1_om8v4")
-Health = 1
 MaxSpeed = 50
 Weight = 5000.0
 SpeedWhileTurning = 5

@@ -57,6 +57,8 @@ public partial class LevelManager : Node
 
     private StrikeAudioPlayer _audioStreamPlayer;
 
+    private bool _isReinforceDisabled;
+
     public override void _Ready()
     {
         EnemyCommander = GetNode<EnemyCommander>("EnemyCommander");
@@ -95,10 +97,13 @@ public partial class LevelManager : Node
     public void OnDoomsdayClockExpired()
     {
         SpawnEnemyShip(EnemyCapitalScene);
+        _isReinforceDisabled = true;
     }
 
     public void ReinforcePlayerShip(ShipClass shipClass)
     {
+        if(_isReinforceDisabled) return;
+
         _audioStreamPlayer.PlayAudio(_audioStreamPlayer.ReinforceSoundClip);
 
         if(shipClass == ShipClass.Picket && PlayerReinforcePoints >= (int)ShipClass.Picket)
@@ -123,7 +128,7 @@ public partial class LevelManager : Node
         }
         else if(shipClass == ShipClass.Fighter && PlayerReinforcePoints >= (int)ShipClass.Fighter)
         {
-            //TODO: Change this to fighter scene
+            //TODO: Change this to fighter scene, hacking with destroyer scene slot
             PlayerReinforcePoints -= (int)ShipClass.Fighter;
             SpawnPlayerShip(DestroyerScene);
         }
