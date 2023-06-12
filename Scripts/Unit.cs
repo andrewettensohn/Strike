@@ -293,6 +293,8 @@ public partial class Unit : CharacterBody2D
 
 				LevelManager.SelectedShip.Target = this;
 				LevelManager.SelectedShip.MovementTarget = LevelManager.SelectedShip.GlobalPosition;
+
+				LevelManager.SelectedShip.TargetDesiredDistance = 200;
 			}
 		}
 		else if(Input.IsActionJustPressed("ui_action") && _isHovered && IsPlayerSide)

@@ -25,7 +25,6 @@ public partial class RepairShip : Unit
     {
         if(_isCombatOnCoolDown || Target == null || !TargetsInWeaponRange.Any(x => x == Target)) return;
 
-		//repair module
         _repairModule.RepairShip(Target);
 
         await base.HandleCombat();

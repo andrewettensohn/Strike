@@ -68,9 +68,7 @@ public partial class EnemyCommander : Node
 			return null;
 		}
 		
-		return enemyShips.OrderByDescending(x => x.GlobalPosition.DistanceTo(enemyUnit.GlobalPosition))
-		.ThenBy(x => x.Health)
-		.FirstOrDefault();
+		return enemyShips.OrderBy(x => x.Health).ThenBy(x => x.GlobalPosition.DistanceTo(enemyUnit.GlobalPosition)).FirstOrDefault();
 	}
 
 }

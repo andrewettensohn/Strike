@@ -31,7 +31,7 @@ RepairScene = ExtResource("5_5h5bn")
 EnemyCapitalScene = ExtResource("17_cq1oq")
 PlayerReinforcePoints = 2000
 EnemyReinforcePoints = 1000
-DoomsdayTime = 120
+DoomsdayTime = 180
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(942, -36.9999)
@@ -91,6 +91,6 @@ position = Vector2(5734, -1512)
 texture = ExtResource("14_alapb")
 
 [node name="EnemyCargo" parent="." instance=ExtResource("15_t1efq")]
-position = Vector2(1234, 3421)
+position = Vector2(278, 4560)
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("16_u32in")]
