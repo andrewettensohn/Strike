@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0nm7aw2y4t05"]
+[gd_scene load_steps=7 format=3 uid="uid://c0nm7aw2y4t05"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UnitSlot.cs" id="1_46rm6"]
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="1_yekhq"]
@@ -7,6 +7,11 @@
 [sub_resource type="Theme" id="Theme_4ksnf"]
 default_font = ExtResource("2_w3umr")
 default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_31mn2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gawyj"]
+bg_color = Color(0.443137, 0.654902, 0.564706, 1)
 
 [node name="UnitSlot" type="Control"]
 layout_mode = 3
@@ -22,6 +27,7 @@ scale = Vector2(0.0745865, 0.0659231)
 texture = ExtResource("1_yekhq")
 
 [node name="Health" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.025
@@ -33,6 +39,20 @@ offset_bottom = 18.0
 theme = SubResource("Theme_4ksnf")
 text = "STRUCTURE 100%"
 fit_content = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.05
+anchor_bottom = 0.05
+offset_right = 95.0
+offset_bottom = 14.0
+theme = SubResource("Theme_31mn2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gawyj")
+value = 20.0
+show_percentage = false
 
 [connection signal="mouse_entered" from="." to="." method="Hovered"]
 [connection signal="mouse_exited" from="." to="." method="Unhovered"]

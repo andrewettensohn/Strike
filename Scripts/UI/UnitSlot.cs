@@ -7,6 +7,8 @@ public partial class UnitSlot : Control
 
 	private RichTextLabel _health;
 
+	private ProgressBar _healthBar;
+
 	public Unit Unit { get; private set; }
 
     public  bool IsHovered { get; private set; }
@@ -18,6 +20,7 @@ public partial class UnitSlot : Control
 	{
 		_portrait = GetNode<Sprite2D>("Portrait");
 		_health = GetNode<RichTextLabel>("Health");
+		_healthBar = GetNode<ProgressBar>("HealthBar");
 
         Visible = false;
 	}
@@ -30,6 +33,8 @@ public partial class UnitSlot : Control
 		if(Unit != null)
 		{
 			_health.Text = $"STRUCTURE {Unit.Health}";
+			_healthBar.MaxValue = Unit.MaxHealth;
+			_healthBar.Value = Unit.Health;
 		}
 	}
 

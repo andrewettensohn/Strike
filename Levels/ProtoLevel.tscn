@@ -31,7 +31,7 @@ RepairScene = ExtResource("5_5h5bn")
 EnemyCapitalScene = ExtResource("17_cq1oq")
 PlayerReinforcePoints = 2000
 EnemyReinforcePoints = 1000
-DoomsdayTime = 5
+DoomsdayTime = 120
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(942, -36.9999)
