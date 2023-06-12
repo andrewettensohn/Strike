@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://c1nbyves1v7s"]
 
-[ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_ygka7"]
+[ext_resource type="Script" path="res://Scripts/Ships/EnemyCapital.cs" id="1_ea3re"]
 [ext_resource type="Texture2D" uid="uid://c5avspklp0ssu" path="res://Art/Sprites/Ships/EnemyCapital.png" id="2_vda5e"]
-[ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_rsv2x"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_uvayr"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_3vjuk"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_sqny8"]
 [ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_dlfyk"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="8_50g48"]
 [ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_pwoif"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Laser.cs" id="9_gk2k5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 737.0
@@ -18,16 +18,18 @@ height = 1898.0
 radius = 6088.11
 
 [node name="EnemyCapital" type="CharacterBody2D"]
-script = ExtResource("1_ygka7")
-ClassName = "Cruiser"
+script = ExtResource("1_ea3re")
+ClassName = "Capital"
 Health = 100.0
 MaxSpeed = 50
 Weight = 0.005
-SpeedWhileTurning = 5
+SpeedWhileTurning = 10
 MyTargetGroup = 1
 PathDesiredDistance = 1.0
-TargetDesiredDistance = 100.0
-TurningAngleThreshold = 0.97
+TargetDesiredDistance = 500.0
+TurningAngleThreshold = 0.99
+ShipClass = 300
+TacticalAbilityDuration = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)
@@ -48,9 +50,6 @@ offset_left = -94.0
 offset_top = -62.0
 offset_right = 113.0
 offset_bottom = 65.0
-
-[node name="MissileLauncher" parent="." instance=ExtResource("3_rsv2x")]
-MissileAmmoCount = 1000
 
 [node name="FlakTurret" parent="." instance=ExtResource("4_uvayr")]
 
@@ -79,6 +78,15 @@ scale = Vector2(3.33971, 2.83256)
 texture = ExtResource("8_pwoif")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("8_50g48")]
+
+[node name="Laser" type="Node" parent="."]
+script = ExtResource("9_gk2k5")
+LaserDuration = 3
+CoolDownTime = 5
+
+[node name="Line2D" type="Line2D" parent="Laser"]
+width = 20.0
+default_color = Color(1, 0.113725, 0.137255, 1)
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
