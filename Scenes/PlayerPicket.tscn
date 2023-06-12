@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfe0h4r0c43gm"]
+[gd_scene load_steps=12 format=3 uid="uid://cfe0h4r0c43gm"]
 
 [ext_resource type="Script" path="res://Scripts/PicketShip.cs" id="1_gtimr"]
 [ext_resource type="PackedScene" uid="uid://ckgbsxmogtylv" path="res://Scenes/Shield.tscn" id="2_6d8sv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://do7ftk2rjnuhv" path="res://Scenes/PlayerMissile.tscn" id="5_85km2"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_rv4eh"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="8_uvx6c"]
+[ext_resource type="Texture2D" uid="uid://bt0u7sl4xd85d" path="res://Art/Sprites/Icon/PlayerPicketIcon.png" id="9_17q6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
 radius = 1087.47
@@ -76,6 +77,11 @@ scale = Vector2(1.78606, 2.22895)
 texture = ExtResource("5_rv4eh")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("8_uvx6c")]
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(-5.5, -1.5)
+scale = Vector2(2.93143, 1.93119)
+texture = ExtResource("9_17q6p")
 
 [connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]
 [connection signal="area_exited" from="WeaponRange" to="." method="DefenseRangeExitted"]

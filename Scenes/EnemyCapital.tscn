@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1nbyves1v7s"]
+[gd_scene load_steps=13 format=3 uid="uid://c1nbyves1v7s"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/EnemyCapital.cs" id="1_ea3re"]
 [ext_resource type="Texture2D" uid="uid://c5avspklp0ssu" path="res://Art/Sprites/Ships/EnemyCapital.png" id="2_vda5e"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="8_50g48"]
 [ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_pwoif"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Laser.cs" id="9_gk2k5"]
+[ext_resource type="Texture2D" uid="uid://gql8lbslp42t" path="res://Art/Sprites/Icon/EnemyCruiserIcon.png" id="10_hf6sr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 737.0
@@ -87,6 +88,11 @@ CoolDownTime = 5
 [node name="Line2D" type="Line2D" parent="Laser"]
 width = 20.0
 default_color = Color(1, 0.113725, 0.137255, 1)
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(-3, 1.49998)
+scale = Vector2(0.857143, 0.362385)
+texture = ExtResource("10_hf6sr")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class StrikeAudioPlayer : AudioStreamPlayer2D
+public partial class StrikeAudioPlayer : AudioStreamPlayer
 {
 	[Export]
 	public AudioStream SetTargetSoundClip;

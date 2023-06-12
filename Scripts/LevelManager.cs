@@ -43,6 +43,8 @@ public partial class LevelManager : Node
 
     public FleetOverview FleetOverview;
 
+    public bool IsAtFurthestZoom;
+
     private bool _isFleetOverviewSetup;
 
     public Sprite2D PlayerReinforceCorridorEnd { get; private set; }

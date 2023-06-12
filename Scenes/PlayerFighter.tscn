@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxl5etg5m8bnf"]
+[gd_scene load_steps=10 format=3 uid="uid://dxl5etg5m8bnf"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/Fighter.cs" id="1_x11nx"]
 [ext_resource type="Texture2D" uid="uid://dsu3sjt1pul5b" path="res://Art/Sprites/Ships/Fighter1.png" id="2_e4gjq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://do7ftk2rjnuhv" path="res://Scenes/PlayerMissile.tscn" id="4_ghwkx"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_w1q4p"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="6_cgmms"]
+[ext_resource type="Texture2D" uid="uid://wmmf6geylh64" path="res://Art/Sprites/Icon/PlayerFighterIcon.png" id="7_r2r81"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 23.0
@@ -65,6 +66,11 @@ scale = Vector2(1.22894, 1.55441)
 texture = ExtResource("5_w1q4p")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("6_cgmms")]
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(2.5, -0.499996)
+scale = Vector2(1.19429, 1.03211)
+texture = ExtResource("7_r2r81")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

@@ -65,6 +65,11 @@ public partial class PlayerView : Node
         bool isZoomOut = Input.IsActionJustReleased("zoom_out");
         bool isZoomIn = Input.IsActionJustReleased("zoom_in");
 
+        if(!isZoomIn && !isZoomOut)
+        {
+            return;
+        }
+
         Vector2 newZoom = _cam.Zoom;
 
         if(isZoomIn)
@@ -79,6 +84,7 @@ public partial class PlayerView : Node
         }
 
         _cam.Zoom = newZoom;
+        _levelManager.IsAtFurthestZoom = _cam.Zoom.X == 0.10000002f;
     }
 
     private void PlaceWaypoint()

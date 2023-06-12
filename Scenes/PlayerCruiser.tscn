@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2hcy5ewe6q6w"]
+[gd_scene load_steps=14 format=3 uid="uid://2hcy5ewe6q6w"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_i4cwf"]
 [ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_tsaio"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="10_ytluu"]
+[ext_resource type="Texture2D" uid="uid://ca10tsv2amyx0" path="res://Art/Sprites/Icon/PlayerCruiserIcon.png" id="11_oalj1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 93.0
@@ -81,6 +82,11 @@ texture = ExtResource("7_i4cwf")
 texture = ExtResource("8_tsaio")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("10_ytluu")]
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(-0.500008, -1.49999)
+scale = Vector2(1.97696, 1.58051)
+texture = ExtResource("11_oalj1")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

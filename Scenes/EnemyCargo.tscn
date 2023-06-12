@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cujv3u60b5fi3"]
+[gd_scene load_steps=9 format=3 uid="uid://cujv3u60b5fi3"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/EnemyCargo.cs" id="1_wjhn7"]
 [ext_resource type="Texture2D" uid="uid://bme53peptfef0" path="res://Art/Sprites/Ships/EnemyCargo.png" id="2_2ft0h"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="3_77r6i"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_i3316"]
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="5_016dx"]
+[ext_resource type="Texture2D" uid="uid://fcjroltwx7bu" path="res://Art/Sprites/Icon/EnemyRepairIcon.png" id="6_7plss"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -25,6 +26,7 @@ UnitBehavior = 2
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 1.0
 TurningAngleThreshold = 0.94
+ShipClass = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)
@@ -62,6 +64,11 @@ texture = ExtResource("3_77r6i")
 position = Vector2(0, 1)
 scale = Vector2(0.479999, 0.6)
 texture = ExtResource("5_016dx")
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(1.99999, -4)
+scale = Vector2(2.34286, 1.9633)
+texture = ExtResource("6_7plss")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]

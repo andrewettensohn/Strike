@@ -115,6 +115,8 @@ public partial class Unit : CharacterBody2D
 
 	private bool _isDying;
 
+	private Sprite2D _unitIcon;
+
 	protected void BaseReady()
 	{
 		MaxHealth = Health;
@@ -129,6 +131,9 @@ public partial class Unit : CharacterBody2D
 		_weaponRangeIcon = GetNode<Sprite2D>("WeaponRangeIcon");
 		_collision = GetNode<CollisionShape2D>("CollisionShape2D");
 		_audioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
+
+		_unitIcon = GetNode<Sprite2D>("UnitIcon");
+		_unitIcon.Visible = false;
 
 		_movementTargetPosition = GlobalTransform.Origin;
 
@@ -156,6 +161,7 @@ public partial class Unit : CharacterBody2D
 		await HandleDefense();
 		await HandleTactical();
 		
+		_unitIcon.Visible = LevelManager.IsAtFurthestZoom;
 	}
 
 	public void WeaponRangeEntered(Node2D node)

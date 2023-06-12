@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ie0lj0ci56sj" path="res://Audio/SFX/Old Terminal Alarm Loop.wav" id="5_xxtrk"]
 [ext_resource type="AudioStream" uid="uid://bh5n0bbvtl4v" path="res://Audio/SFX/EXPLDsgn_Explosion Rumble Distorted_01.wav" id="6_fbd54"]
 
-[node name="StrikeAudioPlayer" type="AudioStreamPlayer2D"]
+[node name="StrikeAudioPlayer" type="AudioStreamPlayer"]
 script = ExtResource("1_4fhtm")
 SetTargetSoundClip = ExtResource("2_bv3tq")
 WarpInSoundClip = ExtResource("3_xc5lg")

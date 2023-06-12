@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8jfyoplty6fa"]
+[gd_scene load_steps=10 format=3 uid="uid://b8jfyoplty6fa"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/RepairShip.cs" id="1_t3jj3"]
 [ext_resource type="Texture2D" uid="uid://b3c1d6jdbwaxv" path="res://Art/Sprites/Ships/EnemyRepair.png" id="2_hkvmo"]
@@ -6,13 +6,14 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/RepairModule.cs" id="4_8p4i2"]
 [ext_resource type="PackedScene" uid="uid://b6jh7bn888pgs" path="res://Scenes/HealBubble.tscn" id="5_55g2w"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="6_7bm8d"]
+[ext_resource type="Texture2D" uid="uid://fcjroltwx7bu" path="res://Art/Sprites/Icon/EnemyRepairIcon.png" id="7_lewqn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
 height = 202.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
-radius = 573.132
+radius = 1000.13
 
 [node name="EnemyRepair" type="CharacterBody2D"]
 script = ExtResource("1_t3jj3")
@@ -54,8 +55,8 @@ offset_bottom = 65.0
 shape = SubResource("CircleShape2D_26hnr")
 
 [node name="WeaponRangeIcon" type="Sprite2D" parent="."]
-position = Vector2(-1.52588e-05, 1.49994)
-scale = Vector2(0.927885, 1.18172)
+position = Vector2(-1.0001, 6.49995)
+scale = Vector2(1.63462, 2.05236)
 texture = ExtResource("3_asp2b")
 
 [node name="RepairModule" type="Node2D" parent="."]
@@ -64,6 +65,11 @@ HealBubbleScene = ExtResource("5_55g2w")
 CoolDownTime = 3.0
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("6_7bm8d")]
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(2.66286, 2.52294)
+texture = ExtResource("7_lewqn")
 
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
