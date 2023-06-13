@@ -51,6 +51,12 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public int TacticalAbilityDuration;
 
+	[Export]
+	public PackedScene ExplosionScene;
+
+	[Export]
+	public float ExplosionScale;
+
 	public int InitalMaxSpeed { get; private set; }
 
 	public float MaxHealth { get; private set; }
@@ -326,6 +332,7 @@ public partial class Unit : CharacterBody2D
 
 	public void OnSelected()
 	{
+		GD.Print($"Unit Selected {this.Name}");
 		IsSelected = true;
 		LevelManager.SelectedShip = this;
 		_weaponRangeIcon.Visible = true;	
@@ -518,6 +525,11 @@ public partial class Unit : CharacterBody2D
 		}
 
 		//_audioStreamPlayer.PlayAudio(_audioStreamPlayer.ShipDestroyedSoundClip);
+		Sprite2D explosion = (Sprite2D)ExplosionScene.Instantiate();
+		explosion.Scale = new Vector2(ExplosionScale, ExplosionScale);
+		explosion.GlobalPosition = GlobalPosition;
+
+        GetTree().Root.AddChild(explosion);
 
         await ToSignal(GetTree().CreateTimer(1), "timeout");
 

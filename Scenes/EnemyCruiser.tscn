@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cv2n67n30fno5"]
+[gd_scene load_steps=14 format=3 uid="uid://cv2n67n30fno5"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_gpx3y"]
 [ext_resource type="Texture2D" uid="uid://cexxt6v0a6gmx" path="res://Art/Sprites/Ships/EnemyCruiser.png" id="2_7s6je"]
+[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_ualdo"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_hk0th"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_li7ox"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_w1r67"]
@@ -29,6 +30,8 @@ MyTargetGroup = 1
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97
+ExplosionScene = ExtResource("2_ualdo")
+ExplosionScale = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://q0rkccueabqm"]
+
+[ext_resource type="Texture2D" uid="uid://3b8xg72wgmlt" path="res://Art/Sprites/Icon/Explosion.png" id="1_27jl3"]
+[ext_resource type="Script" path="res://Scripts/Explosion.cs" id="2_y65cu"]
+
+[node name="Explosion" type="Sprite2D"]
+position = Vector2(0, 1)
+texture = ExtResource("1_27jl3")
+script = ExtResource("2_y65cu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimeout"]

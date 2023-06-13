@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://tt8m30hpcmgv"]
+[gd_scene load_steps=12 format=3 uid="uid://tt8m30hpcmgv"]
 
 [ext_resource type="Script" path="res://Scripts/PicketShip.cs" id="1_gtimr"]
+[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_l3f83"]
 [ext_resource type="PackedScene" uid="uid://ckgbsxmogtylv" path="res://Scenes/Shield.tscn" id="2_ve5it"]
 [ext_resource type="Texture2D" uid="uid://i7rrisssiwnn" path="res://Art/Sprites/Ships/EnemyPicket.png" id="3_f8301"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_of3eh"]
@@ -28,6 +29,8 @@ PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.93
 ShipClass = 150
+ExplosionScene = ExtResource("2_l3f83")
+ExplosionScale = 0.8
 
 [node name="Shield" parent="." instance=ExtResource("2_ve5it")]
 

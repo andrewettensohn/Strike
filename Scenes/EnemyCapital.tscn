@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1nbyves1v7s"]
+[gd_scene load_steps=14 format=3 uid="uid://c1nbyves1v7s"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/EnemyCapital.cs" id="1_ea3re"]
+[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_fxx7c"]
 [ext_resource type="Texture2D" uid="uid://c5avspklp0ssu" path="res://Art/Sprites/Ships/EnemyCapital.png" id="2_vda5e"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_uvayr"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_3vjuk"]
@@ -31,6 +32,8 @@ TargetDesiredDistance = 500.0
 TurningAngleThreshold = 0.99
 ShipClass = 300
 TacticalAbilityDuration = 15
+ExplosionScene = ExtResource("2_fxx7c")
+ExplosionScale = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)

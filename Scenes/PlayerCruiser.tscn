@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://2hcy5ewe6q6w"]
+[gd_scene load_steps=15 format=3 uid="uid://2hcy5ewe6q6w"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
+[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_ate5b"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_ydoo7"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_c7ggc"]
@@ -32,6 +33,8 @@ PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97
 TacticalAbilityDuration = 15
+ExplosionScene = ExtResource("2_ate5b")
+ExplosionScale = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfe0h4r0c43gm"]
+[gd_scene load_steps=13 format=3 uid="uid://cfe0h4r0c43gm"]
 
 [ext_resource type="Script" path="res://Scripts/PicketShip.cs" id="1_gtimr"]
 [ext_resource type="PackedScene" uid="uid://ckgbsxmogtylv" path="res://Scenes/Shield.tscn" id="2_6d8sv"]
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="2_tshww"]
+[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_ugcih"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_of3eh"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_smt02"]
 [ext_resource type="PackedScene" uid="uid://do7ftk2rjnuhv" path="res://Scenes/PlayerMissile.tscn" id="5_85km2"]
@@ -31,6 +32,8 @@ TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.93
 ShipClass = 150
 TacticalAbilityDuration = 5
+ExplosionScene = ExtResource("2_ugcih")
+ExplosionScale = 0.7
 
 [node name="Shield" parent="." instance=ExtResource("2_6d8sv")]
 CoolDownTime = 20.0
