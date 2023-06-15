@@ -31,5 +31,59 @@ public partial class EnemyCargo : Unit
 
     }
 
+    protected override async Task HandleDeath()
+    {
+		if(_isDying)
+		{
+			return;
+		}
+		else
+		{
+			_isDying = true;
+		}
+
+		if(IsPlayerSide)
+		{
+			LevelManager.PlayerShipDestroyed(this);
+			LevelManager.PlayerUnits.Remove(this);
+		}
+		else
+		{
+			LevelManager.EnemyUnits.Remove(this);
+		}
+
+		//_audioStreamPlayer.PlayAudio(_audioStreamPlayer.ShipDestroyedSoundClip);
+		Sprite2D explosion = (Sprite2D)ExplosionScene.Instantiate();
+		explosion.Scale = new Vector2(ExplosionScale, ExplosionScale);
+		explosion.GlobalPosition = GlobalPosition;
+
+        GetTree().Root.AddChild(explosion);
+
+        await ToSignal(GetTree().CreateTimer(1), "timeout");
+
+        //TODO: Win condition on LevelManager?
+        await LevelManager.OnWin();
+
+        QueueFree();
+    }
+
+	protected override void HandlePostRetreat()
+	{
+		if(IsPlayerSide)
+		{
+			LevelManager.PlayerShipDestroyed(this);
+			LevelManager.PlayerUnits.Remove(this);
+		}
+		else
+		{
+			LevelManager.EnemyUnits.Remove(this);
+		}
+
+        //TODO: Lose condition on LevelManager?
+        Task.Run(async () => await LevelManager.OnLose());
+
+		QueueFree();
+	}
+
 
 }

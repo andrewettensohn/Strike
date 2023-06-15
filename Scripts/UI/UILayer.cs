@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class UILayer : CanvasLayer
 {
@@ -12,6 +13,8 @@ public partial class UILayer : CanvasLayer
 
 	private RichTextLabel _doomsdayClockText;
 	private SceneTreeTimer _doomsdayClock;
+
+	private RichTextLabel _message;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -29,6 +32,9 @@ public partial class UILayer : CanvasLayer
 		_shipAbilityButton = _shipAbilityDetails.GetNode<Button>("TacticalAbilityButton");
 
 		_doomsdayClockText = GetNode<RichTextLabel>("DoomsdayClock");
+
+		_message = GetNode<RichTextLabel>("Message");
+		_message.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +54,16 @@ public partial class UILayer : CanvasLayer
 		
 		HandleAbilityButtonText();
 		HandleDoomsDayTimerText();
+	}
+
+	public async Task DisplayMessage(string message)
+	{
+		_message.Text = message;
+		_message.Visible = true;
+
+		await ToSignal(GetTree().CreateTimer(5), "timeout");
+
+		_message.Visible = false;
 	}
 
 	public void HandleDoomsDayTimerText()

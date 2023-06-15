@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=19 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
@@ -15,17 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="14_alapb"]
 [ext_resource type="PackedScene" uid="uid://cujv3u60b5fi3" path="res://Scenes/EnemyCargo.tscn" id="15_t1efq"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="16_u32in"]
+[ext_resource type="Script" path="res://Scripts/ObjectiveConditions.cs" id="17_1puqx"]
 [ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="17_cq1oq"]
-[ext_resource type="Shader" path="res://Art/Shaders/LensDistortion.gdshader" id="18_808o4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)])
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_todl4"]
-shader = ExtResource("18_808o4")
-shader_parameter/strength = 0.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_8p6y1")
@@ -100,26 +96,5 @@ position = Vector2(278, 4560)
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("16_u32in")]
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-copy_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="BackBufferCopy"]
-material = SubResource("ShaderMaterial_todl4")
-custom_minimum_size = Vector2(50000, 50000)
-offset_left = -29047.0
-offset_top = -21656.0
-offset_right = 27689.0
-offset_bottom = 28344.0
-size_flags_horizontal = 0
-
-[node name="BackBufferCopy2" type="BackBufferCopy" parent="."]
-copy_mode = 2
-
-[node name="ColorRect2" type="ColorRect" parent="BackBufferCopy2"]
-material = SubResource("ShaderMaterial_todl4")
-custom_minimum_size = Vector2(50000, 50000)
-offset_left = -29047.0
-offset_top = -21656.0
-offset_right = 27689.0
-offset_bottom = 28344.0
-size_flags_horizontal = 0
+[node name="ObjectiveConditions" type="Node" parent="."]
+script = ExtResource("17_1puqx")

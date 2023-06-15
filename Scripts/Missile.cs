@@ -54,7 +54,8 @@ public partial class Missile : Area2D
             if(node as Unit != null)
             {
                 Unit target = (Unit)node;
-                Task.Run(() => target.Damage(DamageCaused));
+                GD.Print("Missiles calls damage");
+                Task.Run(async () => await target.Damage(DamageCaused));
             }
 
             QueueFree();

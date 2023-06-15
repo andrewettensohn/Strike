@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class PlayerView : Node
 {
+    public UILayer UILayer;
+
     private Camera2D _cam;
     private LevelManager _levelManager;
     private Sprite2D _waypoint;
@@ -14,6 +16,7 @@ public partial class PlayerView : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        UILayer = GetNode<UILayer>("CanvasLayer");
         _cam = GetNode<Camera2D>("Camera2D");
         _levelManager = GetTree().Root.GetNode<LevelManager>("Level");
         _waypoint = GetNode<Sprite2D>("WaypointSprite");

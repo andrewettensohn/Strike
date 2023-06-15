@@ -119,7 +119,7 @@ public partial class Unit : CharacterBody2D
 
 	private StrikeAudioPlayer _audioStreamPlayer;
 
-	private bool _isDying;
+	protected bool _isDying;
 
 	private Sprite2D _unitIcon;
 
@@ -503,7 +503,7 @@ public partial class Unit : CharacterBody2D
         _isDefenseOnCoolDown = false;
     }
 
-	protected async Task HandleDeath()
+	protected virtual async Task HandleDeath()
     {
 		if(_isDying)
 		{
@@ -536,7 +536,7 @@ public partial class Unit : CharacterBody2D
         QueueFree();
     }
 
-	protected void HandlePostRetreat()
+	protected virtual void HandlePostRetreat()
 	{
 		if(IsPlayerSide)
 		{

@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 public partial class LevelManager : Node
 {
@@ -43,6 +44,8 @@ public partial class LevelManager : Node
 
     public FleetOverview FleetOverview;
 
+    public PlayerView PlayerView;
+
     public bool IsAtFurthestZoom;
 
     private bool _isFleetOverviewSetup;
@@ -68,7 +71,8 @@ public partial class LevelManager : Node
         PlayerUnits = GetTree().GetNodesInGroup("Player").Select(x => (Unit)x).ToList();
         EnemyUnits = GetTree().GetNodesInGroup("Enemy").Select(x => (Unit)x).ToList();
 
-        FleetOverview = GetNode("PlayerView").GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
+        PlayerView = GetNode<PlayerView>("PlayerView");
+        FleetOverview = PlayerView.GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
 
         PlayerReinforceCorridorEnd = GetNode<Sprite2D>("PlayerReinforceCorridorEnd");
         PlayerReinforceCorridorStart = GetNode<Sprite2D>("PlayerReinforceCorridorStart");
@@ -79,6 +83,16 @@ public partial class LevelManager : Node
         _audioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
 
         SetupFleetOverviewForInitalPlayerShips();
+    }
+
+    public async Task OnWin()
+    {
+        await PlayerView.UILayer.DisplayMessage("Mission Status: SUCCESS");
+    }
+
+    public async Task OnLose()
+    {
+        await PlayerView.UILayer.DisplayMessage("Mission Status: FAILURE");
     }
 
     public void PlayerShipDestroyed(Unit unit)
