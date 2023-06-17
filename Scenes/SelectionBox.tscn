@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://28j7e627vpjp"]
+
+[ext_resource type="Script" path="res://Scripts/SelectionBox.cs" id="1_gahko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hau4q"]
+size = Vector2(32, 29)
+
+[node name="SelectionBox" type="Area2D"]
+script = ExtResource("1_gahko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 4.5)
+shape = SubResource("RectangleShape2D_hau4q")
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(0, 1, 0, 1)

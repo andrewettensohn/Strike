@@ -32,6 +32,8 @@ public partial class LevelManager : Node
 
     public Unit SelectedShip;
 
+    public List<Unit> HighlightedShips;
+
     public UnitSlot SelectedUnitSlot;
 
     public Unit HoveredEnemy;
@@ -41,6 +43,8 @@ public partial class LevelManager : Node
     public List<Unit> PlayerUnits = new List<Unit>();
 
     public bool IsUnitUIHovered;
+
+    public bool IsSelectionBoxActive;
 
     public FleetOverview FleetOverview;
 
@@ -171,7 +175,7 @@ public partial class LevelManager : Node
 
         FleetOverview.AddUnitToOverview(unit);
 
-        unit.WarpTo(new Vector2(PlayerReinforceCorridorEnd.GlobalPosition.X + xPos, PlayerReinforceCorridorEnd.GlobalPosition.Y + yPos));
+        unit.UnitMovement.WarpTo(new Vector2(PlayerReinforceCorridorEnd.GlobalPosition.X + xPos, PlayerReinforceCorridorEnd.GlobalPosition.Y + yPos));
 
         PlayerUnits.Add(unit);
     }
@@ -187,7 +191,7 @@ public partial class LevelManager : Node
 
         GetTree().Root.AddChild(unit);
 
-        unit.WarpTo(new Vector2(EnemyReinforceCorridorEnd.GlobalPosition.X + xPos, EnemyReinforceCorridorEnd.GlobalPosition.Y + yPos));
+        unit.UnitMovement.WarpTo(new Vector2(EnemyReinforceCorridorEnd.GlobalPosition.X + xPos, EnemyReinforceCorridorEnd.GlobalPosition.Y + yPos));
 
         EnemyUnits.Add(unit);
     }

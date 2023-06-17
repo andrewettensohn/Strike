@@ -45,7 +45,7 @@ public partial class UnitSlot : Control
 		{
 			_isSelected = true;
             Unit.LevelManager.SelectedUnitSlot = this;
-            Unit.OnSelected();
+            Unit.UnitCommand.OnSelected();
 		}
 		else if (Input.IsActionJustPressed("ui_select") && !IsHovered)
 		{
