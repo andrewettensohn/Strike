@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw4kyb2w4y4i5"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/Shield.cs" id="1_8vqp3"]
+[ext_resource type="Texture2D" uid="uid://uww67i11gtmy" path="res://Art/Sprites/Icon/EnemyShield.png" id="2_pdiro"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hfcl6"]
+radius = 267.0
+
+[node name="Shield" type="Area2D"]
+script = ExtResource("1_8vqp3")
+CoolDownTime = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-38, -23)
+shape = SubResource("CircleShape2D_hfcl6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-37, -24)
+scale = Vector2(0.70602, 0.75945)
+texture = ExtResource("2_pdiro")
+
+[connection signal="area_entered" from="." to="." method="MissileEntered"]

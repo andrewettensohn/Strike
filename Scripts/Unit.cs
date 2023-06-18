@@ -262,6 +262,8 @@ public partial class Unit : CharacterBody2D
 				MaxSpeed = InitalMaxSpeed;
 			}
 
+			HandleEnemySpecialAbility();
+
 			return;
 		}
 
@@ -280,6 +282,11 @@ public partial class Unit : CharacterBody2D
 		{
 			MovementTarget = newTargetDestination.GlobalPosition;
 		}
+	}
+
+	protected virtual void HandleEnemySpecialAbility()
+	{
+		//Implement in override
 	}
 
 	protected virtual void CheckForTarget()
