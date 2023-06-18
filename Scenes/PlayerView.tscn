@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=22 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
+[ext_resource type="PackedScene" uid="uid://28j7e627vpjp" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
 [ext_resource type="Script" path="res://Scripts/UI/UILayer.cs" id="3_0u2l5"]
 [ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_4oj8o"]
@@ -38,6 +39,7 @@ bg_color = Color(0.443137, 0.654902, 0.564706, 1)
 
 [node name="PlayerView" type="Node"]
 script = ExtResource("1_vqiwb")
+SelectionBoxScene = ExtResource("2_kcewo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

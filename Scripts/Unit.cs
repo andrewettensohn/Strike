@@ -174,7 +174,10 @@ public partial class Unit : CharacterBody2D
 
 		CheckForTarget();
 
-		UnitCommand.GetUserInput();
+		if(!LevelManager.AreMultipleUnitsSelected)
+		{
+			UnitCommand.GetUserInput();
+		}
 
 		HandleOffenseBehavior();
 
@@ -302,10 +305,10 @@ public partial class Unit : CharacterBody2D
 	protected void Hovered()
 	{
 		IsHovered = true;
+		WeaponRangeIcon.Visible = true;
 
 		if(!IsPlayerSide)
 		{
-			WeaponRangeIcon.Visible = true;
 			LevelManager.HoveredEnemy = this;
 		}
 	}
@@ -313,11 +316,10 @@ public partial class Unit : CharacterBody2D
 	protected void Unhovered()
 	{
 		IsHovered = false;
+		WeaponRangeIcon.Visible = false;
 
 		if(!IsPlayerSide)
 		{
-			WeaponRangeIcon.Visible = false;
-
 			if(LevelManager.HoveredEnemy == this)
 			{
 				LevelManager.HoveredEnemy = null;

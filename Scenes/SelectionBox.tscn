@@ -3,14 +3,15 @@
 [ext_resource type="Script" path="res://Scripts/SelectionBox.cs" id="1_gahko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hau4q"]
-size = Vector2(32, 29)
+size = Vector2(953, 633.5)
 
 [node name="SelectionBox" type="Area2D"]
+priority = 1.0
 script = ExtResource("1_gahko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 4.5)
+position = Vector2(476.5, 317.25)
 shape = SubResource("RectangleShape2D_hau4q")
+debug_color = Color(0, 0.6, 0.701961, 0.52549)
 
-[node name="Line2D" type="Line2D" parent="."]
-default_color = Color(0, 1, 0, 1)
+[connection signal="body_entered" from="." to="." method="OnUnitEntered"]

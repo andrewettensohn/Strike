@@ -46,6 +46,8 @@ public partial class LevelManager : Node
 
     public bool IsSelectionBoxActive;
 
+    public bool AreMultipleUnitsSelected => HighlightedShips?.Count > 0;
+
     public FleetOverview FleetOverview;
 
     public PlayerView PlayerView;
@@ -152,6 +154,31 @@ public partial class LevelManager : Node
             PlayerReinforcePoints -= (int)ShipClass.Fighter;
             SpawnPlayerShip(DestroyerScene);
         }
+    }
+
+    public void OnSelectionBoxFinish()
+    {
+        IsSelectionBoxActive = false;
+
+        if(HighlightedShips.Count == 0)
+        {
+            return;
+        }
+        else if(HighlightedShips.Count == 1)
+        {
+            HighlightedShips.FirstOrDefault().UnitCommand.OnSelected();
+            HighlightedShips = new List<Unit>();
+        }   
+        else
+        {
+            SelectedShip = null;
+        }
+    }
+
+    public void OnSelectionBoxSpawned()
+    {
+        IsSelectionBoxActive = true;
+		HighlightedShips = new List<Unit>();
     }
 
     private void SetupFleetOverviewForInitalPlayerShips()
