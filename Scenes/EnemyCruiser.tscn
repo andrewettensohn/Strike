@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_li7ox"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_w1r67"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_dykp7"]
-[ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_63yyo"]
-[ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_6jagy"]
+[ext_resource type="Texture2D" uid="uid://byirdaxswjbmd" path="res://Art/Sprites/Icon/EnemyUsingWeb.png" id="8_l6h08"]
+[ext_resource type="Texture2D" uid="uid://bhox4a0fp2gue" path="res://Art/Sprites/Icon/EnemyCaughtByWeb.png" id="9_goc1t"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="9_w7bmm"]
 [ext_resource type="Texture2D" uid="uid://gql8lbslp42t" path="res://Art/Sprites/Icon/EnemyCruiserIcon.png" id="10_6200x"]
 
@@ -30,6 +30,7 @@ MyTargetGroup = 1
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97
+TacticalAbilityDuration = 5
 ExplosionScene = ExtResource("2_ualdo")
 ExplosionScale = 1.0
 
@@ -75,10 +76,10 @@ script = ExtResource("6_dykp7")
 visible = false
 position = Vector2(0.5, 5.72205e-06)
 scale = Vector2(0.326279, 0.487455)
-texture = ExtResource("7_63yyo")
+texture = ExtResource("8_l6h08")
 
 [node name="WebEffect" type="Sprite2D" parent="Webifier"]
-texture = ExtResource("8_6jagy")
+texture = ExtResource("9_goc1t")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("9_w7bmm")]
 

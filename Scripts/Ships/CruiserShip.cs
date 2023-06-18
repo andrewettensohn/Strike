@@ -65,4 +65,12 @@ public partial class CruiserShip : Unit
         
         await base.HandleTactical();
     }
+
+    protected override void HandleEnemySpecialAbility()
+    {
+        if(IsInstanceValid(Target) && Target.ShipClass == ShipClass.Fighter && TargetsInWeaponRange.Contains(Target))
+        {
+            IsTacticalAbilityPressed = true;
+        }
+    }
 }
