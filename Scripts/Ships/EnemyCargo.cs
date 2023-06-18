@@ -17,7 +17,7 @@ public partial class EnemyCargo : Unit
 
         if(NavigationAgent.DistanceToTarget() < 10f)
         {
-            WarpOut(LevelManager.EnemyReinforceCorridorStart.GlobalPosition);
+            UnitMovement.WarpOut(LevelManager.EnemyReinforceCorridorStart.GlobalPosition);
         }
     }
 
@@ -67,7 +67,7 @@ public partial class EnemyCargo : Unit
         QueueFree();
     }
 
-	protected override void HandlePostRetreat()
+	public override void HandlePostRetreat()
 	{
 		if(IsPlayerSide)
 		{

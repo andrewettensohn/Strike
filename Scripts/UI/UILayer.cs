@@ -78,7 +78,7 @@ public partial class UILayer : CanvasLayer
 
 	public void RetreatButtonPressed()
 	{
-		_levelManager.SelectedShip.WarpOut(_levelManager.PlayerReinforceCorridorStart.GlobalPosition);
+		_levelManager.SelectedShip.UnitMovement.WarpOut(_levelManager.PlayerReinforceCorridorStart.GlobalPosition);
 	}
 
 	public void TacticalAbilityButtonPressed()

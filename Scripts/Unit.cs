@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 public partial class Unit : CharacterBody2D
 {
+	//Exports
+
 	[Export]
 	public string ClassName;
 
@@ -57,6 +59,8 @@ public partial class Unit : CharacterBody2D
 	[Export]
 	public float ExplosionScale;
 
+	// Publics
+
 	public int InitalMaxSpeed { get; private set; }
 
 	public float MaxHealth { get; private set; }
@@ -77,15 +81,42 @@ public partial class Unit : CharacterBody2D
 
 	public LevelManager LevelManager { get; private set; }
 
-	public bool IsSelected { get; private set;}
+	public bool IsSelected { get; set;}
 
 	public bool IsTacticalAbilityPressed;
 
-	private bool _isHovered;
+	public bool IsHovered;
 
-	private Sprite2D _weaponRangeIcon;
+	public Sprite2D WeaponRangeIcon;
 
-	private Vector2 _movementTargetPosition;
+	public Vector2 MovementTargetPosition;
+
+	public bool IsTacticalOnCoolDown { get; protected set; }
+
+	public bool IsTacticalInUse { get; protected set; }
+
+	public SceneTreeTimer TacticalDurationTimer { get; protected set; }
+
+	public SceneTreeTimer TacticalCoolDownTimer { get; protected set; }
+
+	public List<Unit> TargetsInWeaponRange { get; set; } = new List<Unit>();
+
+	public bool IsWarping;
+
+	public Vector2 WarpTarget;
+
+	public CollisionShape2D Collision;
+
+	public bool IsRetreating;
+
+	public StrikeAudioPlayer AudioStreamPlayer;
+
+	public UnitCommand UnitCommand;
+
+	public UnitMovement UnitMovement;
+
+
+	// Protected and Private
 
 	protected float DefenseCoolDownTime;
 
@@ -95,36 +126,20 @@ public partial class Unit : CharacterBody2D
 
 	protected bool _isCombatOnCoolDown;
 
-	public bool IsTacticalOnCoolDown { get; protected set; }
-
 	protected bool _isDefenseOnCoolDown;
 
-	public bool IsTacticalInUse { get; protected set; }
-
-	public SceneTreeTimer TacticalDurationTimer { get; protected set; }
-
-	public SceneTreeTimer TacticalCoolDownTimer { get; protected set; }
-
-	protected List<Unit> TargetsInWeaponRange { get; private set; } = new List<Unit>();
-
 	protected List<Missile> _missilesInRange = new List<Missile>();
-
-	private bool _isWarping;
-
-	private Vector2 _warpTarget;
-
-	private CollisionShape2D _collision;
-
-	private bool _isRetreating;
-
-	private StrikeAudioPlayer _audioStreamPlayer;
 
 	protected bool _isDying;
 
 	private Sprite2D _unitIcon;
 
+
 	protected void BaseReady()
 	{
+		UnitCommand = new UnitCommand(this);
+		UnitMovement = new UnitMovement(this);
+
 		MaxHealth = Health;
 		InitalMaxSpeed = MaxSpeed;
 		
@@ -134,32 +149,35 @@ public partial class Unit : CharacterBody2D
 
 		LevelManager = GetTree().Root.GetNode<LevelManager>("Level");
 		NavigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
-		_weaponRangeIcon = GetNode<Sprite2D>("WeaponRangeIcon");
-		_collision = GetNode<CollisionShape2D>("CollisionShape2D");
-		_audioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
+		WeaponRangeIcon = GetNode<Sprite2D>("WeaponRangeIcon");
+		Collision = GetNode<CollisionShape2D>("CollisionShape2D");
+		AudioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
 
 		_unitIcon = GetNode<Sprite2D>("UnitIcon");
 		_unitIcon.Visible = false;
 
-		_movementTargetPosition = GlobalTransform.Origin;
+		MovementTargetPosition = GlobalTransform.Origin;
 
 		NavigationAgent.PathDesiredDistance = PathDesiredDistance;
         NavigationAgent.TargetDesiredDistance = TargetDesiredDistance;
 
-		_weaponRangeIcon.Visible = false;
+		WeaponRangeIcon.Visible = false;
 
-		Callable.From(ActorSetup).CallDeferred();
+		Callable.From(UnitMovement.ActorSetup).CallDeferred();
 	}
 
 	public override async void _PhysicsProcess(double delta)
 	{
-		Navigate();
+		UnitMovement.Navigate();
 
-		if(_isWarping) return;
+		if(IsWarping) return;
 
 		CheckForTarget();
 
-		GetUserInput();
+		if(!LevelManager.AreMultipleUnitsSelected)
+		{
+			UnitCommand.GetUserInput();
+		}
 
 		HandleOffenseBehavior();
 
@@ -284,196 +302,30 @@ public partial class Unit : CharacterBody2D
 		}
 	}
 
-	protected void GetUserInput()
-	{
-
-		if (Input.IsActionJustPressed("ui_select") && _isHovered && IsPlayerSide)
-		{
-			OnSelected();
-		}
-		else if (Input.IsActionJustPressed("ui_select") && !_isHovered && IsPlayerSide && !LevelManager.IsUnitUIHovered && !(LevelManager.SelectedUnitSlot?.Unit == this && LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
-		{
-			OnUnselected();
-		}
-
-		if(Input.IsActionJustPressed("ui_action") && _isHovered && !IsPlayerSide)
-		{
-			// The unit is hovered, the action button is pressed, set the hostile target for selected ship
-			if(LevelManager.SelectedShip != null && LevelManager.SelectedShip.TargetsInWeaponRange.Any(x => x == this))
-			{
-				_audioStreamPlayer.PlayAudio(_audioStreamPlayer.SetTargetSoundClip);
-
-				LevelManager.SelectedShip.Target = this;
-				LevelManager.SelectedShip.MovementTarget = LevelManager.SelectedShip.GlobalPosition;
-
-				LevelManager.SelectedShip.TargetDesiredDistance = 200;
-			}
-		}
-		else if(Input.IsActionJustPressed("ui_action") && _isHovered && IsPlayerSide)
-		{
-			// The unit is hovered, the action button is pressed, set the target for a selected repair ship
-			if(LevelManager.SelectedShip != null && LevelManager.SelectedShip.ShipClass == ShipClass.Repair && LevelManager.SelectedShip.TargetsInWeaponRange.Any(x => x == this))
-			{
-				LevelManager.SelectedShip.Target = this;
-				LevelManager.SelectedShip.MovementTarget = LevelManager.SelectedShip.GlobalPosition;
-			}
-		}
-		else if(Input.IsActionJustPressed("ui_action") && IsSelected)
-		{
-			// The unit is selected, the action button is pressed, do a movement command
-			Vector2 mouseClickPos = GetGlobalMousePosition();
-			if(Target == null || mouseClickPos.DistanceTo(Target.MovementTarget) > 200)
-			{
-				MovementTarget = GetGlobalMousePosition();
-			}
-			
-		}
-	}
-
-	public void OnSelected()
-	{
-		GD.Print($"Unit Selected {this.Name}");
-		IsSelected = true;
-		LevelManager.SelectedShip = this;
-		_weaponRangeIcon.Visible = true;	
-	}
-
-	public void OnUnselected()
-	{
-		IsSelected = false;
-		_weaponRangeIcon.Visible = false;
-	}
-
-	public void WarpTo(Vector2 location)
-	{
-		_isWarping = true;
-		_warpTarget = location;
-		MovementTarget = location;
-		_movementTargetPosition = location;
-	}
-
-	public void WarpOut(Vector2 location)
-	{
-		TurningAngleThreshold = 0.99f;
-		SpeedWhileTurning = 1;
-		_isWarping = true;
-		_warpTarget = location;
-		MovementTarget = location;
-
-		_isRetreating = true;
-		_audioStreamPlayer.PlayAudio(_audioStreamPlayer.RetreatClickedSoundClip);
-	}
-
-	protected void Navigate()
-	{
-		float distanceToTarget = MovementTarget.DistanceTo(GlobalPosition);
-
-		if (NavigationAgent.IsNavigationFinished() || distanceToTarget <= TargetDesiredDistance)
-        {
-			if(_isWarping)
-			{
-				_audioStreamPlayer.PlayAudio(_audioStreamPlayer.WarpInSoundClip);
-
-				_isWarping = false;
-				_collision.Disabled = false;
-			}
-
-			if(_isRetreating)
-			{
-				HandlePostRetreat();
-			}
-
-            return;
-        }
-
-		LookAtNextPathPoint();
-
-		Vector2 currentAgentPosition = GlobalTransform.Origin;
-        Vector2 nextPathPosition = NavigationAgent.GetNextPathPosition();
-
-		Vector2 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
-        newVelocity *= CurrentSpeed;
-
-        Velocity = newVelocity;
-
-		MoveAndSlide();
-	}
-
 	protected void Hovered()
 	{
-		_isHovered = true;
+		IsHovered = true;
+		WeaponRangeIcon.Visible = true;
 
 		if(!IsPlayerSide)
 		{
-			_weaponRangeIcon.Visible = true;
 			LevelManager.HoveredEnemy = this;
 		}
 	}
 
 	protected void Unhovered()
 	{
-		_isHovered = false;
+		IsHovered = false;
+		WeaponRangeIcon.Visible = false;
 
 		if(!IsPlayerSide)
 		{
-			_weaponRangeIcon.Visible = false;
-
 			if(LevelManager.HoveredEnemy == this)
 			{
 				LevelManager.HoveredEnemy = null;
 			}
 		}
 	}
-
-	protected virtual void LookAtNextPathPoint()
-    {
-        if(!IsLookingAtTarget())
-        {
-			CurrentSpeed = SpeedWhileTurning;
-        }
-        else
-        {
-			if(_isWarping)
-			{
-				_collision.Disabled = true;
-				CurrentSpeed = 2000;
-			}
-			else
-			{
-				CurrentSpeed = MaxSpeed;
-			}
-        }
-
-		float angleTo = GlobalPosition.AngleToPoint(NavigationAgent.GetNextPathPosition());
-        float currentAngle = GlobalRotation;
-
-		GlobalRotation = Mathf.LerpAngle(currentAngle, angleTo, Weight);
-    }
-
-	public bool IsLookingAtTarget()
-    {
-        // Get the direction the CharacterBody is facing
-        Vector2 forwardDirection = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation));
-
-        // Calculate the direction to the target vector
-        Vector2 directionToTarget = (NavigationAgent.GetNextPathPosition() - GlobalPosition).Normalized();
-
-        // Calculate the dot product between the forward direction and the direction to the target
-        float dotProduct = forwardDirection.Dot(directionToTarget);
-
-        // Check if the dot product is close to 1.0 (within a tolerance) to determine if the CharacterBody is looking at the target
-        float tolerance = TurningAngleThreshold;
-        return dotProduct >= tolerance;
-    }
-
-	private async void ActorSetup()
-    {
-        // Wait for the first physics frame so the NavigationServer can sync.
-        await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
-
-        // Now that the navigation map is no longer empty, set the movement target.
-        MovementTarget = _movementTargetPosition;
-    }
 
 	protected virtual async Task HandleCombat()
     {
@@ -536,7 +388,7 @@ public partial class Unit : CharacterBody2D
         QueueFree();
     }
 
-	protected virtual void HandlePostRetreat()
+	public virtual void HandlePostRetreat()
 	{
 		if(IsPlayerSide)
 		{
