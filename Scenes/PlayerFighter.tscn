@@ -48,10 +48,10 @@ texture = ExtResource("2_e4gjq")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -94.0
-offset_top = -62.0
-offset_right = 113.0
-offset_bottom = 65.0
+offset_left = -128.0
+offset_top = -101.0
+offset_right = 149.0
+offset_bottom = 97.0
 
 [node name="MissileLauncher" parent="." instance=ExtResource("3_ucet8")]
 MissileScene = ExtResource("4_ghwkx")
