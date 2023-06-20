@@ -1,8 +1,11 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class ShipDetails : Control
 {
+
+	public Unit Unit;
 	private RichTextLabel _health;
 	private RichTextLabel _class;
 	private ProgressBar _healthBar;
@@ -19,13 +22,25 @@ public partial class ShipDetails : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		bool isHighlighted = Unit.LevelManager.HighlightedShips != null && Unit.LevelManager.HighlightedShips.Contains(Unit);
+		bool shouldShowDetails = IsInstanceValid(Unit) && (Unit.IsHovered || Unit.IsSelected || isHighlighted);
+
+		if(!shouldShowDetails)
+		{
+			QueueFree();
+		}
+		else
+		{
+			GlobalPosition = Unit.GlobalPosition;
+			UpdateForShipDetails();
+		}
 	}
 
-	public void UpdateForShipDetails(Unit unit)
+	public void UpdateForShipDetails()
 	{
-		_health.Text = $"STRUCTURE - {unit.Health}";
-		_class.Text = $"CLASS - {unit.ClassName}";
-		_healthBar.MaxValue = unit.MaxHealth;
-		_healthBar.Value = unit.Health;
+		_health.Text = $"STRUCTURE - {Unit.Health}";
+		_class.Text = $"CLASS - {Unit.ClassName}";
+		_healthBar.MaxValue = Unit.MaxHealth;
+		_healthBar.Value = Unit.Health;
 	}
 }

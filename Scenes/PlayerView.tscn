@@ -1,12 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=18 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
 [ext_resource type="PackedScene" uid="uid://28j7e627vpjp" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
 [ext_resource type="Script" path="res://Scripts/UI/UILayer.cs" id="3_0u2l5"]
 [ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
-[ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_4oj8o"]
-[ext_resource type="Script" path="res://Scripts/ShipDetails.cs" id="5_kfwwg"]
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="5_w06ox"]
 [ext_resource type="PackedScene" uid="uid://c0nm7aw2y4t05" path="res://Scenes/UnitSlot.tscn" id="5_xivxb"]
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="6_hqc52"]
@@ -14,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dsu3sjt1pul5b" path="res://Art/Sprites/Ships/Fighter1.png" id="9_i7d24"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
+[ext_resource type="PackedScene" uid="uid://b0j5u8ti5ow0y" path="res://Scenes/ShipDetails.tscn" id="13_cra3c"]
 
 [sub_resource type="Theme" id="Theme_dg5gf"]
 default_base_scale = 12.0
@@ -28,18 +27,10 @@ default_font = ExtResource("5_w06ox")
 default_font = ExtResource("5_w06ox")
 default_font_size = 30
 
-[sub_resource type="Theme" id="Theme_75ik2"]
-default_font = ExtResource("4_4oj8o")
-default_font_size = 30
-
-[sub_resource type="Theme" id="Theme_6byvg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vkx5"]
-bg_color = Color(0.443137, 0.654902, 0.564706, 1)
-
 [node name="PlayerView" type="Node"]
 script = ExtResource("1_vqiwb")
 SelectionBoxScene = ExtResource("2_kcewo")
+ShipDetailsScene = ExtResource("13_cra3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -313,100 +304,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_uk4j0")
 text = "Mission Status: SUCCESS"
-
-[node name="ShipDetails" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_kfwwg")
-
-[node name="Health" type="RichTextLabel" parent="ShipDetails"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.2
-anchor_top = 2.175
-anchor_right = 2.2
-anchor_bottom = 2.175
-offset_right = 273.0
-offset_bottom = 69.0
-theme = SubResource("Theme_75ik2")
-text = "STRUCTURE - 5"
-
-[node name="Class" type="RichTextLabel" parent="ShipDetails"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.175
-anchor_top = -2.925
-anchor_right = 2.175
-anchor_bottom = -2.925
-offset_right = 352.0
-offset_bottom = 69.0
-theme = SubResource("Theme_75ik2")
-text = "Class - Crusier"
-
-[node name="HealthBar" type="ProgressBar" parent="ShipDetails"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.025
-anchor_top = -4.45
-anchor_right = 2.025
-anchor_bottom = -4.45
-offset_top = 1.52588e-05
-offset_right = 205.0
-offset_bottom = 61.0
-theme = SubResource("Theme_6byvg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8vkx5")
-value = 20.0
-show_percentage = false
-
-[node name="EnemyShipDetails" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_kfwwg")
-
-[node name="Health" type="RichTextLabel" parent="EnemyShipDetails"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.2
-anchor_top = 2.175
-anchor_right = 2.2
-anchor_bottom = 2.175
-offset_right = 273.0
-offset_bottom = 69.0
-theme = SubResource("Theme_75ik2")
-text = "STRUCTURE - 5"
-
-[node name="Class" type="RichTextLabel" parent="EnemyShipDetails"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.175
-anchor_top = -2.925
-anchor_right = 2.175
-anchor_bottom = -2.925
-offset_right = 352.0
-offset_bottom = 69.0
-theme = SubResource("Theme_75ik2")
-text = "Class - Crusier"
-
-[node name="HealthBar" type="ProgressBar" parent="EnemyShipDetails"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.025
-anchor_top = -4.45
-anchor_right = 2.025
-anchor_bottom = -4.45
-offset_top = 1.52588e-05
-offset_right = 205.0
-offset_bottom = 61.0
-theme = SubResource("Theme_6byvg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8vkx5")
-value = 20.0
-show_percentage = false
 
 [connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Hovered"]
 [connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Unhovered"]

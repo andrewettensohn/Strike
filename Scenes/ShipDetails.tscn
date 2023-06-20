@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0j5u8ti5ow0y"]
+
+[ext_resource type="Script" path="res://Scripts/ShipDetails.cs" id="1_etsge"]
+[ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="2_jx1dw"]
+
+[sub_resource type="Theme" id="Theme_75ik2"]
+default_font = ExtResource("2_jx1dw")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_6byvg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vkx5"]
+bg_color = Color(0.443137, 0.654902, 0.564706, 1)
+
+[node name="ShipDetails" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_etsge")
+
+[node name="Health" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.2
+anchor_top = 2.175
+anchor_right = 2.2
+anchor_bottom = 2.175
+offset_right = 273.0
+offset_bottom = 69.0
+theme = SubResource("Theme_75ik2")
+text = "STRUCTURE - 5"
+
+[node name="Class" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.175
+anchor_top = -2.925
+anchor_right = 2.175
+anchor_bottom = -2.925
+offset_right = 352.0
+offset_bottom = 69.0
+theme = SubResource("Theme_75ik2")
+text = "Class - Crusier"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.025
+anchor_top = -4.45
+anchor_right = 2.025
+anchor_bottom = -4.45
+offset_top = 1.52588e-05
+offset_right = 205.0
+offset_bottom = 61.0
+theme = SubResource("Theme_6byvg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8vkx5")
+value = 20.0
+show_percentage = false

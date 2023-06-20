@@ -1,19 +1,21 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class PlayerView : Node
 {
     [Export]
     public PackedScene SelectionBoxScene;
 
+    [Export]
+    public PackedScene ShipDetailsScene;
+
     public UILayer UILayer;
 
     private Camera2D _cam;
     private LevelManager _levelManager;
     private Sprite2D _waypoint;
-    private ShipDetails _shipDetails;
-    private ShipDetails _enemyShipDetails;
     private bool _isHovered;
     private bool _isSelectionHeld;
     private GroupCommand _groupCommand;
@@ -25,13 +27,10 @@ public partial class PlayerView : Node
         _cam = GetNode<Camera2D>("Camera2D");
         _levelManager = GetTree().Root.GetNode<LevelManager>("Level");
         _waypoint = GetNode<Sprite2D>("WaypointSprite");
-        _shipDetails = GetNode<ShipDetails>("ShipDetails");
-        _enemyShipDetails = GetNode<ShipDetails>("EnemyShipDetails");
 
         _groupCommand = new GroupCommand(_levelManager, this);
 
         _waypoint.Visible = false;
-        _shipDetails.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,34 +41,15 @@ public partial class PlayerView : Node
         HandleCameraMovement();
 		HandleCameraZoom();
         PlaceWaypoint();
-        HandleShipDetails();
-        HandleEnemyShipDetails();
 	}
 
-    public void HandleShipDetails()
+    public void ShowShipDetails(Unit unit)
     {
-        if(!IsInstanceValid(_levelManager.SelectedShip) || _levelManager.SelectedShip == null || !_levelManager.SelectedShip.IsSelected)
-        {
-            _shipDetails.Visible = false;
-            return;
-        }
 
-        _shipDetails.Visible = true;
-        _shipDetails.UpdateForShipDetails(_levelManager.SelectedShip);
-        _shipDetails.GlobalPosition = _levelManager.SelectedShip.GlobalPosition;
-    }
+        ShipDetails shipDetails = (ShipDetails)ShipDetailsScene.Instantiate();
+        shipDetails.Unit = unit;
 
-    public void HandleEnemyShipDetails()
-    {
-        if(!IsInstanceValid(_levelManager.HoveredEnemy) || _levelManager.HoveredEnemy == null)
-        {
-            _enemyShipDetails.Visible = false;
-            return;
-        }
-
-        _enemyShipDetails.Visible = true;
-        _enemyShipDetails.UpdateForShipDetails(_levelManager.HoveredEnemy);
-        _enemyShipDetails.GlobalPosition = _levelManager.HoveredEnemy.GlobalPosition;
+        GetTree().Root.AddChild(shipDetails);
     }
 
     public void Hovered()
@@ -87,7 +67,6 @@ public partial class PlayerView : Node
         if(!_levelManager.AreMultipleUnitsSelected) return;
 
         _groupCommand.GetUserInput();
-        _levelManager.HighlightedShips.ForEach(x => x.WeaponRangeIcon.Visible = true);
     }
 
     public void PlaceGroupWaypoint(Vector2 waypointPos)
@@ -96,13 +75,14 @@ public partial class PlayerView : Node
 
         _waypoint.GlobalPosition = waypointPos;
         _waypoint.Visible = true;
+        GD.Print(waypointPos);
     }
 
     private void HandleSelectionBox()
     {
         _isSelectionHeld = Input.IsActionPressed("ui_select");
         
-        //TODO: The last condition will stop the player from picking up new units quickly
+        //TODO: The last condition will stop the player from picking up new units quickly?
         if(_isSelectionHeld && !_levelManager.IsSelectionBoxActive && !_levelManager.AreMultipleUnitsSelected)
         {
             SelectionBox selectionBox = (SelectionBox)SelectionBoxScene.Instantiate();
@@ -165,7 +145,14 @@ public partial class PlayerView : Node
 
     private void PlaceWaypoint()
     {
-        if(!IsInstanceValid(_levelManager.SelectedShip) || _levelManager.SelectedShip == null || _levelManager.SelectedShip.MovementTarget == _levelManager.SelectedShip.GlobalPosition || _levelManager.SelectedShip.NavigationAgent.IsTargetReached())
+        if(_levelManager.AreMultipleUnitsSelected) return;
+        
+        bool shouldWaypointHide = !IsInstanceValid(_levelManager.SelectedShip) ||
+            _levelManager.SelectedShip == null ||
+            _levelManager.SelectedShip.MovementTarget == _levelManager.SelectedShip.GlobalPosition ||
+            _levelManager.SelectedShip.NavigationAgent.IsTargetReached();
+
+        if(shouldWaypointHide)
         {
             _waypoint.Visible = false;
             return;

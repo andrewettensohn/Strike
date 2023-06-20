@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwehfyh2gn4d2"
+path="res://.godot/imported/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3-e453adeae7de5b5566d7799164a33adc.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3"
+dest_files=["res://.godot/imported/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3-e453adeae7de5b5566d7799164a33adc.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

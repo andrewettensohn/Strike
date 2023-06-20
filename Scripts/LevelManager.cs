@@ -171,6 +171,10 @@ public partial class LevelManager : Node
         }   
         else
         {
+            HighlightedShips.ForEach(x => {
+                PlayerView.ShowShipDetails(x);
+                x.WeaponRangeIcon.Visible = true;
+            });
             SelectedShip = null;
         }
     }

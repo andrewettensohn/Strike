@@ -313,6 +313,7 @@ public partial class Unit : CharacterBody2D
 	{
 		IsHovered = true;
 		WeaponRangeIcon.Visible = true;
+		LevelManager.PlayerView.ShowShipDetails(this);
 
 		if(!IsPlayerSide)
 		{
@@ -377,6 +378,7 @@ public partial class Unit : CharacterBody2D
 		{
 			LevelManager.PlayerShipDestroyed(this);
 			LevelManager.PlayerUnits.Remove(this);
+			LevelManager.HighlightedShips.Remove(this);
 		}
 		else
 		{

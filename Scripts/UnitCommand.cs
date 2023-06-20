@@ -20,6 +20,7 @@ public class UnitCommand
 
     public void OnSelected()
 	{
+		_unit.LevelManager.PlayerView.ShowShipDetails(_unit);
 		_unit.IsSelected = true;
 		_unit.LevelManager.SelectedShip = _unit;
 		_unit.WeaponRangeIcon.Visible = true;	
