@@ -17,6 +17,7 @@ height = 202.0
 radius = 1039.0
 
 [node name="PlayerRepair" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_p6kla")
 TacticalCoolDownTime = 10
 ClassName = "Repair Ship"

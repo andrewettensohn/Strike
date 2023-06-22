@@ -17,6 +17,7 @@ height = 73.9999
 radius = 752.096
 
 [node name="PlayerFighter" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_x11nx")
 ClassName = "Fighter"
 Health = 1.0

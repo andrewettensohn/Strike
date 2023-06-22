@@ -19,6 +19,7 @@ radius = 18.0
 height = 122.0
 
 [node name="PlayerPicket" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_gtimr")
 ClassName = "Picket"
 Health = 3.0

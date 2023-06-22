@@ -21,6 +21,7 @@ height = 380.0
 radius = 2717.32
 
 [node name="PlayerCruiser" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_k1ts2")
 ClassName = "Crusier"
 Health = 10.0

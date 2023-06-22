@@ -31,7 +31,7 @@ PicketScene = ExtResource("7_sxxyc")
 DestroyerScene = ExtResource("4_fft5q")
 RepairScene = ExtResource("5_5h5bn")
 EnemyCapitalScene = ExtResource("17_cq1oq")
-PlayerReinforcePoints = 2000
+PlayerReinforcePoints = 1000000000
 EnemyReinforcePoints = 1000
 DoomsdayTime = 180
 

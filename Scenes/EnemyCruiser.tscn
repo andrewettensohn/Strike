@@ -20,6 +20,7 @@ height = 428.0
 radius = 2083.06
 
 [node name="EnemyCruiser" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_gpx3y")
 ClassName = "Cruiser"
 Health = 10.0

@@ -20,6 +20,7 @@ height = 1898.0
 radius = 6088.11
 
 [node name="EnemyCapital" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_ea3re")
 ClassName = "Capital"
 Health = 100.0

@@ -68,6 +68,7 @@ public partial class CruiserShip : Unit
 
     protected override void HandleEnemySpecialAbility()
     {
+        //TODO: AI is able to use this outside of weapon range?
         if(IsInstanceValid(Target) && Target.ShipClass == ShipClass.Fighter && TargetsInWeaponRange.Contains(Target))
         {
             IsTacticalAbilityPressed = true;

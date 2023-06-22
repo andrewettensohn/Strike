@@ -16,6 +16,7 @@ height = 202.0
 radius = 140.513
 
 [node name="EnemyCargo" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_wjhn7")
 ClassName = "Freighter"
 Health = 5.0
