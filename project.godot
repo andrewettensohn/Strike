@@ -15,6 +15,10 @@ run/main_scene="res://Levels/ProtoLevel.tscn"
 config/features=PackedStringArray("4.0", "C#", "GL Compatibility")
 config/icon="res://Art/Sprites/Icon/Icon1.png"
 
+[autoload]
+
+GameManager="*res://Scenes/GameManager.tscn"
+
 [dotnet]
 
 project/assembly_name="Strike"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=19 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
 [ext_resource type="PackedScene" uid="uid://b0j5u8ti5ow0y" path="res://Scenes/ShipDetails.tscn" id="13_cra3c"]
+[ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="14_uudxh"]
 
 [sub_resource type="Theme" id="Theme_dg5gf"]
 default_base_scale = 12.0
@@ -276,6 +277,8 @@ grow_vertical = 0
 theme = SubResource("Theme_uk4j0")
 text = "2:00 UNTIL ENEMY REINFORCEMENTS"
 
+[node name="DoomsdayTimer" type="Timer" parent="CanvasLayer"]
+
 [node name="ObjectiveText" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.034
@@ -305,6 +308,109 @@ grow_vertical = 2
 theme = SubResource("Theme_uk4j0")
 text = "Mission Status: SUCCESS"
 
+[node name="PauseMenu" type="Panel" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -241.0
+offset_right = 219.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_uudxh")
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.904
+anchor_right = 0.719
+anchor_bottom = 0.904
+offset_left = -0.170013
+offset_top = 0.231964
+offset_right = 114.83
+offset_bottom = 43.232
+theme = SubResource("Theme_n8xg8")
+text = "RESUME"
+
+[node name="ExitGameButton" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.902
+anchor_right = 0.023
+anchor_bottom = 0.902
+offset_left = 0.109983
+offset_top = 0.215973
+offset_right = 115.942
+offset_bottom = 43.216
+theme = SubResource("Theme_n8xg8")
+text = "EXIT"
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 150.0
+offset_right = 208.0
+offset_bottom = 185.0
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/PauseMenu"]
+offset_left = 27.0
+offset_top = 250.0
+offset_right = 209.0
+offset_bottom = 285.0
+
+[node name="MusicSliderLabel" type="RichTextLabel" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.224
+anchor_right = 0.06
+anchor_bottom = 0.224
+offset_left = 0.200003
+offset_top = -0.208
+offset_right = 408.2
+offset_bottom = 35.792
+grow_vertical = 0
+theme = SubResource("Theme_uk4j0")
+text = "Music Volume"
+
+[node name="SFXSliderLabel" type="RichTextLabel" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.433
+anchor_right = 0.06
+anchor_bottom = 0.433
+offset_left = -0.799997
+offset_top = -0.0360107
+offset_right = 407.2
+offset_bottom = 35.964
+grow_vertical = 0
+theme = SubResource("Theme_uk4j0")
+text = "Sound Effects Volume"
+
+[node name="MenuLabel" type="RichTextLabel" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.058
+anchor_right = 0.058
+anchor_bottom = 0.004
+offset_left = 0.0599995
+offset_top = 2.0
+offset_right = 408.06
+offset_bottom = 36.032
+grow_horizontal = 2
+theme = SubResource("Theme_uk4j0")
+text = "Game Paused"
+
+[node name="EscDelayTimer" type="Timer" parent="CanvasLayer/PauseMenu"]
+wait_time = 0.1
+
 [connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Hovered"]
 [connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Unhovered"]
 [connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot2" to="CanvasLayer/ReinforceDetails/ReinforceSlot2" method="Hovered"]
@@ -319,3 +425,9 @@ text = "Mission Status: SUCCESS"
 [connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/RetreatButton" to="CanvasLayer" method="RetreatButtonPressed"]
 [connection signal="mouse_entered" from="CanvasLayer/ShipAbilityDetails/TacticalAbilityButton" to="." method="Hovered"]
 [connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/TacticalAbilityButton" to="CanvasLayer" method="TacticalAbilityButtonPressed"]
+[connection signal="timeout" from="CanvasLayer/DoomsdayTimer" to="CanvasLayer" method="OnDoomsdayTimerExpired"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="OnResumeButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/ExitGameButton" to="CanvasLayer/PauseMenu" method="ExitGame"]
+[connection signal="drag_ended" from="CanvasLayer/PauseMenu/MusicSlider" to="CanvasLayer/PauseMenu" method="OnMusicVolumeSlideEnded"]
+[connection signal="drag_ended" from="CanvasLayer/PauseMenu/SFXSlider" to="CanvasLayer/PauseMenu" method="OnEffectsSlideEnded"]
+[connection signal="timeout" from="CanvasLayer/PauseMenu/EscDelayTimer" to="CanvasLayer/PauseMenu" method="OnEscDelayTimerExpired"]

@@ -19,6 +19,7 @@ public partial class PlayerView : Node
     private bool _isHovered;
     private bool _isSelectionHeld;
     private GroupCommand _groupCommand;
+    private PauseMenu _pauseMenu;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -27,10 +28,12 @@ public partial class PlayerView : Node
         _cam = GetNode<Camera2D>("Camera2D");
         _levelManager = GetTree().Root.GetNode<LevelManager>("Level");
         _waypoint = GetNode<Sprite2D>("WaypointSprite");
-
+        _pauseMenu = UILayer.GetNode<PauseMenu>("PauseMenu");
+        
         _groupCommand = new GroupCommand(_levelManager, this);
 
         _waypoint.Visible = false;
+        _pauseMenu.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,6 +44,11 @@ public partial class PlayerView : Node
         HandleCameraMovement();
 		HandleCameraZoom();
         PlaceWaypoint();
+
+        if(!_pauseMenu.Visible && Input.IsActionJustPressed("ui_cancel"))
+        {
+            _pauseMenu.OnPauseMenuOpened();
+        }
 	}
 
     public void ShowShipDetails(Unit unit)
