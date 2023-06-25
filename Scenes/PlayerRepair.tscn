@@ -55,6 +55,7 @@ offset_right = 189.0
 offset_bottom = 120.0
 
 [node name="WeaponRange" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 shape = SubResource("CircleShape2D_26hnr")

@@ -40,7 +40,7 @@ ExplosionScale = 0.7
 CoolDownTime = 20.0
 
 [node name="WeaponRange" type="Area2D" parent="."]
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 position = Vector2(-11, -6)

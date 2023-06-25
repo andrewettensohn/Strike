@@ -18,6 +18,7 @@ radius = 1000.13
 
 [node name="EnemyRepair" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_t3jj3")
 ClassName = "Repair Ship"
 Health = 5.0
@@ -54,7 +55,7 @@ offset_right = 113.0
 offset_bottom = 65.0
 
 [node name="WeaponRange" type="Area2D" parent="."]
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 shape = SubResource("CircleShape2D_26hnr")

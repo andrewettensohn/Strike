@@ -21,6 +21,7 @@ radius = 2083.06
 
 [node name="EnemyCruiser" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_gpx3y")
 ClassName = "Cruiser"
 Health = 10.0
@@ -61,6 +62,7 @@ offset_bottom = 65.0
 [node name="FlakTurret" parent="." instance=ExtResource("4_li7ox")]
 
 [node name="WeaponRange" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 shape = SubResource("CircleShape2D_26hnr")

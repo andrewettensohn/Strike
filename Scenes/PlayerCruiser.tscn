@@ -64,7 +64,7 @@ MissileScene = ExtResource("4_iw01x")
 [node name="FlakTurret" parent="." instance=ExtResource("4_c7ggc")]
 
 [node name="WeaponRange" type="Area2D" parent="."]
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 shape = SubResource("CircleShape2D_26hnr")
