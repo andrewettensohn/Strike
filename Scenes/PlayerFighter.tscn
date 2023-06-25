@@ -59,6 +59,7 @@ MissileScene = ExtResource("4_ghwkx")
 CoolDownTime = 7.0
 
 [node name="WeaponRange" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
 position = Vector2(-2, 0)

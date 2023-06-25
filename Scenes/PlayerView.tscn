@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=20 format=3 uid="uid://chpbceb2c02qx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
 [ext_resource type="PackedScene" uid="uid://b0j5u8ti5ow0y" path="res://Scenes/ShipDetails.tscn" id="13_cra3c"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="14_uudxh"]
+[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="15_72cgx"]
 
 [sub_resource type="Theme" id="Theme_dg5gf"]
 default_base_scale = 12.0
@@ -323,6 +324,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_uudxh")
 
+[node name="StrikeAudioPlayer" parent="CanvasLayer/PauseMenu" instance=ExtResource("15_72cgx")]
+
 [node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu"]
 layout_mode = 1
 anchors_preset = -1
@@ -357,12 +360,17 @@ offset_left = 26.0
 offset_top = 150.0
 offset_right = 208.0
 offset_bottom = 185.0
+min_value = -50.0
+max_value = 1.0
 
 [node name="SFXSlider" type="HSlider" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
 offset_left = 27.0
 offset_top = 250.0
 offset_right = 209.0
 offset_bottom = 285.0
+min_value = -50.0
+max_value = 1.0
 
 [node name="MusicSliderLabel" type="RichTextLabel" parent="CanvasLayer/PauseMenu"]
 layout_mode = 1
@@ -428,6 +436,6 @@ wait_time = 0.1
 [connection signal="timeout" from="CanvasLayer/DoomsdayTimer" to="CanvasLayer" method="OnDoomsdayTimerExpired"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="OnResumeButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ExitGameButton" to="CanvasLayer/PauseMenu" method="ExitGame"]
-[connection signal="drag_ended" from="CanvasLayer/PauseMenu/MusicSlider" to="CanvasLayer/PauseMenu" method="OnMusicVolumeSlideEnded"]
+[connection signal="value_changed" from="CanvasLayer/PauseMenu/MusicSlider" to="CanvasLayer/PauseMenu" method="OnMusicVolumeSlideEnded"]
 [connection signal="drag_ended" from="CanvasLayer/PauseMenu/SFXSlider" to="CanvasLayer/PauseMenu" method="OnEffectsSlideEnded"]
 [connection signal="timeout" from="CanvasLayer/PauseMenu/EscDelayTimer" to="CanvasLayer/PauseMenu" method="OnEscDelayTimerExpired"]

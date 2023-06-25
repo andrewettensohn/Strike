@@ -9,6 +9,7 @@ public partial class PauseMenu : Panel
 	private HSlider _sfxSlider;
 	private Timer _escDelayTimer;
 	private bool _isEscBlocked;
+	private StrikeAudioPlayer _strikeAudioPlayer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,6 +19,10 @@ public partial class PauseMenu : Panel
 		_musicSlider = GetNode<HSlider>("MusicSlider");
         _sfxSlider = GetNode<HSlider>("SFXSlider");
 		_escDelayTimer = GetNode<Timer>("EscDelayTimer");
+		_strikeAudioPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
+
+		_musicSlider.Value = _gameManager.MusicVolumeLevel;
+		_sfxSlider.Value = _gameManager.SoundEffectsVolumeLevel;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,14 +54,16 @@ public partial class PauseMenu : Panel
     {
         if(!value_changed) return;
 
-        _gameManager.MusicVolumeLevel = _musicSlider.Value;
+        _gameManager.MusicVolumeLevel = (float)_musicSlider.Value;
     }
 
     public void OnEffectsSlideEnded(bool value_changed)
     {
         if(!value_changed) return;
 
-        _gameManager.SoundEffectsVolumeLevel = _sfxSlider.Value;
+        _gameManager.SoundEffectsVolumeLevel = (float)_sfxSlider.Value;
+
+		_strikeAudioPlayer.PlayAudio(_strikeAudioPlayer.ReinforceSoundClip);
     }
 
 	public void ExitGame()

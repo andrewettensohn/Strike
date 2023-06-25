@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=21 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/ObjectiveConditions.cs" id="17_1puqx"]
 [ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="17_cq1oq"]
 [ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="18_n58pq"]
+[ext_resource type="Script" path="res://Scripts/StrikeMusicPlayer.cs" id="19_cts2g"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)
@@ -110,5 +111,8 @@ position = Vector2(-99, 7065)
 position = Vector2(5105, 8121)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("18_n58pq")
+volume_db = 0.001
 autoplay = true
+script = ExtResource("19_cts2g")
