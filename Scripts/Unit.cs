@@ -134,6 +134,8 @@ public partial class Unit : CharacterBody2D
 
 	private Sprite2D _unitIcon;
 
+	public Vector2 SafeVelocity;
+
 
 	protected void BaseReady()
 	{
@@ -246,10 +248,11 @@ public partial class Unit : CharacterBody2D
 	
 	protected void HandleOffenseBehavior()
 	{
-		//TODO: Maybe have buttons to change the player units behavior, then this logic can be used.
-		if(UnitBehavior != UnitBehavior.Offense || IsPlayerSide) return;
+		if(UnitBehavior != UnitBehavior.Offense) return;
 
-		if(IsInstanceValid(Target))
+		bool isTargetValid = IsInstanceValid(Target);
+
+		if((isTargetValid && !IsPlayerSide) || (isTargetValid && MovementTargetPosition == Target.GlobalPosition && IsPlayerSide))
 		{
 			MovementTarget = Target.GlobalPosition;
 			
@@ -262,7 +265,10 @@ public partial class Unit : CharacterBody2D
 				MaxSpeed = InitalMaxSpeed;
 			}
 
-			HandleEnemySpecialAbility();
+			if(!IsPlayerSide)
+			{
+				HandleEnemySpecialAbility();
+			}
 
 			return;
 		}
@@ -272,10 +278,6 @@ public partial class Unit : CharacterBody2D
 		if(!IsPlayerSide)
 		{
 			newTargetDestination = LevelManager.PlayerUnits.FirstOrDefault();
-		}
-		else
-		{
-			newTargetDestination = LevelManager.EnemyUnits.FirstOrDefault();
 		}
 
 		if(newTargetDestination != null)

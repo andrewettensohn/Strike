@@ -7,6 +7,7 @@
 radius = 267.0
 
 [node name="Shield" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_w3xfi")
 CoolDownTime = 5.0
 

@@ -66,7 +66,7 @@ public partial class LevelManager : Node
 
     public EnemyCommander EnemyCommander { get; private set; }
 
-    private StrikeAudioPlayer _audioStreamPlayer;
+    public StrikeAudioPlayer AudioStreamPlayer;
 
     private bool _isReinforceDisabled;
 
@@ -86,7 +86,7 @@ public partial class LevelManager : Node
         EnemyReinforceCorridorEnd = GetNode<Sprite2D>("EnemyReinforceCorridorEnd");
         EnemyReinforceCorridorStart = GetNode<Sprite2D>("EnemyReinforceCorridorStart");
         
-        _audioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
+        AudioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
 
         SetupFleetOverviewForInitalPlayerShips();
     }
@@ -126,7 +126,7 @@ public partial class LevelManager : Node
     {
         if(_isReinforceDisabled) return;
 
-        _audioStreamPlayer.PlayAudio(_audioStreamPlayer.ReinforceSoundClip);
+        AudioStreamPlayer.PlayAudio(AudioStreamPlayer.ReinforceSoundClip);
 
         if(shipClass == ShipClass.Picket && PlayerReinforcePoints >= (int)ShipClass.Picket)
         {
