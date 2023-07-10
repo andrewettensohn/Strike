@@ -24,6 +24,7 @@ public class GroupCommand
 	{
 		if(!Input.IsActionJustPressed("ui_select")) return;
 
+		_levelManager.HighlightedShips.ForEach(x => x.UnitCommand.OnUnselected());
         _levelManager.HighlightedShips = new List<Unit>();
 	}
 
@@ -76,6 +77,12 @@ public class GroupCommand
 	{
 		Vector2 mouseClickPos = _levelManager.HighlightedShips.FirstOrDefault().GetGlobalMousePosition();
         _playerView.PlaceGroupWaypoint(mouseClickPos);
-		_levelManager.HighlightedShips.ForEach(x => x.MovementTarget = mouseClickPos);
+
+		_playerView.RadialFormation.GlobalPosition = mouseClickPos;
+
+		for(int i = 0; i < _levelManager.HighlightedShips.Count; i++)
+		{
+			_levelManager.HighlightedShips[i].MovementTarget = _playerView.RadialFormation.FormationPoints[i].GlobalPosition;
+		}
 	}
 }

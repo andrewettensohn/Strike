@@ -19,6 +19,10 @@ config/icon="res://Art/Sprites/Icon/Icon1.png"
 
 GameManager="*res://Scenes/GameManager.tscn"
 
+[display]
+
+mouse_cursor/custom_image="res://Art/Cursor/NormalCursor.png"
+
 [dotnet]
 
 project/assembly_name="Strike"

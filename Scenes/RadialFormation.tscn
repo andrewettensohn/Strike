@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcwwif5wowkl7"]
+
+[ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="1_tpyrr"]
+
+[node name="RadialFormation" type="Node2D"]
+
+[node name="PosCenter" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_tpyrr")
+
+[node name="Pos1" type="Sprite2D" parent="."]
+position = Vector2(437, 397)
+texture = ExtResource("1_tpyrr")
+
+[node name="Pos2" type="Sprite2D" parent="."]
+position = Vector2(-339, 366)
+texture = ExtResource("1_tpyrr")
+
+[node name="Pos3" type="Sprite2D" parent="."]
+position = Vector2(-873, 705)
+texture = ExtResource("1_tpyrr")
+
+[node name="Pos4" type="Sprite2D" parent="."]
+position = Vector2(759, 785)
+texture = ExtResource("1_tpyrr")
+
+[node name="Pos5" type="Sprite2D" parent="."]
+position = Vector2(4, 1016)
+texture = ExtResource("1_tpyrr")

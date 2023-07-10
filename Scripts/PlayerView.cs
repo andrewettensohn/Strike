@@ -13,6 +13,9 @@ public partial class PlayerView : Node
 
     public UILayer UILayer;
 
+    public Formation BoxFormation;
+    public Formation RadialFormation;
+
     private Camera2D _cam;
     private LevelManager _levelManager;
     private Sprite2D _waypoint;
@@ -29,6 +32,9 @@ public partial class PlayerView : Node
         _levelManager = GetTree().Root.GetNode<LevelManager>("Level");
         _waypoint = GetNode<Sprite2D>("WaypointSprite");
         _pauseMenu = UILayer.GetNode<PauseMenu>("PauseMenu");
+
+        BoxFormation = GetNode<Formation>("BoxFormation");
+        RadialFormation = GetNode<Formation>("RadialFormation");
         
         _groupCommand = new GroupCommand(_levelManager, this);
 
@@ -39,6 +45,7 @@ public partial class PlayerView : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        HandleCursor();
         HandleGroupCommand();
         HandleSelectionBox();
         HandleCameraMovement();
@@ -60,6 +67,15 @@ public partial class PlayerView : Node
         GetTree().Root.AddChild(shipDetails);
     }
 
+    public void PlaceGroupWaypoint(Vector2 waypointPos)
+    {
+        //if(!_levelManager.AreMultipleUnitsSelected) return;
+
+        _waypoint.GlobalPosition = waypointPos;
+        _waypoint.Visible = true;
+        GD.Print(waypointPos);
+    }
+
     public void Hovered()
 	{
 		_levelManager.IsUnitUIHovered = true;
@@ -77,13 +93,11 @@ public partial class PlayerView : Node
         _groupCommand.GetUserInput();
     }
 
-    public void PlaceGroupWaypoint(Vector2 waypointPos)
+    private void HandleCursor()
     {
-        //if(!_levelManager.AreMultipleUnitsSelected) return;
+        Resource cursorImage = _levelManager.EnemyUnits.Any(x => x.IsHovered) ? ResourceLoader.Load("res://Art/Cursor/AttackCursor.png") : ResourceLoader.Load("res://Art/Cursor/NormalCursor.png");
 
-        _waypoint.GlobalPosition = waypointPos;
-        _waypoint.Visible = true;
-        GD.Print(waypointPos);
+        Input.SetCustomMouseCursor(cursorImage);
     }
 
     private void HandleSelectionBox()

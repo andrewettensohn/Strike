@@ -1,14 +1,17 @@
-[gd_scene load_steps=20 format=3 uid="uid://chpbceb2c02qx"]
+[gd_scene load_steps=23 format=3 uid="uid://bdow8dn04y45c"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
 [ext_resource type="PackedScene" uid="uid://28j7e627vpjp" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
 [ext_resource type="Script" path="res://Scripts/UI/UILayer.cs" id="3_0u2l5"]
 [ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
+[ext_resource type="PackedScene" uid="uid://b72v3m6ujtf2b" path="res://Scenes/BoxFormation.tscn" id="4_elkin"]
+[ext_resource type="Script" path="res://Scripts/Formation.cs" id="5_4c4pa"]
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="5_w06ox"]
 [ext_resource type="PackedScene" uid="uid://c0nm7aw2y4t05" path="res://Scenes/UnitSlot.tscn" id="5_xivxb"]
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="6_hqc52"]
 [ext_resource type="Script" path="res://Scripts/UI/ReinforceSlot.cs" id="6_hx3n3"]
+[ext_resource type="PackedScene" uid="uid://dcwwif5wowkl7" path="res://Scenes/RadialFormation.tscn" id="6_pty0s"]
 [ext_resource type="Texture2D" uid="uid://dsu3sjt1pul5b" path="res://Art/Sprites/Ships/Fighter1.png" id="9_i7d24"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
@@ -36,6 +39,12 @@ ShipDetailsScene = ExtResource("13_cra3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="BoxFormation" parent="." instance=ExtResource("4_elkin")]
+script = ExtResource("5_4c4pa")
+
+[node name="RadialFormation" parent="." instance=ExtResource("6_pty0s")]
+script = ExtResource("5_4c4pa")
 
 [node name="WaypointSprite" type="Sprite2D" parent="."]
 position = Vector2(-9.53674e-07, 9.53674e-07)

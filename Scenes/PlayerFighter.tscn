@@ -40,8 +40,7 @@ shape = SubResource("CapsuleShape2D_l5s7l")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 5.0
-neighbor_distance = 100.0
+radius = 30.0
 debug_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

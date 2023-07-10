@@ -56,7 +56,7 @@ public partial class LevelManager : Node
 
     private bool _isFleetOverviewSetup;
 
-    public Sprite2D PlayerReinforceCorridorEnd { get; private set; }
+    public PlayerReinforceCorrdidorEnd PlayerReinforceCorridorEnd { get; private set; }
 
     public Sprite2D PlayerReinforceCorridorStart { get; private set; }
 
@@ -80,7 +80,7 @@ public partial class LevelManager : Node
         PlayerView = GetNode<PlayerView>("PlayerView");
         FleetOverview = PlayerView.GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
 
-        PlayerReinforceCorridorEnd = GetNode<Sprite2D>("PlayerReinforceCorridorEnd");
+        PlayerReinforceCorridorEnd = GetNode<PlayerReinforceCorrdidorEnd>("PlayerReinforceCorridorEnd");
         PlayerReinforceCorridorStart = GetNode<Sprite2D>("PlayerReinforceCorridorStart");
 
         EnemyReinforceCorridorEnd = GetNode<Sprite2D>("EnemyReinforceCorridorEnd");
@@ -206,7 +206,10 @@ public partial class LevelManager : Node
 
         FleetOverview.AddUnitToOverview(unit);
 
-        unit.UnitMovement.WarpTo(new Vector2(PlayerReinforceCorridorEnd.GlobalPosition.X + xPos, PlayerReinforceCorridorEnd.GlobalPosition.Y + yPos));
+        ReinforcePos pos = PlayerReinforceCorridorEnd.ReinforcePosList.FirstOrDefault(x => x.IsAvailable);
+        pos.IsAvailable = false;
+
+        unit.UnitMovement.WarpTo(pos.GlobalPosition);
 
         PlayerUnits.Add(unit);
     }

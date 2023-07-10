@@ -42,6 +42,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l5s7l")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.946084, 0.893978)
@@ -91,6 +93,7 @@ position = Vector2(-0.999989, 0.999996)
 scale = Vector2(2.15668, 1.85593)
 texture = ExtResource("10_6200x")
 
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="OnNavAgentVelocityComputed"]
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]
 [connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
 [connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]

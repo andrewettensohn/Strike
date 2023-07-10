@@ -62,9 +62,11 @@ public class UnitMovement
 		Vector2 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
         newVelocity *= _unit.CurrentSpeed;
 
-        _unit.Velocity = newVelocity;
+		_unit.NavigationAgent.SetVelocity(newVelocity);
 
-		_unit.MoveAndSlide();
+        // _unit.Velocity = newVelocity;
+
+		// _unit.MoveAndSlide();
 	}
 
     protected virtual void LookAtNextPathPoint()
@@ -78,7 +80,7 @@ public class UnitMovement
 			if(_unit.IsWarping)
 			{
 				_unit.Collision.Disabled = true;
-				_unit.CurrentSpeed = 2000;
+				_unit.CurrentSpeed = 3000;
 			}
 			else
 			{

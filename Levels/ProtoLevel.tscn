@@ -1,17 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=20 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
-[ext_resource type="PackedScene" uid="uid://chpbceb2c02qx" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
+[ext_resource type="PackedScene" uid="uid://bdow8dn04y45c" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
 [ext_resource type="PackedScene" uid="uid://dxl5etg5m8bnf" path="res://Scenes/PlayerFighter.tscn" id="4_fft5q"]
 [ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_5h5bn"]
-[ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="5_j2pc5"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="6_neyy0"]
 [ext_resource type="PackedScene" uid="uid://cfe0h4r0c43gm" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
+[ext_resource type="PackedScene" uid="uid://7byqxeh0mul3" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_mn30o"]
 [ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
 [ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="12_ony8d"]
-[ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="13_uwlk7"]
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="14_alapb"]
 [ext_resource type="PackedScene" uid="uid://cujv3u60b5fi3" path="res://Scenes/EnemyCargo.tscn" id="15_t1efq"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="16_u32in"]
@@ -34,7 +33,7 @@ RepairScene = ExtResource("5_5h5bn")
 EnemyCapitalScene = ExtResource("17_cq1oq")
 PlayerReinforcePoints = 1000000000
 EnemyReinforcePoints = 1000
-DoomsdayTime = 180
+DoomsdayTime = 10000000
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(942, -36.9999)
@@ -48,15 +47,13 @@ position = Vector2(-2297, -849)
 scale = Vector2(2.625, 2.76769)
 navigation_polygon = SubResource("NavigationPolygon_tgi5t")
 
-[node name="PlayerReinforceCorridorEnd" type="Sprite2D" parent="."]
-position = Vector2(-1700, -3757)
-scale = Vector2(0.732365, 0.561555)
-texture = ExtResource("9_y65ug")
-
 [node name="EnemyReinforceCorridorEnd" type="Sprite2D" parent="."]
 position = Vector2(5849, 1482)
 scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_y65ug")
+
+[node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("10_mn30o")]
+position = Vector2(-111, -3700)
 
 [node name="PlayerReinforceCorridorStart" type="Sprite2D" parent="."]
 position = Vector2(-8452, -11383)
@@ -71,24 +68,6 @@ texture = ExtResource("9_y65ug")
 [node name="EnemyCommander" type="Node" parent="."]
 script = ExtResource("11_6j8rj")
 
-[node name="EnemyPicket" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(1688, -1596)
-
-[node name="EnemyPicket2" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(1598, -975)
-
-[node name="EnemyCruiser" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(2672, -1146)
-
-[node name="EnemyCruiser2" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(2272, -770)
-
-[node name="EnemyRepair" parent="." instance=ExtResource("13_uwlk7")]
-position = Vector2(2182, -352)
-
-[node name="EnemyRepair2" parent="." instance=ExtResource("13_uwlk7")]
-position = Vector2(2653, -883)
-
 [node name="CargoDest" type="Sprite2D" parent="."]
 position = Vector2(5734, -1512)
 texture = ExtResource("14_alapb")
@@ -101,18 +80,21 @@ position = Vector2(278, 4560)
 [node name="ObjectiveConditions" type="Node" parent="."]
 script = ExtResource("17_1puqx")
 
-[node name="EnemyCruiser3" parent="." instance=ExtResource("5_j2pc5")]
-position = Vector2(2413, 6789)
-
-[node name="EnemyPicket3" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(-99, 7065)
-
-[node name="EnemyPicket4" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(5105, 8121)
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("18_n58pq")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("19_cts2g")
+
+[node name="EnemyPicket" parent="." instance=ExtResource("12_ony8d")]
+position = Vector2(2867, -470)
+
+[node name="EnemyPicket2" parent="." instance=ExtResource("12_ony8d")]
+position = Vector2(3603, -2033)
+
+[node name="EnemyPicket3" parent="." instance=ExtResource("12_ony8d")]
+position = Vector2(3623, -1105)
+
+[node name="EnemyPicket4" parent="." instance=ExtResource("12_ony8d")]
+position = Vector2(3835, -339)

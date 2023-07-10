@@ -166,6 +166,7 @@ public partial class Unit : CharacterBody2D
 		WeaponRangeIcon.Visible = false;
 
 		Callable.From(UnitMovement.ActorSetup).CallDeferred();
+		//nav_agent.velocity_computed.connect(on_nav_velocity_computed)
 	}
 
 	public override async void _PhysicsProcess(double delta)
@@ -188,6 +189,13 @@ public partial class Unit : CharacterBody2D
 		await HandleTactical();
 		
 		_unitIcon.Visible = LevelManager.IsAtFurthestZoom;
+	}
+
+	public void OnNavAgentVelocityComputed(Vector2 safeVelocity)
+	{
+		NavigationAgent.MaxSpeed = CurrentSpeed;
+		Velocity = safeVelocity;
+		MoveAndSlide();
 	}
 
 	public void WeaponRangeEntered(Node2D node)
@@ -326,7 +334,11 @@ public partial class Unit : CharacterBody2D
 	protected void Unhovered()
 	{
 		IsHovered = false;
-		WeaponRangeIcon.Visible = false;
+
+		if(!IsSelected)
+		{
+			WeaponRangeIcon.Visible = false;
+		}
 
 		if(!IsPlayerSide)
 		{

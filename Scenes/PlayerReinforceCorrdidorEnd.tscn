@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://7byqxeh0mul3"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerReinforceCorrdidorEnd.cs" id="1_e2f6h"]
+[ext_resource type="Texture2D" uid="uid://df5kkfb1dwb7l" path="res://Art/Sprites/Icon/PlaneRadarIcon.png" id="1_lyjav"]
+[ext_resource type="PackedScene" uid="uid://2jrmsp1n247n" path="res://Scenes/PlayerReinforcePos.tscn" id="2_ab8vy"]
+
+[node name="PlayerReinforceCorridorEnd" type="Node2D"]
+script = ExtResource("1_e2f6h")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(2.5, -2.99997)
+scale = Vector2(2.53724, 2.39714)
+texture = ExtResource("1_lyjav")
+
+[node name="Pos1" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(617, -514)
+
+[node name="Pos2" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(426, -285)
+
+[node name="Pos3" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(202, -36)
+
+[node name="Pos4" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(-19, 175)
+
+[node name="Pos5" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(-219, 378)
+
+[node name="Pos6" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(-541, 543)
