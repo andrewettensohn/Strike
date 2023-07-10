@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=19 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
 [ext_resource type="PackedScene" uid="uid://7byqxeh0mul3" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_mn30o"]
 [ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
-[ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="12_ony8d"]
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="14_alapb"]
 [ext_resource type="PackedScene" uid="uid://cujv3u60b5fi3" path="res://Scenes/EnemyCargo.tscn" id="15_t1efq"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="16_u32in"]
@@ -86,15 +85,3 @@ stream = ExtResource("18_n58pq")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("19_cts2g")
-
-[node name="EnemyPicket" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(2867, -470)
-
-[node name="EnemyPicket2" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(3603, -2033)
-
-[node name="EnemyPicket3" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(3623, -1105)
-
-[node name="EnemyPicket4" parent="." instance=ExtResource("12_ony8d")]
-position = Vector2(3835, -339)

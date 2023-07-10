@@ -9,6 +9,8 @@ public partial class UnitSlot : Control
 
 	private ProgressBar _healthBar;
 
+	private ColorRect _hoverHighlightRect;
+
 	public Unit Unit { get; private set; }
 
     public  bool IsHovered { get; private set; }
@@ -21,6 +23,7 @@ public partial class UnitSlot : Control
 		_portrait = GetNode<Sprite2D>("Portrait");
 		_health = GetNode<RichTextLabel>("Health");
 		_healthBar = GetNode<ProgressBar>("HealthBar");
+		_hoverHighlightRect = GetNode<ColorRect>("HoverHighlightRect");
 
         Visible = false;
 	}
@@ -35,6 +38,19 @@ public partial class UnitSlot : Control
 			_health.Text = $"STRUCTURE {Unit.Health}";
 			_healthBar.MaxValue = Unit.MaxHealth;
 			_healthBar.Value = Unit.Health;
+
+			if(Unit.IsSelected || Unit.LevelManager.HighlightedShips.Contains(Unit))
+			{
+				_hoverHighlightRect.Visible = true;
+			}
+			else
+			{
+				_hoverHighlightRect.Visible = false;
+			}
+		}
+		else
+		{
+			_hoverHighlightRect.Visible = false;
 		}
 	}
 
