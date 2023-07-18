@@ -73,7 +73,6 @@ public partial class PlayerView : Node
 
         _waypoint.GlobalPosition = waypointPos;
         _waypoint.Visible = true;
-        GD.Print(waypointPos);
     }
 
     public void Hovered()

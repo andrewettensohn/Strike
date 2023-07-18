@@ -24,7 +24,6 @@ public partial class ReinforcePos : Area2D
 
 	public void OnPosExit(Node2D body)
 	{
-		GD.Print("Exitted");
 		IsAvailable = true;
 	}
 }

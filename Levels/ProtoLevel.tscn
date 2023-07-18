@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=22 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
@@ -19,13 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="18_m02gt"]
 [ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="18_n58pq"]
 [ext_resource type="Script" path="res://Scripts/StrikeMusicPlayer.cs" id="19_cts2g"]
+[ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_sno3e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(9254, -3987, 9362, 5794, -2912, 5758, -2828, -4143)])
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("GameMode")]
 script = ExtResource("1_8p6y1")
 CruiserScene = ExtResource("6_neyy0")
 PicketScene = ExtResource("7_sxxyc")
@@ -35,6 +36,7 @@ EnemyCapitalScene = ExtResource("17_cq1oq")
 PlayerReinforcePoints = 1000000000
 EnemyReinforcePoints = 1000
 DoomsdayTime = 10000000
+GameMode = NodePath("GameMode")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(942, -36.9999)
@@ -98,3 +100,6 @@ position = Vector2(2406, -1586)
 
 [node name="EnemyPicket3" parent="." instance=ExtResource("18_m02gt")]
 position = Vector2(2097, -742)
+
+[node name="GameMode" parent="." node_paths=PackedStringArray("CargoShip") instance=ExtResource("20_sno3e")]
+CargoShip = NodePath("../EnemyCargo")

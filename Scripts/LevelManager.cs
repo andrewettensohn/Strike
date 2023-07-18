@@ -30,6 +30,9 @@ public partial class LevelManager : Node
     [Export]
     public int DoomsdayTime;
 
+    [Export]
+    public GameMode GameMode;
+
     public Unit SelectedShip;
 
     public List<Unit> HighlightedShips;
@@ -70,7 +73,7 @@ public partial class LevelManager : Node
 
     public StrikeDialougePlayer DialougeStreamPlayer;
 
-    private bool _isReinforceDisabled;
+    public bool IsReinforceDisabled;
 
     public override void _Ready()
     {
@@ -94,16 +97,6 @@ public partial class LevelManager : Node
         SetupFleetOverviewForInitalPlayerShips();
     }
 
-    public async Task OnWin()
-    {
-        await PlayerView.UILayer.DisplayMessage("Mission Status: SUCCESS");
-    }
-
-    public async Task OnLose()
-    {
-        await PlayerView.UILayer.DisplayMessage("Mission Status: FAILURE");
-    }
-
     public void PlayerShipDestroyed(Unit unit)
     {
         FleetOverview.EmptyUnitSlot(unit);
@@ -119,15 +112,9 @@ public partial class LevelManager : Node
         }
     }
 
-    public void OnDoomsdayClockExpired()
-    {
-        SpawnEnemyShip(EnemyCapitalScene);
-        _isReinforceDisabled = true;
-    }
-
     public void ReinforcePlayerShip(ShipClass shipClass)
     {
-        if(_isReinforceDisabled) return;
+        if(IsReinforceDisabled) return;
 
         AudioStreamPlayer.PlayAudio(AudioStreamPlayer.ReinforceSoundClip);
         DialougeStreamPlayer.PlayUnitReinforceSoundClip();
@@ -200,7 +187,7 @@ public partial class LevelManager : Node
         }
     }
 
-    private void SpawnPlayerShip(PackedScene scene)
+    public void SpawnPlayerShip(PackedScene scene)
     {
         Unit unit = (Unit)scene.Instantiate();
 
@@ -221,7 +208,7 @@ public partial class LevelManager : Node
         PlayerUnits.Add(unit);
     }
 
-    private void SpawnEnemyShip(PackedScene scene)
+    public void SpawnEnemyShip(PackedScene scene)
     {
         Unit unit = (Unit)scene.Instantiate();
 

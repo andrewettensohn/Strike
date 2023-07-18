@@ -24,11 +24,6 @@ public partial class MissileLauncher : Node
     {
         Missile missile = (Missile)MissileScene.Instantiate();
 
-        if(myTargetGroup == TargetGroup.Player)
-        {
-            GD.Print("Missile launched");
-        }
-
         float xPos = (float)GD.RandRange(spawnPosition.X, spawnPosition.X);
         float yPos = (float)GD.RandRange(spawnPosition.Y, spawnPosition.Y);
 

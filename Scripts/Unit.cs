@@ -166,7 +166,6 @@ public partial class Unit : CharacterBody2D
 		WeaponRangeIcon.Visible = false;
 
 		Callable.From(UnitMovement.ActorSetup).CallDeferred();
-		//nav_agent.velocity_computed.connect(on_nav_velocity_computed)
 	}
 
 	public override async void _PhysicsProcess(double delta)

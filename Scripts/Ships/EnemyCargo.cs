@@ -62,7 +62,7 @@ public partial class EnemyCargo : Unit
         await ToSignal(GetTree().CreateTimer(1), "timeout");
 
         //TODO: Win condition on LevelManager?
-        await LevelManager.OnWin();
+        //await LevelManager.OnWin();
 
         QueueFree();
     }
@@ -80,7 +80,7 @@ public partial class EnemyCargo : Unit
 		}
 
         //TODO: Lose condition on LevelManager?
-        Task.Run(async () => await LevelManager.OnLose());
+        //Task.Run(async () => await LevelManager.OnLose());
 
 		QueueFree();
 	}

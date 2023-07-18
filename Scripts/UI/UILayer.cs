@@ -52,7 +52,7 @@ public partial class UILayer : CanvasLayer
 
 	public void OnDoomsdayTimerExpired()
 	{
-		_levelManager.OnDoomsdayClockExpired();
+		_levelManager.GameMode.OnDoomsdayClockExpired();
 	}
 
 	public async Task DisplayMessage(string message)
