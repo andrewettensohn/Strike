@@ -22,7 +22,7 @@ public class GroupCommand
 
     private void HandleClicked()
 	{
-		if(!Input.IsActionJustPressed("ui_select")) return;
+		if(!Input.IsActionJustPressed("ui_select") || _levelManager.IsUnitUIHovered) return;
 
 		_levelManager.HighlightedShips.ForEach(x => x.UnitCommand.OnUnselected());
         _levelManager.HighlightedShips = new List<Unit>();
@@ -84,5 +84,7 @@ public class GroupCommand
 		{
 			_levelManager.HighlightedShips[i].MovementTarget = _playerView.RadialFormation.FormationPoints[i].GlobalPosition;
 		}
+
+		_levelManager.DialougeStreamPlayer.PlayUnitMoveOrderSound();
 	}
 }

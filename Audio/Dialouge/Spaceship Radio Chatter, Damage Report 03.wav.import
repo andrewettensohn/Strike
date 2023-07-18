@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3fy4ijmtjm7m"
+path="res://.godot/imported/Spaceship Radio Chatter, Damage Report 03.wav-cde8770cfc0fc3f0ef4fabed7d798464.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Spaceship Radio Chatter, Damage Report 03.wav"
+dest_files=["res://.godot/imported/Spaceship Radio Chatter, Damage Report 03.wav-cde8770cfc0fc3f0ef4fabed7d798464.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

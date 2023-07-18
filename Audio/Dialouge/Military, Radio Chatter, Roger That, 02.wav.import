@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cb3cnrquxwumt"
+path="res://.godot/imported/Military, Radio Chatter, Roger That, 02.wav-7bcb852266b1bb8739a8742e0ac7c61e.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Military, Radio Chatter, Roger That, 02.wav"
+dest_files=["res://.godot/imported/Military, Radio Chatter, Roger That, 02.wav-7bcb852266b1bb8739a8742e0ac7c61e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

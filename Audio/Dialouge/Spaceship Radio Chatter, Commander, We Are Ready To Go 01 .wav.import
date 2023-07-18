@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7ulcha3us81u"
+path="res://.godot/imported/Spaceship Radio Chatter, Commander, We Are Ready To Go 01 .wav-7b47bcb5899155a3bc3867c52fff07e0.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Spaceship Radio Chatter, Commander, We Are Ready To Go 01 .wav"
+dest_files=["res://.godot/imported/Spaceship Radio Chatter, Commander, We Are Ready To Go 01 .wav-7b47bcb5899155a3bc3867c52fff07e0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -43,7 +43,7 @@ public partial class UILayer : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_shipAbilityDetails.Visible = _levelManager.SelectedShip != null;
+		_shipAbilityDetails.Visible = _levelManager.SelectedShip != null || _levelManager.AreMultipleUnitsSelected;
 		_reinforceButton.Text = $"Reinforce - {_levelManager.PlayerReinforcePoints}";
 		
 		HandleAbilityButtonText();
@@ -77,12 +77,26 @@ public partial class UILayer : CanvasLayer
 
 	public void RetreatButtonPressed()
 	{
-		_levelManager.SelectedShip.UnitMovement.WarpOut(_levelManager.PlayerReinforceCorridorStart.GlobalPosition);
+		if(_levelManager.AreMultipleUnitsSelected)
+		{
+			_levelManager.HighlightedShips.ForEach(x => x.UnitMovement.WarpOut(_levelManager.PlayerReinforceCorridorStart.GlobalPosition));
+		}
+		else
+		{
+			_levelManager.SelectedShip.UnitMovement.WarpOut(_levelManager.PlayerReinforceCorridorStart.GlobalPosition);
+		}
 	}
 
 	public void TacticalAbilityButtonPressed()
 	{
-		_levelManager.SelectedShip.IsTacticalAbilityPressed = true;
+		if(_levelManager.AreMultipleUnitsSelected)
+		{
+			_levelManager.HighlightedShips.ForEach(x => x.IsTacticalAbilityPressed = true);
+		}
+		else
+		{
+			_levelManager.SelectedShip.IsTacticalAbilityPressed = true;
+		}
 
 		//TODO: Handle displaying cooldown, make it so the button can't be pressed during cooldown or while ability is active
 	}

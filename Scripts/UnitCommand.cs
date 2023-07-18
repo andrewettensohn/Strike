@@ -23,7 +23,12 @@ public class UnitCommand
 		_unit.LevelManager.PlayerView.ShowShipDetails(_unit);
 		_unit.IsSelected = true;
 		_unit.LevelManager.SelectedShip = _unit;
-		_unit.WeaponRangeIcon.Visible = true;	
+		_unit.WeaponRangeIcon.Visible = true;
+
+		if(!_unit.LevelManager.AreMultipleUnitsSelected)
+		{
+			_unit.LevelManager.DialougeStreamPlayer.PlayUnitSelectedSound();
+		}
 	}
 
 	public void OnUnselected()
@@ -90,5 +95,7 @@ public class UnitCommand
 		{
 			_unit.MovementTarget = _unit.GetGlobalMousePosition();
 		}
+
+		_unit.LevelManager.DialougeStreamPlayer.PlayUnitMoveOrderSound();
 	}
 }

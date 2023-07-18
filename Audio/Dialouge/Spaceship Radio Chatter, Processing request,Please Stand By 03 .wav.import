@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dv8l014ji0muw"
+path="res://.godot/imported/Spaceship Radio Chatter, Processing request,Please Stand By 03 .wav-99164e4cebef89be6ca97744f13e659d.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Spaceship Radio Chatter, Processing request,Please Stand By 03 .wav"
+dest_files=["res://.godot/imported/Spaceship Radio Chatter, Processing request,Please Stand By 03 .wav-99164e4cebef89be6ca97744f13e659d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

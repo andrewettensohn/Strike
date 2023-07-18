@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://daf7gshgb1b48"
+path="res://.godot/imported/Military, Radio Chatter, Alpha 10-77, 02.wav-d66365a980a7c73bb9d0bb45b16d9c0c.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Military, Radio Chatter, Alpha 10-77, 02.wav"
+dest_files=["res://.godot/imported/Military, Radio Chatter, Alpha 10-77, 02.wav-d66365a980a7c73bb9d0bb45b16d9c0c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

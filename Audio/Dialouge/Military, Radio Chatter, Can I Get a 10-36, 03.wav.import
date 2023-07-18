@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c276d8gioh8pf"
+path="res://.godot/imported/Military, Radio Chatter, Can I Get a 10-36, 03.wav-fc33a8eea63752c280a203efcadd0a88.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Military, Radio Chatter, Can I Get a 10-36, 03.wav"
+dest_files=["res://.godot/imported/Military, Radio Chatter, Can I Get a 10-36, 03.wav-fc33a8eea63752c280a203efcadd0a88.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bh2x51302w25f"
+path="res://.godot/imported/Military, Radio Chatter, Shot, Over, 02.wav-0aeb88b14c13211ba822e5a1549c43d8.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Military, Radio Chatter, Shot, Over, 02.wav"
+dest_files=["res://.godot/imported/Military, Radio Chatter, Shot, Over, 02.wav-0aeb88b14c13211ba822e5a1549c43d8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

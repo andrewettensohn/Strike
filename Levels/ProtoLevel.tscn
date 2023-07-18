@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b423nlx2ojng4"]
+[gd_scene load_steps=21 format=3 uid="uid://b423nlx2ojng4"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
@@ -12,9 +12,11 @@
 [ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="14_alapb"]
 [ext_resource type="PackedScene" uid="uid://cujv3u60b5fi3" path="res://Scenes/EnemyCargo.tscn" id="15_t1efq"]
+[ext_resource type="PackedScene" uid="uid://cxgkg11sawj0m" path="res://Scenes/StrikeDialougePlayer.tscn" id="16_f5idm"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="16_u32in"]
 [ext_resource type="Script" path="res://Scripts/ObjectiveConditions.cs" id="17_1puqx"]
 [ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="17_cq1oq"]
+[ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="18_m02gt"]
 [ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="18_n58pq"]
 [ext_resource type="Script" path="res://Scripts/StrikeMusicPlayer.cs" id="19_cts2g"]
 
@@ -79,9 +81,20 @@ position = Vector2(278, 4560)
 [node name="ObjectiveConditions" type="Node" parent="."]
 script = ExtResource("17_1puqx")
 
+[node name="StrikeDialougePlayer" parent="." instance=ExtResource("16_f5idm")]
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("18_n58pq")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("19_cts2g")
+
+[node name="EnemyPicket" parent="." instance=ExtResource("18_m02gt")]
+position = Vector2(1228, -1480)
+
+[node name="EnemyPicket2" parent="." instance=ExtResource("18_m02gt")]
+position = Vector2(2406, -1586)
+
+[node name="EnemyPicket3" parent="." instance=ExtResource("18_m02gt")]
+position = Vector2(2097, -742)

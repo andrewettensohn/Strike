@@ -95,7 +95,8 @@ public partial class PlayerView : Node
 
     private void HandleCursor()
     {
-        Resource cursorImage = _levelManager.EnemyUnits.Any(x => x.IsHovered) ? ResourceLoader.Load("res://Art/Cursor/AttackCursor.png") : ResourceLoader.Load("res://Art/Cursor/NormalCursor.png");
+        bool isRepairSelected = _levelManager.PlayerUnits.Any(x => x.IsSelected && x.ShipClass == ShipClass.Repair) && _levelManager.PlayerUnits.Any(x => x.IsHovered);
+        Resource cursorImage = _levelManager.EnemyUnits.Any(x => x.IsHovered) || isRepairSelected ? ResourceLoader.Load("res://Art/Cursor/AttackCursor.png") : ResourceLoader.Load("res://Art/Cursor/NormalCursor.png");
 
         Input.SetCustomMouseCursor(cursorImage);
     }

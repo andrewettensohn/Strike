@@ -229,6 +229,11 @@ public partial class Unit : CharacterBody2D
 		if(shouldAdd)
 		{
 			TargetsInWeaponRange.Add(target);
+
+			if(IsPlayerSide)
+			{
+				LevelManager.DialougeStreamPlayer.PlayUnitAttackingSoundClip();
+			}
 		}
 		else
 		{
@@ -393,6 +398,8 @@ public partial class Unit : CharacterBody2D
 			LevelManager.PlayerShipDestroyed(this);
 			LevelManager.PlayerUnits.Remove(this);
 			LevelManager.HighlightedShips.Remove(this);
+
+			LevelManager.DialougeStreamPlayer.PlayUnitDestroyedSound();
 		}
 		else
 		{
@@ -434,5 +441,9 @@ public partial class Unit : CharacterBody2D
         {
             await HandleDeath();
         }
+		else if(IsPlayerSide)
+		{
+			LevelManager.DialougeStreamPlayer.PlayUnitDamagedSoundClip();
+		}
     }
 }

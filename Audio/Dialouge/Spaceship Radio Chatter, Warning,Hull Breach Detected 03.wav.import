@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bx10o02b1po2w"
+path="res://.godot/imported/Spaceship Radio Chatter, Warning,Hull Breach Detected 03.wav-9c443d1c1531e705dd348382d9b277b9.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Spaceship Radio Chatter, Warning,Hull Breach Detected 03.wav"
+dest_files=["res://.godot/imported/Spaceship Radio Chatter, Warning,Hull Breach Detected 03.wav-9c443d1c1531e705dd348382d9b277b9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cge32jahss2mw"
+path="res://.godot/imported/Military, Radio Chatter, Charlie, This Is 2-1 Alpha, Relay To Tensword, Good Effect On Target.wav-cb11e2c8f5363a80d8e77f435120bcb0.sample"
+
+[deps]
+
+source_file="res://Audio/Dialouge/Military, Radio Chatter, Charlie, This Is 2-1 Alpha, Relay To Tensword, Good Effect On Target.wav"
+dest_files=["res://.godot/imported/Military, Radio Chatter, Charlie, This Is 2-1 Alpha, Relay To Tensword, Good Effect On Target.wav-cb11e2c8f5363a80d8e77f435120bcb0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

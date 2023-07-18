@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de64j7bsgrqu0"
+path="res://.godot/imported/Mystery Sax.mp3-cd28b88b20d5d028ec4a0f92f03c05b2.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Mystery Sax.mp3"
+dest_files=["res://.godot/imported/Mystery Sax.mp3-cd28b88b20d5d028ec4a0f92f03c05b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

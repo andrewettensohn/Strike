@@ -73,7 +73,7 @@ public partial class SelectionBox : Area2D
 
 	public void OnAreaEntered(Area2D area)
 	{
-		GD.Print($"Yo! {area.Name}");
+		//GD.Print($"Yo! {area.Name}");
 	}
 	
 	private void HandlePostClick()

@@ -68,6 +68,8 @@ public partial class LevelManager : Node
 
     public StrikeAudioPlayer AudioStreamPlayer;
 
+    public StrikeDialougePlayer DialougeStreamPlayer;
+
     private bool _isReinforceDisabled;
 
     public override void _Ready()
@@ -87,6 +89,7 @@ public partial class LevelManager : Node
         EnemyReinforceCorridorStart = GetNode<Sprite2D>("EnemyReinforceCorridorStart");
         
         AudioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
+        DialougeStreamPlayer = GetNode<StrikeDialougePlayer>("StrikeDialougePlayer");
 
         SetupFleetOverviewForInitalPlayerShips();
     }
@@ -127,6 +130,7 @@ public partial class LevelManager : Node
         if(_isReinforceDisabled) return;
 
         AudioStreamPlayer.PlayAudio(AudioStreamPlayer.ReinforceSoundClip);
+        DialougeStreamPlayer.PlayUnitReinforceSoundClip();
 
         if(shipClass == ShipClass.Picket && PlayerReinforcePoints >= (int)ShipClass.Picket)
         {
@@ -175,7 +179,10 @@ public partial class LevelManager : Node
                 PlayerView.ShowShipDetails(x);
                 x.WeaponRangeIcon.Visible = true;
             });
+
             SelectedShip = null;
+
+            DialougeStreamPlayer.PlayUnitSelectedSound();
         }
     }
 
