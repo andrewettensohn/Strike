@@ -85,7 +85,7 @@ public partial class StrikeDialougePlayer : AudioStreamPlayer
 		// Does not always play, would get annoying
 		uint chanceToPlay = GD.Randi() % 10;
 
-		if(chanceToPlay >= 8)
+		if(chanceToPlay >= 1)
 		{
 			AudioStream audio = ReinforceSoundClips[GD.Randi() % ReinforceSoundClips.Length];
 			PlayAudio(audio);
@@ -94,6 +94,8 @@ public partial class StrikeDialougePlayer : AudioStreamPlayer
 
 	private void PlayAudio(AudioStream audioStream)
 	{
+		if(Playing) return;
+
 		Playing = false;
 		Stream = audioStream;
 		Playing = true;

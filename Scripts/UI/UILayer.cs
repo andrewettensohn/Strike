@@ -10,9 +10,9 @@ public partial class UILayer : CanvasLayer
 	private LevelManager _levelManager;
 	private Button _reinforceButton;
 	private Button _shipAbilityButton;
-	private RichTextLabel _doomsdayClockText;
+	private RichTextLabel _missionTimerText;
 	private RichTextLabel _message;
-	private Timer _doomsDayTimer;
+	private RichTextLabel _objectiveText;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -29,15 +29,12 @@ public partial class UILayer : CanvasLayer
 
 		_shipAbilityButton = _shipAbilityDetails.GetNode<Button>("TacticalAbilityButton");
 
-		_doomsdayClockText = GetNode<RichTextLabel>("DoomsdayClock");
-
-		_doomsDayTimer = GetNode<Timer>("DoomsdayTimer");
-
-		_doomsDayTimer.WaitTime = _levelManager.DoomsdayTime;
-		_doomsDayTimer.Start();
+		_missionTimerText = GetNode<RichTextLabel>("TimerText");
 
 		_message = GetNode<RichTextLabel>("Message");
 		_message.Visible = false;
+
+		_objectiveText = GetNode<RichTextLabel>("ObjectiveText");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,12 +44,18 @@ public partial class UILayer : CanvasLayer
 		_reinforceButton.Text = $"Reinforce - {_levelManager.PlayerReinforcePoints}";
 		
 		HandleAbilityButtonText();
-		HandleDoomsDayTimerText();
+		HandleMissionTimerText();
+		HandleObjectiveText();
 	}
 
-	public void OnDoomsdayTimerExpired()
+	public void HandleMissionTimerText()
 	{
-		_levelManager.GameMode.OnDoomsdayClockExpired();
+		_missionTimerText.Text = $"{Math.Round(_levelManager.GameMode.MissionTimer.TimeLeft)} {_levelManager.GameMode.TimerAdditionalText}";
+	}
+
+	public void HandleObjectiveText()
+	{
+		_objectiveText.Text = _levelManager.GameMode.ObjectiveText;
 	}
 
 	public async Task DisplayMessage(string message)
@@ -63,11 +66,6 @@ public partial class UILayer : CanvasLayer
 		await ToSignal(GetTree().CreateTimer(5), "timeout");
 
 		_message.Visible = false;
-	}
-
-	public void HandleDoomsDayTimerText()
-	{
-		_doomsdayClockText.Text = $"{Math.Round(_doomsDayTimer.TimeLeft)} UNTIL ENEMY REINFORCEMENTS";
 	}
 
 	public void ReinforceButtonPressed()

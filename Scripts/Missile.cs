@@ -36,6 +36,7 @@ public partial class Missile : Area2D
         else
         {
             QueueFree();
+            return;
         }
 
         if(!_isLifetimeTimerActive)

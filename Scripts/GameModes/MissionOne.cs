@@ -8,8 +8,6 @@ public partial class MissionOne : Skirmish
 	[Export]
 	public EnemyCargo CargoShip;
 
-	public bool IsGameOver;
-
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
@@ -42,7 +40,7 @@ public partial class MissionOne : Skirmish
         await _levelManager.PlayerView.UILayer.DisplayMessage("Mission Status: FAILURE");
     }
 
-	public override void OnDoomsdayClockExpired()
+	public override void OnMissionClockExpired()
     {
         _levelManager.SpawnEnemyShip(_levelManager.EnemyCapitalScene);
         _levelManager.IsReinforceDisabled = true;

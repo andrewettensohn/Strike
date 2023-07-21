@@ -117,22 +117,24 @@ public partial class PlayerView : Node
         float newXPos = _cam.Position.X;
         float newYPos = _cam.Position.Y;
 
+        float movementSpeed = 20f;
+
         if(Input.IsActionPressed("ui_left"))
         {
-            newXPos = _cam.Position.X - 8f;
+            newXPos = _cam.Position.X - movementSpeed;
         }
         else if(Input.IsActionPressed("ui_right"))
         {
-            newXPos = _cam.Position.X + 8f;
+            newXPos = _cam.Position.X + movementSpeed;
         }
 
         if(Input.IsActionPressed("ui_down"))
         {
-            newYPos = _cam.Position.Y + 8f;
+            newYPos = _cam.Position.Y + movementSpeed;
         }
         else if(Input.IsActionPressed("ui_up"))
         {
-            newYPos = _cam.Position.Y - 8f;
+            newYPos = _cam.Position.Y - movementSpeed;
         }
     
         _cam.Position = new Vector2(newXPos, newYPos);
@@ -150,12 +152,12 @@ public partial class PlayerView : Node
 
         Vector2 newZoom = _cam.Zoom;
 
-        if(isZoomIn)
+        if(isZoomIn && !_levelManager.IsAtFurthestZoom)
         {
             newZoom.X -= 0.1f;
             newZoom.Y -= 0.1f;
         }
-        else if(isZoomOut)
+        else if(isZoomOut & newZoom.X <= 0.5f)
         {
             newZoom.X += 0.1f;
             newZoom.Y += 0.1f;
@@ -163,6 +165,7 @@ public partial class PlayerView : Node
 
         _cam.Zoom = newZoom;
         _levelManager.IsAtFurthestZoom = _cam.Zoom.X == 0.10000002f;
+        GD.Print(_cam.Zoom);
     }
 
     private void PlaceWaypoint()

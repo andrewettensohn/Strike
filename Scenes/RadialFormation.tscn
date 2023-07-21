@@ -27,3 +27,11 @@ texture = ExtResource("1_tpyrr")
 [node name="Pos5" type="Sprite2D" parent="."]
 position = Vector2(4, 1016)
 texture = ExtResource("1_tpyrr")
+
+[node name="Pos6" type="Sprite2D" parent="."]
+position = Vector2(1099, 1115)
+texture = ExtResource("1_tpyrr")
+
+[node name="Pos7" type="Sprite2D" parent="."]
+position = Vector2(-1205, 1016)
+texture = ExtResource("1_tpyrr")

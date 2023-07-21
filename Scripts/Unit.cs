@@ -395,17 +395,12 @@ public partial class Unit : CharacterBody2D
 		if(IsPlayerSide)
 		{
 			LevelManager.PlayerShipDestroyed(this);
-			LevelManager.PlayerUnits.Remove(this);
-			LevelManager.HighlightedShips.Remove(this);
-
-			LevelManager.DialougeStreamPlayer.PlayUnitDestroyedSound();
 		}
 		else
 		{
-			LevelManager.EnemyUnits.Remove(this);
+			LevelManager.EnemyShipDestroyed(this);
 		}
 
-		//_audioStreamPlayer.PlayAudio(_audioStreamPlayer.ShipDestroyedSoundClip);
 		Sprite2D explosion = (Sprite2D)ExplosionScene.Instantiate();
 		explosion.Scale = new Vector2(ExplosionScale, ExplosionScale);
 		explosion.GlobalPosition = GlobalPosition;

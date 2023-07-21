@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://7byqxeh0mul3"]
+[gd_scene load_steps=4 format=3 uid="uid://nxy6mca4gpct"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerReinforceCorrdidorEnd.cs" id="1_e2f6h"]
+[ext_resource type="Script" path="res://Scripts/ReinforceCorrdidorEnd.cs" id="1_8xpvb"]
 [ext_resource type="Texture2D" uid="uid://df5kkfb1dwb7l" path="res://Art/Sprites/Icon/PlaneRadarIcon.png" id="1_lyjav"]
 [ext_resource type="PackedScene" uid="uid://2jrmsp1n247n" path="res://Scenes/PlayerReinforcePos.tscn" id="2_ab8vy"]
 
 [node name="PlayerReinforceCorridorEnd" type="Node2D"]
-script = ExtResource("1_e2f6h")
+script = ExtResource("1_8xpvb")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(2.5, -2.99997)
@@ -29,3 +29,9 @@ position = Vector2(-219, 378)
 
 [node name="Pos6" parent="." instance=ExtResource("2_ab8vy")]
 position = Vector2(-541, 543)
+
+[node name="Pos7" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(-527, -87)
+
+[node name="Pos8" parent="." instance=ExtResource("2_ab8vy")]
+position = Vector2(-46, -449)

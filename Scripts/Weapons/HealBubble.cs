@@ -19,6 +19,7 @@ public partial class HealBubble : Area2D
 		if(!IsInstanceValid(Target) || Target == null)
 		{
 			QueueFree();
+			return;
 		}
 		
 		LookAt(Target.GlobalPosition);

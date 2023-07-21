@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkcpr5cmjmbeq"]
+
+[ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_ogi5w"]
+[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_3oosd"]
+[ext_resource type="Texture2D" uid="uid://rt3uqkuarvpd" path="res://Art/Sprites/Ships/Carrier.png" id="3_017ra"]
+[ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="7_ch3by"]
+[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="11_rpnci"]
+[ext_resource type="Texture2D" uid="uid://ca10tsv2amyx0" path="res://Art/Sprites/Icon/PlayerCruiserIcon.png" id="12_lbg1s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
+radius = 93.0
+height = 380.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
+radius = 2717.32
+
+[node name="PlayerDroneControl" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_ogi5w")
+ClassName = "Crusier"
+Health = 10.0
+MaxSpeed = 50
+Weight = 0.005
+SpeedWhileTurning = 5
+IsPlayerSide = true
+HostileTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 100.0
+TurningAngleThreshold = 0.97
+TacticalAbilityDuration = 15
+ExplosionScene = ExtResource("2_3oosd")
+ExplosionScale = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l5s7l")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 100.0
+debug_use_custom = true
+debug_path_custom_point_size = 20.0
+debug_path_custom_line_width = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.14527, 0.110068)
+rotation = 3.14159
+scale = Vector2(0.252558, 0.31042)
+texture = ExtResource("3_017ra")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -264.0
+offset_top = -173.0
+offset_right = 296.0
+offset_bottom = 183.0
+
+[node name="WeaponRange" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
+shape = SubResource("CircleShape2D_26hnr")
+
+[node name="WeaponRangeIcon" type="Sprite2D" parent="."]
+position = Vector2(-6.5, 32.9999)
+scale = Vector2(4.38381, 5.6078)
+texture = ExtResource("7_ch3by")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("11_rpnci")]
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(-0.500008, -1.49999)
+scale = Vector2(1.97696, 1.58051)
+texture = ExtResource("12_lbg1s")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="OnNavAgentVelocityComputed"]
+[connection signal="mouse_entered" from="Control" to="." method="Hovered"]
+[connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
+[connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]
+[connection signal="area_exited" from="WeaponRange" to="." method="DefenseRangeExitted"]
+[connection signal="body_entered" from="WeaponRange" to="." method="WeaponRangeEntered"]
+[connection signal="body_exited" from="WeaponRange" to="." method="WeaponRangeExitted"]

@@ -22,13 +22,19 @@ public partial class LevelManager : Node
     public PackedScene EnemyCapitalScene;
 
     [Export]
+    public PackedScene EnemyPicketScene;
+
+    [Export]
+    public PackedScene EnemyCruiserScene;
+
+    [Export]
+    public PackedScene EnemyRepairScene;
+
+    [Export]
     public int PlayerReinforcePoints;
 
     [Export]
     public int EnemyReinforcePoints;
-
-    [Export]
-    public int DoomsdayTime;
 
     [Export]
     public GameMode GameMode;
@@ -59,11 +65,11 @@ public partial class LevelManager : Node
 
     private bool _isFleetOverviewSetup;
 
-    public PlayerReinforceCorrdidorEnd PlayerReinforceCorridorEnd { get; private set; }
+    public ReinforceCorrdidorEnd PlayerReinforceCorridorEnd { get; private set; }
 
     public Sprite2D PlayerReinforceCorridorStart { get; private set; }
 
-    public Sprite2D EnemyReinforceCorridorEnd { get; private set; }
+    public ReinforceCorrdidorEnd EnemyReinforceCorridorEnd { get; private set; }
 
     public Sprite2D EnemyReinforceCorridorStart { get; private set; }
 
@@ -85,10 +91,10 @@ public partial class LevelManager : Node
         PlayerView = GetNode<PlayerView>("PlayerView");
         FleetOverview = PlayerView.GetNode("CanvasLayer").GetNode<FleetOverview>("FleetDetails");
 
-        PlayerReinforceCorridorEnd = GetNode<PlayerReinforceCorrdidorEnd>("PlayerReinforceCorridorEnd");
+        PlayerReinforceCorridorEnd = GetNode<ReinforceCorrdidorEnd>("PlayerReinforceCorridorEnd");
         PlayerReinforceCorridorStart = GetNode<Sprite2D>("PlayerReinforceCorridorStart");
 
-        EnemyReinforceCorridorEnd = GetNode<Sprite2D>("EnemyReinforceCorridorEnd");
+        EnemyReinforceCorridorEnd = GetNode<ReinforceCorrdidorEnd>("EnemyReinforceCorridorEnd");
         EnemyReinforceCorridorStart = GetNode<Sprite2D>("EnemyReinforceCorridorStart");
         
         AudioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
@@ -101,6 +107,9 @@ public partial class LevelManager : Node
     {
         FleetOverview.EmptyUnitSlot(unit);
         PlayerUnits.Remove(unit);
+        HighlightedShips.Remove(unit);
+
+        DialougeStreamPlayer.PlayUnitDestroyedSound();
 
         if(unit.ShipClass == ShipClass.Picket)
         {
@@ -110,6 +119,14 @@ public partial class LevelManager : Node
         {
             PlayerReinforcePoints += (int)ShipClass.Crusier;
         }
+
+        GameMode.OnPlayerShipDestroyed(unit);
+    }
+
+    public void EnemyShipDestroyed(Unit unit)
+    {
+        EnemyUnits.Remove(unit);
+        GameMode.OnEnemyShipDestroyed(unit);
     }
 
     public void ReinforcePlayerShip(ShipClass shipClass)
@@ -219,8 +236,12 @@ public partial class LevelManager : Node
 
         GetTree().Root.AddChild(unit);
 
-        unit.UnitMovement.WarpTo(new Vector2(EnemyReinforceCorridorEnd.GlobalPosition.X + xPos, EnemyReinforceCorridorEnd.GlobalPosition.Y + yPos));
+        ReinforcePos pos = EnemyReinforceCorridorEnd.ReinforcePosList.FirstOrDefault(x => x.IsAvailable);
+        pos.IsAvailable = false;
 
+        unit.UnitMovement.WarpTo(pos.GlobalPosition);
+
+        GD.Print(unit.ShipClass);
         EnemyUnits.Add(unit);
     }
     

@@ -1,0 +1,110 @@
+[gd_scene load_steps=26 format=3 uid="uid://dctuvwnm8gioi"]
+
+[ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_atxrj"]
+[ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
+[ext_resource type="PackedScene" uid="uid://cfe0h4r0c43gm" path="res://Scenes/PlayerPicket.tscn" id="3_ayhkd"]
+[ext_resource type="PackedScene" uid="uid://dxl5etg5m8bnf" path="res://Scenes/PlayerFighter.tscn" id="4_6tn8u"]
+[ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_i51gk"]
+[ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="6_0mp2q"]
+[ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="7_m3gqh"]
+[ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="8_ps8jp"]
+[ext_resource type="PackedScene" uid="uid://bdow8dn04y45c" path="res://Scenes/PlayerView.tscn" id="8_sajfx"]
+[ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_hbb16"]
+[ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="9_uxlcb"]
+[ext_resource type="PackedScene" uid="uid://nxy6mca4gpct" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_qkmyg"]
+[ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_juncj"]
+[ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="12_agxf8"]
+[ext_resource type="Script" path="res://Scripts/CapturePoint.cs" id="13_g7bvw"]
+[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="14_08rsa"]
+[ext_resource type="PackedScene" uid="uid://cxgkg11sawj0m" path="res://Scenes/StrikeDialougePlayer.tscn" id="16_qi3u8"]
+[ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="17_t2qcw"]
+[ext_resource type="Script" path="res://Scripts/StrikeMusicPlayer.cs" id="18_ijn0r"]
+[ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="19_i5iyp"]
+[ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="20_4krl5"]
+[ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_k8des"]
+[ext_resource type="PackedScene" uid="uid://byv7wkwcgpuf6" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
+vertices = PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cb3dd"]
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("GameMode")]
+script = ExtResource("1_atxrj")
+CruiserScene = ExtResource("2_dn04u")
+PicketScene = ExtResource("3_ayhkd")
+DestroyerScene = ExtResource("4_6tn8u")
+RepairScene = ExtResource("5_i51gk")
+EnemyCapitalScene = ExtResource("6_0mp2q")
+EnemyPicketScene = ExtResource("19_i5iyp")
+EnemyCruiserScene = ExtResource("8_ps8jp")
+EnemyRepairScene = ExtResource("9_uxlcb")
+PlayerReinforcePoints = 10000
+EnemyReinforcePoints = 10000
+GameMode = NodePath("GameMode")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(942, -36.9999)
+scale = Vector2(11.3883, 7.59359)
+texture = ExtResource("7_m3gqh")
+
+[node name="PlayerView" parent="." instance=ExtResource("8_sajfx")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-14855, -4084)
+scale = Vector2(2.625, 2.76769)
+navigation_polygon = SubResource("NavigationPolygon_tgi5t")
+
+[node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("10_qkmyg")]
+position = Vector2(38, 45)
+
+[node name="PlayerReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(-21619, -50)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("9_hbb16")
+
+[node name="EnemyReinforceCorridorEnd" parent="." instance=ExtResource("20_pg4xa")]
+position = Vector2(12041, 4)
+
+[node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(21750, 50)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("9_hbb16")
+
+[node name="EnemyCommander" type="Node" parent="."]
+script = ExtResource("11_juncj")
+
+[node name="CapturePoint" type="Area2D" parent="."]
+position = Vector2(5993, 0)
+script = ExtResource("13_g7bvw")
+
+[node name="Sprite" type="Sprite2D" parent="CapturePoint"]
+texture = ExtResource("12_agxf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CapturePoint"]
+shape = SubResource("CircleShape2D_cb3dd")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("14_08rsa")]
+
+[node name="StrikeDialougePlayer" parent="." instance=ExtResource("16_qi3u8")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("17_t2qcw")
+volume_db = 0.001
+autoplay = true
+script = ExtResource("18_ijn0r")
+
+[node name="GameMode" parent="." node_paths=PackedStringArray("CapturePoint") instance=ExtResource("20_k8des")]
+script = ExtResource("20_4krl5")
+CapturePoint = NodePath("../CapturePoint")
+ObjectiveText = "Capture the Point"
+TimerAdditionalText = "Left in Match"
+
+[node name="MissionTimer" type="Timer" parent="GameMode"]
+
+[connection signal="body_entered" from="CapturePoint" to="CapturePoint" method="OnShipEntered"]
+[connection signal="body_exited" from="CapturePoint" to="CapturePoint" method="OnShipExitted"]
+[connection signal="timeout" from="GameMode/MissionTimer" to="GameMode" method="OnMissionClockExpired"]

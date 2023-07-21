@@ -38,7 +38,7 @@ SelectionBoxScene = ExtResource("2_kcewo")
 ShipDetailsScene = ExtResource("13_cra3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.2, 0.2)
 
 [node name="BoxFormation" parent="." instance=ExtResource("4_elkin")]
 script = ExtResource("5_4c4pa")
@@ -55,76 +55,86 @@ texture = ExtResource("2_enj2k")
 script = ExtResource("3_0u2l5")
 
 [node name="FleetDetails" type="Panel" parent="CanvasLayer"]
-offset_right = 175.0
-offset_bottom = 430.0
+offset_right = 168.0
+offset_bottom = 570.0
 script = ExtResource("3_ck51i")
 
 [node name="UnitSlot" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 174.0
-offset_bottom = 65.0
+offset_right = 172.0
+offset_bottom = 63.0
 
 [node name="UnitSlot2" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.167
-anchor_bottom = 0.167
-offset_left = 2.0
-offset_top = 0.189995
-offset_right = 174.0
-offset_bottom = 63.19
+anchor_top = 0.126
+anchor_bottom = 0.126
+offset_top = 0.18
+offset_right = 172.0
+offset_bottom = 63.18
 
 [node name="UnitSlot3" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.342
-anchor_right = 0.011
-anchor_bottom = 0.342
-offset_left = 2.0
-offset_top = -0.0599976
-offset_right = 172.075
-offset_bottom = 62.94
+anchor_top = 0.253
+anchor_bottom = 0.253
+offset_top = -0.210007
+offset_right = 171.923
+offset_bottom = 62.79
 
 [node name="UnitSlot4" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.505
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 173.0
-offset_bottom = 62.85
+anchor_top = 0.379
+anchor_bottom = 0.379
+offset_top = -0.0299988
+offset_right = 172.0
+offset_bottom = 63.67
 
 [node name="UnitSlot5" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.674
-anchor_bottom = 0.674
-offset_left = 1.0
-offset_top = 0.179993
-offset_right = 173.0
-offset_bottom = 63.18
+anchor_top = 0.505
+anchor_bottom = 0.505
+offset_top = 0.149963
+offset_right = 172.0
+offset_bottom = 63.15
 
 [node name="UnitSlot6" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.837
-anchor_bottom = 0.837
-offset_left = 1.0
-offset_top = 0.0899963
-offset_right = 173.0
-offset_bottom = 63.09
+anchor_top = 0.633
+anchor_bottom = 0.633
+offset_top = -0.809998
+offset_right = 172.0
+offset_bottom = 62.19
+
+[node name="UnitSlot7" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.756
+anchor_bottom = 0.756
+offset_top = 0.0799866
+offset_right = 172.0
+offset_bottom = 63.08
+
+[node name="UnitSlot8" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.882
+anchor_bottom = 0.882
+offset_top = 0.259979
+offset_right = 172.0
+offset_bottom = 63.26
 
 [node name="ReinforceDetails" type="Panel" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 1.0
-anchor_top = 0.044
+anchor_top = 0.056
 anchor_right = 1.0
-anchor_bottom = 0.044
+anchor_bottom = 0.056
 offset_left = -220.0
-offset_top = 7.488
-offset_bottom = 222.488
+offset_top = -0.288002
+offset_bottom = 214.712
 grow_horizontal = 0
 
 [node name="ReinforceSlot" type="Control" parent="CanvasLayer/ReinforceDetails"]
@@ -232,7 +242,7 @@ offset_bottom = 35.0
 grow_horizontal = 0
 theme = SubResource("Theme_58ahi")
 theme_override_fonts/font = ExtResource("5_w06ox")
-text = "Reinforce"
+text = "REINFORCE"
 
 [node name="ShipAbilityDetails" type="Panel" parent="CanvasLayer"]
 anchors_preset = 3
@@ -273,21 +283,16 @@ offset_bottom = 37.004
 theme = SubResource("Theme_n8xg8")
 text = "ABILITY"
 
-[node name="DoomsdayClock" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.034
-anchor_top = 0.954
-anchor_right = 0.034
-anchor_bottom = 0.954
-offset_left = -0.168003
-offset_top = -7.19202
-offset_right = 407.832
-offset_bottom = 28.808
-grow_vertical = 0
+[node name="TimerText" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -204.0
+offset_right = 204.0
+offset_bottom = 36.0
+grow_horizontal = 2
 theme = SubResource("Theme_uk4j0")
 text = "2:00 UNTIL ENEMY REINFORCEMENTS"
-
-[node name="DoomsdayTimer" type="Timer" parent="CanvasLayer"]
 
 [node name="ObjectiveText" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = -1
@@ -442,7 +447,6 @@ wait_time = 0.1
 [connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/RetreatButton" to="CanvasLayer" method="RetreatButtonPressed"]
 [connection signal="mouse_entered" from="CanvasLayer/ShipAbilityDetails/TacticalAbilityButton" to="." method="Hovered"]
 [connection signal="pressed" from="CanvasLayer/ShipAbilityDetails/TacticalAbilityButton" to="CanvasLayer" method="TacticalAbilityButtonPressed"]
-[connection signal="timeout" from="CanvasLayer/DoomsdayTimer" to="CanvasLayer" method="OnDoomsdayTimerExpired"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="OnResumeButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ExitGameButton" to="CanvasLayer/PauseMenu" method="ExitGame"]
 [connection signal="value_changed" from="CanvasLayer/PauseMenu/MusicSlider" to="CanvasLayer/PauseMenu" method="OnMusicVolumeSlideEnded"]

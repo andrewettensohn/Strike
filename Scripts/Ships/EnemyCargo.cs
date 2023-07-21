@@ -69,15 +69,7 @@ public partial class EnemyCargo : Unit
 
 	public override void HandlePostRetreat()
 	{
-		if(IsPlayerSide)
-		{
-			LevelManager.PlayerShipDestroyed(this);
-			LevelManager.PlayerUnits.Remove(this);
-		}
-		else
-		{
-			LevelManager.EnemyUnits.Remove(this);
-		}
+		LevelManager.EnemyUnits.Remove(this);
 
         //TODO: Lose condition on LevelManager?
         //Task.Run(async () => await LevelManager.OnLose());

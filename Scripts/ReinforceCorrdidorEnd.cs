@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class PlayerReinforceCorrdidorEnd : Node2D
+public partial class ReinforceCorrdidorEnd : Node2D
 {
 	public List<ReinforcePos> ReinforcePosList = new List<ReinforcePos>();
 
