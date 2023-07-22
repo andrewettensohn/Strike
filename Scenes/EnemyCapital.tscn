@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_dlfyk"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="8_50g48"]
 [ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_pwoif"]
-[ext_resource type="Script" path="res://Scripts/Weapons/Laser.cs" id="9_gk2k5"]
+[ext_resource type="PackedScene" uid="uid://lv1bfxvys2eh" path="res://Scenes/Laser.tscn" id="10_a513l"]
 [ext_resource type="Texture2D" uid="uid://gql8lbslp42t" path="res://Art/Sprites/Icon/EnemyCruiserIcon.png" id="10_hf6sr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
@@ -88,14 +88,7 @@ texture = ExtResource("8_pwoif")
 
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("8_50g48")]
 
-[node name="Laser" type="Node" parent="."]
-script = ExtResource("9_gk2k5")
-LaserDuration = 3
-CoolDownTime = 5
-
-[node name="Line2D" type="Line2D" parent="Laser"]
-width = 20.0
-default_color = Color(1, 0.113725, 0.137255, 1)
+[node name="Laser" parent="." instance=ExtResource("10_a513l")]
 
 [node name="UnitIcon" type="Sprite2D" parent="."]
 position = Vector2(-3, 1.49998)

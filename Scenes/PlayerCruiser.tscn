@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2hcy5ewe6q6w"]
+[gd_scene load_steps=16 format=3 uid="uid://2hcy5ewe6q6w"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
 [ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_ate5b"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_88frr"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_8hhyl"]
 [ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_i4cwf"]
+[ext_resource type="PackedScene" uid="uid://lv1bfxvys2eh" path="res://Scenes/Laser.tscn" id="7_sjj31"]
 [ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_tsaio"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="10_ytluu"]
 [ext_resource type="Texture2D" uid="uid://ca10tsv2amyx0" path="res://Art/Sprites/Icon/PlayerCruiserIcon.png" id="11_oalj1"]
@@ -67,6 +68,10 @@ offset_bottom = 183.0
 MissileScene = ExtResource("4_iw01x")
 
 [node name="FlakTurret" parent="." instance=ExtResource("4_c7ggc")]
+
+[node name="Laser" parent="." instance=ExtResource("7_sjj31")]
+CoolDownTime = 10
+Damage = 3
 
 [node name="WeaponRange" type="Area2D" parent="."]
 collision_mask = 3

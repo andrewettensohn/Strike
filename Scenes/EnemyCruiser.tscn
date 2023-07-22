@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cv2n67n30fno5"]
+[gd_scene load_steps=15 format=3 uid="uid://cv2n67n30fno5"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_gpx3y"]
 [ext_resource type="Texture2D" uid="uid://cexxt6v0a6gmx" path="res://Art/Sprites/Ships/EnemyCruiser.png" id="2_7s6je"]
 [ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_ualdo"]
 [ext_resource type="PackedScene" uid="uid://byyij7uv7gb0h" path="res://Scenes/MissileLauncher.tscn" id="3_hk0th"]
+[ext_resource type="PackedScene" uid="uid://lv1bfxvys2eh" path="res://Scenes/Laser.tscn" id="4_djaod"]
 [ext_resource type="PackedScene" uid="uid://e55ybrqp2srw" path="res://Scenes/FlakTurret.tscn" id="4_li7ox"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_w1r67"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_dykp7"]
@@ -59,6 +60,10 @@ offset_left = -94.0
 offset_top = -62.0
 offset_right = 113.0
 offset_bottom = 65.0
+
+[node name="Laser" parent="." instance=ExtResource("4_djaod")]
+CoolDownTime = 10
+Damage = 3
 
 [node name="MissileLauncher" parent="." instance=ExtResource("3_hk0th")]
 

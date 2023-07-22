@@ -170,24 +170,31 @@ public partial class Unit : CharacterBody2D
 
 	public override async void _PhysicsProcess(double delta)
 	{
-		UnitMovement.Navigate();
-
-		if(IsWarping) return;
-
-		CheckForTarget();
-
-		if(!LevelManager.AreMultipleUnitsSelected)
+		try
 		{
-			UnitCommand.GetUserInput();
+			UnitMovement.Navigate();
+
+			if(IsWarping) return;
+
+			CheckForTarget();
+
+			if(!LevelManager.AreMultipleUnitsSelected)
+			{
+				UnitCommand.GetUserInput();
+			}
+
+			HandleOffenseBehavior();
+
+			await HandleCombat();
+			await HandleDefense();
+			await HandleTactical();
+			
+			_unitIcon.Visible = LevelManager.IsAtFurthestZoom;
 		}
-
-		HandleOffenseBehavior();
-
-		await HandleCombat();
-		await HandleDefense();
-		await HandleTactical();
-		
-		_unitIcon.Visible = LevelManager.IsAtFurthestZoom;
+		catch(Exception ex)
+		{
+			GD.Print(ex.Message);
+		}
 	}
 
 	public void OnNavAgentVelocityComputed(Vector2 safeVelocity)

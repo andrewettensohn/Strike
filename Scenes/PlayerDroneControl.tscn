@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkcpr5cmjmbeq"]
+[gd_scene load_steps=8 format=3 uid="uid://dkcpr5cmjmbeq"]
 
-[ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_ogi5w"]
-[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_3oosd"]
+[ext_resource type="Script" path="res://Scripts/PlayerDroneControl.cs" id="1_74syr"]
 [ext_resource type="Texture2D" uid="uid://rt3uqkuarvpd" path="res://Art/Sprites/Ships/Carrier.png" id="3_017ra"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="7_ch3by"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="11_rpnci"]
@@ -16,20 +15,7 @@ radius = 2717.32
 
 [node name="PlayerDroneControl" type="CharacterBody2D"]
 collision_mask = 2
-script = ExtResource("1_ogi5w")
-ClassName = "Crusier"
-Health = 10.0
-MaxSpeed = 50
-Weight = 0.005
-SpeedWhileTurning = 5
-IsPlayerSide = true
-HostileTargetGroup = 1
-PathDesiredDistance = 1.0
-TargetDesiredDistance = 100.0
-TurningAngleThreshold = 0.97
-TacticalAbilityDuration = 15
-ExplosionScene = ExtResource("2_3oosd")
-ExplosionScale = 1.0
+script = ExtResource("1_74syr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, -4)
