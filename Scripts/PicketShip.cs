@@ -37,11 +37,18 @@ public partial class PicketShip : Unit
 
     protected override async Task HandleDefense()
     {
-        if(_isDefenseOnCoolDown || !_missilesInRange.Any()) return;
+        if(_isDefenseOnCoolDown || (!_missilesInRange.Any() && !_dronesInRange.Any())) return;
 
+        Drone drone = _dronesInRange.FirstOrDefault(x => IsInstanceValid(x));
         Missile missile = _missilesInRange.FirstOrDefault(x => IsInstanceValid(x));
 
-        if(missile != null)
+        if(drone != null)
+        {
+            GD.Print("Should fire drone");
+            _flakTurretOne.FireBullet(drone, MyTargetGroup, HostileTargetGroup, GlobalPosition);
+            _flakTurretTwo.FireBullet(drone, MyTargetGroup, HostileTargetGroup, GlobalPosition);
+        }
+        else if(missile != null)
         {
             _flakTurretOne.FireBullet(missile, MyTargetGroup, HostileTargetGroup, GlobalPosition);
 			_flakTurretTwo.FireBullet(missile, MyTargetGroup, HostileTargetGroup, GlobalPosition);

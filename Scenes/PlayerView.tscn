@@ -12,10 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="6_hqc52"]
 [ext_resource type="Script" path="res://Scripts/UI/ReinforceSlot.cs" id="6_hx3n3"]
 [ext_resource type="PackedScene" uid="uid://dcwwif5wowkl7" path="res://Scenes/RadialFormation.tscn" id="6_pty0s"]
-[ext_resource type="Texture2D" uid="uid://dsu3sjt1pul5b" path="res://Art/Sprites/Ships/Fighter1.png" id="9_i7d24"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
 [ext_resource type="PackedScene" uid="uid://b0j5u8ti5ow0y" path="res://Scenes/ShipDetails.tscn" id="13_cra3c"]
+[ext_resource type="Texture2D" uid="uid://rt3uqkuarvpd" path="res://Art/Sprites/Ships/Carrier.png" id="14_cja7w"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="14_uudxh"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="15_72cgx"]
 
@@ -167,13 +167,12 @@ offset_top = 2.0
 offset_right = 98.08
 offset_bottom = 80.065
 script = ExtResource("6_hx3n3")
-ShipClass = 100
+ShipClass = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
 position = Vector2(47, 43)
-rotation = 4.71239
 scale = Vector2(0.0698755, 0.0757946)
-texture = ExtResource("9_i7d24")
+texture = ExtResource("14_cja7w")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
 layout_mode = 0
@@ -181,7 +180,7 @@ offset_left = 1.0
 offset_right = 100.0
 offset_bottom = 31.0
 theme = SubResource("Theme_dg5gf")
-text = "FIGHTER 1000"
+text = "DRONE 1000"
 
 [node name="ReinforceSlot3" type="Control" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1

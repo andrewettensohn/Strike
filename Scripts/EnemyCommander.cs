@@ -48,7 +48,7 @@ public partial class EnemyCommander : Node
 			{
 				classValue = 2;
 			}
-			else if(unit.ShipClass == ShipClass.Destroyer)
+			else if(unit.ShipClass == ShipClass.DroneControl)
 			{
 				classValue = 1;
 			}

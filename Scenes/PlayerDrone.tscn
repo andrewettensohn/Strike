@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dywqwa1g7hwuu"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/Drone.cs" id="1_2uh1k"]
+[ext_resource type="Texture2D" uid="uid://cm1bjc0ambqkv" path="res://Art/Sprites/Icon/PlayerDrone.png" id="2_ofa28"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0a2u"]
+radius = 57.0
+
+[node name="PlayerDrone" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_2uh1k")
+Speed = 300.0
+Health = 5
+DamageCaused = 1
+CombatCoolDownTime = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n0a2u")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0.930399, -0.133996)
+rotation = 1.5708
+scale = Vector2(0.613192, 0.576933)
+texture = ExtResource("2_ofa28")
+
+[connection signal="area_entered" from="." to="." method="BulletEntered"]
+[connection signal="body_entered" from="." to="." method="UnitEntered"]
+[connection signal="body_exited" from="." to="." method="UnitExitted"]

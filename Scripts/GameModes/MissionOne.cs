@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class MissionOne : Skirmish
+public partial class MissionOne : GameMode
 {
 
 	[Export]

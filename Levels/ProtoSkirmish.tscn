@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_atxrj"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
 [ext_resource type="PackedScene" uid="uid://cfe0h4r0c43gm" path="res://Scenes/PlayerPicket.tscn" id="3_ayhkd"]
-[ext_resource type="PackedScene" uid="uid://dxl5etg5m8bnf" path="res://Scenes/PlayerFighter.tscn" id="4_6tn8u"]
+[ext_resource type="PackedScene" uid="uid://dkcpr5cmjmbeq" path="res://Scenes/PlayerDroneControl.tscn" id="4_0n7eh"]
 [ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_i51gk"]
 [ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="6_0mp2q"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="7_m3gqh"]
@@ -35,7 +35,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(14877.7, -4137.02, 1484
 script = ExtResource("1_atxrj")
 CruiserScene = ExtResource("2_dn04u")
 PicketScene = ExtResource("3_ayhkd")
-DestroyerScene = ExtResource("4_6tn8u")
+DestroyerScene = ExtResource("4_0n7eh")
 RepairScene = ExtResource("5_i51gk")
 EnemyCapitalScene = ExtResource("6_0mp2q")
 EnemyPicketScene = ExtResource("19_i5iyp")

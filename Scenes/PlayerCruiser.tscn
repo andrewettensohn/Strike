@@ -34,6 +34,7 @@ HostileTargetGroup = 1
 PathDesiredDistance = 1.0
 TargetDesiredDistance = 100.0
 TurningAngleThreshold = 0.97
+ShipClass = 300
 TacticalAbilityDuration = 15
 ExplosionScene = ExtResource("2_ate5b")
 ExplosionScale = 1.0

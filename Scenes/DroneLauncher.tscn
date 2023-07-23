@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://di3vd5o3fj187"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/DroneLauncher.cs" id="1_06ns5"]
+
+[node name="DroneLauncher" type="Node"]
+script = ExtResource("1_06ns5")

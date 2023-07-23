@@ -130,6 +130,8 @@ public partial class Unit : CharacterBody2D
 
 	protected List<Missile> _missilesInRange = new List<Missile>();
 
+	protected List<Drone> _dronesInRange = new List<Drone>();
+
 	protected bool _isDying;
 
 	private Sprite2D _unitIcon;
@@ -211,6 +213,7 @@ public partial class Unit : CharacterBody2D
 
 	public void DefenseRangeEntered(Area2D area)
 	{
+		CheckDroneInRange(area, true);
 		CheckMissileInRange(area, true);
 	} 
 
@@ -221,6 +224,7 @@ public partial class Unit : CharacterBody2D
 
 	public void DefenseRangeExitted(Area2D area)
 	{
+		CheckDroneInRange(area, false);
 		CheckMissileInRange(area, false);
 	}
 
@@ -262,6 +266,24 @@ public partial class Unit : CharacterBody2D
 		else
 		{
 			_missilesInRange.Remove(missile);
+		}
+	}
+
+	protected void CheckDroneInRange(Node2D node, bool shouldAdd)
+	{
+		if(node as Drone == null) return;
+
+		Drone drone = (Drone)node;
+	
+		if(drone.Parent.MyTargetGroup != HostileTargetGroup) return;
+		
+		if(shouldAdd)
+		{
+			_dronesInRange.Add(drone);
+		}
+		else
+		{
+			_dronesInRange.Remove(drone);
 		}
 	}
 	

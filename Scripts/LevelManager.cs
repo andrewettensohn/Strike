@@ -146,20 +146,20 @@ public partial class LevelManager : Node
             PlayerReinforcePoints -= (int)ShipClass.Crusier;
             SpawnPlayerShip(CruiserScene);
         }
-        else if(shipClass == ShipClass.Destroyer && PlayerReinforcePoints >= (int)ShipClass.Destroyer)
-        {
-            PlayerReinforcePoints -= (int)ShipClass.Destroyer;
-            SpawnPlayerShip(DestroyerScene);
-        }
+        // else if(shipClass == ShipClass. && PlayerReinforcePoints >= (int)ShipClass.Destroyer)
+        // {
+        //     PlayerReinforcePoints -= (int)ShipClass.Destroyer;
+        //     SpawnPlayerShip(DestroyerScene);
+        // }
         else if(shipClass == ShipClass.Repair && PlayerReinforcePoints >= (int)ShipClass.Repair)
         {
             PlayerReinforcePoints -= (int)ShipClass.Repair;
             SpawnPlayerShip(RepairScene);
         }
-        else if(shipClass == ShipClass.Fighter && PlayerReinforcePoints >= (int)ShipClass.Fighter)
+        else if(shipClass == ShipClass.DroneControl && PlayerReinforcePoints >= (int)ShipClass.DroneControl)
         {
             //TODO: Change this to fighter scene, hacking with destroyer scene slot
-            PlayerReinforcePoints -= (int)ShipClass.Fighter;
+            PlayerReinforcePoints -= (int)ShipClass.DroneControl;
             SpawnPlayerShip(DestroyerScene);
         }
     }

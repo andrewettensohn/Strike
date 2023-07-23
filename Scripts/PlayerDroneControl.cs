@@ -6,15 +6,15 @@ using System.Linq;
 public partial class PlayerDroneControl : Unit
 {
 	private MissileLauncher _missileLauncher;
-    private Laser _laser;
+    private DroneLauncher _droneLauncher;
 
     public override void _Ready()
     {
         _missileLauncher = GetNode<MissileLauncher>("MissileLauncher");
         CombatCoolDownTime = _missileLauncher.CoolDownTime;
 
-        _laser = GetNode<Laser>("Laser");
-        TacticalCoolDownTime = _laser.CoolDownTime;
+        _droneLauncher = GetNode<DroneLauncher>("DroneLauncher");
+        TacticalCoolDownTime = _droneLauncher.CoolDownTime;
 
         BaseReady();
     }
@@ -23,7 +23,7 @@ public partial class PlayerDroneControl : Unit
     {
         if(_isCombatOnCoolDown || Target == null || !TargetsInWeaponRange.Any(x => x == Target)) return;
 
-        _missileLauncher.FireMissile(Target, MyTargetGroup, HostileTargetGroup, GlobalPosition);
+        //_missileLauncher.FireMissile(Target, MyTargetGroup, HostileTargetGroup, GlobalPosition);
 
         await base.HandleCombat();
     }
@@ -50,14 +50,10 @@ public partial class PlayerDroneControl : Unit
         IsTacticalInUse = true;
         IsTacticalAbilityPressed = false;
 
-        await _laser.FireLaser(Target, this);
-
-        // _webifier.ToggleWeb(true, Target, this);
+        _droneLauncher.LaunchDrone(this, this.GlobalPosition);
 
         TacticalDurationTimer = GetTree().CreateTimer(TacticalAbilityDuration);
         await ToSignal(TacticalDurationTimer, "timeout");
-
-        //_webifier.ToggleWeb(false, Target, this);
 
         IsTacticalInUse = false;
         

@@ -3,21 +3,21 @@
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_8p6y1"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="1_ajgjb"]
 [ext_resource type="PackedScene" uid="uid://bdow8dn04y45c" path="res://Scenes/PlayerView.tscn" id="1_kvrpu"]
-[ext_resource type="PackedScene" uid="uid://dxl5etg5m8bnf" path="res://Scenes/PlayerFighter.tscn" id="4_fft5q"]
+[ext_resource type="PackedScene" uid="uid://dkcpr5cmjmbeq" path="res://Scenes/PlayerDroneControl.tscn" id="4_6fmqw"]
 [ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_5h5bn"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="6_neyy0"]
 [ext_resource type="PackedScene" uid="uid://cfe0h4r0c43gm" path="res://Scenes/PlayerPicket.tscn" id="7_sxxyc"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_y65ug"]
-[ext_resource type="PackedScene" uid="uid://7byqxeh0mul3" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_mn30o"]
+[ext_resource type="PackedScene" uid="uid://nxy6mca4gpct" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_mn30o"]
 [ext_resource type="Script" path="res://Scripts/EnemyCommander.cs" id="11_6j8rj"]
+[ext_resource type="PackedScene" uid="uid://byv7wkwcgpuf6" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="11_yndps"]
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="14_alapb"]
 [ext_resource type="PackedScene" uid="uid://cujv3u60b5fi3" path="res://Scenes/EnemyCargo.tscn" id="15_t1efq"]
 [ext_resource type="PackedScene" uid="uid://cxgkg11sawj0m" path="res://Scenes/StrikeDialougePlayer.tscn" id="16_f5idm"]
 [ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="16_u32in"]
-[ext_resource type="Script" path="res://Scripts/ObjectiveConditions.cs" id="17_1puqx"]
 [ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="17_cq1oq"]
-[ext_resource type="PackedScene" uid="uid://tt8m30hpcmgv" path="res://Scenes/EnemyPicket.tscn" id="18_m02gt"]
 [ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="18_n58pq"]
+[ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="19_7n5c7"]
 [ext_resource type="Script" path="res://Scripts/StrikeMusicPlayer.cs" id="19_cts2g"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_sno3e"]
 
@@ -30,12 +30,11 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(9254, -3987, 9362, 5794
 script = ExtResource("1_8p6y1")
 CruiserScene = ExtResource("6_neyy0")
 PicketScene = ExtResource("7_sxxyc")
-DestroyerScene = ExtResource("4_fft5q")
+DestroyerScene = ExtResource("4_6fmqw")
 RepairScene = ExtResource("5_5h5bn")
 EnemyCapitalScene = ExtResource("17_cq1oq")
 PlayerReinforcePoints = 1000000000
 EnemyReinforcePoints = 1000
-DoomsdayTime = 10000000
 GameMode = NodePath("GameMode")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -50,11 +49,6 @@ position = Vector2(-2297, -849)
 scale = Vector2(2.625, 2.76769)
 navigation_polygon = SubResource("NavigationPolygon_tgi5t")
 
-[node name="EnemyReinforceCorridorEnd" type="Sprite2D" parent="."]
-position = Vector2(5849, 1482)
-scale = Vector2(0.732365, 0.561555)
-texture = ExtResource("9_y65ug")
-
 [node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("10_mn30o")]
 position = Vector2(-111, -3700)
 
@@ -62,6 +56,9 @@ position = Vector2(-111, -3700)
 position = Vector2(-8452, -11383)
 scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_y65ug")
+
+[node name="EnemyReinforceCorridorEnd" parent="." instance=ExtResource("11_yndps")]
+position = Vector2(12041, 4)
 
 [node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
 position = Vector2(21275, 14177)
@@ -78,10 +75,15 @@ texture = ExtResource("14_alapb")
 [node name="EnemyCargo" parent="." instance=ExtResource("15_t1efq")]
 position = Vector2(278, 4560)
 
-[node name="StrikeAudioPlayer" parent="." instance=ExtResource("16_u32in")]
+[node name="GameMode" parent="." node_paths=PackedStringArray("CargoShip") instance=ExtResource("20_sno3e")]
+CargoShip = NodePath("../EnemyCargo")
 
-[node name="ObjectiveConditions" type="Node" parent="."]
-script = ExtResource("17_1puqx")
+[node name="MissionTimer" type="Timer" parent="GameMode"]
+
+[node name="EnemyCruiser" parent="." instance=ExtResource("19_7n5c7")]
+position = Vector2(1894, -466)
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("16_u32in")]
 
 [node name="StrikeDialougePlayer" parent="." instance=ExtResource("16_f5idm")]
 
@@ -91,15 +93,3 @@ stream = ExtResource("18_n58pq")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("19_cts2g")
-
-[node name="EnemyPicket" parent="." instance=ExtResource("18_m02gt")]
-position = Vector2(1228, -1480)
-
-[node name="EnemyPicket2" parent="." instance=ExtResource("18_m02gt")]
-position = Vector2(2406, -1586)
-
-[node name="EnemyPicket3" parent="." instance=ExtResource("18_m02gt")]
-position = Vector2(2097, -742)
-
-[node name="GameMode" parent="." node_paths=PackedStringArray("CargoShip") instance=ExtResource("20_sno3e")]
-CargoShip = NodePath("../EnemyCargo")
