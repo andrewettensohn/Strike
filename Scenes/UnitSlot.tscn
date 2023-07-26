@@ -94,6 +94,7 @@ offset_bottom = 72.0
 
 [node name="AbilityIcon" type="Sprite2D" parent="."]
 position = Vector2(199, 36)
+rotation = 1.5708
 scale = Vector2(0.3, 0.229167)
 texture = ExtResource("4_gkafj")
 
@@ -106,6 +107,7 @@ offset_left = 125.0
 offset_top = -6.0
 offset_right = 165.0
 offset_bottom = 31.0
+rotation = 1.57225
 theme = SubResource("Theme_ak01e")
 
 [connection signal="mouse_entered" from="." to="." method="Hovered"]

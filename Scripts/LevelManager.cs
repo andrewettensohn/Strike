@@ -180,7 +180,7 @@ public partial class LevelManager : Node
         else
         {
             HighlightedShips.ForEach(x => {
-                PlayerView.ShowShipDetails(x);
+                PlayerView.ShowShipDetails(x); //ObjectDisposedException?
                 x.WeaponRangeIcon.Visible = true;
             });
 

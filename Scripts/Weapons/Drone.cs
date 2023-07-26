@@ -29,27 +29,34 @@ public partial class Drone : Area2D
 
  	public override async void _PhysicsProcess(double delta)
     {
-		if(!IsInstanceValid(Parent))
-		{
-			QueueFree();
-			return;
-		}
-
-        if(IsInstanceValid(Parent.Target))
+        try
         {
-            LookAt(Parent.Target.GlobalPosition);
-            GlobalPosition = GlobalPosition.MoveToward(Parent.Target.GlobalPosition, (float)delta * Speed);
-        }
-		else
-		{
-			//Drone might start doing damage without being attached
-			QueueFree();
-		}
+            if(!IsInstanceValid(Parent))
+            {
+                QueueFree();
+                return;
+            }
 
-		if(_isAttachedToTarget && !_isCombatOnCoolDown)
-		{
-			await HandleCombat();
-		}
+            if(IsInstanceValid(Parent.Target))
+            {
+                LookAt(Parent.Target.GlobalPosition);
+                GlobalPosition = GlobalPosition.MoveToward(Parent.Target.GlobalPosition, (float)delta * Speed);
+            }
+            else
+            {
+                //Drone might start doing damage without being attached
+                QueueFree();
+            }
+
+            if(_isAttachedToTarget && !_isCombatOnCoolDown)
+            {
+                await HandleCombat();
+            }
+        }
+        catch(Exception ex)
+        {
+            GD.Print(ex.Message);
+        }
     }
 
 	public void UnitEntered(Node2D node)

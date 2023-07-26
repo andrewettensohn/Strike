@@ -44,7 +44,6 @@ public partial class PicketShip : Unit
 
         if(drone != null)
         {
-            GD.Print("Should fire drone");
             _flakTurretOne.FireBullet(drone, MyTargetGroup, HostileTargetGroup, GlobalPosition);
             _flakTurretTwo.FireBullet(drone, MyTargetGroup, HostileTargetGroup, GlobalPosition);
         }
