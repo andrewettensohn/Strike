@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0nm7aw2y4t05"]
+[gd_scene load_steps=9 format=3 uid="uid://c0nm7aw2y4t05"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UnitSlot.cs" id="1_46rm6"]
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="1_yekhq"]
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="2_w3umr"]
+[ext_resource type="Texture2D" uid="uid://ciopi733n24vo" path="res://Art/Icons/Hex/slice25.png" id="4_gkafj"]
 
 [sub_resource type="Theme" id="Theme_4ksnf"]
 default_font = ExtResource("2_w3umr")
@@ -12,6 +13,10 @@ default_font_size = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gawyj"]
 bg_color = Color(0.443137, 0.654902, 0.564706, 1)
+
+[sub_resource type="Theme" id="Theme_ak01e"]
+default_font = ExtResource("2_w3umr")
+default_font_size = 30
 
 [node name="UnitSlot" type="Control"]
 layout_mode = 3
@@ -60,5 +65,49 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_gawyj")
 value = 20.0
 show_percentage = false
 
+[node name="AbilityInUseRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_left = 167.0
+offset_top = 1.0
+offset_right = 231.0
+offset_bottom = 71.0
+color = Color(0, 0.964706, 0.643137, 1)
+
+[node name="AbilityCoolDownRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.025
+offset_left = 167.0
+offset_top = 1.0
+offset_right = 231.0
+offset_bottom = 70.0
+color = Color(0.976471, 0, 0.0392157, 1)
+
+[node name="AbilityButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 167.0
+offset_right = 231.0
+offset_bottom = 72.0
+
+[node name="AbilityIcon" type="Sprite2D" parent="."]
+position = Vector2(199, 36)
+scale = Vector2(0.3, 0.229167)
+texture = ExtResource("4_gkafj")
+
+[node name="AbilityCoolDownTime" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6
+anchor_bottom = 0.6
+offset_left = 125.0
+offset_top = -6.0
+offset_right = 165.0
+offset_bottom = 31.0
+theme = SubResource("Theme_ak01e")
+
 [connection signal="mouse_entered" from="." to="." method="Hovered"]
 [connection signal="mouse_exited" from="." to="." method="Unhovered"]
+[connection signal="pressed" from="AbilityButton" to="." method="AbilityButtonPressed"]

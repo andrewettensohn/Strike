@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdow8dn04y45c"]
+[gd_scene load_steps=27 format=3 uid="uid://bdow8dn04y45c"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
@@ -12,8 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="6_hqc52"]
 [ext_resource type="Script" path="res://Scripts/UI/ReinforceSlot.cs" id="6_hx3n3"]
 [ext_resource type="PackedScene" uid="uid://dcwwif5wowkl7" path="res://Scenes/RadialFormation.tscn" id="6_pty0s"]
+[ext_resource type="Texture2D" uid="uid://bth8ggmmjdcwc" path="res://Art/Icons/Hex/slice30.svg" id="10_mukah"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
+[ext_resource type="Texture2D" uid="uid://ciopi733n24vo" path="res://Art/Icons/Hex/slice25.png" id="10_swh5w"]
+[ext_resource type="Texture2D" uid="uid://hhoqvfgb6k0s" path="res://Art/Icons/Hex/slice37.png" id="11_mcbdj"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
+[ext_resource type="Texture2D" uid="uid://cj8ck82pcfjt3" path="res://Art/Icons/Hex/slice41.svg" id="12_x07lu"]
 [ext_resource type="PackedScene" uid="uid://b0j5u8ti5ow0y" path="res://Scenes/ShipDetails.tscn" id="13_cra3c"]
 [ext_resource type="Texture2D" uid="uid://rt3uqkuarvpd" path="res://Art/Sprites/Ships/Carrier.png" id="14_cja7w"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="14_uudxh"]
@@ -58,6 +62,10 @@ script = ExtResource("3_0u2l5")
 offset_right = 168.0
 offset_bottom = 570.0
 script = ExtResource("3_ck51i")
+PicketAbilityIcon = ExtResource("10_swh5w")
+CuriserAbilityIcon = ExtResource("11_mcbdj")
+DroneControlAbilityIcon = ExtResource("12_x07lu")
+RepairAbilityIcon = ExtResource("10_mukah")
 
 [node name="UnitSlot" parent="CanvasLayer/FleetDetails" instance=ExtResource("5_xivxb")]
 offset_right = 172.0
@@ -135,7 +143,6 @@ anchor_bottom = 0.056
 offset_left = -220.0
 offset_top = -0.288002
 offset_bottom = 214.712
-grow_horizontal = 0
 
 [node name="ReinforceSlot" type="Control" parent="CanvasLayer/ReinforceDetails"]
 anchors_preset = 0
@@ -244,6 +251,7 @@ theme_override_fonts/font = ExtResource("5_w06ox")
 text = "REINFORCE"
 
 [node name="ShipAbilityDetails" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

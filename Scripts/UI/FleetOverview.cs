@@ -5,6 +5,18 @@ using System.Linq;
 
 public partial class FleetOverview : Control
 {
+    [Export]
+    public CompressedTexture2D PicketAbilityIcon;
+
+    [Export]
+    public CompressedTexture2D CuriserAbilityIcon;
+
+    [Export]
+    public CompressedTexture2D DroneControlAbilityIcon;
+
+    [Export]
+    public CompressedTexture2D RepairAbilityIcon;
+
     private List<UnitSlot> _unitSlots = new List<UnitSlot>();
 
 	// Called when the node enters the scene tree for the first time.
@@ -16,7 +28,7 @@ public partial class FleetOverview : Control
 			if(node.Name.ToString().Contains("UnitSlot"))
 			{
 				UnitSlot unitSlot = (UnitSlot)node;
-				//unitSlot.ParentUnitDeck = this;
+                unitSlot.FleetOverview = this;
 				_unitSlots.Add(unitSlot);
 			}
 		}
