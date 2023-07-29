@@ -70,7 +70,7 @@ public partial class UnitSlot : Control
 
 		if (Input.IsActionJustPressed("ui_select") && IsHovered)
 		{
-			_isSelected = true;
+			//_isSelected = true;
             Unit.LevelManager.SelectedUnitSlot = this;
             Unit.UnitCommand.OnSelected();
 		}

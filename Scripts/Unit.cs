@@ -180,10 +180,7 @@ public partial class Unit : CharacterBody2D
 
 			CheckForTarget();
 
-			if(!LevelManager.AreMultipleUnitsSelected)
-			{
-				UnitCommand.GetUserInput();
-			}
+			UnitCommand.GetUserInput();
 
 			HandleOffenseBehavior();
 
@@ -368,7 +365,7 @@ public partial class Unit : CharacterBody2D
 	{
 		IsHovered = false;
 
-		if(!IsSelected)
+		if(!IsSelected && !LevelManager.HighlightedShips.Any(x => x == this))
 		{
 			WeaponRangeIcon.Visible = false;
 		}

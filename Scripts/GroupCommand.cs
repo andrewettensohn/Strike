@@ -22,8 +22,7 @@ public class GroupCommand
 
     private void HandleClicked()
 	{
-		if(!Input.IsActionJustPressed("ui_select") || _levelManager.IsUnitUIHovered) return;
-		// Looks like some kind of bug around IsUnitUIHovered not being set to false properly
+		if(!Input.IsActionJustPressed("ui_select") || _levelManager.IsUnitUIHovered || Input.IsActionPressed("key_shift")) return;
 
 		_levelManager.HighlightedShips.ForEach(x => x.UnitCommand.OnUnselected());
         _levelManager.HighlightedShips = new List<Unit>();

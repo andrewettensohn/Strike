@@ -20,6 +20,12 @@ public class UnitCommand
 
     public void OnSelected()
 	{
+		if(Input.IsActionPressed("key_shift"))
+		{
+			OnShiftSelected();
+			return;
+		}
+
 		_unit.LevelManager.PlayerView.ShowShipDetails(_unit);
 		_unit.IsSelected = true;
 		_unit.LevelManager.SelectedShip = _unit;
@@ -37,15 +43,34 @@ public class UnitCommand
 		_unit.WeaponRangeIcon.Visible = false;
 	}
 
+	public void OnShiftSelected()
+	{
+		if(_unit.LevelManager.SelectedShip != null && !_unit.LevelManager.HighlightedShips.Any(x => x == _unit.LevelManager.SelectedShip))
+		{
+			_unit.LevelManager.HighlightedShips.Add(_unit.LevelManager.SelectedShip);
+			_unit.LevelManager.SelectedShip = null;
+		}
+		
+		if(!_unit.LevelManager.HighlightedShips.Any(x => x == _unit))
+		{
+			_unit.LevelManager.HighlightedShips.Add(_unit);
+		}
+
+		_unit.LevelManager.PlayerView.ShowShipDetails(_unit);
+		_unit.WeaponRangeIcon.Visible = true;
+	}
+
 	private void HandleClicked()
 	{
 		if(!Input.IsActionJustPressed("ui_select")) return;
+
+		bool hasUnitSlotNotBeenSelected = !(_unit.LevelManager.SelectedUnitSlot?.Unit == _unit && _unit.LevelManager.SelectedUnitSlot.IsHovered);
 
 		if (_unit.IsHovered && _unit.IsPlayerSide)
 		{
 			OnSelected();
 		}
-		else if (!_unit.IsHovered && _unit.IsPlayerSide && !_unit.LevelManager.IsUnitUIHovered && !(_unit.LevelManager.SelectedUnitSlot?.Unit == _unit && _unit.LevelManager.SelectedUnitSlot.IsHovered)) //And UnitSlot is not hovered?
+		else if (!_unit.IsHovered && _unit.IsPlayerSide && !_unit.LevelManager.IsUnitUIHovered && !Input.IsActionPressed("key_shift") && hasUnitSlotNotBeenSelected)
 		{
 			OnUnselected();
 		}
@@ -53,7 +78,7 @@ public class UnitCommand
 
 	private void HandleAction()
 	{
-		if(!Input.IsActionJustPressed("ui_action")) return;
+		if(!Input.IsActionJustPressed("ui_action") || _unit.LevelManager.AreMultipleUnitsSelected) return;
 
 		if(_unit.IsHovered && !_unit.IsPlayerSide && _unit.LevelManager.SelectedShip != null && _unit.LevelManager.SelectedShip.TargetsInWeaponRange.Any(x => x == _unit))
 		{

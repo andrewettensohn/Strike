@@ -165,7 +165,6 @@ public partial class PlayerView : Node
 
         _cam.Zoom = newZoom;
         _levelManager.IsAtFurthestZoom = _cam.Zoom.X == 0.10000002f;
-        GD.Print(_cam.Zoom);
     }
 
     private void PlaceWaypoint()

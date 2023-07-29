@@ -103,6 +103,12 @@ public partial class LevelManager : Node
         SetupFleetOverviewForInitalPlayerShips();
     }
 
+    // public override void _Process(double delta)
+	// {
+        
+
+	// }
+
     public void PlayerShipDestroyed(Unit unit)
     {
         FleetOverview.EmptyUnitSlot(unit);
@@ -241,7 +247,6 @@ public partial class LevelManager : Node
 
         unit.UnitMovement.WarpTo(pos.GlobalPosition);
 
-        GD.Print(unit.ShipClass);
         EnemyUnits.Add(unit);
     }
     

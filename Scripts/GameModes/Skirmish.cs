@@ -78,7 +78,6 @@ public partial class Skirmish : GameMode
 		SpawnEnemyShipsForClass(_levelManager.EnemyCruiserScene, cruiserNeeded);
 
 		CanSpawnUnits = true;
-		//GD.Print(_levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.Crusier));
 	}
 
 	private void SpawnEnemyShipsForClass(PackedScene packedScene, int countNeeded)
@@ -87,7 +86,6 @@ public partial class Skirmish : GameMode
 
 		for(int i = 0; i < countNeeded; i++)
 		{
-			//GD.Print("Spawned");
 			_levelManager.SpawnEnemyShip(packedScene);
 		}
 	}
