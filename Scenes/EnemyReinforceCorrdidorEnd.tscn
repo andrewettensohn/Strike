@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://byv7wkwcgpuf6"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://Scripts/ReinforceCorrdidorEnd.cs" id="1_ykfal"]
+[ext_resource type="Script" path="res://Scripts/GameLogic/ReinforceCorrdidorEnd.cs" id="1_ykfal"]
 [ext_resource type="Texture2D" uid="uid://dk103rejnoonj" path="res://Art/Sprites/Icon/EnemyPlaneRadarIcon.png" id="2_l048c"]
 [ext_resource type="PackedScene" uid="uid://2jrmsp1n247n" path="res://Scenes/PlayerReinforcePos.tscn" id="3_ygfvw"]
 

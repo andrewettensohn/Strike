@@ -1,6 +1,6 @@
-[gd_scene load_steps=51 format=3 uid="uid://cxgkg11sawj0m"]
+[gd_scene load_steps=51 format=3]
 
-[ext_resource type="Script" path="res://Scripts/StrikeDialougePlayer.cs" id="1_fnrpp"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeDialougePlayer.cs" id="1_fnrpp"]
 [ext_resource type="AudioStream" uid="uid://6s8c11m556f4" path="res://Audio/Dialouge/Military, Radio Chatter, Standby, 01.wav" id="2_mq0uh"]
 [ext_resource type="AudioStream" uid="uid://7pa4sfabqpb6" path="res://Audio/Dialouge/Military, Radio Chatter, Standby, 02.wav" id="3_koqkk"]
 [ext_resource type="AudioStream" uid="uid://c38r3wmaprdqb" path="res://Audio/Dialouge/Military, Radio Chatter, Standby, 03.wav" id="4_uq0me"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://e55ybrqp2srw"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scripts/FlakTurret.cs" id="1_3107o"]
-[ext_resource type="PackedScene" uid="uid://3c0e8t80hh7d" path="res://Scenes/Bullet.tscn" id="2_qcf6a"]
+[ext_resource type="Script" path="res://Scripts/Weapons/FlakTurret.cs" id="1_3107o"]
+[ext_resource type="PackedScene" path="res://Scenes/Bullet.tscn" id="2_qcf6a"]
 
 [node name="FlakTurret" type="Node"]
 script = ExtResource("1_3107o")

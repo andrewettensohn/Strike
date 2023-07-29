@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://nxy6mca4gpct"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://Scripts/ReinforceCorrdidorEnd.cs" id="1_8xpvb"]
+[ext_resource type="Script" path="res://Scripts/GameLogic/ReinforceCorrdidorEnd.cs" id="1_8xpvb"]
 [ext_resource type="Texture2D" uid="uid://df5kkfb1dwb7l" path="res://Art/Sprites/Icon/PlaneRadarIcon.png" id="1_lyjav"]
 [ext_resource type="PackedScene" uid="uid://2jrmsp1n247n" path="res://Scenes/PlayerReinforcePos.tscn" id="2_ab8vy"]
 

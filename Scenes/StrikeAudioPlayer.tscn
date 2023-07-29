@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://544aqypv6kvy"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://Scripts/StrikeAudioPlayer.cs" id="1_4fhtm"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeAudioPlayer.cs" id="1_4fhtm"]
 [ext_resource type="AudioStream" uid="uid://dwklellfxag5r" path="res://Audio/SFX/BEEP_Targeting Loop_06.wav" id="2_bv3tq"]
 [ext_resource type="AudioStream" uid="uid://be0tyxqgtoahp" path="res://Audio/SFX/SUB_DROP_DEEP.wav" id="3_xc5lg"]
 [ext_resource type="AudioStream" uid="uid://f5cuikt7ehcj" path="res://Audio/SFX/FUI Button Beep Clean.wav" id="4_iktxi"]

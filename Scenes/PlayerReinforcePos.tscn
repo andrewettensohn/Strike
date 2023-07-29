@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://2jrmsp1n247n"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://Scripts/ReinforcePos.cs" id="1_kffn8"]
+[ext_resource type="Script" path="res://Scripts/GameLogic/ReinforcePos.cs" id="1_kffn8"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_uad88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_11rsd"]

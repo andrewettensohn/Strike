@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://bdow8dn04y45c"]
+[gd_scene load_steps=26 format=3 uid="uid://xv1wt0a2bek4"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="1_vqiwb"]
+[ext_resource type="Script" path="res://Scripts/UI/PlayerView.cs" id="1_gbg1f"]
 [ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
-[ext_resource type="PackedScene" uid="uid://28j7e627vpjp" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
+[ext_resource type="PackedScene" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
 [ext_resource type="Script" path="res://Scripts/UI/UILayer.cs" id="3_0u2l5"]
 [ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
 [ext_resource type="PackedScene" uid="uid://b72v3m6ujtf2b" path="res://Scenes/BoxFormation.tscn" id="4_elkin"]
-[ext_resource type="Script" path="res://Scripts/Formation.cs" id="5_4c4pa"]
+[ext_resource type="Script" path="res://Scripts/GameLogic/Formation.cs" id="5_d14p1"]
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="5_w06ox"]
 [ext_resource type="PackedScene" uid="uid://c0nm7aw2y4t05" path="res://Scenes/UnitSlot.tscn" id="5_xivxb"]
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="6_hqc52"]
@@ -18,10 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://hhoqvfgb6k0s" path="res://Art/Icons/Hex/slice37.png" id="11_mcbdj"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="11_t2tlb"]
 [ext_resource type="Texture2D" uid="uid://cj8ck82pcfjt3" path="res://Art/Icons/Hex/slice41.svg" id="12_x07lu"]
-[ext_resource type="PackedScene" uid="uid://b0j5u8ti5ow0y" path="res://Scenes/ShipDetails.tscn" id="13_cra3c"]
+[ext_resource type="PackedScene" path="res://Scenes/ShipDetails.tscn" id="13_cra3c"]
 [ext_resource type="Texture2D" uid="uid://rt3uqkuarvpd" path="res://Art/Sprites/Ships/Carrier.png" id="14_cja7w"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="14_uudxh"]
-[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="15_72cgx"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="15_72cgx"]
 
 [sub_resource type="Theme" id="Theme_uk4j0"]
 default_font = ExtResource("5_w06ox")
@@ -35,7 +35,7 @@ default_font = ExtResource("5_w06ox")
 default_font = ExtResource("5_w06ox")
 
 [node name="PlayerView" type="Node"]
-script = ExtResource("1_vqiwb")
+script = ExtResource("1_gbg1f")
 SelectionBoxScene = ExtResource("2_kcewo")
 ShipDetailsScene = ExtResource("13_cra3c")
 
@@ -43,10 +43,10 @@ ShipDetailsScene = ExtResource("13_cra3c")
 zoom = Vector2(0.2, 0.2)
 
 [node name="BoxFormation" parent="." instance=ExtResource("4_elkin")]
-script = ExtResource("5_4c4pa")
+script = ExtResource("5_d14p1")
 
 [node name="RadialFormation" parent="." instance=ExtResource("6_pty0s")]
-script = ExtResource("5_4c4pa")
+script = ExtResource("5_d14p1")
 
 [node name="WaypointSprite" type="Sprite2D" parent="."]
 position = Vector2(-9.53674e-07, 9.53674e-07)

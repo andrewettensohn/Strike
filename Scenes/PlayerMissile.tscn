@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://do7ftk2rjnuhv"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Missile.cs" id="1_w46qg"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Missile.cs" id="1_w46qg"]
 [ext_resource type="Texture2D" uid="uid://diai3nqaep2gp" path="res://Art/Sprites/Icon/FriendlyMissileIcon.png" id="2_3qfhk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0a2u"]

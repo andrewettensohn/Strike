@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0j5u8ti5ow0y"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://Scripts/ShipDetails.cs" id="1_etsge"]
+[ext_resource type="Script" path="res://Scripts/UI/ShipDetails.cs" id="1_etsge"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="2_jx1dw"]
 
 [sub_resource type="Theme" id="Theme_75ik2"]
