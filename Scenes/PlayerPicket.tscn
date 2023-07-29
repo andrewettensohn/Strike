@@ -57,9 +57,9 @@ avoidance_enabled = true
 radius = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.78748, -4.77977)
+position = Vector2(-0.995828, -1.7189)
 rotation = -3.14159
-scale = Vector2(0.0782477, 0.0832512)
+scale = Vector2(0.137721, 0.201357)
 texture = ExtResource("2_tshww")
 
 [node name="Control" type="Control" parent="."]

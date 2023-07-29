@@ -31,8 +31,8 @@ public partial class ShipDetails : Control
 		}
 		else
 		{
-			GlobalPosition = Unit.GlobalPosition;
 			UpdateForShipDetails();
+			GlobalPosition = Unit.GlobalPosition;
 		}
 	}
 

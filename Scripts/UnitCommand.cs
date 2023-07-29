@@ -45,15 +45,20 @@ public class UnitCommand
 
 	public void OnShiftSelected()
 	{
+		if(!_unit.LevelManager.HighlightedShips.Any(x => x == _unit))
+		{
+			_unit.LevelManager.HighlightedShips.Add(_unit);
+		}
+		else
+		{
+			_unit.LevelManager.HighlightedShips.Remove(_unit);
+			OnUnselected();
+		}
+
 		if(_unit.LevelManager.SelectedShip != null && !_unit.LevelManager.HighlightedShips.Any(x => x == _unit.LevelManager.SelectedShip))
 		{
 			_unit.LevelManager.HighlightedShips.Add(_unit.LevelManager.SelectedShip);
 			_unit.LevelManager.SelectedShip = null;
-		}
-		
-		if(!_unit.LevelManager.HighlightedShips.Any(x => x == _unit))
-		{
-			_unit.LevelManager.HighlightedShips.Add(_unit);
 		}
 
 		_unit.LevelManager.PlayerView.ShowShipDetails(_unit);
