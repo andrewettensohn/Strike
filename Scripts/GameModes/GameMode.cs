@@ -10,7 +10,9 @@ public partial class GameMode : Node
 	[Export]
 	public string TimerAdditionalText;
 
-	public int Score;
+	public int PlayerScore;
+
+	public int EnemyScore;
 
 	public Node[] ObjectiveTargets;
 

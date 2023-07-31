@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3]
+[gd_scene load_steps=26 format=3 uid="uid://blokfof1cjxys"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_atxrj"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="6_0mp2q"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="7_m3gqh"]
 [ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="8_ps8jp"]
-[ext_resource type="PackedScene" uid="uid://bbjmd1iqabfno" path="res://Scenes/PlayerView.tscn" id="8_sajfx"]
+[ext_resource type="PackedScene" uid="uid://xv1wt0a2bek4" path="res://Scenes/PlayerView.tscn" id="8_sajfx"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_hbb16"]
 [ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="9_uxlcb"]
-[ext_resource type="PackedScene" uid="uid://nxy6mca4gpct" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_qkmyg"]
+[ext_resource type="PackedScene" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_qkmyg"]
 [ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="11_juncj"]
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="12_agxf8"]
 [ext_resource type="Script" path="res://Scripts/GameLogic/CapturePoint.cs" id="13_g7bvw"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/EnemyPicket.tscn" id="19_i5iyp"]
 [ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="20_4krl5"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_k8des"]
-[ext_resource type="PackedScene" uid="uid://byv7wkwcgpuf6" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
+[ext_resource type="PackedScene" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)
@@ -30,6 +30,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cb3dd"]
+radius = 479.038
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("GameMode")]
 script = ExtResource("1_atxrj")
@@ -78,9 +79,13 @@ script = ExtResource("11_juncj")
 
 [node name="CapturePoint" type="Area2D" parent="."]
 position = Vector2(5993, 0)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("13_g7bvw")
 
 [node name="Sprite" type="Sprite2D" parent="CapturePoint"]
+position = Vector2(-2, 4)
+scale = Vector2(0.778846, 0.991786)
 texture = ExtResource("12_agxf8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CapturePoint"]
@@ -101,7 +106,7 @@ script = ExtResource("18_ijn0r")
 script = ExtResource("20_4krl5")
 CapturePoint = NodePath("../CapturePoint")
 ObjectiveText = "Capture the Point"
-TimerAdditionalText = "Left in Match"
+TimerAdditionalText = "LEFT IN MATCH"
 
 [node name="MissionTimer" type="Timer" parent="GameMode"]
 

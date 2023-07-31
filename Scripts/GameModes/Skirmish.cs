@@ -45,19 +45,18 @@ public partial class Skirmish : GameMode
 
     public override void OnMissionClockExpired()
     {
-        if(CapturePoint.DoesPlayerOwnPoint)
-		{
-			OnWin();
-		}
-		else
-		{
-			OnLose();
-		}
+        // if(CapturePoint.DoesPlayerOwnPoint)
+		// {
+		// 	OnWin();
+		// }
+		// else
+		// {
+		// 	OnLose();
+		// }
     }
 
 	private void HandleEnemyAI()
 	{
-		//Race conditions galore! I'll probably need to keep track of spawned ships seperately
 		if(CanSpawnUnits && _levelManager.EnemyUnits.Count < 8)
 		{
 			CanSpawnUnits = false;

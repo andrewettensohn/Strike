@@ -1,7 +1,210 @@
-[gd_scene format=3 uid="uid://glrukuholjhe"]
+[gd_scene load_steps=10 format=3 uid="uid://glrukuholjhe"]
+
+[ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="1_g0lwh"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_rgc5j"]
+[ext_resource type="PackedScene" uid="uid://7dldof33d5o" path="res://Levels/ProtoSkirmishPreMatch.tscn" id="2_erhyn"]
+[ext_resource type="PackedScene" path="res://Scenes/GameManager.tscn" id="3_534ov"]
+[ext_resource type="Script" path="res://Scripts/UI/OptionsMenu.cs" id="3_stako"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_ns0xv"]
+
+[sub_resource type="Theme" id="Theme_7an2x"]
+default_font = ExtResource("1_g0lwh")
+
+[sub_resource type="Theme" id="Theme_rouy4"]
+default_font = ExtResource("1_g0lwh")
+
+[sub_resource type="Theme" id="Theme_x8khg"]
+default_font = ExtResource("1_g0lwh")
+default_font_size = 20
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_rgc5j")
+ProtoSkirmishPreMatch = ExtResource("2_erhyn")
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 298.0
-offset_bottom = 648.0
+[node name="GameManager" parent="." instance=ExtResource("3_534ov")]
+
+[node name="MainButtonsPanel" type="Panel" parent="."]
+offset_right = 256.0
+offset_bottom = 288.0
+
+[node name="PlayButton" type="Button" parent="MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.486
+anchor_top = 0.104
+anchor_right = 0.486
+anchor_bottom = 0.104
+offset_left = -60.416
+offset_top = 2.88
+offset_right = 60.584
+offset_bottom = 35.88
+grow_horizontal = 2
+theme = SubResource("Theme_7an2x")
+text = "PLAY"
+
+[node name="OptionsButton" type="Button" parent="MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.306
+anchor_right = 0.484
+anchor_bottom = 0.306
+offset_left = -59.904
+offset_top = 7.872
+offset_right = 60.046
+offset_bottom = 40.344
+grow_horizontal = 2
+theme = SubResource("Theme_7an2x")
+text = "OPTIONS"
+
+[node name="CreditsButton" type="Button" parent="MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485
+anchor_top = 0.528
+anchor_right = 0.485
+anchor_bottom = 0.528
+offset_left = -60.16
+offset_top = 7.936
+offset_right = 60.336
+offset_bottom = 40.936
+grow_horizontal = 2
+theme = SubResource("Theme_7an2x")
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485
+anchor_top = 0.778
+anchor_right = 0.485
+anchor_bottom = 0.778
+offset_left = -60.16
+offset_top = -0.0639954
+offset_right = 60.336
+offset_bottom = 32.936
+grow_horizontal = 2
+theme = SubResource("Theme_7an2x")
+text = "EXIT"
+
+[node name="OptionsMenu" type="Panel" parent="."]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 448.0
+offset_top = 64.0
+offset_right = 878.0
+offset_bottom = 556.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("3_stako")
+
+[node name="StrikeAudioPlayer" parent="OptionsMenu" instance=ExtResource("4_ns0xv")]
+
+[node name="Close" type="Button" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.904
+anchor_right = 0.719
+anchor_bottom = 0.904
+offset_left = -0.170013
+offset_top = 0.231964
+offset_right = 114.83
+offset_bottom = 43.232
+theme = SubResource("Theme_rouy4")
+text = "SAVE"
+
+[node name="MusicSlider" type="HSlider" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 150.0
+offset_right = 208.0
+offset_bottom = 185.0
+min_value = -50.0
+max_value = 1.0
+
+[node name="SFXSlider" type="HSlider" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 250.0
+offset_right = 209.0
+offset_bottom = 285.0
+min_value = -50.0
+max_value = 1.0
+
+[node name="MusicSliderLabel" type="RichTextLabel" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.224
+anchor_right = 0.06
+anchor_bottom = 0.224
+offset_left = 0.200003
+offset_top = -0.208
+offset_right = 408.2
+offset_bottom = 35.792
+grow_vertical = 0
+theme = SubResource("Theme_x8khg")
+text = "Music Volume"
+
+[node name="SFXSliderLabel" type="RichTextLabel" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.433
+anchor_right = 0.06
+anchor_bottom = 0.433
+offset_left = -0.799997
+offset_top = -0.0360107
+offset_right = 407.2
+offset_bottom = 35.964
+grow_vertical = 0
+theme = SubResource("Theme_x8khg")
+text = "Sound Effects Volume"
+
+[node name="LevelSelectPanel" type="Panel" parent="."]
+offset_left = 448.0
+offset_top = 64.0
+offset_right = 880.0
+offset_bottom = 560.0
+
+[node name="ProtoLevelButton" type="Button" parent="LevelSelectPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.113
+anchor_right = 0.389
+anchor_bottom = 0.113
+offset_left = -0.0480194
+offset_top = -0.0480042
+offset_right = 119.952
+offset_bottom = 31.952
+text = "Proto Level"
+
+[node name="Close" type="Button" parent="LevelSelectPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.904
+anchor_right = 0.719
+anchor_bottom = 0.904
+offset_left = -0.170013
+offset_top = 0.231964
+offset_right = 114.83
+offset_bottom = 43.232
+theme = SubResource("Theme_rouy4")
+text = "CLOSE"
+
+[connection signal="pressed" from="MainButtonsPanel/PlayButton" to="." method="ToggleLevelSelectPanel"]
+[connection signal="pressed" from="MainButtonsPanel/OptionsButton" to="OptionsMenu" method="OnOptionsMenuOpened"]
+[connection signal="pressed" from="MainButtonsPanel/QuitButton" to="." method="ExitGame"]
+[connection signal="pressed" from="OptionsMenu/Close" to="OptionsMenu" method="OnCloseButtonPressed"]
+[connection signal="value_changed" from="OptionsMenu/MusicSlider" to="OptionsMenu" method="OnMusicVolumeSlideEnded"]
+[connection signal="drag_ended" from="OptionsMenu/SFXSlider" to="OptionsMenu" method="OnEffectsSlideEnded"]
+[connection signal="pressed" from="LevelSelectPanel/ProtoLevelButton" to="." method="PlayProtoLevel"]
+[connection signal="pressed" from="LevelSelectPanel/Close" to="." method="ToggleLevelSelectPanel"]

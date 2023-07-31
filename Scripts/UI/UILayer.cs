@@ -11,6 +11,8 @@ public partial class UILayer : CanvasLayer
 	private RichTextLabel _missionTimerText;
 	private RichTextLabel _message;
 	private RichTextLabel _objectiveText;
+	private RichTextLabel _playerScoreText;
+	private RichTextLabel _enemyScoreText;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -21,12 +23,13 @@ public partial class UILayer : CanvasLayer
 
 		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
 
-		_missionTimerText = GetNode<RichTextLabel>("TimerText");
+		_missionTimerText = GetNode<Panel>("GameModeDetails").GetNode<RichTextLabel>("TimerText");
+		_objectiveText = GetNode<Panel>("GameModeDetails").GetNode<RichTextLabel>("ObjectiveText");
+		_enemyScoreText = GetNode<Panel>("GameModeDetails").GetNode<RichTextLabel>("EnemyScore");
+		_playerScoreText = GetNode<Panel>("GameModeDetails").GetNode<RichTextLabel>("PlayerScore");
 
 		_message = GetNode<RichTextLabel>("Message");
 		_message.Visible = false;
-
-		_objectiveText = GetNode<RichTextLabel>("ObjectiveText");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,18 +37,15 @@ public partial class UILayer : CanvasLayer
 	{
 		_reinforcePoints.Text = $"Reinforce - {_levelManager.PlayerReinforcePoints}";
 
-		HandleMissionTimerText();
-		HandleObjectiveText();
+		HandleGameModeDetailsText();
 	}
 
-	public void HandleMissionTimerText()
+	public void HandleGameModeDetailsText()
 	{
-		_missionTimerText.Text = $"{Math.Round(_levelManager.GameMode.MissionTimer.TimeLeft)} {_levelManager.GameMode.TimerAdditionalText}";
-	}
-
-	public void HandleObjectiveText()
-	{
-		_objectiveText.Text = _levelManager.GameMode.ObjectiveText;
+		_missionTimerText.Text = $"[center] {Math.Round(_levelManager.GameMode.MissionTimer.TimeLeft)} {_levelManager.GameMode.TimerAdditionalText} [/center]";
+		_objectiveText.Text = $"[center] {_levelManager.GameMode.ObjectiveText} [/center]";
+		_playerScoreText.Text = $"[center] Player  [indent]{_levelManager.GameMode.PlayerScore}[/indent] [/center]";
+		_enemyScoreText.Text = $"[center] Enemy [indent]{_levelManager.GameMode.EnemyScore}[/indent] [/center]";
 	}
 
 	public async Task DisplayMessage(string message)
