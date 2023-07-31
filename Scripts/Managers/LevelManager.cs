@@ -30,11 +30,11 @@ public partial class LevelManager : Node
     [Export]
     public PackedScene EnemyRepairScene;
 
-    [Export]
-    public int PlayerReinforcePoints;
+    // [Export]
+    // public int PlayerReinforcePoints;
 
-    [Export]
-    public int EnemyReinforcePoints;
+    // [Export]
+    // public int EnemyReinforcePoints;
 
     [Export]
     public GameMode GameMode;
@@ -113,11 +113,11 @@ public partial class LevelManager : Node
 
         if(unit.ShipClass == ShipClass.Picket)
         {
-            PlayerReinforcePoints += (int)ShipClass.Picket;
+            GameMode.PlayerReinforcePoints += (int)ShipClass.Picket;
         }
         else if(unit.ShipClass == ShipClass.Crusier)
         {
-            PlayerReinforcePoints += (int)ShipClass.Crusier;
+            GameMode.PlayerReinforcePoints += (int)ShipClass.Crusier;
         }
 
         GameMode.OnPlayerShipDestroyed(unit);
@@ -136,14 +136,14 @@ public partial class LevelManager : Node
         AudioStreamPlayer.PlayAudio(AudioStreamPlayer.ReinforceSoundClip);
         DialougeStreamPlayer.PlayUnitReinforceSoundClip();
 
-        if(shipClass == ShipClass.Picket && PlayerReinforcePoints >= (int)ShipClass.Picket)
+        if(shipClass == ShipClass.Picket && GameMode.PlayerReinforcePoints >= (int)ShipClass.Picket)
         {
-            PlayerReinforcePoints -= (int)ShipClass.Picket;
+            GameMode.PlayerReinforcePoints -= (int)ShipClass.Picket;
             SpawnPlayerShip(PicketScene);
         }
-        else if(shipClass == ShipClass.Crusier && PlayerReinforcePoints >= (int)ShipClass.Crusier)
+        else if(shipClass == ShipClass.Crusier && GameMode.PlayerReinforcePoints >= (int)ShipClass.Crusier)
         {
-            PlayerReinforcePoints -= (int)ShipClass.Crusier;
+            GameMode.PlayerReinforcePoints -= (int)ShipClass.Crusier;
             SpawnPlayerShip(CruiserScene);
         }
         // else if(shipClass == ShipClass. && PlayerReinforcePoints >= (int)ShipClass.Destroyer)
@@ -151,15 +151,15 @@ public partial class LevelManager : Node
         //     PlayerReinforcePoints -= (int)ShipClass.Destroyer;
         //     SpawnPlayerShip(DestroyerScene);
         // }
-        else if(shipClass == ShipClass.Repair && PlayerReinforcePoints >= (int)ShipClass.Repair)
+        else if(shipClass == ShipClass.Repair && GameMode.PlayerReinforcePoints >= (int)ShipClass.Repair)
         {
-            PlayerReinforcePoints -= (int)ShipClass.Repair;
+            GameMode.PlayerReinforcePoints -= (int)ShipClass.Repair;
             SpawnPlayerShip(RepairScene);
         }
-        else if(shipClass == ShipClass.DroneControl && PlayerReinforcePoints >= (int)ShipClass.DroneControl)
+        else if(shipClass == ShipClass.DroneControl && GameMode.PlayerReinforcePoints >= (int)ShipClass.DroneControl)
         {
             //TODO: Change this to drone scene, hacking with destroyer scene slot
-            PlayerReinforcePoints -= (int)ShipClass.DroneControl;
+            GameMode.PlayerReinforcePoints -= (int)ShipClass.DroneControl;
             SpawnPlayerShip(DestroyerScene);
         }
     }

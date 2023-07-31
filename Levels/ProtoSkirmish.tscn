@@ -43,8 +43,6 @@ EnemyCapitalScene = ExtResource("6_0mp2q")
 EnemyPicketScene = ExtResource("19_i5iyp")
 EnemyCruiserScene = ExtResource("8_ps8jp")
 EnemyRepairScene = ExtResource("9_uxlcb")
-PlayerReinforcePoints = 10000
-EnemyReinforcePoints = 10000
 GameMode = NodePath("GameMode")
 
 [node name="Background" type="Sprite2D" parent="."]

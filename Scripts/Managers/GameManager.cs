@@ -8,6 +8,8 @@ public partial class GameManager : Node
 
 	public PostMatchSummary LastMatchSummary = new PostMatchSummary();
 
+	public MatchOptions MatchOptions = new MatchOptions();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

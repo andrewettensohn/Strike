@@ -35,7 +35,7 @@ public partial class UILayer : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_reinforcePoints.Text = $"Reinforce - {_levelManager.PlayerReinforcePoints}";
+		_reinforcePoints.Text = $"Reinforce - {_levelManager.GameMode.PlayerReinforcePoints}";
 
 		HandleGameModeDetailsText();
 	}

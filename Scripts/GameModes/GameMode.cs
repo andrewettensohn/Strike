@@ -10,6 +10,10 @@ public partial class GameMode : Node
 	[Export]
 	public string TimerAdditionalText;
 
+	public int PlayerReinforcePoints;
+
+	public int EnemyReinforcePoints;
+
 	public int PlayerScore;
 
 	public int EnemyScore;
@@ -30,6 +34,8 @@ public partial class GameMode : Node
 
 	protected bool CanSpawnUnits;
 
+	protected int MatchLength;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -39,6 +45,9 @@ public partial class GameMode : Node
 		_gameManager = GetNode<GameManager>("/root/GameManager");
 
 		_gameManager.LastMatchSummary = new PostMatchSummary();
+
+		PlayerReinforcePoints = _gameManager.MatchOptions.PlayerReinforcePoints;
+		EnemyReinforcePoints = _gameManager.MatchOptions.EnemyReinforcePoints;
 
 		CanSpawnUnits = true;
 	}

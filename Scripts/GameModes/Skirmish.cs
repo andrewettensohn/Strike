@@ -17,11 +17,9 @@ public partial class Skirmish : GameMode
 	{
 		if(MissionTimer.IsStopped() && !IsGameOver)
 		{
-			MissionTimer.WaitTime = 60f;
+			MissionTimer.WaitTime = _gameManager.MatchOptions.MatchLength;
 			MissionTimer.Start();
 		}
-
-		IsGameOver = true;
 
 		if(IsGameOver && PostMatchTimer.IsStopped())
 		{
