@@ -103,12 +103,6 @@ public partial class LevelManager : Node
         SetupFleetOverviewForInitalPlayerShips();
     }
 
-    // public override void _Process(double delta)
-	// {
-        
-
-	// }
-
     public void PlayerShipDestroyed(Unit unit)
     {
         FleetOverview.EmptyUnitSlot(unit);
@@ -164,7 +158,7 @@ public partial class LevelManager : Node
         }
         else if(shipClass == ShipClass.DroneControl && PlayerReinforcePoints >= (int)ShipClass.DroneControl)
         {
-            //TODO: Change this to fighter scene, hacking with destroyer scene slot
+            //TODO: Change this to drone scene, hacking with destroyer scene slot
             PlayerReinforcePoints -= (int)ShipClass.DroneControl;
             SpawnPlayerShip(DestroyerScene);
         }

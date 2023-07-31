@@ -18,7 +18,11 @@ public partial class GameMode : Node
 
 	public Timer MissionTimer;
 
+	public Timer PostMatchTimer;
+
 	protected LevelManager _levelManager;
+
+	protected GameManager _gameManager;
 
 	public bool IsGameOver;
 
@@ -31,6 +35,10 @@ public partial class GameMode : Node
 	{
 		_levelManager = GetTree().Root.GetNode<LevelManager>("Level");
 		MissionTimer = GetNode<Timer>("MissionTimer");
+		PostMatchTimer = GetNode<Timer>("PostMissionTimer");
+		_gameManager = GetNode<GameManager>("/root/GameManager");
+
+		_gameManager.LastMatchSummary = new PostMatchSummary();
 
 		CanSpawnUnits = true;
 	}
@@ -63,6 +71,11 @@ public partial class GameMode : Node
     {
 		//Implement in override
     }
+
+	public virtual void OnPostMatchTimerExpired()
+	{
+		//Implement in override
+	}
 
 	public virtual void OnEnemyShipDestroyed(Unit unit)
 	{

@@ -30,6 +30,8 @@ public partial class StrikeDialougePlayer : AudioStreamPlayer
 	public override void _Ready()
 	{
 		_gameManager = GetNode<GameManager>("/root/GameManager");
+
+		VolumeDb = _gameManager.SoundEffectsVolumeLevel;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

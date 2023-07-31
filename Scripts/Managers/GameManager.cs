@@ -6,6 +6,8 @@ public partial class GameManager : Node
 	public float MusicVolumeLevel = -20f;
     public float SoundEffectsVolumeLevel = -20f;
 
+	public PostMatchSummary LastMatchSummary = new PostMatchSummary();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

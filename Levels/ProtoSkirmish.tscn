@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://blokfof1cjxys"]
+[gd_scene load_steps=27 format=3 uid="uid://blokfof1cjxys"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_atxrj"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="20_4krl5"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_k8des"]
 [ext_resource type="PackedScene" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
+[ext_resource type="PackedScene" uid="uid://udhfl7tmowir" path="res://Levels/PostMatch.tscn" id="24_l5l3b"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)
@@ -104,12 +105,19 @@ script = ExtResource("18_ijn0r")
 
 [node name="GameMode" parent="." node_paths=PackedStringArray("CapturePoint") instance=ExtResource("20_k8des")]
 script = ExtResource("20_4krl5")
+PostMatchScene = ExtResource("24_l5l3b")
 CapturePoint = NodePath("../CapturePoint")
 ObjectiveText = "Capture the Point"
 TimerAdditionalText = "LEFT IN MATCH"
 
 [node name="MissionTimer" type="Timer" parent="GameMode"]
+one_shot = true
+
+[node name="PostMissionTimer" type="Timer" parent="GameMode"]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="body_entered" from="CapturePoint" to="CapturePoint" method="OnShipEntered"]
 [connection signal="body_exited" from="CapturePoint" to="CapturePoint" method="OnShipExitted"]
 [connection signal="timeout" from="GameMode/MissionTimer" to="GameMode" method="OnMissionClockExpired"]
+[connection signal="timeout" from="GameMode/PostMissionTimer" to="GameMode" method="OnPostMatchTimerExpired"]

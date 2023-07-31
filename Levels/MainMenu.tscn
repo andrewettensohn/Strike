@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://glrukuholjhe"]
+[gd_scene load_steps=9 format=3 uid="uid://glrukuholjhe"]
 
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="1_g0lwh"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_rgc5j"]
 [ext_resource type="PackedScene" uid="uid://7dldof33d5o" path="res://Levels/ProtoSkirmishPreMatch.tscn" id="2_erhyn"]
-[ext_resource type="PackedScene" path="res://Scenes/GameManager.tscn" id="3_534ov"]
 [ext_resource type="Script" path="res://Scripts/UI/OptionsMenu.cs" id="3_stako"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_ns0xv"]
 
@@ -20,8 +19,6 @@ default_font_size = 20
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_rgc5j")
 ProtoSkirmishPreMatch = ExtResource("2_erhyn")
-
-[node name="GameManager" parent="." instance=ExtResource("3_534ov")]
 
 [node name="MainButtonsPanel" type="Panel" parent="."]
 offset_right = 256.0

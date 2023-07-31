@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://udhfl7tmowir"]
+
+[ext_resource type="Script" path="res://Scripts/UI/PostMatch.cs" id="1_67pd8"]
+
+[node name="PostMatch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_67pd8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -132.0
+offset_right = 128.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MatchSummaryText" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+bbcode_enabled = true
+text = "Player Score:
+Enemy Score:
+
+Ships Destroyed:
+Capture Time:"
+
+[node name="MainMenuButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.312
+anchor_top = 0.75
+anchor_right = 0.312
+anchor_bottom = 0.75
+offset_left = 0.127998
+offset_top = -1.52588e-05
+offset_right = 104.128
+offset_bottom = 24.0
+text = "Main Menu"
+
+[connection signal="pressed" from="Panel/MainMenuButton" to="." method="ReturnToMainMenu"]

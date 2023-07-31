@@ -9,6 +9,8 @@ public partial class StrikeMusicPlayer : AudioStreamPlayer
 	public override void _Ready()
 	{
 		_gameManager = GetNode<GameManager>("/root/GameManager");
+
+		VolumeDb = _gameManager.MusicVolumeLevel;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

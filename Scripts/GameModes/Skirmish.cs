@@ -7,6 +7,9 @@ public partial class Skirmish : GameMode
 {
 
 	[Export]
+	public PackedScene PostMatchScene;
+
+	[Export]
 	public CapturePoint CapturePoint;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,8 +17,15 @@ public partial class Skirmish : GameMode
 	{
 		if(MissionTimer.IsStopped() && !IsGameOver)
 		{
-			MissionTimer.WaitTime = 300f;
+			MissionTimer.WaitTime = 60f;
 			MissionTimer.Start();
+		}
+
+		IsGameOver = true;
+
+		if(IsGameOver && PostMatchTimer.IsStopped())
+		{
+			PostMatchTimer.Start();
 		}
 
 		HandleEnemyAI();
@@ -23,37 +33,48 @@ public partial class Skirmish : GameMode
 
 	public override void OnEnemyShipDestroyed(Unit unit)
 	{
+		_gameManager.LastMatchSummary.ShipsDestroyed += 1;
 		CapturePoint.EnemyShipsOnPoint.Remove(unit);
 	}
 
 	public override void OnPlayerShipDestroyed(Unit unit)
 	{
+		_gameManager.LastMatchSummary.ShipsLost += 1;
 		CapturePoint.PlayerShipsOnPoint.Remove(unit);
 	}
 
 	public override async Task OnWin()
     {
 		IsGameOver = true;
-        await _levelManager.PlayerView.UILayer.DisplayMessage("Mission Status: SUCCESS");
+        await _levelManager.PlayerView.UILayer.DisplayMessage("MATCH OVER. VICTORY.");
     }
 
     public override async Task OnLose()
     {
 		IsGameOver = true;
-        await _levelManager.PlayerView.UILayer.DisplayMessage("Mission Status: FAILURE");
+        await _levelManager.PlayerView.UILayer.DisplayMessage("MATCH OVER. DEFEAT.");
     }
 
     public override void OnMissionClockExpired()
     {
-        // if(CapturePoint.DoesPlayerOwnPoint)
-		// {
-		// 	OnWin();
-		// }
-		// else
-		// {
-		// 	OnLose();
-		// }
+		MissionTimer.Stop();
+
+        if(PlayerScore >= EnemyScore)
+		{
+			OnWin();
+		}
+		else
+		{
+			OnLose();
+		}
     }
+
+	public override void OnPostMatchTimerExpired()
+	{
+		_gameManager.LastMatchSummary.PlayerScore = PlayerScore;
+		_gameManager.LastMatchSummary.EnemyScore = EnemyScore;
+		GetTree().ChangeSceneToPacked(PostMatchScene);
+	}
 
 	private void HandleEnemyAI()
 	{

@@ -50,26 +50,22 @@ public partial class CapturePoint : Area2D
 
 	public void OnShipEntered(Node2D node)
 	{
-		GD.Print("node entered");
 		if (node as Unit == null) return;
 		
 		Unit unit = (Unit)node;
 
 		if (unit.IsPlayerSide)
 		{
-			GD.Print("player entered");
 			PlayerShipsOnPoint.Add(unit);
 		}
 		else
 		{
-			GD.Print("enemy entered");
 			EnemyShipsOnPoint.Add(unit);
 		}
 	}
 
 	public void OnShipExitted(Node2D node)
 	{
-		GD.Print("node exit");
 		if (node as Unit == null) return;
 		
 		Unit unit = (Unit)node;
