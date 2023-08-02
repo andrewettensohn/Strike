@@ -13,7 +13,7 @@ public partial class LevelManager : Node
     public PackedScene PicketScene;
 
     [Export]
-    public PackedScene DestroyerScene;
+    public PackedScene DroneControlScene;
 
     [Export]
     public PackedScene RepairScene;
@@ -30,11 +30,8 @@ public partial class LevelManager : Node
     [Export]
     public PackedScene EnemyRepairScene;
 
-    // [Export]
-    // public int PlayerReinforcePoints;
-
-    // [Export]
-    // public int EnemyReinforcePoints;
+    [Export]
+    public PackedScene EnemyDroneControlScene;
 
     [Export]
     public GameMode GameMode;
@@ -146,11 +143,6 @@ public partial class LevelManager : Node
             GameMode.PlayerReinforcePoints -= (int)ShipClass.Crusier;
             SpawnPlayerShip(CruiserScene);
         }
-        // else if(shipClass == ShipClass. && PlayerReinforcePoints >= (int)ShipClass.Destroyer)
-        // {
-        //     PlayerReinforcePoints -= (int)ShipClass.Destroyer;
-        //     SpawnPlayerShip(DestroyerScene);
-        // }
         else if(shipClass == ShipClass.Repair && GameMode.PlayerReinforcePoints >= (int)ShipClass.Repair)
         {
             GameMode.PlayerReinforcePoints -= (int)ShipClass.Repair;
@@ -158,9 +150,8 @@ public partial class LevelManager : Node
         }
         else if(shipClass == ShipClass.DroneControl && GameMode.PlayerReinforcePoints >= (int)ShipClass.DroneControl)
         {
-            //TODO: Change this to drone scene, hacking with destroyer scene slot
             GameMode.PlayerReinforcePoints -= (int)ShipClass.DroneControl;
-            SpawnPlayerShip(DestroyerScene);
+            SpawnPlayerShip(DroneControlScene);
         }
     }
 
@@ -180,8 +171,11 @@ public partial class LevelManager : Node
         else
         {
             HighlightedShips.ForEach(x => {
-                PlayerView.ShowShipDetails(x); //ObjectDisposedException?
-                x.WeaponRangeIcon.Visible = true;
+                if(IsInstanceValid(x)) //ObjectDisposedException?
+                {
+                    PlayerView.ShowShipDetails(x);
+                    x.WeaponRangeIcon.Visible = true;
+                }
             });
 
             SelectedShip = null;

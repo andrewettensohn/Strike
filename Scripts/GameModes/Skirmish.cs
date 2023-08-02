@@ -25,8 +25,6 @@ public partial class Skirmish : GameMode
 		{
 			PostMatchTimer.Start();
 		}
-
-		HandleEnemyAI();
 	}
 
 	public override void OnEnemyShipDestroyed(Unit unit)
@@ -72,39 +70,5 @@ public partial class Skirmish : GameMode
 		_gameManager.LastMatchSummary.PlayerScore = PlayerScore;
 		_gameManager.LastMatchSummary.EnemyScore = EnemyScore;
 		GetTree().ChangeSceneToPacked(PostMatchScene);
-	}
-
-	private void HandleEnemyAI()
-	{
-		if(CanSpawnUnits && _levelManager.EnemyUnits.Count < 8)
-		{
-			CanSpawnUnits = false;
-			HandleEnemyReinforce();
-		}
-	}
-
-	private void HandleEnemyReinforce()
-	{
-		//Ideal comp: 4 picket, 2 repair, 2 cruisers
-		int picketNeeded = 4 - _levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.Picket);
-		SpawnEnemyShipsForClass(_levelManager.EnemyPicketScene, picketNeeded);
-
-		int repairNeeded = 2 - _levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.Repair);
-		SpawnEnemyShipsForClass(_levelManager.EnemyRepairScene, repairNeeded);
-
-		int cruiserNeeded = 2 - _levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.Crusier);
-		SpawnEnemyShipsForClass(_levelManager.EnemyCruiserScene, cruiserNeeded);
-
-		CanSpawnUnits = true;
-	}
-
-	private void SpawnEnemyShipsForClass(PackedScene packedScene, int countNeeded)
-	{
-		if(countNeeded == 0) return;
-
-		for(int i = 0; i < countNeeded; i++)
-		{
-			_levelManager.SpawnEnemyShip(packedScene);
-		}
 	}
 }

@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpmhsh1y8sm8i"]
+
+[ext_resource type="Script" path="res://Scripts/Ships/PlayerDroneControl.cs" id="1_74syr"]
+[ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_7t3ja"]
+[ext_resource type="Texture2D" uid="uid://bme53peptfef0" path="res://Art/Sprites/Ships/EnemyCargo.png" id="3_t5gdi"]
+[ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="4_bju1k"]
+[ext_resource type="PackedScene" path="res://Scenes/MissileLauncher.tscn" id="5_qnp1p"]
+[ext_resource type="PackedScene" uid="uid://di3vd5o3fj187" path="res://Scenes/DroneLauncher.tscn" id="6_qbwqb"]
+[ext_resource type="PackedScene" uid="uid://bfxwjro2wyilu" path="res://Scenes/EnemyDrone.tscn" id="8_81807"]
+[ext_resource type="Texture2D" uid="uid://gql8lbslp42t" path="res://Art/Sprites/Icon/EnemyCruiserIcon.png" id="10_yfqky"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="11_rpnci"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
+radius = 93.0
+height = 380.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26hnr"]
+radius = 4890.0
+
+[node name="EnemyDroneControl" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_74syr")
+ClassName = "Drone Control"
+AbilityDescription = "Launch Drone"
+Health = 5.0
+MaxSpeed = 50
+Weight = 0.005
+SpeedWhileTurning = 5
+MyTargetGroup = 1
+PathDesiredDistance = 1.0
+TargetDesiredDistance = 100.0
+TurningAngleThreshold = 0.97
+ShipClass = 300
+TacticalAbilityDuration = 1
+ExplosionScene = ExtResource("2_7t3ja")
+ExplosionScale = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l5s7l")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 100.0
+debug_use_custom = true
+debug_path_custom_point_size = 20.0
+debug_path_custom_line_width = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.190718, 0.443783)
+scale = Vector2(0.374798, 0.490599)
+texture = ExtResource("3_t5gdi")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -264.0
+offset_top = -173.0
+offset_right = 296.0
+offset_bottom = 183.0
+
+[node name="WeaponRange" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponRange"]
+shape = SubResource("CircleShape2D_26hnr")
+
+[node name="WeaponRangeIcon" type="Sprite2D" parent="."]
+position = Vector2(4.00037, 15.0003)
+scale = Vector2(7.92628, 10.2936)
+texture = ExtResource("4_bju1k")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("11_rpnci")]
+
+[node name="MissileLauncher" parent="." instance=ExtResource("5_qnp1p")]
+
+[node name="DroneLauncher" parent="." instance=ExtResource("6_qbwqb")]
+DroneScene = ExtResource("8_81807")
+CoolDownTime = 5.0
+
+[node name="UnitIcon" type="Sprite2D" parent="."]
+position = Vector2(-0.500008, -1.49999)
+scale = Vector2(1.97696, 1.58051)
+texture = ExtResource("10_yfqky")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="OnNavAgentVelocityComputed"]
+[connection signal="mouse_entered" from="Control" to="." method="Hovered"]
+[connection signal="mouse_exited" from="Control" to="." method="Unhovered"]
+[connection signal="area_entered" from="WeaponRange" to="." method="DefenseRangeEntered"]
+[connection signal="area_exited" from="WeaponRange" to="." method="DefenseRangeExitted"]
+[connection signal="body_entered" from="WeaponRange" to="." method="WeaponRangeEntered"]
+[connection signal="body_exited" from="WeaponRange" to="." method="WeaponRangeExitted"]

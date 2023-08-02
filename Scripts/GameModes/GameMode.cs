@@ -30,10 +30,6 @@ public partial class GameMode : Node
 
 	public bool IsGameOver;
 
-	protected bool HasEnemySpawnedUnits;
-
-	protected bool CanSpawnUnits;
-
 	protected int MatchLength;
 
 	// Called when the node enters the scene tree for the first time.
@@ -48,8 +44,6 @@ public partial class GameMode : Node
 
 		PlayerReinforcePoints = _gameManager.MatchOptions.PlayerReinforcePoints;
 		EnemyReinforcePoints = _gameManager.MatchOptions.EnemyReinforcePoints;
-
-		CanSpawnUnits = true;
 	}
 
 	// I wish this could be an abstract class so I don't look so stupid to the people that I imagine will read this code, but really no one is ever going to read this

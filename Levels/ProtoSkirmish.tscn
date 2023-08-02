@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://blokfof1cjxys"]
+[gd_scene load_steps=28 format=3 uid="uid://blokfof1cjxys"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_atxrj"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://xv1wt0a2bek4" path="res://Scenes/PlayerView.tscn" id="8_sajfx"]
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_hbb16"]
 [ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="9_uxlcb"]
+[ext_resource type="PackedScene" uid="uid://cpmhsh1y8sm8i" path="res://Scenes/EnemyDroneControl.tscn" id="10_60adq"]
 [ext_resource type="PackedScene" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_qkmyg"]
 [ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="11_juncj"]
 [ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="12_agxf8"]
@@ -37,12 +38,13 @@ radius = 479.038
 script = ExtResource("1_atxrj")
 CruiserScene = ExtResource("2_dn04u")
 PicketScene = ExtResource("3_ayhkd")
-DestroyerScene = ExtResource("4_0n7eh")
+DroneControlScene = ExtResource("4_0n7eh")
 RepairScene = ExtResource("5_i51gk")
 EnemyCapitalScene = ExtResource("6_0mp2q")
 EnemyPicketScene = ExtResource("19_i5iyp")
 EnemyCruiserScene = ExtResource("8_ps8jp")
 EnemyRepairScene = ExtResource("9_uxlcb")
+EnemyDroneControlScene = ExtResource("10_60adq")
 GameMode = NodePath("GameMode")
 
 [node name="Background" type="Sprite2D" parent="."]

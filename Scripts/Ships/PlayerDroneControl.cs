@@ -23,7 +23,7 @@ public partial class PlayerDroneControl : Unit
     {
         if(_isCombatOnCoolDown || Target == null || !TargetsInWeaponRange.Any(x => x == Target)) return;
 
-        //_missileLauncher.FireMissile(Target, MyTargetGroup, HostileTargetGroup, GlobalPosition);
+        _missileLauncher.FireMissile(Target, MyTargetGroup, HostileTargetGroup, GlobalPosition);
 
         await base.HandleCombat();
     }
