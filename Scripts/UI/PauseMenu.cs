@@ -68,6 +68,7 @@ public partial class PauseMenu : Panel
 
 	public void ExitGame()
     {
+		OnResumeButtonPressed();
 		GetTree().ChangeSceneToFile("res://Levels/MainMenu.tscn");
     }
 

@@ -69,6 +69,6 @@ public partial class Skirmish : GameMode
 	{
 		_gameManager.LastMatchSummary.PlayerScore = PlayerScore;
 		_gameManager.LastMatchSummary.EnemyScore = EnemyScore;
-		GetTree().ChangeSceneToPacked(PostMatchScene);
+		GetTree().Root.GetTree().ChangeSceneToPacked(PostMatchScene);
 	}
 }

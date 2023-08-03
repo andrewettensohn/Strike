@@ -216,7 +216,7 @@ public partial class EnemyCommander : Node
 	{
 		FleetComp fleetComp = new FleetComp();
 
-		foreach(Unit unit in _levelManager.PlayerUnits)
+		foreach(Unit unit in units)
 		{
 			if(unit.ShipClass == ShipClass.Picket)
 			{

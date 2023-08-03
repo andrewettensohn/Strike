@@ -128,7 +128,7 @@ public partial class LevelManager : Node
 
     public void ReinforcePlayerShip(ShipClass shipClass)
     {
-        if(IsReinforceDisabled) return;
+        if(IsReinforceDisabled || PlayerUnits.Count >= 8) return;
 
         AudioStreamPlayer.PlayAudio(AudioStreamPlayer.ReinforceSoundClip);
         DialougeStreamPlayer.PlayUnitReinforceSoundClip();
