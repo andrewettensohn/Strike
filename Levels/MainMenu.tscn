@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://glrukuholjhe"]
+[gd_scene load_steps=14 format=3 uid="uid://glrukuholjhe"]
 
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="1_g0lwh"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_rgc5j"]
 [ext_resource type="PackedScene" uid="uid://7dldof33d5o" path="res://Levels/ProtoSkirmishPreMatch.tscn" id="2_erhyn"]
+[ext_resource type="Texture2D" uid="uid://dnkls6spaejfe" path="res://Art/Sprites/Backgrounds/7.png" id="3_ocj3x"]
 [ext_resource type="Script" path="res://Scripts/UI/OptionsMenu.cs" id="3_stako"]
+[ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_2jskl"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_ns0xv"]
+[ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="8_3ot86"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="9_ch0t1"]
+
+[sub_resource type="Theme" id="Theme_r12an"]
+default_font = ExtResource("4_2jskl")
+default_font_size = 64
 
 [sub_resource type="Theme" id="Theme_7an2x"]
 default_font = ExtResource("1_g0lwh")
@@ -20,9 +28,34 @@ default_font_size = 20
 script = ExtResource("1_rgc5j")
 ProtoSkirmishPreMatch = ExtResource("2_erhyn")
 
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -304.0
+offset_top = -240.0
+offset_right = 3792.0
+offset_bottom = 3856.0
+scale = Vector2(0.710937, 0.726563)
+texture = ExtResource("3_ocj3x")
+
 [node name="MainButtonsPanel" type="Panel" parent="."]
 offset_right = 256.0
 offset_bottom = 288.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = SubResource("Theme_r12an")
+text = "STRIKE"
 
 [node name="PlayButton" type="Button" parent="MainButtonsPanel"]
 layout_mode = 1
@@ -196,6 +229,13 @@ offset_right = 114.83
 offset_bottom = 43.232
 theme = SubResource("Theme_rouy4")
 text = "CLOSE"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_3ot86")
+volume_db = 0.001
+autoplay = true
+script = ExtResource("9_ch0t1")
 
 [connection signal="pressed" from="MainButtonsPanel/PlayButton" to="." method="ToggleLevelSelectPanel"]
 [connection signal="pressed" from="MainButtonsPanel/OptionsButton" to="OptionsMenu" method="OnOptionsMenuOpened"]

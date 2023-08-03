@@ -35,6 +35,10 @@ public partial class EnemyCommander : Node
 	}
 
 	// Determine destination for units outside of just chasing the player, combat is always the priority but if there's no targets in range, go to a capture point
+	public void GetCapturePointDestination()
+	{
+		//TODO: implement this
+	}
 
 	public Unit GetTargetForUnit(Unit enemyUnit, List<Unit> playerShips)
 	{
@@ -91,18 +95,19 @@ public partial class EnemyCommander : Node
 
 	private void HandleEnemyReinforce()
 	{
-		EnemyFleetComp fleetComp = GetFleetComp();
+		FleetComp desiredFleetComp = GetFleetComp();
+		FleetComp currentComp = GetFleetCompStatsFromList(_levelManager.EnemyUnits);
 
-		int picketNeeded = fleetComp.PicketCount - _levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.Picket);
+		int picketNeeded = desiredFleetComp.PicketCount - currentComp.PicketCount;
 		SpawnEnemyShipsForClass(_levelManager.EnemyPicketScene, picketNeeded);
 
-		int repairNeeded = fleetComp.RepairCount - _levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.Repair);
+		int repairNeeded = desiredFleetComp.RepairCount - currentComp.RepairCount;
 		SpawnEnemyShipsForClass(_levelManager.EnemyRepairScene, repairNeeded);
 
-		int cruiserNeeded = fleetComp.CrusierCount - _levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.Crusier);
+		int cruiserNeeded = desiredFleetComp.CrusierCount - currentComp.CrusierCount;
 		SpawnEnemyShipsForClass(_levelManager.EnemyCruiserScene, cruiserNeeded);
 
-		int droneNeeded = fleetComp.DroneControlCount - _levelManager.EnemyUnits.Count(x => x.ShipClass == ShipClass.DroneControl);
+		int droneNeeded = desiredFleetComp.DroneControlCount - currentComp.DroneControlCount;
 		SpawnEnemyShipsForClass(_levelManager.EnemyDroneControlScene, droneNeeded);
 
 		CanSpawnUnits = true;
@@ -110,21 +115,26 @@ public partial class EnemyCommander : Node
 
 	private void SpawnEnemyShipsForClass(PackedScene packedScene, int countNeeded)
 	{
-		if(countNeeded == 0) return;
+		if(countNeeded == 0 || _levelManager.EnemyUnits.Count >= 8) return;
 
 		for(int i = 0; i < countNeeded; i++)
 		{
+			if(_levelManager.EnemyUnits.Count >= 8)
+			{
+				return;
+			}
+
 			_levelManager.SpawnEnemyShip(packedScene);
 		}
 	}
 
-	private EnemyFleetComp GetFleetComp()
+	private FleetComp GetFleetComp()
 	{
 		EnemyFleetCompType enemyFleetCompType = GetFleetCompType();
 		
 		if(enemyFleetCompType == EnemyFleetCompType.Balanced)
 		{
-			return new EnemyFleetComp
+			return new FleetComp
 			{
 				CrusierCount = 3,
 				PicketCount = 3,
@@ -134,7 +144,7 @@ public partial class EnemyCommander : Node
 		}
 		else if(enemyFleetCompType == EnemyFleetCompType.CruiserHeavy)
 		{
-			return new EnemyFleetComp
+			return new FleetComp
 			{
 				CrusierCount = 5,
 				PicketCount = 1,
@@ -144,7 +154,7 @@ public partial class EnemyCommander : Node
 		}
 		else if(enemyFleetCompType == EnemyFleetCompType.PicketSwarm)
 		{
-			return new EnemyFleetComp
+			return new FleetComp
 			{
 				CrusierCount = 0,
 				PicketCount = 8,
@@ -154,7 +164,7 @@ public partial class EnemyCommander : Node
 		}
 		else if(enemyFleetCompType == EnemyFleetCompType.DroneHeavy)
 		{
-			return new EnemyFleetComp
+			return new FleetComp
 			{
 				CrusierCount = 1,
 				PicketCount = 2,
@@ -164,7 +174,7 @@ public partial class EnemyCommander : Node
 		}
 		else if(enemyFleetCompType == EnemyFleetCompType.NoDrones)
 		{
-			return new EnemyFleetComp
+			return new FleetComp
 			{
 				CrusierCount = 2,
 				PicketCount = 4,
@@ -175,47 +185,24 @@ public partial class EnemyCommander : Node
 		else
 		{
 			GD.Print("No comp selected for enemy.");
-			return new EnemyFleetComp();
+			return new FleetComp();
 		}
 	}
 
 	// Analyze the player's ships and set a fleet comp that is ideal for dealing with what the player is using.
 	private EnemyFleetCompType GetFleetCompType()
 	{
-		int cruiserCount = 0;
-		int repairCount = 0;
-		int picketCount = 0;
-		int droneControlCount = 0;
+		FleetComp playerFleetComp = GetFleetCompStatsFromList(_levelManager.PlayerUnits);
 
-		foreach(Unit unit in _levelManager.PlayerUnits)
-		{
-			if(unit.ShipClass == ShipClass.Picket)
-			{
-				picketCount += 1;
-			}
-			else if(unit.ShipClass == ShipClass.Repair)
-			{
-				repairCount += 1;
-			}
-			else if(unit.ShipClass == ShipClass.Crusier)
-			{
-				cruiserCount += 1;
-			}
-			else if(unit.ShipClass == ShipClass.DroneControl)
-			{
-				droneControlCount += 1;
-			}
-		}
-
-		if(picketCount > 3)
+		if(playerFleetComp.PicketCount > 3)
 		{
 			return EnemyFleetCompType.CruiserHeavy;
 		}
-		else if(droneControlCount >= 3)
+		else if(playerFleetComp.DroneControlCount >= 3)
 		{
 			return EnemyFleetCompType.PicketSwarm;
 		}
-		else if(cruiserCount > 3)
+		else if(playerFleetComp.DroneControlCount > 3)
 		{
 			return EnemyFleetCompType.DroneHeavy;
 		}
@@ -223,6 +210,33 @@ public partial class EnemyCommander : Node
 		{
 			return EnemyFleetCompType.Balanced;
 		}
+	}
+
+	private FleetComp GetFleetCompStatsFromList(List<Unit> units)
+	{
+		FleetComp fleetComp = new FleetComp();
+
+		foreach(Unit unit in _levelManager.PlayerUnits)
+		{
+			if(unit.ShipClass == ShipClass.Picket)
+			{
+				fleetComp.PicketCount += 1;
+			}
+			else if(unit.ShipClass == ShipClass.Repair)
+			{
+				fleetComp.RepairCount += 1;
+			}
+			else if(unit.ShipClass == ShipClass.Crusier)
+			{
+				fleetComp.CrusierCount += 1;
+			}
+			else if(unit.ShipClass == ShipClass.DroneControl)
+			{
+				fleetComp.DroneControlCount += 1;
+			}
+		}
+
+		return fleetComp;
 	}
 
 }

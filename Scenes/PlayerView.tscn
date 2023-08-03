@@ -1,7 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://xv1wt0a2bek4"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PlayerView.cs" id="1_gbg1f"]
-[ext_resource type="Texture2D" uid="uid://b7v66gapyci17" path="res://Art/Sprites/Misc/Waypoint.png" id="2_enj2k"]
 [ext_resource type="PackedScene" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
 [ext_resource type="Script" path="res://Scripts/UI/UILayer.cs" id="3_0u2l5"]
 [ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="6_hqc52"]
 [ext_resource type="Script" path="res://Scripts/UI/ReinforceSlot.cs" id="6_hx3n3"]
 [ext_resource type="PackedScene" uid="uid://dcwwif5wowkl7" path="res://Scenes/RadialFormation.tscn" id="6_pty0s"]
+[ext_resource type="Texture2D" uid="uid://c5tx6wky7g761" path="res://Art/Sprites/Icon/Waypoint2.png" id="7_yulwa"]
 [ext_resource type="Texture2D" uid="uid://bth8ggmmjdcwc" path="res://Art/Icons/Hex/slice30.svg" id="10_mukah"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="10_nvobt"]
 [ext_resource type="Texture2D" uid="uid://ciopi733n24vo" path="res://Art/Icons/Hex/slice25.png" id="10_swh5w"]
@@ -50,8 +50,8 @@ script = ExtResource("5_d14p1")
 
 [node name="WaypointSprite" type="Sprite2D" parent="."]
 position = Vector2(-9.53674e-07, 9.53674e-07)
-scale = Vector2(0.962, 1)
-texture = ExtResource("2_enj2k")
+scale = Vector2(0.482, 0.519999)
+texture = ExtResource("7_yulwa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_0u2l5")

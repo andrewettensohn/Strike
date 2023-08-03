@@ -20,4 +20,4 @@ position = Vector2(-37, -24)
 scale = Vector2(0.70602, 0.75945)
 texture = ExtResource("2_ti2de")
 
-[connection signal="area_entered" from="." to="." method="MissileEntered"]
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

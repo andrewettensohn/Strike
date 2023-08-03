@@ -41,7 +41,13 @@ public partial class Shield : Area2D
 		}
 	}
 
-	public void MissileEntered(Area2D area)
+	public void OnAreaEntered(Area2D area)
+	{
+		CheckForMissile(area);
+		CheckForDrone(area);
+	}
+
+	public void CheckForMissile(Area2D area)
     {
         if(area as Missile == null) return;
 
@@ -54,4 +60,18 @@ public partial class Shield : Area2D
         
         missile.QueueFree();
     }
+
+	private void CheckForDrone(Area2D area)
+	{
+		if(area as Drone == null) return;
+
+        Drone drone = (Drone)area;
+        
+        if(drone.Parent.MyTargetGroup == _myTargetGroup)
+        {
+            return;
+        }
+        
+        drone.QueueFree();
+	}
 }

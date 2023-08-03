@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="16_qi3u8"]
 [ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="17_t2qcw"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="18_ijn0r"]
-[ext_resource type="PackedScene" path="res://Scenes/EnemyPicket.tscn" id="19_i5iyp"]
+[ext_resource type="PackedScene" uid="uid://cygv1durr2dbk" path="res://Scenes/EnemyPicket.tscn" id="19_i5iyp"]
 [ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="20_4krl5"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_k8des"]
 [ext_resource type="PackedScene" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
@@ -47,9 +47,12 @@ EnemyRepairScene = ExtResource("9_uxlcb")
 EnemyDroneControlScene = ExtResource("10_60adq")
 GameMode = NodePath("GameMode")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(942, -36.9999)
-scale = Vector2(11.3883, 7.59359)
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -22496.0
+offset_top = -15160.0
+offset_right = -17656.0
+offset_bottom = -10917.0
+scale = Vector2(9.61719, 7.4043)
 texture = ExtResource("7_m3gqh")
 
 [node name="PlayerView" parent="." instance=ExtResource("8_sajfx")]
@@ -60,7 +63,7 @@ scale = Vector2(2.625, 2.76769)
 navigation_polygon = SubResource("NavigationPolygon_tgi5t")
 
 [node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("10_qkmyg")]
-position = Vector2(38, 45)
+position = Vector2(-5320, 60)
 
 [node name="PlayerReinforceCorridorStart" type="Sprite2D" parent="."]
 position = Vector2(-21619, -50)
@@ -68,7 +71,7 @@ scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_hbb16")
 
 [node name="EnemyReinforceCorridorEnd" parent="." instance=ExtResource("20_pg4xa")]
-position = Vector2(12041, 4)
+position = Vector2(5232, 40)
 
 [node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
 position = Vector2(21750, 50)
@@ -79,7 +82,7 @@ texture = ExtResource("9_hbb16")
 script = ExtResource("11_juncj")
 
 [node name="CapturePoint" type="Area2D" parent="."]
-position = Vector2(5993, 0)
+position = Vector2(-8, 32)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("13_g7bvw")

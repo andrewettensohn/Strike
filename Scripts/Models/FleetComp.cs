@@ -1,4 +1,4 @@
-public class EnemyFleetComp
+public class FleetComp
 {
     public int CrusierCount;
 

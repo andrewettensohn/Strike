@@ -68,7 +68,7 @@ public partial class PauseMenu : Panel
 
 	public void ExitGame()
     {
-        GetTree().Quit();
+		GetTree().ChangeSceneToFile("res://Levels/MainMenu.tscn");
     }
 
 	public void OnEscDelayTimerExpired()
