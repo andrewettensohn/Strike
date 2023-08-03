@@ -78,7 +78,7 @@ texture = ExtResource("4_bju1k")
 
 [node name="DroneLauncher" parent="." instance=ExtResource("6_qbwqb")]
 DroneScene = ExtResource("8_81807")
-CoolDownTime = 5.0
+CoolDownTime = 10.0
 
 [node name="UnitIcon" type="Sprite2D" parent="."]
 position = Vector2(-0.500008, -1.49999)

@@ -53,7 +53,7 @@ public partial class CruiserShip : Unit
     protected override async Task HandleTactical()
     {
         
-        if(IsTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed) return;
+        if(IsTacticalOnCoolDown || IsTacticalInUse || !IsTacticalAbilityPressed || !IsInstanceValid(Target)) return;
 
         IsTacticalInUse = true;
         IsTacticalAbilityPressed = false;

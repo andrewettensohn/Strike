@@ -83,4 +83,20 @@ public partial class PicketShip : Unit
             IsTacticalAbilityPressed = true;
         }
     }
+
+    public override async Task Damage(int damage)
+    {
+        if(IsTacticalInUse) return;
+        
+        Health -= damage;
+        
+        if(Health <= 0)
+        {
+            await HandleDeath();
+        }
+		else if(IsPlayerSide)
+		{
+			LevelManager.DialougeStreamPlayer.PlayUnitDamagedSoundClip();
+		}
+    }
 }

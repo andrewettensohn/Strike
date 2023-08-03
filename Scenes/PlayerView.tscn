@@ -50,7 +50,7 @@ script = ExtResource("5_d14p1")
 
 [node name="WaypointSprite" type="Sprite2D" parent="."]
 position = Vector2(-9.53674e-07, 9.53674e-07)
-scale = Vector2(0.482, 0.519999)
+scale = Vector2(0.282001, 0.24)
 texture = ExtResource("7_yulwa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

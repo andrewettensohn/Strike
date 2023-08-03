@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://blokfof1cjxys"]
+[gd_scene load_steps=42 format=3 uid="uid://c218pbb8hhaou"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_atxrj"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
@@ -12,19 +12,33 @@
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="9_hbb16"]
 [ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="9_uxlcb"]
 [ext_resource type="PackedScene" uid="uid://cpmhsh1y8sm8i" path="res://Scenes/EnemyDroneControl.tscn" id="10_60adq"]
-[ext_resource type="PackedScene" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_qkmyg"]
+[ext_resource type="PackedScene" uid="uid://54o7ayfcv5su" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="10_qkmyg"]
 [ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="11_juncj"]
-[ext_resource type="Texture2D" uid="uid://bfjk8odxiuyh8" path="res://Art/Sprites/Icon/WeaponRange.png" id="12_agxf8"]
 [ext_resource type="Script" path="res://Scripts/GameLogic/CapturePoint.cs" id="13_g7bvw"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="14_08rsa"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="16_qi3u8"]
 [ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="17_t2qcw"]
+[ext_resource type="Texture2D" uid="uid://wr0bdbu1uqgt" path="res://Art/Sprites/Icon/CapturePointGreen.png" id="18_h2sgn"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="18_ijn0r"]
+[ext_resource type="Texture2D" uid="uid://dtwe0j0y67mvq" path="res://Art/Sprites/Icon/CapturePointWhite.png" id="18_pwcj6"]
 [ext_resource type="PackedScene" uid="uid://cygv1durr2dbk" path="res://Scenes/EnemyPicket.tscn" id="19_i5iyp"]
 [ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="20_4krl5"]
+[ext_resource type="Texture2D" uid="uid://qo74x0qjrkpt" path="res://Art/Sprites/Icon/CapturePointRed.png" id="20_d34ok"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_k8des"]
-[ext_resource type="PackedScene" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
+[ext_resource type="PackedScene" uid="uid://duq768txww0y8" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
 [ext_resource type="PackedScene" uid="uid://udhfl7tmowir" path="res://Levels/PostMatch.tscn" id="24_l5l3b"]
+[ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="28_dscfv"]
+[ext_resource type="Texture2D" uid="uid://dmj0oom4v1" path="res://Art/Sprites/Rocks/Field2.png" id="29_dmgat"]
+[ext_resource type="Texture2D" uid="uid://bioba7l4iu2q4" path="res://Art/Sprites/Rocks/Field4.png" id="30_8jwyc"]
+[ext_resource type="Texture2D" uid="uid://bs4odg7ogu845" path="res://Art/Sprites/Rocks/Field6.png" id="31_v4220"]
+[ext_resource type="Texture2D" uid="uid://d178w4cmxnvpl" path="res://Art/Sprites/Rocks/Rock1.png" id="32_ad5eg"]
+[ext_resource type="Texture2D" uid="uid://gmprjhfgey5o" path="res://Art/Sprites/Rocks/Rock4.png" id="33_nxh6h"]
+[ext_resource type="Texture2D" uid="uid://bs65avd102yqy" path="res://Art/Sprites/Rocks/Field7.png" id="34_wdh4m"]
+[ext_resource type="Texture2D" uid="uid://g35upp1ppx0p" path="res://Art/Sprites/Rocks/Rock2.png" id="35_yi0v4"]
+[ext_resource type="Texture2D" uid="uid://do4u8cfeu5pk4" path="res://Art/Sprites/Rocks/Rock5.png" id="36_y5b75"]
+[ext_resource type="Texture2D" uid="uid://cfwdqtabep013" path="res://Art/Sprites/Rocks/Field3.png" id="37_6ce1e"]
+[ext_resource type="Texture2D" uid="uid://5f68xy7n35tu" path="res://Art/Sprites/Rocks/Rock3.png" id="38_y1sdp"]
+[ext_resource type="Texture2D" uid="uid://boe50vnkwn8w0" path="res://Art/Sprites/Rocks/Field5.png" id="39_krax3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
 vertices = PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)
@@ -58,6 +72,7 @@ texture = ExtResource("7_m3gqh")
 [node name="PlayerView" parent="." instance=ExtResource("8_sajfx")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-14855, -4084)
 scale = Vector2(2.625, 2.76769)
 navigation_polygon = SubResource("NavigationPolygon_tgi5t")
@@ -71,7 +86,7 @@ scale = Vector2(0.732365, 0.561555)
 texture = ExtResource("9_hbb16")
 
 [node name="EnemyReinforceCorridorEnd" parent="." instance=ExtResource("20_pg4xa")]
-position = Vector2(5232, 40)
+position = Vector2(5320, 60)
 
 [node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
 position = Vector2(21750, 50)
@@ -86,11 +101,14 @@ position = Vector2(-8, 32)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("13_g7bvw")
+NeutralTexture = ExtResource("18_pwcj6")
+PlayerTexture = ExtResource("18_h2sgn")
+EnemyTexture = ExtResource("20_d34ok")
 
 [node name="Sprite" type="Sprite2D" parent="CapturePoint"]
 position = Vector2(-2, 4)
-scale = Vector2(0.778846, 0.991786)
-texture = ExtResource("12_agxf8")
+scale = Vector2(1.17885, 1.19179)
+texture = ExtResource("18_pwcj6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CapturePoint"]
 shape = SubResource("CircleShape2D_cb3dd")
@@ -119,6 +137,126 @@ one_shot = true
 [node name="PostMissionTimer" type="Timer" parent="GameMode"]
 wait_time = 5.0
 one_shot = true
+
+[node name="Field1" type="Sprite2D" parent="."]
+position = Vector2(-4048, -2480)
+texture = ExtResource("28_dscfv")
+
+[node name="Field2" type="Sprite2D" parent="."]
+position = Vector2(-2384, -2544)
+texture = ExtResource("29_dmgat")
+
+[node name="Field4" type="Sprite2D" parent="."]
+position = Vector2(-152, -2368)
+texture = ExtResource("30_8jwyc")
+
+[node name="Field6" type="Sprite2D" parent="."]
+position = Vector2(-4256, -1568)
+texture = ExtResource("31_v4220")
+
+[node name="Rock1" type="Sprite2D" parent="."]
+position = Vector2(-4264, 1520)
+texture = ExtResource("32_ad5eg")
+
+[node name="Rock4" type="Sprite2D" parent="."]
+position = Vector2(1248, 2016)
+texture = ExtResource("33_nxh6h")
+
+[node name="Field3" type="Sprite2D" parent="."]
+position = Vector2(1792, -2904)
+texture = ExtResource("28_dscfv")
+
+[node name="Field7" type="Sprite2D" parent="."]
+position = Vector2(3136, 1960)
+texture = ExtResource("34_wdh4m")
+
+[node name="Field8" type="Sprite2D" parent="."]
+position = Vector2(3040, 1032)
+texture = ExtResource("31_v4220")
+
+[node name="Rock2" type="Sprite2D" parent="."]
+position = Vector2(2248, 1872)
+texture = ExtResource("35_yi0v4")
+
+[node name="Rock5" type="Sprite2D" parent="."]
+position = Vector2(2192, 2816)
+texture = ExtResource("33_nxh6h")
+
+[node name="Field9" type="Sprite2D" parent="."]
+position = Vector2(4680, 1992)
+texture = ExtResource("31_v4220")
+
+[node name="Field5" type="Sprite2D" parent="."]
+position = Vector2(6640, 2208)
+texture = ExtResource("30_8jwyc")
+
+[node name="Field10" type="Sprite2D" parent="."]
+position = Vector2(5272, 2864)
+texture = ExtResource("31_v4220")
+
+[node name="Rock6" type="Sprite2D" parent="."]
+position = Vector2(3504, 3336)
+texture = ExtResource("36_y5b75")
+
+[node name="Field11" type="Sprite2D" parent="."]
+position = Vector2(464, 2656)
+texture = ExtResource("37_6ce1e")
+
+[node name="Field12" type="Sprite2D" parent="."]
+position = Vector2(-1488, 2048)
+texture = ExtResource("29_dmgat")
+
+[node name="Rock3" type="Sprite2D" parent="."]
+position = Vector2(-2808, 984)
+texture = ExtResource("38_y1sdp")
+
+[node name="Field13" type="Sprite2D" parent="."]
+position = Vector2(-512, -3584)
+texture = ExtResource("39_krax3")
+
+[node name="Field14" type="Sprite2D" parent="."]
+position = Vector2(480, -4496)
+texture = ExtResource("30_8jwyc")
+
+[node name="Rock7" type="Sprite2D" parent="."]
+position = Vector2(2328, -4088)
+texture = ExtResource("36_y5b75")
+
+[node name="Rock8" type="Sprite2D" parent="."]
+position = Vector2(984, -3512)
+texture = ExtResource("32_ad5eg")
+
+[node name="Field15" type="Sprite2D" parent="."]
+position = Vector2(1784, -1864)
+texture = ExtResource("39_krax3")
+
+[node name="Field16" type="Sprite2D" parent="."]
+position = Vector2(3520, -2704)
+texture = ExtResource("29_dmgat")
+
+[node name="Rock9" type="Sprite2D" parent="."]
+position = Vector2(-472, -1648)
+texture = ExtResource("35_yi0v4")
+
+[node name="Rock10" type="Sprite2D" parent="."]
+position = Vector2(-1272, -1512)
+texture = ExtResource("33_nxh6h")
+
+[node name="Rock11" type="Sprite2D" parent="."]
+position = Vector2(-2824, 1936)
+texture = ExtResource("33_nxh6h")
+
+[node name="Field17" type="Sprite2D" parent="."]
+position = Vector2(-4264, 2208)
+texture = ExtResource("31_v4220")
+
+[node name="Rock12" type="Sprite2D" parent="."]
+position = Vector2(-3632, 1432)
+texture = ExtResource("33_nxh6h")
+
+[node name="Rock13" type="Sprite2D" parent="."]
+position = Vector2(4592, -1832)
+texture = ExtResource("38_y1sdp")
 
 [connection signal="body_entered" from="CapturePoint" to="CapturePoint" method="OnShipEntered"]
 [connection signal="body_exited" from="CapturePoint" to="CapturePoint" method="OnShipExitted"]

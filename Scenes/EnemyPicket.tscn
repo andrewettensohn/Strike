@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cw4kyb2w4y4i5" path="res://Scenes/EnemyShield.tscn" id="3_0hocg"]
 [ext_resource type="Texture2D" uid="uid://i7rrisssiwnn" path="res://Art/Sprites/Ships/EnemyPicket.png" id="3_f8301"]
 [ext_resource type="PackedScene" path="res://Scenes/MissileLauncher.tscn" id="3_of3eh"]
-[ext_resource type="PackedScene" path="res://Scenes/FlakTurret.tscn" id="4_smt02"]
+[ext_resource type="PackedScene" uid="uid://dd4c3d47pv2oj" path="res://Scenes/FlakTurret.tscn" id="4_smt02"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_uw3wa"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="7_wte52"]
 [ext_resource type="Texture2D" uid="uid://bmtbgb373kibn" path="res://Art/Sprites/Icon/EnemyPicketIcon.png" id="8_x2qdv"]

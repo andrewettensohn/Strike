@@ -24,6 +24,11 @@ rotation = 1.5708
 scale = Vector2(0.613192, 0.576933)
 texture = ExtResource("2_ofa28")
 
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="BulletEntered"]
 [connection signal="body_entered" from="." to="." method="UnitEntered"]
 [connection signal="body_exited" from="." to="." method="UnitExitted"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="OnLifetimeExpired"]

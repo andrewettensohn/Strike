@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://duq768txww0y8"]
 
 [ext_resource type="Script" path="res://Scripts/GameLogic/ReinforceCorrdidorEnd.cs" id="1_ykfal"]
-[ext_resource type="Texture2D" uid="uid://dk103rejnoonj" path="res://Art/Sprites/Icon/EnemyPlaneRadarIcon.png" id="2_l048c"]
-[ext_resource type="PackedScene" uid="uid://2jrmsp1n247n" path="res://Scenes/PlayerReinforcePos.tscn" id="3_ygfvw"]
+[ext_resource type="Texture2D" uid="uid://d4cpicjjia1uf" path="res://Art/Sprites/Icon/EnemyReinforcePos2.png" id="2_333wc"]
+[ext_resource type="PackedScene" path="res://Scenes/PlayerReinforcePos.tscn" id="3_ygfvw"]
 
 [node name="EnemyReinforceCorridorEnd" type="Node2D"]
 script = ExtResource("1_ykfal")
@@ -10,7 +10,7 @@ script = ExtResource("1_ykfal")
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(2.5, -2.99997)
 scale = Vector2(2.53724, 2.39714)
-texture = ExtResource("2_l048c")
+texture = ExtResource("2_333wc")
 
 [node name="Pos1" parent="." instance=ExtResource("3_ygfvw")]
 position = Vector2(189, -569)

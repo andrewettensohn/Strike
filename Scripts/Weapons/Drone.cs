@@ -59,6 +59,11 @@ public partial class Drone : Area2D
         }
     }
 
+    public void OnLifetimeExpired()
+    {
+        QueueFree();
+    }
+
 	public void UnitEntered(Node2D node)
     {
         if(IsInstanceValid(Parent.Target) && node.Name == Parent.Target.Name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://d1kq5ql0owval"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Bullet.cs" id="1_ki6n3"]
 [ext_resource type="Texture2D" uid="uid://d1rojmh1k8ufd" path="res://Art/Sprites/Misc/Bullet.png" id="2_anxgf"]
@@ -13,7 +13,7 @@ scale = Vector2(0.32, 0.320002)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ki6n3")
-Speed = 100.0
+Speed = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.14713e-05, -3.57628e-05)

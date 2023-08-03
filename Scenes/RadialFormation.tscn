@@ -14,25 +14,25 @@ position = Vector2(242, 106)
 texture = ExtResource("1_tpyrr")
 
 [node name="Pos2" type="Sprite2D" parent="."]
-position = Vector2(-251, 115)
+position = Vector2(359.001, 327.999)
 texture = ExtResource("1_tpyrr")
 
 [node name="Pos3" type="Sprite2D" parent="."]
-position = Vector2(-427, 267)
+position = Vector2(252.002, 590.999)
 texture = ExtResource("1_tpyrr")
 
 [node name="Pos4" type="Sprite2D" parent="."]
-position = Vector2(404, 262)
+position = Vector2(-230, 91.0009)
 texture = ExtResource("1_tpyrr")
 
 [node name="Pos5" type="Sprite2D" parent="."]
-position = Vector2(1, 498)
+position = Vector2(15.0022, 603)
 texture = ExtResource("1_tpyrr")
 
 [node name="Pos6" type="Sprite2D" parent="."]
-position = Vector2(501, 629)
+position = Vector2(-193.998, 528.001)
 texture = ExtResource("1_tpyrr")
 
 [node name="Pos7" type="Sprite2D" parent="."]
-position = Vector2(-444, 602)
+position = Vector2(-344.999, 323.001)
 texture = ExtResource("1_tpyrr")
