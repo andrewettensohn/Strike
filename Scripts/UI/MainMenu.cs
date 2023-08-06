@@ -11,11 +11,14 @@ public partial class MainMenu : Node2D
 
 	private Panel _optionsMenu;
 
+	GameManager _gameManager;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_levelSelectPanel = GetNode<Panel>("LevelSelectPanel");
 		_optionsMenu = GetNode<Panel>("OptionsMenu");
+		_gameManager = GetNode<GameManager>("/root/GameManager");
 
 		_levelSelectPanel.Visible = false;
 	}
@@ -33,7 +36,7 @@ public partial class MainMenu : Node2D
 
 	public void PlayProtoLevel()
 	{
-		GetTree().ChangeSceneToPacked(ProtoSkirmishPreMatch);
+		_gameManager.GotoScene("res://Levels/ProtoSkirmishPreMatch.tscn");	
 	}
 
 	public void ToggleLevelSelectPanel()

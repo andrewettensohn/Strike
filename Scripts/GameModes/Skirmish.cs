@@ -7,9 +7,6 @@ public partial class Skirmish : GameMode
 {
 
 	[Export]
-	public PackedScene PostMatchScene;
-
-	[Export]
 	public CapturePoint CapturePoint;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,8 +64,8 @@ public partial class Skirmish : GameMode
 
 	public override void OnPostMatchTimerExpired()
 	{
-		_gameManager.LastMatchSummary.PlayerScore = PlayerScore;
+        _gameManager.LastMatchSummary.PlayerScore = PlayerScore;
 		_gameManager.LastMatchSummary.EnemyScore = EnemyScore;
-		GetTree().Root.GetTree().ChangeSceneToPacked(PostMatchScene);
+		_levelManager.EndLevel();
 	}
 }

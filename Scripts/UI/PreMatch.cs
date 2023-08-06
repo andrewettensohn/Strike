@@ -45,7 +45,7 @@ public partial class PreMatch : Control
 
 	public void StartMatchButtonPressed()
 	{
-		GetTree().ChangeSceneToPacked(Level);
+		_gameManager.GotoScene("res://Levels/ProtoSkirmish.tscn");
 	}
 
 	public void OnMatchLengthSlideEnded(bool value_changed)

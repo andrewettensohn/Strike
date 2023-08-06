@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://glrukuholjhe"]
+[gd_scene load_steps=13 format=3 uid="uid://glrukuholjhe"]
 
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="1_g0lwh"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_rgc5j"]
-[ext_resource type="PackedScene" uid="uid://7dldof33d5o" path="res://Levels/ProtoSkirmishPreMatch.tscn" id="2_erhyn"]
 [ext_resource type="Texture2D" uid="uid://dnkls6spaejfe" path="res://Art/Sprites/Backgrounds/7.png" id="3_ocj3x"]
 [ext_resource type="Script" path="res://Scripts/UI/OptionsMenu.cs" id="3_stako"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_2jskl"]
@@ -26,7 +25,6 @@ default_font_size = 20
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_rgc5j")
-ProtoSkirmishPreMatch = ExtResource("2_erhyn")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -304.0

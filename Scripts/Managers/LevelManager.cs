@@ -36,6 +36,9 @@ public partial class LevelManager : Node
     [Export]
     public GameMode GameMode;
 
+    [Export]
+	public PackedScene PostMatchScene;
+
     public Unit SelectedShip;
 
     public List<Unit> HighlightedShips;
@@ -78,8 +81,12 @@ public partial class LevelManager : Node
 
     public bool IsReinforceDisabled;
 
+    private GameManager _gameManager;
+
     public override void _Ready()
     {
+        _gameManager = GetNode<GameManager>("/root/GameManager");
+
         EnemyCommander = GetNode<EnemyCommander>("EnemyCommander");
 
         PlayerUnits = GetTree().GetNodesInGroup("Player").Select(x => (Unit)x).ToList();
@@ -207,7 +214,7 @@ public partial class LevelManager : Node
 
         unit.GlobalPosition = new Vector2(PlayerReinforceCorridorStart.GlobalPosition.X + xPos, PlayerReinforceCorridorStart.GlobalPosition.Y + yPos);
 
-        GetTree().Root.AddChild(unit);
+        AddChild(unit);
 
         FleetOverview.AddUnitToOverview(unit);
 
@@ -228,7 +235,7 @@ public partial class LevelManager : Node
 
         unit.GlobalPosition = new Vector2(EnemyReinforceCorridorStart.GlobalPosition.X + xPos, EnemyReinforceCorridorStart.GlobalPosition.Y + yPos);
 
-        GetTree().Root.AddChild(unit);
+        AddChild(unit);
 
         ReinforcePos pos = EnemyReinforceCorridorEnd.ReinforcePosList.FirstOrDefault(x => x.IsAvailable);
         pos.IsAvailable = false;
@@ -236,6 +243,11 @@ public partial class LevelManager : Node
         unit.UnitMovement.WarpTo(pos.GlobalPosition);
 
         EnemyUnits.Add(unit);
+    }
+
+    public void EndLevel()
+    {
+        _gameManager.GotoScene("res://Levels/PostMatch.tscn");
     }
     
 }

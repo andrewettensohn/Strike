@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c218pbb8hhaou"]
+[gd_scene load_steps=41 format=3 uid="uid://c218pbb8hhaou"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_atxrj"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://qo74x0qjrkpt" path="res://Art/Sprites/Icon/CapturePointRed.png" id="20_d34ok"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_k8des"]
 [ext_resource type="PackedScene" uid="uid://duq768txww0y8" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
-[ext_resource type="PackedScene" uid="uid://udhfl7tmowir" path="res://Levels/PostMatch.tscn" id="24_l5l3b"]
 [ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="28_dscfv"]
 [ext_resource type="Texture2D" uid="uid://dmj0oom4v1" path="res://Art/Sprites/Rocks/Field2.png" id="29_dmgat"]
 [ext_resource type="Texture2D" uid="uid://bioba7l4iu2q4" path="res://Art/Sprites/Rocks/Field4.png" id="30_8jwyc"]
@@ -126,7 +125,6 @@ script = ExtResource("18_ijn0r")
 
 [node name="GameMode" parent="." node_paths=PackedStringArray("CapturePoint") instance=ExtResource("20_k8des")]
 script = ExtResource("20_4krl5")
-PostMatchScene = ExtResource("24_l5l3b")
 CapturePoint = NodePath("../CapturePoint")
 ObjectiveText = "Capture the Point"
 TimerAdditionalText = "LEFT IN MATCH"

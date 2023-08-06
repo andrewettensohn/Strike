@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://7dldof33d5o"]
+[gd_scene load_steps=2 format=3 uid="uid://7dldof33d5o"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PreMatch.cs" id="1_rdcth"]
-[ext_resource type="PackedScene" uid="uid://blokfof1cjxys" path="res://Levels/ProtoSkirmish.tscn" id="2_3tltp"]
 
 [node name="ProtoSkirmishPreMatch" type="Control"]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rdcth")
-Level = ExtResource("2_3tltp")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -44,7 +42,7 @@ offset_left = 0.0159988
 offset_top = 0.127998
 offset_right = 320.016
 offset_bottom = 32.128
-min_value = 120.0
+min_value = 5.0
 max_value = 600.0
 value = 300.0
 

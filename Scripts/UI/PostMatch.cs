@@ -31,7 +31,10 @@ public partial class PostMatch : Control
 
 	public void ReturnToMainMenu()
 	{
-		GetTree().ChangeSceneToFile("res://Levels/MainMenu.tscn");
+		// GetTree().ChangeSceneToFile("res://Levels/MainMenu.tscn");
+		// //_gameManager = GetNode<GameManager>("/root/GameManager");
+		// _gameManager.GoToMainMenu();
+		_gameManager.GotoScene("res://Levels/MainMenu.tscn");
 	}
 
 }
