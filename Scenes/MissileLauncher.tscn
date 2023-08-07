@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://gr8uwxunymwu"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/MissileLauncher.cs" id="1_1liay"]
-[ext_resource type="PackedScene" uid="uid://cg7lvqrr18nao" path="res://Scenes/Missile.tscn" id="2_ttqia"]
+[ext_resource type="PackedScene" uid="uid://b2bxrdrhhyy1j" path="res://Scenes/Missile.tscn" id="2_ttqia"]
 
 [node name="MissileLauncher" type="Node"]
 script = ExtResource("1_1liay")

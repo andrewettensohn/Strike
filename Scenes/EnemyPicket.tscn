@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_l3f83"]
 [ext_resource type="PackedScene" uid="uid://cw4kyb2w4y4i5" path="res://Scenes/EnemyShield.tscn" id="3_0hocg"]
 [ext_resource type="Texture2D" uid="uid://i7rrisssiwnn" path="res://Art/Sprites/Ships/EnemyPicket.png" id="3_f8301"]
-[ext_resource type="PackedScene" path="res://Scenes/MissileLauncher.tscn" id="3_of3eh"]
+[ext_resource type="PackedScene" uid="uid://gr8uwxunymwu" path="res://Scenes/MissileLauncher.tscn" id="3_of3eh"]
 [ext_resource type="PackedScene" uid="uid://dd4c3d47pv2oj" path="res://Scenes/FlakTurret.tscn" id="4_smt02"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="5_uw3wa"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="7_wte52"]
@@ -23,7 +23,7 @@ collision_mask = 2
 script = ExtResource("1_gtimr")
 ClassName = "Picket"
 Health = 5.0
-MaxSpeed = 70
+MaxSpeed = 130
 Weight = 0.005
 SpeedWhileTurning = 20
 MyTargetGroup = 1

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Ships/RepairShip.cs" id="1_p6kla"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="2_e4o7r"]
-[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_jkqbm"]
+[ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_jkqbm"]
 [ext_resource type="Script" path="res://Scripts/Weapons/RepairModule.cs" id="4_bg3jp"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_gjwtb"]
 [ext_resource type="PackedScene" uid="uid://b6jh7bn888pgs" path="res://Scenes/HealBubble.tscn" id="5_n77fa"]
-[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="6_cnmag"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="6_cnmag"]
 [ext_resource type="Texture2D" uid="uid://ds4i0dt4s86dq" path="res://Art/Sprites/Icon/RepairShipIcon.png" id="7_f2lre"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
@@ -22,7 +22,7 @@ script = ExtResource("1_p6kla")
 TacticalCoolDownTime = 10
 ClassName = "Repair Ship"
 Health = 5.0
-MaxSpeed = 50
+MaxSpeed = 150
 Weight = 0.005
 IsPlayerSide = true
 PathDesiredDistance = 1.0

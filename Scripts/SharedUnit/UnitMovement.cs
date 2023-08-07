@@ -11,7 +11,6 @@ public class UnitMovement
         _unit = unit;
     }
 
-
     public void WarpTo(Vector2 location)
 	{
 		_unit.IsWarping = true;
@@ -63,10 +62,6 @@ public class UnitMovement
         newVelocity *= _unit.CurrentSpeed;
 
 		_unit.NavigationAgent.SetVelocity(newVelocity);
-
-        // _unit.Velocity = newVelocity;
-
-		// _unit.MoveAndSlide();
 	}
 
     protected virtual void LookAtNextPathPoint()

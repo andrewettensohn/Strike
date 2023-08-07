@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 public partial class GameMode : Node
 {
 	[Export]
+	public GameModeType GameModeType;
+
+	[Export]
 	public string ObjectiveText;
 
 	[Export]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_7t3ja"]
 [ext_resource type="Texture2D" uid="uid://bme53peptfef0" path="res://Art/Sprites/Ships/EnemyCargo.png" id="3_t5gdi"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="4_bju1k"]
-[ext_resource type="PackedScene" path="res://Scenes/MissileLauncher.tscn" id="5_qnp1p"]
+[ext_resource type="PackedScene" uid="uid://gr8uwxunymwu" path="res://Scenes/MissileLauncher.tscn" id="5_qnp1p"]
 [ext_resource type="PackedScene" uid="uid://di3vd5o3fj187" path="res://Scenes/DroneLauncher.tscn" id="6_qbwqb"]
 [ext_resource type="PackedScene" uid="uid://bfxwjro2wyilu" path="res://Scenes/EnemyDrone.tscn" id="8_81807"]
 [ext_resource type="Texture2D" uid="uid://gql8lbslp42t" path="res://Art/Sprites/Icon/EnemyCruiserIcon.png" id="10_yfqky"]
@@ -24,7 +24,7 @@ script = ExtResource("1_74syr")
 ClassName = "Drone Control"
 AbilityDescription = "Launch Drone"
 Health = 5.0
-MaxSpeed = 50
+MaxSpeed = 100
 Weight = 0.005
 SpeedWhileTurning = 5
 MyTargetGroup = 1

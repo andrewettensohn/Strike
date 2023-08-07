@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_atxrj"]
 [ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dn04u"]
 [ext_resource type="PackedScene" uid="uid://gkkf8tkpocne" path="res://Scenes/PlayerPicket.tscn" id="3_ayhkd"]
-[ext_resource type="PackedScene" path="res://Scenes/PlayerDroneControl.tscn" id="4_0n7eh"]
+[ext_resource type="PackedScene" uid="uid://dw8xn56f1r5to" path="res://Scenes/PlayerDroneControl.tscn" id="4_0n7eh"]
 [ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_i51gk"]
 [ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="6_0mp2q"]
 [ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="7_m3gqh"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://Scripts/GameLogic/CapturePoint.cs" id="13_g7bvw"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="14_08rsa"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="16_qi3u8"]
-[ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="17_t2qcw"]
 [ext_resource type="Texture2D" uid="uid://wr0bdbu1uqgt" path="res://Art/Sprites/Icon/CapturePointGreen.png" id="18_h2sgn"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="18_ijn0r"]
 [ext_resource type="Texture2D" uid="uid://dtwe0j0y67mvq" path="res://Art/Sprites/Icon/CapturePointWhite.png" id="18_pwcj6"]
@@ -26,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://qo74x0qjrkpt" path="res://Art/Sprites/Icon/CapturePointRed.png" id="20_d34ok"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="20_k8des"]
 [ext_resource type="PackedScene" uid="uid://duq768txww0y8" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="20_pg4xa"]
+[ext_resource type="AudioStream" uid="uid://bo0ahucht64tu" path="res://Audio/Music/MysterySaxModified.mp3" id="23_krvc4"]
 [ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="28_dscfv"]
 [ext_resource type="Texture2D" uid="uid://dmj0oom4v1" path="res://Art/Sprites/Rocks/Field2.png" id="29_dmgat"]
 [ext_resource type="Texture2D" uid="uid://bioba7l4iu2q4" path="res://Art/Sprites/Rocks/Field4.png" id="30_8jwyc"]
@@ -39,10 +39,10 @@
 [ext_resource type="Texture2D" uid="uid://5f68xy7n35tu" path="res://Art/Sprites/Rocks/Rock3.png" id="38_y1sdp"]
 [ext_resource type="Texture2D" uid="uid://boe50vnkwn8w0" path="res://Art/Sprites/Rocks/Field5.png" id="39_krax3"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_tgi5t"]
-vertices = PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(14877.7, -4137.02, 14848.8, 7055.34, -2843.43, 7027.52, -2828, -4143)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uyudb"]
+vertices = PackedVector2Array(-2923.05, 82.3793, 5601.14, -536.187, 14765.3, -481.268, 14750.1, 3683.94, -2819.43, 3313.96)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2923.05, 82.3793, 5601.14, -536.187, 14765.3, -481.268, 14750.1, 3683.94, -2819.43, 3313.96)])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cb3dd"]
 radius = 479.038
@@ -71,10 +71,10 @@ texture = ExtResource("7_m3gqh")
 [node name="PlayerView" parent="." instance=ExtResource("8_sajfx")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(-14855, -4084)
+position = Vector2(-14768, -4064)
 scale = Vector2(2.625, 2.76769)
-navigation_polygon = SubResource("NavigationPolygon_tgi5t")
+navigation_polygon = SubResource("NavigationPolygon_uyudb")
+travel_cost = 0.0
 
 [node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("10_qkmyg")]
 position = Vector2(-5320, 60)
@@ -118,7 +118,7 @@ shape = SubResource("CircleShape2D_cb3dd")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("17_t2qcw")
+stream = ExtResource("23_krvc4")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("18_ijn0r")
@@ -165,11 +165,11 @@ position = Vector2(1792, -2904)
 texture = ExtResource("28_dscfv")
 
 [node name="Field7" type="Sprite2D" parent="."]
-position = Vector2(3136, 1960)
+position = Vector2(5120, 2664)
 texture = ExtResource("34_wdh4m")
 
 [node name="Field8" type="Sprite2D" parent="."]
-position = Vector2(3040, 1032)
+position = Vector2(1240, 1416)
 texture = ExtResource("31_v4220")
 
 [node name="Rock2" type="Sprite2D" parent="."]
@@ -181,15 +181,15 @@ position = Vector2(2192, 2816)
 texture = ExtResource("33_nxh6h")
 
 [node name="Field9" type="Sprite2D" parent="."]
-position = Vector2(4680, 1992)
+position = Vector2(3592, 2312)
 texture = ExtResource("31_v4220")
 
 [node name="Field5" type="Sprite2D" parent="."]
-position = Vector2(6640, 2208)
+position = Vector2(6536, 2888)
 texture = ExtResource("30_8jwyc")
 
 [node name="Field10" type="Sprite2D" parent="."]
-position = Vector2(5272, 2864)
+position = Vector2(5208, 3680)
 texture = ExtResource("31_v4220")
 
 [node name="Rock6" type="Sprite2D" parent="."]

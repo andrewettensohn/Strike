@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Ships/RepairShip.cs" id="1_t3jj3"]
 [ext_resource type="Texture2D" uid="uid://b3c1d6jdbwaxv" path="res://Art/Sprites/Ships/EnemyRepair.png" id="2_hkvmo"]
-[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_u1401"]
+[ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_u1401"]
 [ext_resource type="Texture2D" uid="uid://bxly2y4gboa63" path="res://Art/Sprites/Icon/EnemyVisionRadarIcon.png" id="3_asp2b"]
 [ext_resource type="Script" path="res://Scripts/Weapons/RepairModule.cs" id="4_8p4i2"]
 [ext_resource type="PackedScene" uid="uid://b6jh7bn888pgs" path="res://Scenes/HealBubble.tscn" id="5_55g2w"]
-[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="6_7bm8d"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="6_7bm8d"]
 [ext_resource type="Texture2D" uid="uid://fcjroltwx7bu" path="res://Art/Sprites/Icon/EnemyRepairIcon.png" id="7_lewqn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
@@ -22,7 +22,7 @@ collision_mask = 2
 script = ExtResource("1_t3jj3")
 ClassName = "Repair Ship"
 Health = 5.0
-MaxSpeed = 50
+MaxSpeed = 150
 Weight = 0.005
 MyTargetGroup = 1
 HostileTargetGroup = 1

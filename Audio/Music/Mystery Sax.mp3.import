@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Mystery Sax.mp3-cd28b88b20d5d028ec4a0f92f03c0
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

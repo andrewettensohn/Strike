@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/OptionsMenu.cs" id="3_stako"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_2jskl"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_ns0xv"]
-[ext_resource type="AudioStream" uid="uid://cwehfyh2gn4d2" path="res://Audio/Music/SPAW Productions - I Have a Bad Feeling about This [Looped].mp3" id="8_3ot86"]
+[ext_resource type="AudioStream" uid="uid://ciuovx4spkkbp" path="res://Audio/Music/DeepSpace10(loop).wav" id="7_npfi0"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="9_ch0t1"]
 
 [sub_resource type="Theme" id="Theme_r12an"]
@@ -230,7 +230,7 @@ text = "CLOSE"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("8_3ot86")
+stream = ExtResource("7_npfi0")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("9_ch0t1")

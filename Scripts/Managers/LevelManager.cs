@@ -36,9 +36,6 @@ public partial class LevelManager : Node
     [Export]
     public GameMode GameMode;
 
-    [Export]
-	public PackedScene PostMatchScene;
-
     public Unit SelectedShip;
 
     public List<Unit> HighlightedShips;

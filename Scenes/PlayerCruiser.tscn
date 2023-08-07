@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
 [ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_ate5b"]
 [ext_resource type="Texture2D" uid="uid://l5308827ebdq" path="res://Art/Sprites/Ships/ProtoCruiser.png" id="2_ffcae"]
-[ext_resource type="PackedScene" path="res://Scenes/MissileLauncher.tscn" id="3_ydoo7"]
-[ext_resource type="PackedScene" path="res://Scenes/FlakTurret.tscn" id="4_c7ggc"]
-[ext_resource type="PackedScene" path="res://Scenes/PlayerMissile.tscn" id="4_iw01x"]
+[ext_resource type="PackedScene" uid="uid://gr8uwxunymwu" path="res://Scenes/MissileLauncher.tscn" id="3_ydoo7"]
+[ext_resource type="PackedScene" uid="uid://dd4c3d47pv2oj" path="res://Scenes/FlakTurret.tscn" id="4_c7ggc"]
+[ext_resource type="PackedScene" uid="uid://yiu0m6nhv0a5" path="res://Scenes/PlayerMissile.tscn" id="4_iw01x"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="5_88frr"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Webifier.cs" id="6_8hhyl"]
 [ext_resource type="Texture2D" uid="uid://dcch15v471564" path="res://Art/Sprites/Icon/UsingWeb.png" id="7_i4cwf"]
@@ -26,7 +26,7 @@ collision_mask = 2
 script = ExtResource("1_k1ts2")
 ClassName = "Crusier"
 Health = 10.0
-MaxSpeed = 50
+MaxSpeed = 100
 Weight = 0.005
 SpeedWhileTurning = 5
 IsPlayerSide = true

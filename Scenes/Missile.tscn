@@ -8,7 +8,7 @@ radius = 34.0588
 
 [node name="Missile" type="Area2D"]
 script = ExtResource("1_jpcar")
-Speed = 100.0
+Speed = 150.0
 Health = 10
 DamageCaused = 1
 

@@ -28,20 +28,6 @@ public partial class PlayerDroneControl : Unit
         await base.HandleCombat();
     }
 
-    // protected override async Task HandleDefense()
-    // {
-    //     if(_isDefenseOnCoolDown || !_missilesInRange.Any()) return;
-
-    //     Missile missile = _missilesInRange.FirstOrDefault(x => IsInstanceValid(x));
-
-    //     if(missile != null)
-    //     {
-    //         _flakTurret.FireBullet(missile, MyTargetGroup, HostileTargetGroup, GlobalPosition);
-    //     }
-
-    //     await base.HandleDefense();
-    // }
-
     protected override async Task HandleTactical()
     {
         

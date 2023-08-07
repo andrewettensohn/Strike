@@ -35,9 +35,33 @@ public partial class EnemyCommander : Node
 	}
 
 	// Determine destination for units outside of just chasing the player, combat is always the priority but if there's no targets in range, go to a capture point
-	public void GetCapturePointDestination()
+	public Vector2 GetMovementTarget(Unit unit)
 	{
-		//TODO: implement this
+
+		if(_levelManager.GameMode.GameModeType == GameModeType.Skirmish)
+		{
+			Skirmish skirmishGameMode = (Skirmish)_levelManager.GameMode;
+
+			if(skirmishGameMode.CapturePoint.EnemyShipsOnPoint.Count <= 0 && !_levelManager.EnemyUnits.Any(x => x.WillCapture) || unit.WillCapture)
+			{
+				unit.WillCapture = true;
+				return skirmishGameMode.CapturePoint.GlobalPosition;
+			}
+		}
+
+		if(IsInstanceValid(unit.Target))
+		{
+			return unit.Target.GlobalPosition;
+		}
+		
+		Unit playerUnit = _levelManager.PlayerUnits.FirstOrDefault();
+
+		if(IsInstanceValid(playerUnit))
+		{
+			return playerUnit.GlobalPosition;
+		}
+
+		return unit.GlobalPosition;
 	}
 
 	public Unit GetTargetForUnit(Unit enemyUnit, List<Unit> playerShips)

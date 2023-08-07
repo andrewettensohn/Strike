@@ -78,7 +78,8 @@ public partial class PicketShip : Unit
 
     protected override void HandleEnemySpecialAbility()
     {
-        if(_missilesInRange.Any() && Health < MaxHealth)
+        double chanceToUse = GD.RandRange(0, 1);
+        if(chanceToUse == 1 && _missilesInRange.Any() && Health < MaxHealth)
         {
             IsTacticalAbilityPressed = true;
         }

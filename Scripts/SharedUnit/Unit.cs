@@ -115,6 +115,10 @@ public partial class Unit : CharacterBody2D
 
 	public UnitMovement UnitMovement;
 
+	public bool WillCapture;
+
+	public Vector2 SafeVelocity;
+
 
 	// Protected and Private
 
@@ -135,9 +139,6 @@ public partial class Unit : CharacterBody2D
 	protected bool _isDying;
 
 	private Sprite2D _unitIcon;
-
-	public Vector2 SafeVelocity;
-
 
 	protected void BaseReady()
 	{
@@ -288,39 +289,31 @@ public partial class Unit : CharacterBody2D
 	{
 		if(UnitBehavior != UnitBehavior.Offense) return;
 
-		bool isTargetValid = IsInstanceValid(Target);
+		//bool isTargetValid = IsInstanceValid(Target);
 
-		if((isTargetValid && !IsPlayerSide) || (isTargetValid && MovementTargetPosition == Target.GlobalPosition && IsPlayerSide))
+		//if((isTargetValid && !IsPlayerSide) || (isTargetValid && MovementTargetPosition == Target.GlobalPosition && IsPlayerSide))
+		if(IsPlayerSide && IsInstanceValid(Target) && MovementTargetPosition == Target.GlobalPosition)
 		{
 			MovementTarget = Target.GlobalPosition;
-			
-			if(TargetsInWeaponRange.Any(x => x == Target))
-			{
-				MaxSpeed = 0;
-			}
-			else
-			{
-				MaxSpeed = InitalMaxSpeed;
-			}
-
-			if(!IsPlayerSide)
-			{
-				HandleEnemySpecialAbility();
-			}
-
-			return;
 		}
-
-		Unit newTargetDestination = null;
 
 		if(!IsPlayerSide)
 		{
-			newTargetDestination = LevelManager.PlayerUnits.FirstOrDefault();
+			MovementTarget = LevelManager.EnemyCommander.GetMovementTarget(this);
 		}
 
-		if(newTargetDestination != null)
+		if(IsInstanceValid(Target) && MovementTarget == Target.GlobalPosition && TargetsInWeaponRange.Contains(Target))
 		{
-			MovementTarget = newTargetDestination.GlobalPosition;
+			MaxSpeed = 0;
+		}
+		else
+		{
+			MaxSpeed = InitalMaxSpeed;
+		}
+
+		if(!IsPlayerSide)
+		{
+			HandleEnemySpecialAbility();
 		}
 	}
 

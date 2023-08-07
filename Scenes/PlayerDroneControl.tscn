@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://dw8xn56f1r5to"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/PlayerDroneControl.cs" id="1_74syr"]
-[ext_resource type="PackedScene" uid="uid://q0rkccueabqm" path="res://Scenes/Explosion.tscn" id="2_7t3ja"]
+[ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_7t3ja"]
 [ext_resource type="Texture2D" uid="uid://rt3uqkuarvpd" path="res://Art/Sprites/Ships/Carrier.png" id="3_017ra"]
-[ext_resource type="PackedScene" path="res://Scenes/MissileLauncher.tscn" id="5_qnp1p"]
+[ext_resource type="PackedScene" uid="uid://gr8uwxunymwu" path="res://Scenes/MissileLauncher.tscn" id="5_qnp1p"]
 [ext_resource type="PackedScene" uid="uid://di3vd5o3fj187" path="res://Scenes/DroneLauncher.tscn" id="6_qbwqb"]
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="7_ch3by"]
 [ext_resource type="PackedScene" uid="uid://dywqwa1g7hwuu" path="res://Scenes/PlayerDrone.tscn" id="7_ri18w"]
-[ext_resource type="PackedScene" path="res://Scenes/PlayerMissile.tscn" id="7_tj7ci"]
-[ext_resource type="PackedScene" uid="uid://544aqypv6kvy" path="res://Scenes/StrikeAudioPlayer.tscn" id="11_rpnci"]
+[ext_resource type="PackedScene" uid="uid://yiu0m6nhv0a5" path="res://Scenes/PlayerMissile.tscn" id="7_tj7ci"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="11_rpnci"]
 [ext_resource type="Texture2D" uid="uid://ca10tsv2amyx0" path="res://Art/Sprites/Icon/PlayerCruiserIcon.png" id="12_lbg1s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
@@ -24,7 +24,7 @@ script = ExtResource("1_74syr")
 ClassName = "Drone Control"
 AbilityDescription = "Launch Drone"
 Health = 5.0
-MaxSpeed = 50
+MaxSpeed = 100
 Weight = 0.005
 IsPlayerSide = true
 HostileTargetGroup = 1
