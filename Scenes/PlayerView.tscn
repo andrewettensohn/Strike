@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://xv1wt0a2bek4"]
+[gd_scene load_steps=29 format=3 uid="uid://xv1wt0a2bek4"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PlayerView.cs" id="1_gbg1f"]
-[ext_resource type="PackedScene" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
+[ext_resource type="PackedScene" uid="uid://xj63qx5a0cln" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
 [ext_resource type="Script" path="res://Scripts/UI/UILayer.cs" id="3_0u2l5"]
 [ext_resource type="Script" path="res://Scripts/UI/FleetOverview.cs" id="3_ck51i"]
 [ext_resource type="PackedScene" uid="uid://b72v3m6ujtf2b" path="res://Scenes/BoxFormation.tscn" id="4_elkin"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://rt3uqkuarvpd" path="res://Art/Sprites/Ships/Carrier.png" id="14_cja7w"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="14_uudxh"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="15_72cgx"]
+[ext_resource type="StyleBox" uid="uid://ccoixy7h0s3uy" path="res://StyleBoxes/reinforce_style_box_flat.tres" id="15_cqgxy"]
+[ext_resource type="Script" path="res://Scripts/UI/ReinforceDetails.cs" id="16_u5ddq"]
+[ext_resource type="StyleBox" uid="uid://cbfm3yaxsab18" path="res://StyleBoxes/reinforce_button_style_box_flat.tres" id="19_uv2gd"]
 
 [sub_resource type="Theme" id="Theme_uk4j0"]
 default_font = ExtResource("5_w06ox")
@@ -143,15 +146,18 @@ offset_right = 172.0
 offset_bottom = 63.26
 
 [node name="ReinforceDetails" type="Panel" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.989
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.989
 anchor_bottom = 1.0
-offset_left = -220.0
+offset_left = -220.328
 offset_top = -215.0
+offset_right = -0.328003
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_styles/panel = ExtResource("15_cqgxy")
+script = ExtResource("16_u5ddq")
 
 [node name="ReinforcePointsText" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1
@@ -160,106 +166,141 @@ anchor_left = 0.15
 anchor_top = 0.051
 anchor_right = 0.15
 anchor_bottom = 0.051
-offset_top = 0.0348835
-offset_right = 408.0
-offset_bottom = 36.0349
+offset_left = 1.0
+offset_top = 0.0349998
+offset_right = 134.0
+offset_bottom = 33.035
 grow_vertical = 0
 theme = SubResource("Theme_uk4j0")
-text = "Reinforce Points"
+text = "REINFORCE POINTS"
+fit_content = true
 
-[node name="ReinforceSlot" type="Control" parent="CanvasLayer/ReinforceDetails"]
-anchors_preset = 0
-offset_left = 3.0
-offset_top = 44.9999
-offset_right = 101.0
-offset_bottom = 125.0
+[node name="ReinforceSlot" type="Panel" parent="CanvasLayer/ReinforceDetails"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.209
+anchor_right = 0.032
+anchor_bottom = 0.209
+offset_left = -0.0400004
+offset_top = 0.0649986
+offset_right = 96.96
+offset_bottom = 67.065
+focus_mode = 2
+theme_override_styles/panel = ExtResource("19_uv2gd")
 script = ExtResource("6_hx3n3")
 ShipClass = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot"]
-position = Vector2(47, 43)
-scale = Vector2(0.0698755, 0.0757946)
+position = Vector2(48, 39)
+scale = Vector2(0.0720034, 0.0757946)
 texture = ExtResource("6_hqc52")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 100.0
-offset_bottom = 31.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_right = 0.133
+offset_left = -0.0340004
+offset_top = 9.15527e-05
+offset_right = 98.966
+offset_bottom = 31.0001
 theme = SubResource("Theme_dg5gf")
 text = "PICKET 1000"
 
-[node name="ReinforceSlot2" type="Control" parent="CanvasLayer/ReinforceDetails"]
+[node name="ReinforceSlot2" type="Panel" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1
-anchor_left = 0.536
-anchor_right = 0.536
-anchor_bottom = 0.009
-offset_left = 3.07999
-offset_top = 46.9999
-offset_right = 101.08
-offset_bottom = 125.065
+anchors_preset = -1
+anchor_left = 0.532
+anchor_top = 0.219
+anchor_right = 0.532
+anchor_bottom = 0.219
+offset_left = -3.04
+offset_top = -2.085
+offset_right = 92.96
+offset_bottom = 63.915
+focus_mode = 2
+theme_override_styles/panel = ExtResource("19_uv2gd")
 script = ExtResource("6_hx3n3")
 ShipClass = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
-position = Vector2(47, 43)
-scale = Vector2(0.0698755, 0.0757946)
+position = Vector2(47, 34)
+scale = Vector2(0.0619872, 0.0800916)
 texture = ExtResource("14_cja7w")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 100.0
-offset_bottom = 31.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.115
+anchor_right = 0.115
+offset_left = -0.04
+offset_right = 98.96
+offset_bottom = 17.0
 theme = SubResource("Theme_dg5gf")
 text = "DRONE 1000"
 
-[node name="ReinforceSlot3" type="Control" parent="CanvasLayer/ReinforceDetails"]
+[node name="ReinforceSlot3" type="Panel" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1
-anchor_top = 0.409
-anchor_bottom = 0.409
-offset_left = 5.0
-offset_top = 45.0649
-offset_right = 103.0
-offset_bottom = 125.065
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.549
+anchor_right = 0.027
+anchor_bottom = 0.549
+offset_left = 2.06
+offset_top = -0.0350037
+offset_right = 99.06
+offset_bottom = 67.965
+theme_override_styles/panel = ExtResource("19_uv2gd")
 script = ExtResource("6_hx3n3")
 ShipClass = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]
-position = Vector2(53.3138, 43.5612)
-rotation = 4.71239
-scale = Vector2(0.0683986, 0.0677413)
+position = Vector2(47.375, 39)
+rotation = -1.5708
+scale = Vector2(0.0659147, 0.0607814)
 texture = ExtResource("10_nvobt")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 100.0
-offset_bottom = 31.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.122
+anchor_right = 0.122
+offset_left = 0.0439987
+offset_top = 1.0
+offset_right = 99.044
+offset_bottom = 32.0
 theme = SubResource("Theme_dg5gf")
 text = "CRUISER 1000"
 
-[node name="ReinforceSlot4" type="Control" parent="CanvasLayer/ReinforceDetails"]
+[node name="ReinforceSlot4" type="Panel" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1
-anchor_top = 0.409
-anchor_bottom = 0.409
-offset_left = 117.0
-offset_top = 45.0649
-offset_right = 215.0
-offset_bottom = 125.065
+anchors_preset = -1
+anchor_left = 0.518
+anchor_top = 0.549
+anchor_right = 0.518
+anchor_bottom = 0.549
+offset_left = 0.0400009
+offset_top = -0.0350037
+offset_right = 99.04
+offset_bottom = 67.965
+theme_override_styles/panel = ExtResource("19_uv2gd")
 script = ExtResource("6_hx3n3")
 ShipClass = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ReinforceDetails/ReinforceSlot4"]
-position = Vector2(48.1225, 45.9209)
-rotation = 4.71239
+position = Vector2(52, 39)
+rotation = -1.5708
 scale = Vector2(0.193606, 0.121215)
 texture = ExtResource("11_t2tlb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ReinforceDetails/ReinforceSlot4"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 100.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_right = 0.112
+offset_left = 0.0239992
+offset_right = 99.024
 offset_bottom = 31.0
 theme = SubResource("Theme_dg5gf")
 text = "REPAIR 1000"

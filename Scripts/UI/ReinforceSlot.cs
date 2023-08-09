@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ReinforceSlot : Control
+public partial class ReinforceSlot : Panel
 {
 	[Export]
 	public ShipClass ShipClass;
@@ -21,17 +21,20 @@ public partial class ReinforceSlot : Control
 	{
 		if (Input.IsActionJustPressed("ui_select") && _isHovered)
 		{
+			GD.Print("go time");
 			_levelManager.ReinforcePlayerShip(ShipClass);
 		}
 	}
 
 	public void Hovered()
 	{
+		GD.Print("hovered");
 		_isHovered = true;
 	}
 
 	public void Unhovered()
 	{
+		GD.Print("aaaaahovered");
 		_isHovered = false;
 	}
 }

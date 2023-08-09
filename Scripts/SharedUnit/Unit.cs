@@ -168,6 +168,8 @@ public partial class Unit : CharacterBody2D
 
 		WeaponRangeIcon.Visible = false;
 
+		NavigationAgent.PathDesiredDistance = 100f;
+
 		Callable.From(UnitMovement.ActorSetup).CallDeferred();
 	}
 

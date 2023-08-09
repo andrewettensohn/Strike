@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccdqldgt0fgcu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ReinforceSlot.cs" id="1_51wxy"]
+[ext_resource type="Texture2D" uid="uid://dtlohqbqsmsxc" path="res://Art/Sprites/Ships/Ship5.png" id="2_i3wvn"]
+[ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="3_lbbn7"]
+
+[sub_resource type="Theme" id="Theme_dg5gf"]
+default_base_scale = 12.0
+default_font = ExtResource("3_lbbn7")
+
+[node name="ReinforceSlot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 44.9999
+offset_right = 101.0
+offset_bottom = 125.0
+script = ExtResource("1_51wxy")
+ShipClass = 150
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(47, 43)
+scale = Vector2(0.0698755, 0.0757946)
+texture = ExtResource("2_i3wvn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 100.0
+offset_bottom = 31.0
+theme = SubResource("Theme_dg5gf")
+text = "PICKET 1000"
+
+[connection signal="mouse_entered" from="." to="." method="Hovered"]
+[connection signal="mouse_exited" from="." to="." method="Unhovered"]
