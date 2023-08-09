@@ -16,8 +16,6 @@ public partial class Laser : Node
 
 	private Line2D _line;
 
-	private Vector2 _initalTargetPos;
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
