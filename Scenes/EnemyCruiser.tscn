@@ -66,6 +66,7 @@ CoolDownTime = 10
 Damage = 3
 
 [node name="MissileLauncher" parent="." instance=ExtResource("3_hk0th")]
+CoolDownTime = 5.0
 
 [node name="FlakTurret" parent="." instance=ExtResource("4_li7ox")]
 

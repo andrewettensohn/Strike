@@ -74,6 +74,7 @@ offset_bottom = 51.0
 [node name="MissileLauncher" parent="." instance=ExtResource("3_of3eh")]
 MissileScene = ExtResource("5_85km2")
 CoolDownTime = 6.0
+MissileAmmoCount = 1000
 
 [node name="FlakTurret" parent="." instance=ExtResource("4_smt02")]
 

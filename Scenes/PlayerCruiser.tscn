@@ -68,6 +68,7 @@ offset_bottom = 183.0
 
 [node name="MissileLauncher" parent="." instance=ExtResource("3_ydoo7")]
 MissileScene = ExtResource("4_iw01x")
+MissileAmmoCount = 1000
 
 [node name="FlakTurret" parent="." instance=ExtResource("4_c7ggc")]
 

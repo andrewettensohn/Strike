@@ -75,6 +75,7 @@ texture = ExtResource("4_bju1k")
 [node name="StrikeAudioPlayer" parent="." instance=ExtResource("11_rpnci")]
 
 [node name="MissileLauncher" parent="." instance=ExtResource("5_qnp1p")]
+CoolDownTime = 10.0
 
 [node name="DroneLauncher" parent="." instance=ExtResource("6_qbwqb")]
 DroneScene = ExtResource("8_81807")

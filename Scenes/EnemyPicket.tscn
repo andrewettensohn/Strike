@@ -68,7 +68,7 @@ offset_right = 53.0
 offset_bottom = 18.0
 
 [node name="MissileLauncher" parent="." instance=ExtResource("3_of3eh")]
-CoolDownTime = 6.0
+CoolDownTime = 8.0
 
 [node name="FlakTurret" parent="." instance=ExtResource("4_smt02")]
 

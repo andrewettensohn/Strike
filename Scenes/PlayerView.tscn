@@ -207,7 +207,7 @@ offset_top = 9.15527e-05
 offset_right = 98.966
 offset_bottom = 31.0001
 theme = SubResource("Theme_dg5gf")
-text = "PICKET 1000"
+text = "PICKET 150"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot"]
 layout_mode = 0
@@ -249,7 +249,7 @@ offset_left = -0.04
 offset_right = 98.96
 offset_bottom = 17.0
 theme = SubResource("Theme_dg5gf")
-text = "DRONE 1000"
+text = "DRONE 300"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
 layout_mode = 0
@@ -293,7 +293,7 @@ offset_top = 1.0
 offset_right = 99.044
 offset_bottom = 32.0
 theme = SubResource("Theme_dg5gf")
-text = "CRUISER 1000"
+text = "CRUISER 500"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]
 layout_mode = 0
@@ -336,7 +336,7 @@ offset_left = 0.0239992
 offset_right = 99.024
 offset_bottom = 31.0
 theme = SubResource("Theme_dg5gf")
-text = "REPAIR 1000"
+text = "REPAIR 200"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot4"]
 layout_mode = 0

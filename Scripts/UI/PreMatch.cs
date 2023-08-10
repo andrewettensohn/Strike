@@ -45,7 +45,7 @@ public partial class PreMatch : Control
 
 	public void StartMatchButtonPressed()
 	{
-		_gameManager.GotoScene("res://Levels/ProtoSkirmish.tscn");
+		_gameManager.GotoScene("res://Levels/AstroAlleyCapture.tscn");
 	}
 
 	public void OnMatchLengthSlideEnded(bool value_changed)
@@ -74,4 +74,10 @@ public partial class PreMatch : Control
 
 		MatchLengthDescText.Text = $"Enemy Reinforce Points: {EnemyReinforcePointsSlider.Value}";
     }
+
+	public void OnEasyModeToggled(bool button_pressed)
+	{
+		_gameManager.MatchOptions.IsEasyMode = button_pressed;
+		GD.Print(_gameManager.MatchOptions.IsEasyMode);
+	}
 }

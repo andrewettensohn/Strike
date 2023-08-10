@@ -28,8 +28,8 @@ grow_vertical = 2
 [node name="MatchDetails" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
 offset_right = 392.0
-offset_bottom = 112.0
-text = "Increase your score by holding capture points or destroying enemy ships. This screen will also be used for settings like time limit and difficulty."
+offset_bottom = 48.0
+text = "Increase your score by holding capture points or destroying enemy ships."
 
 [node name="MatchLengthSlider" type="HSlider" parent="Panel"]
 layout_mode = 1
@@ -129,7 +129,49 @@ offset_right = 176.12
 offset_bottom = 32.192
 text = "Start Match"
 
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 288.0
+offset_bottom = 200.0
+
+[node name="EasyModeButton" type="CheckButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.286
+anchor_top = 0.167
+anchor_right = 1.286
+anchor_bottom = 0.167
+offset_left = -0.112
+offset_top = -0.128006
+offset_right = 43.888
+offset_bottom = 23.872
+
+[node name="CasualLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.204
+anchor_top = 0.062
+anchor_right = 1.204
+anchor_bottom = 0.062
+offset_left = 0.0319519
+offset_top = 0.191999
+offset_right = 120.032
+offset_bottom = 32.192
+text = "Casual Mode"
+
+[node name="CasualDescription" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 104.0
+offset_right = 680.0
+offset_bottom = 200.0
+text = "Doubles player damage. If you're just checking out the game and don't want a challenge, toggle this button."
+
 [connection signal="drag_ended" from="Panel/MatchLengthSlider" to="." method="OnMatchLengthSlideEnded"]
 [connection signal="drag_ended" from="Panel/PlayerReinforcePointsSlider" to="." method="OnPlayerReinforcePointsSlideEnded"]
 [connection signal="drag_ended" from="Panel/EnemyReinforcePointsSlider" to="." method="OnEnemyReinforcePointsSlideEnded"]
 [connection signal="pressed" from="Panel/StartMatchButton" to="." method="StartMatchButtonPressed"]
+[connection signal="toggled" from="Panel/EasyModeButton" to="." method="OnEasyModeToggled"]

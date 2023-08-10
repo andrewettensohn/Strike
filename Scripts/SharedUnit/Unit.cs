@@ -142,6 +142,8 @@ public partial class Unit : CharacterBody2D
 
 	private Sprite2D _unitIcon;
 
+	private GameManager _gameManager;
+
 	protected void BaseReady()
 	{
 		UnitCommand = new UnitCommand(this);
@@ -160,6 +162,8 @@ public partial class Unit : CharacterBody2D
 		Collision = GetNode<CollisionShape2D>("CollisionShape2D");
 		AudioStreamPlayer = GetNode<StrikeAudioPlayer>("StrikeAudioPlayer");
 
+		_gameManager = GetNode<GameManager>("/root/GameManager");
+
 		_unitIcon = GetNode<Sprite2D>("UnitIcon");
 		_unitIcon.Visible = false;
 
@@ -175,6 +179,11 @@ public partial class Unit : CharacterBody2D
 		if(IsPlayerSide)
 		{
 			ToolTipInfo = GetNode<ToolTipInfo>("ToolTipInfo");
+			
+			if(_gameManager.MatchOptions.IsEasyMode)
+			{
+				Health *= 2;
+			}
 		}
 
 		Callable.From(UnitMovement.ActorSetup).CallDeferred();
@@ -462,6 +471,11 @@ public partial class Unit : CharacterBody2D
 
 	public virtual async Task Damage(int damage)
     {
+		if(!IsPlayerSide && _gameManager.MatchOptions.IsEasyMode)
+		{
+			damage *= 4;
+		}
+
         Health -= damage;
         
         if(Health <= 0)

@@ -1,0 +1,274 @@
+[gd_scene load_steps=41 format=3 uid="uid://c218pbb8hhaou"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_v2k77"]
+[ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_ndxg4"]
+[ext_resource type="PackedScene" uid="uid://gkkf8tkpocne" path="res://Scenes/PlayerPicket.tscn" id="3_tpu0u"]
+[ext_resource type="PackedScene" uid="uid://dw8xn56f1r5to" path="res://Scenes/PlayerDroneControl.tscn" id="4_efe18"]
+[ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_68otr"]
+[ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="6_v4eyl"]
+[ext_resource type="PackedScene" uid="uid://cygv1durr2dbk" path="res://Scenes/EnemyPicket.tscn" id="7_dcd3v"]
+[ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="8_5g5q0"]
+[ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="9_yl6mb"]
+[ext_resource type="PackedScene" uid="uid://cpmhsh1y8sm8i" path="res://Scenes/EnemyDroneControl.tscn" id="10_6lboo"]
+[ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="11_mybsd"]
+[ext_resource type="PackedScene" uid="uid://xv1wt0a2bek4" path="res://Scenes/PlayerView.tscn" id="12_13bmy"]
+[ext_resource type="PackedScene" uid="uid://54o7ayfcv5su" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="13_4yyv5"]
+[ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="14_p7rnv"]
+[ext_resource type="PackedScene" uid="uid://duq768txww0y8" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="15_ykysd"]
+[ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="16_nww65"]
+[ext_resource type="Script" path="res://Scripts/GameLogic/CapturePoint.cs" id="17_q1xin"]
+[ext_resource type="Texture2D" uid="uid://dtwe0j0y67mvq" path="res://Art/Sprites/Icon/CapturePointWhite.png" id="18_hlvbn"]
+[ext_resource type="Texture2D" uid="uid://wr0bdbu1uqgt" path="res://Art/Sprites/Icon/CapturePointGreen.png" id="19_dbtdx"]
+[ext_resource type="Texture2D" uid="uid://qo74x0qjrkpt" path="res://Art/Sprites/Icon/CapturePointRed.png" id="20_h2t8p"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="21_aq2c6"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="22_womr5"]
+[ext_resource type="AudioStream" uid="uid://bo0ahucht64tu" path="res://Audio/Music/MysterySaxModified.mp3" id="23_akram"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="24_6xyan"]
+[ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="25_cgvq2"]
+[ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="26_ueuw0"]
+[ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="27_q8ndl"]
+[ext_resource type="Texture2D" uid="uid://dmj0oom4v1" path="res://Art/Sprites/Rocks/Field2.png" id="28_sxw1a"]
+[ext_resource type="Texture2D" uid="uid://bioba7l4iu2q4" path="res://Art/Sprites/Rocks/Field4.png" id="29_qj151"]
+[ext_resource type="Texture2D" uid="uid://bs4odg7ogu845" path="res://Art/Sprites/Rocks/Field6.png" id="30_3y23f"]
+[ext_resource type="Texture2D" uid="uid://d178w4cmxnvpl" path="res://Art/Sprites/Rocks/Rock1.png" id="31_yg67b"]
+[ext_resource type="Texture2D" uid="uid://gmprjhfgey5o" path="res://Art/Sprites/Rocks/Rock4.png" id="32_5wiy5"]
+[ext_resource type="Texture2D" uid="uid://bs65avd102yqy" path="res://Art/Sprites/Rocks/Field7.png" id="33_i4kuf"]
+[ext_resource type="Texture2D" uid="uid://g35upp1ppx0p" path="res://Art/Sprites/Rocks/Rock2.png" id="34_nnhfp"]
+[ext_resource type="Texture2D" uid="uid://do4u8cfeu5pk4" path="res://Art/Sprites/Rocks/Rock5.png" id="35_uujrl"]
+[ext_resource type="Texture2D" uid="uid://cfwdqtabep013" path="res://Art/Sprites/Rocks/Field3.png" id="36_3dty8"]
+[ext_resource type="Texture2D" uid="uid://5f68xy7n35tu" path="res://Art/Sprites/Rocks/Rock3.png" id="37_3yfbd"]
+[ext_resource type="Texture2D" uid="uid://boe50vnkwn8w0" path="res://Art/Sprites/Rocks/Field5.png" id="38_jviv7"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uyudb"]
+vertices = PackedVector2Array(14765.3, -481.268, 14750.1, 3683.94, 6479.24, 1491.5, 6454.86, 1349.86, 5601.14, -536.187, 6128.76, 1266.04, -2819.43, 3313.96, -2923.05, 82.3793, 5013.33, 1228.46, 4821.33, 1338.3, 5208.38, 1425.02, 6043.43, 1552.2, 5092.57, 1693.83, 4833.52, 1612.9, 6061.71, 1696.72, 6323.81, 1656.25, 6186.67, 1725.63)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 4, 8, 9), PackedInt32Array(10, 5, 11, 12), PackedInt32Array(4, 5, 10, 8), PackedInt32Array(6, 9, 13), PackedInt32Array(12, 11, 14, 6), PackedInt32Array(15, 2, 1), PackedInt32Array(16, 15, 1), PackedInt32Array(16, 1, 6), PackedInt32Array(14, 16, 6), PackedInt32Array(6, 13, 12)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2923.05, 82.3793, 5601.14, -536.187, 14765.3, -481.268, 14750.1, 3683.94, -2819.43, 3313.96), PackedVector2Array(4821.33, 1338.3, 4833.52, 1612.9, 5092.57, 1693.83, 5208.38, 1425.02, 5013.33, 1228.46), PackedVector2Array(6128.76, 1266.04, 6043.43, 1552.2, 6061.71, 1696.72, 6186.67, 1725.63, 6323.81, 1656.25, 6479.24, 1491.5, 6454.86, 1349.86)])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cb3dd"]
+radius = 479.038
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("GameMode")]
+script = ExtResource("1_v2k77")
+CruiserScene = ExtResource("2_ndxg4")
+PicketScene = ExtResource("3_tpu0u")
+DroneControlScene = ExtResource("4_efe18")
+RepairScene = ExtResource("5_68otr")
+EnemyCapitalScene = ExtResource("6_v4eyl")
+EnemyPicketScene = ExtResource("7_dcd3v")
+EnemyCruiserScene = ExtResource("8_5g5q0")
+EnemyRepairScene = ExtResource("9_yl6mb")
+EnemyDroneControlScene = ExtResource("10_6lboo")
+GameMode = NodePath("GameMode")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -22496.0
+offset_top = -15160.0
+offset_right = -17656.0
+offset_bottom = -10917.0
+scale = Vector2(9.61719, 7.4043)
+texture = ExtResource("11_mybsd")
+
+[node name="PlayerView" parent="." instance=ExtResource("12_13bmy")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-14768, -4064)
+scale = Vector2(2.625, 2.76769)
+navigation_polygon = SubResource("NavigationPolygon_uyudb")
+travel_cost = 0.0
+
+[node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("13_4yyv5")]
+position = Vector2(-5320, 60)
+
+[node name="PlayerReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(-21619, -50)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("14_p7rnv")
+
+[node name="EnemyReinforceCorridorEnd" parent="." instance=ExtResource("15_ykysd")]
+position = Vector2(5320, 60)
+
+[node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(21750, 50)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("14_p7rnv")
+
+[node name="EnemyCommander" type="Node" parent="."]
+script = ExtResource("16_nww65")
+
+[node name="CapturePoint" type="Area2D" parent="."]
+position = Vector2(-8, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("17_q1xin")
+NeutralTexture = ExtResource("18_hlvbn")
+PlayerTexture = ExtResource("19_dbtdx")
+EnemyTexture = ExtResource("20_h2t8p")
+
+[node name="Sprite" type="Sprite2D" parent="CapturePoint"]
+position = Vector2(-2, 4)
+scale = Vector2(1.17885, 1.19179)
+texture = ExtResource("18_hlvbn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CapturePoint"]
+shape = SubResource("CircleShape2D_cb3dd")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("21_aq2c6")]
+
+[node name="StrikeDialougePlayer" parent="." instance=ExtResource("22_womr5")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("23_akram")
+volume_db = 0.001
+autoplay = true
+script = ExtResource("24_6xyan")
+
+[node name="GameMode" parent="." node_paths=PackedStringArray("CapturePoint") instance=ExtResource("25_cgvq2")]
+script = ExtResource("26_ueuw0")
+CapturePoint = NodePath("../CapturePoint")
+ObjectiveText = "Capture the Point"
+TimerAdditionalText = "LEFT IN MATCH"
+
+[node name="MissionTimer" type="Timer" parent="GameMode"]
+one_shot = true
+
+[node name="PostMissionTimer" type="Timer" parent="GameMode"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Field1" type="Sprite2D" parent="."]
+position = Vector2(-4077, -3059.5)
+texture = ExtResource("27_q8ndl")
+
+[node name="Field2" type="Sprite2D" parent="."]
+position = Vector2(-2413, -3123.5)
+texture = ExtResource("28_sxw1a")
+
+[node name="Field4" type="Sprite2D" parent="."]
+position = Vector2(-181, -2947.5)
+texture = ExtResource("29_qj151")
+
+[node name="Field6" type="Sprite2D" parent="."]
+position = Vector2(-4336, -2128)
+texture = ExtResource("30_3y23f")
+
+[node name="Rock1" type="Sprite2D" parent="."]
+position = Vector2(-5525, 2403)
+texture = ExtResource("31_yg67b")
+
+[node name="Rock4" type="Sprite2D" parent="."]
+position = Vector2(-13, 2899)
+texture = ExtResource("32_5wiy5")
+
+[node name="Field3" type="Sprite2D" parent="."]
+position = Vector2(1763, -3483.5)
+texture = ExtResource("27_q8ndl")
+
+[node name="Field7" type="Sprite2D" parent="."]
+position = Vector2(3859, 3547)
+texture = ExtResource("33_i4kuf")
+
+[node name="Field8" type="Sprite2D" parent="."]
+position = Vector2(5432, 2744)
+texture = ExtResource("30_3y23f")
+
+[node name="Rock2" type="Sprite2D" parent="."]
+position = Vector2(987, 2755)
+texture = ExtResource("34_nnhfp")
+
+[node name="Rock5" type="Sprite2D" parent="."]
+position = Vector2(931, 3699)
+texture = ExtResource("32_5wiy5")
+
+[node name="Field9" type="Sprite2D" parent="."]
+position = Vector2(2331, 3195)
+texture = ExtResource("30_3y23f")
+
+[node name="Field5" type="Sprite2D" parent="."]
+position = Vector2(5275, 3771)
+texture = ExtResource("29_qj151")
+
+[node name="Field10" type="Sprite2D" parent="."]
+position = Vector2(3947, 4563)
+texture = ExtResource("30_3y23f")
+
+[node name="Rock6" type="Sprite2D" parent="."]
+position = Vector2(2243, 4219)
+texture = ExtResource("35_uujrl")
+
+[node name="Field11" type="Sprite2D" parent="."]
+position = Vector2(-797, 3539)
+texture = ExtResource("36_3dty8")
+
+[node name="Field12" type="Sprite2D" parent="."]
+position = Vector2(-2749, 2931)
+texture = ExtResource("28_sxw1a")
+
+[node name="Rock3" type="Sprite2D" parent="."]
+position = Vector2(-4024, 1880)
+texture = ExtResource("37_3yfbd")
+
+[node name="Field13" type="Sprite2D" parent="."]
+position = Vector2(-541, -4163.5)
+texture = ExtResource("38_jviv7")
+
+[node name="Field14" type="Sprite2D" parent="."]
+position = Vector2(451, -5075.5)
+texture = ExtResource("29_qj151")
+
+[node name="Rock7" type="Sprite2D" parent="."]
+position = Vector2(2299, -4667.5)
+texture = ExtResource("35_uujrl")
+
+[node name="Rock8" type="Sprite2D" parent="."]
+position = Vector2(955, -4091.5)
+texture = ExtResource("31_yg67b")
+
+[node name="Field15" type="Sprite2D" parent="."]
+position = Vector2(1755, -2443.5)
+texture = ExtResource("38_jviv7")
+
+[node name="Field16" type="Sprite2D" parent="."]
+position = Vector2(3491, -3283.5)
+texture = ExtResource("28_sxw1a")
+
+[node name="Rock9" type="Sprite2D" parent="."]
+position = Vector2(-501, -2227.5)
+texture = ExtResource("34_nnhfp")
+
+[node name="Rock10" type="Sprite2D" parent="."]
+position = Vector2(-1656, -24)
+texture = ExtResource("32_5wiy5")
+
+[node name="Rock11" type="Sprite2D" parent="."]
+position = Vector2(-4085, 2819)
+texture = ExtResource("32_5wiy5")
+
+[node name="Field17" type="Sprite2D" parent="."]
+position = Vector2(-5525, 3091)
+texture = ExtResource("30_3y23f")
+
+[node name="Rock12" type="Sprite2D" parent="."]
+position = Vector2(-4893, 2315)
+texture = ExtResource("32_5wiy5")
+
+[node name="Rock13" type="Sprite2D" parent="."]
+position = Vector2(4563, -2411.5)
+texture = ExtResource("37_3yfbd")
+
+[node name="Rock14" type="Sprite2D" parent="."]
+position = Vector2(1440, 392)
+texture = ExtResource("37_3yfbd")
+
+[node name="Rock15" type="Sprite2D" parent="."]
+position = Vector2(1440, -280)
+texture = ExtResource("31_yg67b")
+
+[node name="Rock16" type="Sprite2D" parent="."]
+position = Vector2(1904, -40)
+texture = ExtResource("34_nnhfp")
+
+[connection signal="body_entered" from="CapturePoint" to="CapturePoint" method="OnShipEntered"]
+[connection signal="body_exited" from="CapturePoint" to="CapturePoint" method="OnShipExitted"]
+[connection signal="timeout" from="GameMode/MissionTimer" to="GameMode" method="OnMissionClockExpired"]
+[connection signal="timeout" from="GameMode/PostMissionTimer" to="GameMode" method="OnPostMatchTimerExpired"]

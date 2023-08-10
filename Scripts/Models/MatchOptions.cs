@@ -5,4 +5,6 @@ public class MatchOptions
     public int PlayerReinforcePoints;
 
     public int EnemyReinforcePoints;
+
+    public bool IsEasyMode;
 }

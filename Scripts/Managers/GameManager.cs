@@ -35,7 +35,7 @@ public partial class GameManager : Node
 		// The solution is to defer the load to a later time, when
 		// we can be sure that no code from the current scene is running:
 
-		CallDeferred(MethodName.DeferredGotoScene, path);
+		CallDeferred(MethodName.DeferredGotoScene, path); //Fake Roslyn error
 	}
 
 	public void DeferredGotoScene(string path)
