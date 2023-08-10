@@ -19,7 +19,6 @@ public partial class ReinforcePos : Area2D
 
 	public void OnPosEntered(Node2D body)
 	{
-		GD.Print(body.Name);
 		IsAvailable = false;
 	}
 

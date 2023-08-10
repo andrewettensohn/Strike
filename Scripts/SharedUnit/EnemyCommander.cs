@@ -114,7 +114,7 @@ public partial class EnemyCommander : Node
 			return null;
 		}
 		
-		return enemyShips.OrderBy(x => x.Health).ThenBy(x => x.GlobalPosition.DistanceTo(enemyUnit.GlobalPosition)).FirstOrDefault();
+		return enemyShips.OrderBy(x => x.Health).ThenBy(x => x.GlobalPosition.DistanceTo(enemyUnit.GlobalPosition)).FirstOrDefault(x => x != enemyUnit);
 	}
 
 	private void HandleEnemyReinforce()
@@ -208,7 +208,6 @@ public partial class EnemyCommander : Node
 		}
 		else
 		{
-			GD.Print("No comp selected for enemy.");
 			return new FleetComp();
 		}
 	}

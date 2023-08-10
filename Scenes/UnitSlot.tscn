@@ -88,15 +88,14 @@ color = Color(0.976471, 0, 0.0392157, 1)
 
 [node name="AbilityButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 167.0
-offset_right = 231.0
-offset_bottom = 72.0
-
-[node name="AbilityIcon" type="Sprite2D" parent="."]
-position = Vector2(199, 36)
-rotation = 1.5708
-scale = Vector2(0.3, 0.229167)
-texture = ExtResource("4_gkafj")
+offset_left = 229.0
+offset_top = 2.0
+offset_right = 447.0
+offset_bottom = 250.0
+rotation = 1.56932
+scale = Vector2(0.315049, 0.248235)
+focus_mode = 1
+icon = ExtResource("4_gkafj")
 
 [node name="AbilityCoolDownTime" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -111,7 +110,6 @@ rotation = 1.57225
 theme = SubResource("Theme_ak01e")
 
 [node name="AbilityHoverHighlightRect" type="ColorRect" parent="."]
-visible = false
 offset_left = 168.0
 offset_right = 231.0
 offset_bottom = 72.0
@@ -122,3 +120,5 @@ color = Color(1, 1, 1, 0.129412)
 [connection signal="mouse_entered" from="AbilityButton" to="." method="AbilityHovered"]
 [connection signal="mouse_exited" from="AbilityButton" to="." method="IsAbilityUnHovered"]
 [connection signal="pressed" from="AbilityButton" to="." method="AbilityButtonPressed"]
+[connection signal="mouse_entered" from="AbilityHoverHighlightRect" to="." method="AbilityHovered"]
+[connection signal="mouse_exited" from="AbilityHoverHighlightRect" to="." method="IsAbilityUnHovered"]

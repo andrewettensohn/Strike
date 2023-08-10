@@ -335,7 +335,12 @@ public partial class Unit : CharacterBody2D
 	{
 		if(IsInstanceValid(Target) && IsPlayerSide) return;
 
-		if(IsPlayerSide)
+		if(IsPlayerSide && ShipClass == ShipClass.Repair)
+		{
+			Target = LevelManager.PlayerUnits.OrderBy(x => x.Health).FirstOrDefault(x => x != this); //Let's see how this works
+			return;
+		}
+		else if(IsPlayerSide)
 		{
 			Target = TargetsInWeaponRange.FirstOrDefault();
 			return;

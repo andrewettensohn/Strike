@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-public partial class LevelManager : Node
+public partial class LevelManager : Node2D
 {
     [Export]
     public PackedScene CruiserScene;
@@ -245,6 +245,11 @@ public partial class LevelManager : Node
     public void EndLevel()
     {
         _gameManager.GotoScene("res://Levels/PostMatch.tscn");
+    }
+
+    public Vector2 GetMousePos()
+    {
+        return GetGlobalMousePosition();
     }
     
 }

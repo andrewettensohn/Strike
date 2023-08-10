@@ -25,9 +25,9 @@ public partial class UnitSlot : Control
 
 	private ColorRect _abilityHoverHighlightRect;
 
-	private Sprite2D _abilityIcon;
-
 	private RichTextLabel _abilityCoolDownTime;
+
+	private Button _abilityButton;
 
 	private UILayer _uiLayer;
 
@@ -38,11 +38,11 @@ public partial class UnitSlot : Control
 		_health = GetNode<RichTextLabel>("Health");
 		_healthBar = GetNode<ProgressBar>("HealthBar");
 		_hoverHighlightRect = GetNode<ColorRect>("HoverHighlightRect");
-		_abilityIcon = GetNode<Sprite2D>("AbilityIcon");
 		_abilityInUseRect = GetNode<ColorRect>("AbilityInUseRect");
 		_abilityCoolDownRect = GetNode<ColorRect>("AbilityCoolDownRect");
 		_abilityCoolDownTime = GetNode<RichTextLabel>("AbilityCoolDownTime");
 		_abilityHoverHighlightRect = GetNode<ColorRect>("AbilityHoverHighlightRect");
+		_abilityButton = GetNode<Button>("AbilityButton");
 
 		_uiLayer = GetParent().GetParent<UILayer>();
 
@@ -79,6 +79,10 @@ public partial class UnitSlot : Control
 		{
             Unit.LevelManager.SelectedUnitSlot = this;
             Unit.UnitCommand.OnSelected();
+		}
+		else if(Input.IsActionJustPressed("ui_select") && _isAbilityHovered)
+		{
+			AbilityButtonPressed();
 		}
 	}
 
@@ -122,6 +126,7 @@ public partial class UnitSlot : Control
 
 	public void IsAbilityUnHovered()
 	{
+		GD.Print("Unhovered");
 		_uiLayer.HideToolTip();
 		_isAbilityHovered = false;
 	}
@@ -183,19 +188,19 @@ public partial class UnitSlot : Control
 	{
 		if(shipClass == ShipClass.Picket)
 		{
-			_abilityIcon.Texture = FleetOverview.PicketAbilityIcon;
+			_abilityButton.Icon = FleetOverview.PicketAbilityIcon;
 		}
 		if(shipClass == ShipClass.Crusier)
 		{
-			_abilityIcon.Texture = FleetOverview.CuriserAbilityIcon;
+			_abilityButton.Icon = FleetOverview.CuriserAbilityIcon;
 		}
 		if(shipClass == ShipClass.DroneControl)
 		{
-			_abilityIcon.Texture = FleetOverview.DroneControlAbilityIcon;
+			_abilityButton.Icon = FleetOverview.DroneControlAbilityIcon;
 		}
 		if(shipClass == ShipClass.Repair)
 		{
-			_abilityIcon.Texture = FleetOverview.RepairAbilityIcon;
+			_abilityButton.Icon = FleetOverview.RepairAbilityIcon;
 		}
 	}
 }

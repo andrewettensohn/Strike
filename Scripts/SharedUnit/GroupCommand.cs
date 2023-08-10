@@ -53,8 +53,7 @@ public class GroupCommand
 	// The unit is hovered, the action button is pressed, set the hostile target for selected ship
 	private void OnHostileShipActionPressed(Unit hoveredEnemyUnit)
 	{
-		Vector2 mouseClickPos = _levelManager.HighlightedShips.FirstOrDefault().GetGlobalMousePosition();
-        _playerView.PlaceGroupWaypoint(mouseClickPos);
+		_playerView.PlaceGroupWaypoint();
 
 		_levelManager.AudioStreamPlayer.PlayAudio(_levelManager.AudioStreamPlayer.SetTargetSoundClip);
 
@@ -75,10 +74,9 @@ public class GroupCommand
 	// The unit is selected, the action button is pressed, do a movement command
 	private void OnMovementCommandPressed()
 	{
-		Vector2 mouseClickPos = _levelManager.HighlightedShips.FirstOrDefault().GetGlobalMousePosition(); //Getting DisposedException here.
-        _playerView.PlaceGroupWaypoint(mouseClickPos);
+        Vector2 mousePos = _playerView.PlaceGroupWaypoint();
 
-		_playerView.RadialFormation.GlobalPosition = mouseClickPos;
+		_playerView.RadialFormation.GlobalPosition = mousePos;
 
 		for(int i = 0; i < _levelManager.HighlightedShips.Count; i++)
 		{

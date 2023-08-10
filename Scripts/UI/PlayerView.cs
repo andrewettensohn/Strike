@@ -72,12 +72,14 @@ public partial class PlayerView : Node
         GetTree().Root.AddChild(shipDetails);
     }
 
-    public void PlaceGroupWaypoint(Vector2 waypointPos)
+    public Vector2 PlaceGroupWaypoint()
     {
-        //if(!_levelManager.AreMultipleUnitsSelected) return;
+        Vector2 mousePos = _levelManager.GetMousePos();
 
-        _waypoint.GlobalPosition = waypointPos;
+        _waypoint.GlobalPosition = mousePos;
         _waypoint.Visible = true;
+
+        return mousePos;
     }
 
     public void Hovered()
