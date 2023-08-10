@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://xv1wt0a2bek4"]
+[gd_scene load_steps=31 format=3 uid="uid://xv1wt0a2bek4"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PlayerView.cs" id="1_gbg1f"]
 [ext_resource type="PackedScene" uid="uid://xj63qx5a0cln" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
@@ -25,6 +25,8 @@
 [ext_resource type="StyleBox" uid="uid://ccoixy7h0s3uy" path="res://StyleBoxes/reinforce_style_box_flat.tres" id="15_cqgxy"]
 [ext_resource type="Script" path="res://Scripts/UI/ReinforceDetails.cs" id="16_u5ddq"]
 [ext_resource type="StyleBox" uid="uid://cbfm3yaxsab18" path="res://StyleBoxes/reinforce_button_style_box_flat.tres" id="19_uv2gd"]
+[ext_resource type="PackedScene" uid="uid://1r3bimxrodjy" path="res://Scenes/ToolTipInfo.tscn" id="21_elbyt"]
+[ext_resource type="Script" path="res://Scripts/UI/ToolTipDetails.cs" id="26_qtexo"]
 
 [sub_resource type="Theme" id="Theme_uk4j0"]
 default_font = ExtResource("5_w06ox")
@@ -208,9 +210,15 @@ theme = SubResource("Theme_dg5gf")
 text = "PICKET 1000"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot"]
+layout_mode = 0
 offset_right = 97.0
 offset_bottom = 67.0
 color = Color(1, 1, 1, 0.129412)
+
+[node name="ToolTipInfo" parent="CanvasLayer/ReinforceDetails/ReinforceSlot" instance=ExtResource("21_elbyt")]
+Title = "Picket"
+Stats = "[indent] ARMOR: Low [/indent][indent] AGILITY: High [/indent][indent] SPEED: High [/indent][indent] Strong vs Drone [/indent][indent] Weak vs Cruiser [/indent]"
+Description = "Flak cannons that shoot down drones and missiles. Ability to use shield."
 
 [node name="ReinforceSlot2" type="Panel" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1
@@ -244,9 +252,15 @@ theme = SubResource("Theme_dg5gf")
 text = "DRONE 1000"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2"]
+layout_mode = 0
 offset_right = 97.0
 offset_bottom = 67.0
 color = Color(1, 1, 1, 0.129412)
+
+[node name="ToolTipInfo" parent="CanvasLayer/ReinforceDetails/ReinforceSlot2" instance=ExtResource("21_elbyt")]
+Title = "Picket"
+Stats = "[indent] ARMOR: Med [/indent][indent] AGILITY: Low [/indent][indent] SPEED: Low [/indent][indent] Strong vs Cruisers [/indent][indent] Weak vs Picket [/indent]"
+Description = "Large weapon range, ability to launch drones."
 
 [node name="ReinforceSlot3" type="Panel" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1
@@ -282,9 +296,15 @@ theme = SubResource("Theme_dg5gf")
 text = "CRUISER 1000"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3"]
+layout_mode = 0
 offset_right = 97.0
 offset_bottom = 68.0
 color = Color(1, 1, 1, 0.129412)
+
+[node name="ToolTipInfo" parent="CanvasLayer/ReinforceDetails/ReinforceSlot3" instance=ExtResource("21_elbyt")]
+Title = "Cruiser"
+Stats = "[indent] ARMOR: High [/indent][indent] AGILITY: Low [/indent][indent] SPEED: Med [/indent][indent] Strong vs Picket [/indent][indent] Weak vs Drone [/indent]"
+Description = "Equipped with a fast fire missile launcher. Ability to use laser."
 
 [node name="ReinforceSlot4" type="Panel" parent="CanvasLayer/ReinforceDetails"]
 layout_mode = 1
@@ -319,9 +339,15 @@ theme = SubResource("Theme_dg5gf")
 text = "REPAIR 1000"
 
 [node name="HoverHighlightRect" type="ColorRect" parent="CanvasLayer/ReinforceDetails/ReinforceSlot4"]
+layout_mode = 0
 offset_right = 99.0
 offset_bottom = 68.0
 color = Color(1, 1, 1, 0.129412)
+
+[node name="ToolTipInfo" parent="CanvasLayer/ReinforceDetails/ReinforceSlot4" instance=ExtResource("21_elbyt")]
+Title = "Repair Ship"
+Stats = "[indent] ARMOR: Low [/indent][indent] AGILITY: High [/indent][indent] SPEED: High [/indent][indent] Strong vs None [/indent][indent] Weak vs All [/indent]"
+Description = "Repairs damaged friendly ships. Has no offensive weapons. Ability to use speed boost."
 
 [node name="ShipAbilityDetails" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -562,6 +588,75 @@ text = "Game Paused"
 [node name="EscDelayTimer" type="Timer" parent="CanvasLayer/PauseMenu"]
 wait_time = 0.1
 
+[node name="ToolTipDetails" type="Panel" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -111.0
+offset_bottom = 111.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("26_qtexo")
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/ToolTipDetails"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.018
+anchor_right = 0.017
+anchor_bottom = 0.018
+offset_left = 0.0249999
+offset_top = 0.0199999
+offset_right = 170.025
+offset_bottom = 21.02
+grow_vertical = 0
+theme = SubResource("Theme_uk4j0")
+text = "Picket"
+fit_content = true
+
+[node name="StatsText" type="RichTextLabel" parent="CanvasLayer/ToolTipDetails"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.189
+anchor_right = 0.009
+anchor_bottom = 0.189
+offset_left = 0.0199999
+offset_top = 0.041996
+offset_right = 215.02
+offset_bottom = 100.042
+grow_vertical = 0
+theme = SubResource("Theme_uk4j0")
+bbcode_enabled = true
+text = "ARMOR: Low
+AGILITY: High
+SPEED: High
+"
+fit_content = true
+
+[node name="DescriptionText" type="RichTextLabel" parent="CanvasLayer/ToolTipDetails"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.64
+anchor_right = 0.017
+anchor_bottom = 0.64
+offset_left = -0.74
+offset_top = -0.0800171
+offset_right = 213.26
+offset_bottom = 77.92
+grow_vertical = 0
+theme = SubResource("Theme_uk4j0")
+bbcode_enabled = true
+text = "Equipped with flak cannons for shooting down drones and missiles."
+fit_content = true
+
+[node name="ToolTipTimer" type="Timer" parent="CanvasLayer"]
+one_shot = true
+
 [connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Hovered"]
 [connection signal="mouse_exited" from="CanvasLayer/ReinforceDetails/ReinforceSlot" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Unhovered"]
 [connection signal="mouse_entered" from="CanvasLayer/ReinforceDetails/ReinforceSlot/HoverHighlightRect" to="CanvasLayer/ReinforceDetails/ReinforceSlot" method="Hovered"]
@@ -588,3 +683,4 @@ wait_time = 0.1
 [connection signal="value_changed" from="CanvasLayer/PauseMenu/MusicSlider" to="CanvasLayer/PauseMenu" method="OnMusicVolumeSlideEnded"]
 [connection signal="drag_ended" from="CanvasLayer/PauseMenu/SFXSlider" to="CanvasLayer/PauseMenu" method="OnEffectsSlideEnded"]
 [connection signal="timeout" from="CanvasLayer/PauseMenu/EscDelayTimer" to="CanvasLayer/PauseMenu" method="OnEscDelayTimerExpired"]
+[connection signal="timeout" from="CanvasLayer/ToolTipTimer" to="CanvasLayer" method="OnToolTipTimerExpired"]

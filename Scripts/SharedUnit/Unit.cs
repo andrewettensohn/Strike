@@ -119,6 +119,8 @@ public partial class Unit : CharacterBody2D
 
 	public Vector2 SafeVelocity;
 
+	public ToolTipInfo ToolTipInfo;
+
 
 	// Protected and Private
 
@@ -169,6 +171,11 @@ public partial class Unit : CharacterBody2D
 		WeaponRangeIcon.Visible = false;
 
 		NavigationAgent.PathDesiredDistance = 100f;
+
+		if(IsPlayerSide)
+		{
+			ToolTipInfo = GetNode<ToolTipInfo>("ToolTipInfo");
+		}
 
 		Callable.From(UnitMovement.ActorSetup).CallDeferred();
 	}

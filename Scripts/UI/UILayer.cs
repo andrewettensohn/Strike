@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 public partial class UILayer : CanvasLayer
 {
 	private Panel _reinforceDetails;
+
 	private LevelManager _levelManager;
+
 	private RichTextLabel _reinforcePoints;
 	private RichTextLabel _missionTimerText;
 	private RichTextLabel _message;
 	private RichTextLabel _objectiveText;
 	private RichTextLabel _playerScoreText;
 	private RichTextLabel _enemyScoreText;
+
+	private Timer _toolTipTimer;
+
+	private ToolTipDetails _toolTipDetails;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -27,6 +33,11 @@ public partial class UILayer : CanvasLayer
 		_objectiveText = GetNode<Panel>("GameModeDetails").GetNode<RichTextLabel>("ObjectiveText");
 		_enemyScoreText = GetNode<Panel>("GameModeDetails").GetNode<RichTextLabel>("EnemyScore");
 		_playerScoreText = GetNode<Panel>("GameModeDetails").GetNode<RichTextLabel>("PlayerScore");
+
+		_toolTipDetails = GetNode<ToolTipDetails>("ToolTipDetails");
+		_toolTipDetails.Visible = false;
+
+		_toolTipTimer = GetNode<Timer>("ToolTipTimer");
 
 		_message = GetNode<RichTextLabel>("Message");
 		_message.Visible = false;
@@ -56,5 +67,22 @@ public partial class UILayer : CanvasLayer
 		await ToSignal(GetTree().CreateTimer(5), "timeout");
 
 		_message.Visible = false;
+	}
+
+	public void StartToolTipTimer(ToolTipInfo toolTipInfo)
+	{
+		_toolTipDetails.SetToolTipInfo(toolTipInfo);
+		_toolTipTimer.Start();
+	}
+
+	public void OnToolTipTimerExpired()
+	{
+		_toolTipDetails.Visible = true;
+	}
+
+	public void HideToolTip()
+	{
+		_toolTipTimer.Stop();
+		_toolTipDetails.Visible = false;
 	}
 }

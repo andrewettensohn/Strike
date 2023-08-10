@@ -75,7 +75,7 @@ public class GroupCommand
 	// The unit is selected, the action button is pressed, do a movement command
 	private void OnMovementCommandPressed()
 	{
-		Vector2 mouseClickPos = _levelManager.HighlightedShips.FirstOrDefault().GetGlobalMousePosition();
+		Vector2 mouseClickPos = _levelManager.HighlightedShips.FirstOrDefault().GetGlobalMousePosition(); //Getting DisposedException here.
         _playerView.PlaceGroupWaypoint(mouseClickPos);
 
 		_playerView.RadialFormation.GlobalPosition = mouseClickPos;

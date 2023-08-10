@@ -14,14 +14,19 @@ public partial class PlayerView : Node
     public UILayer UILayer;
 
     public Formation BoxFormation;
+
     public Formation RadialFormation;
 
     private Camera2D _cam;
+
     private LevelManager _levelManager;
+
     private Sprite2D _waypoint;
-    private bool _isHovered;
+
     private bool _isSelectionHeld;
+
     private GroupCommand _groupCommand;
+
     private PauseMenu _pauseMenu;
 
 	// Called when the node enters the scene tree for the first time.

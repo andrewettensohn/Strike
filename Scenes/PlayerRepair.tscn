@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wjh2hqbxkaps"]
+[gd_scene load_steps=12 format=3 uid="uid://wjh2hqbxkaps"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/RepairShip.cs" id="1_p6kla"]
 [ext_resource type="Texture2D" uid="uid://gekuitvrsbfs" path="res://Art/Sprites/Ships/Transport.png" id="2_e4o7r"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6jh7bn888pgs" path="res://Scenes/HealBubble.tscn" id="5_n77fa"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="6_cnmag"]
 [ext_resource type="Texture2D" uid="uid://ds4i0dt4s86dq" path="res://Art/Sprites/Icon/RepairShipIcon.png" id="7_f2lre"]
+[ext_resource type="PackedScene" uid="uid://1r3bimxrodjy" path="res://Scenes/ToolTipInfo.tscn" id="9_hnk8m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 62.0
@@ -78,6 +79,11 @@ CoolDownTime = 3.0
 position = Vector2(0.999985, 2)
 scale = Vector2(1.28, 1.3578)
 texture = ExtResource("7_f2lre")
+
+[node name="ToolTipInfo" parent="." instance=ExtResource("9_hnk8m")]
+Title = "Speed Boost"
+Stats = "[indent] DURATION: 10s [/indent][indent] COOLDOWN: None [/indent]"
+Description = "Allows the ship to go five times its max speed."
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="OnNavAgentVelocityComputed"]
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]

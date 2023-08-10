@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://2hcy5ewe6q6w"]
+[gd_scene load_steps=17 format=3 uid="uid://2hcy5ewe6q6w"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/CruiserShip.cs" id="1_k1ts2"]
 [ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_ate5b"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ca6ihfhdq2v0l" path="res://Art/Sprites/Icon/CaughtByWeb.png" id="8_tsaio"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="10_ytluu"]
 [ext_resource type="Texture2D" uid="uid://ca10tsv2amyx0" path="res://Art/Sprites/Icon/PlayerCruiserIcon.png" id="11_oalj1"]
+[ext_resource type="PackedScene" uid="uid://1r3bimxrodjy" path="res://Scenes/ToolTipInfo.tscn" id="14_rxpbq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5s7l"]
 radius = 93.0
@@ -103,6 +104,11 @@ texture = ExtResource("8_tsaio")
 position = Vector2(-0.500008, -1.49999)
 scale = Vector2(1.97696, 1.58051)
 texture = ExtResource("11_oalj1")
+
+[node name="ToolTipInfo" parent="." instance=ExtResource("14_rxpbq")]
+Title = "Laser"
+Stats = "[indent] DURATION: 3s [/indent][indent] COOLDOWN: 10 [/indent]"
+Description = "Fires a laser that can only be blocked by shields. Does 3 damage after duration."
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="OnNavAgentVelocityComputed"]
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]

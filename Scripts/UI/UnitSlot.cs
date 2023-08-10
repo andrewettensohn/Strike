@@ -11,21 +11,25 @@ public partial class UnitSlot : Control
 
 	private ColorRect _hoverHighlightRect;
 
+	public FleetOverview FleetOverview;
+
 	public Unit Unit { get; private set; }
 
     public  bool IsHovered { get; private set; }
 
-    private bool _isSelected;
+	private bool _isAbilityHovered;
 
 	private ColorRect _abilityInUseRect;
 
 	private ColorRect _abilityCoolDownRect;
 
+	private ColorRect _abilityHoverHighlightRect;
+
 	private Sprite2D _abilityIcon;
 
 	private RichTextLabel _abilityCoolDownTime;
 
-	public FleetOverview FleetOverview;
+	private UILayer _uiLayer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -38,6 +42,9 @@ public partial class UnitSlot : Control
 		_abilityInUseRect = GetNode<ColorRect>("AbilityInUseRect");
 		_abilityCoolDownRect = GetNode<ColorRect>("AbilityCoolDownRect");
 		_abilityCoolDownTime = GetNode<RichTextLabel>("AbilityCoolDownTime");
+		_abilityHoverHighlightRect = GetNode<ColorRect>("AbilityHoverHighlightRect");
+
+		_uiLayer = GetParent().GetParent<UILayer>();
 
         Visible = false;
 	}
@@ -73,10 +80,6 @@ public partial class UnitSlot : Control
             Unit.LevelManager.SelectedUnitSlot = this;
             Unit.UnitCommand.OnSelected();
 		}
-		else if (Input.IsActionJustPressed("ui_select") && !IsHovered)
-		{
-			_isSelected = false;
-		}
 	}
 
 	public void AbilityButtonPressed()
@@ -111,6 +114,18 @@ public partial class UnitSlot : Control
 		IsHovered = false;
 	}
 
+	public void AbilityHovered()
+	{
+		_uiLayer.StartToolTipTimer(Unit.ToolTipInfo);
+		_isAbilityHovered = true;
+	}
+
+	public void IsAbilityUnHovered()
+	{
+		_uiLayer.HideToolTip();
+		_isAbilityHovered = false;
+	}
+
 	private void HandleAbilityTimerText()
 	{
 		if(IsInstanceValid(Unit.TacticalCoolDownTimer) && Unit.TacticalCoolDownTimer.TimeLeft > 0)
@@ -130,16 +145,25 @@ public partial class UnitSlot : Control
 		{
 			_abilityInUseRect.Visible = true;
 			_abilityCoolDownRect.Visible = false;
+			_abilityHoverHighlightRect.Visible = false;
 		}
 		else if(Unit.IsTacticalOnCoolDown)
 		{
 			_abilityInUseRect.Visible = false;
 			_abilityCoolDownRect.Visible = true;
+			_abilityHoverHighlightRect.Visible = false;
+		}
+		else if(_isAbilityHovered)
+		{
+			_abilityInUseRect.Visible = false;
+			_abilityCoolDownRect.Visible = false;
+			_abilityHoverHighlightRect.Visible = true;
 		}
 		else
 		{
 			_abilityInUseRect.Visible = false;
 			_abilityCoolDownRect.Visible = false;
+			_abilityHoverHighlightRect.Visible = false;
 		}
 	}
 

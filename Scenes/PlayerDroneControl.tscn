@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dw8xn56f1r5to"]
+[gd_scene load_steps=14 format=3 uid="uid://dw8xn56f1r5to"]
 
 [ext_resource type="Script" path="res://Scripts/Ships/PlayerDroneControl.cs" id="1_74syr"]
 [ext_resource type="PackedScene" path="res://Scenes/Explosion.tscn" id="2_7t3ja"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjqbhrieq3oar" path="res://Art/Sprites/Icon/VisionRadarIcon.png" id="7_ch3by"]
 [ext_resource type="PackedScene" uid="uid://dywqwa1g7hwuu" path="res://Scenes/PlayerDrone.tscn" id="7_ri18w"]
 [ext_resource type="PackedScene" uid="uid://yiu0m6nhv0a5" path="res://Scenes/PlayerMissile.tscn" id="7_tj7ci"]
+[ext_resource type="PackedScene" uid="uid://1r3bimxrodjy" path="res://Scenes/ToolTipInfo.tscn" id="11_8yxn5"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="11_rpnci"]
 [ext_resource type="Texture2D" uid="uid://ca10tsv2amyx0" path="res://Art/Sprites/Icon/PlayerCruiserIcon.png" id="12_lbg1s"]
 
@@ -86,6 +87,11 @@ CoolDownTime = 5.0
 position = Vector2(-0.500008, -1.49999)
 scale = Vector2(1.97696, 1.58051)
 texture = ExtResource("12_lbg1s")
+
+[node name="ToolTipInfo" parent="." instance=ExtResource("11_8yxn5")]
+Title = "Drone Launcher"
+Stats = "[indent] DURATION: 1s [/indent][indent] COOLDOWN: 5 [/indent]"
+Description = "Launches a drone that will attach to targeted enemy ships and deal damage over time."
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="OnNavAgentVelocityComputed"]
 [connection signal="mouse_entered" from="Control" to="." method="Hovered"]

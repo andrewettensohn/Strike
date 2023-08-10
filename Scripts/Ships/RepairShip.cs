@@ -37,7 +37,7 @@ public partial class RepairShip : Unit
         IsTacticalInUse = true;
         IsTacticalAbilityPressed = false;
 
-        MaxSpeed = MaxSpeed * 5;
+        MaxSpeed *= 5;
 
         TacticalDurationTimer = GetTree().CreateTimer(TacticalAbilityDuration);
         await ToSignal(TacticalDurationTimer, "timeout");

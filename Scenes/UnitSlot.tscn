@@ -110,6 +110,15 @@ offset_bottom = 31.0
 rotation = 1.57225
 theme = SubResource("Theme_ak01e")
 
+[node name="AbilityHoverHighlightRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 168.0
+offset_right = 231.0
+offset_bottom = 72.0
+color = Color(1, 1, 1, 0.129412)
+
 [connection signal="mouse_entered" from="." to="." method="Hovered"]
 [connection signal="mouse_exited" from="." to="." method="Unhovered"]
+[connection signal="mouse_entered" from="AbilityButton" to="." method="AbilityHovered"]
+[connection signal="mouse_exited" from="AbilityButton" to="." method="IsAbilityUnHovered"]
 [connection signal="pressed" from="AbilityButton" to="." method="AbilityButtonPressed"]

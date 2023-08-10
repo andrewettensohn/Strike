@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1r3bimxrodjy"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ToolTipInfo.cs" id="1_uq7mi"]
+
+[node name="ToolTipInfo" type="Node"]
+script = ExtResource("1_uq7mi")
