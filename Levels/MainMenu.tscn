@@ -195,39 +195,6 @@ grow_vertical = 0
 theme = SubResource("Theme_x8khg")
 text = "Sound Effects Volume"
 
-[node name="LevelSelectPanel" type="Panel" parent="."]
-offset_left = 448.0
-offset_top = 64.0
-offset_right = 880.0
-offset_bottom = 560.0
-
-[node name="ProtoLevelButton" type="Button" parent="LevelSelectPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.389
-anchor_top = 0.113
-anchor_right = 0.389
-anchor_bottom = 0.113
-offset_left = -0.0480194
-offset_top = -0.0480042
-offset_right = 119.952
-offset_bottom = 31.952
-text = "Proto Level"
-
-[node name="Close" type="Button" parent="LevelSelectPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.719
-anchor_top = 0.904
-anchor_right = 0.719
-anchor_bottom = 0.904
-offset_left = -0.170013
-offset_top = 0.231964
-offset_right = 114.83
-offset_bottom = 43.232
-theme = SubResource("Theme_rouy4")
-text = "CLOSE"
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("7_npfi0")
@@ -235,11 +202,9 @@ volume_db = 0.001
 autoplay = true
 script = ExtResource("9_ch0t1")
 
-[connection signal="pressed" from="MainButtonsPanel/PlayButton" to="." method="ToggleLevelSelectPanel"]
+[connection signal="pressed" from="MainButtonsPanel/PlayButton" to="." method="Play"]
 [connection signal="pressed" from="MainButtonsPanel/OptionsButton" to="OptionsMenu" method="OnOptionsMenuOpened"]
 [connection signal="pressed" from="MainButtonsPanel/QuitButton" to="." method="ExitGame"]
 [connection signal="pressed" from="OptionsMenu/Close" to="OptionsMenu" method="OnCloseButtonPressed"]
 [connection signal="value_changed" from="OptionsMenu/MusicSlider" to="OptionsMenu" method="OnMusicVolumeSlideEnded"]
 [connection signal="drag_ended" from="OptionsMenu/SFXSlider" to="OptionsMenu" method="OnEffectsSlideEnded"]
-[connection signal="pressed" from="LevelSelectPanel/ProtoLevelButton" to="." method="PlayProtoLevel"]
-[connection signal="pressed" from="LevelSelectPanel/Close" to="." method="ToggleLevelSelectPanel"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=24 format=3 uid="uid://bvbjc0olmre0c"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_pke3c"]
+[ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_dwu08"]
+[ext_resource type="PackedScene" uid="uid://gkkf8tkpocne" path="res://Scenes/PlayerPicket.tscn" id="3_rvkpw"]
+[ext_resource type="PackedScene" uid="uid://dw8xn56f1r5to" path="res://Scenes/PlayerDroneControl.tscn" id="4_w8kpq"]
+[ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_7lhb6"]
+[ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="6_et614"]
+[ext_resource type="PackedScene" uid="uid://cygv1durr2dbk" path="res://Scenes/EnemyPicket.tscn" id="7_kloho"]
+[ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="8_1vhe5"]
+[ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="9_hqdjo"]
+[ext_resource type="PackedScene" uid="uid://cpmhsh1y8sm8i" path="res://Scenes/EnemyDroneControl.tscn" id="10_5g1tn"]
+[ext_resource type="Texture2D" uid="uid://dnkls6spaejfe" path="res://Art/Sprites/Backgrounds/7.png" id="11_6lfam"]
+[ext_resource type="PackedScene" uid="uid://xv1wt0a2bek4" path="res://Scenes/PlayerView.tscn" id="12_0bba4"]
+[ext_resource type="PackedScene" uid="uid://54o7ayfcv5su" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="13_1t01d"]
+[ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="14_psqu1"]
+[ext_resource type="PackedScene" uid="uid://duq768txww0y8" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="15_gxlu4"]
+[ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="16_ywwkp"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="17_4ta82"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="18_yry3l"]
+[ext_resource type="AudioStream" uid="uid://bo0ahucht64tu" path="res://Audio/Music/MysterySaxModified.mp3" id="19_u4e5d"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="20_8ntwe"]
+[ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="21_s8ixx"]
+[ext_resource type="Script" path="res://Scripts/GameModes/Deathmatch.cs" id="22_er6gg"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cu0wb"]
+vertices = PackedVector2Array(14323.8, 6599, -1731.05, 6526.74, -1304.38, -3665.15, -438.857, -3633.35, 14582.9, -3532.19)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-438.857, -3633.35, 14582.9, -3532.19, 14323.8, 6599, -1731.05, 6526.74, -1304.38, -3665.15)])
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("GameMode")]
+script = ExtResource("1_pke3c")
+CruiserScene = ExtResource("2_dwu08")
+PicketScene = ExtResource("3_rvkpw")
+DroneControlScene = ExtResource("4_w8kpq")
+RepairScene = ExtResource("5_7lhb6")
+EnemyCapitalScene = ExtResource("6_et614")
+EnemyPicketScene = ExtResource("7_kloho")
+EnemyCruiserScene = ExtResource("8_1vhe5")
+EnemyRepairScene = ExtResource("9_hqdjo")
+EnemyDroneControlScene = ExtResource("10_5g1tn")
+GameMode = NodePath("GameMode")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -22496.0
+offset_top = -15160.0
+offset_right = -17656.0
+offset_bottom = -10917.0
+scale = Vector2(9.61719, 7.4043)
+texture = ExtResource("11_6lfam")
+
+[node name="PlayerView" parent="." instance=ExtResource("12_0bba4")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-14768, -4064)
+scale = Vector2(2.625, 2.76769)
+navigation_polygon = SubResource("NavigationPolygon_cu0wb")
+travel_cost = 0.0
+
+[node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("13_1t01d")]
+position = Vector2(-4000, -2800)
+
+[node name="PlayerReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(-13216, -12728)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("14_psqu1")
+
+[node name="EnemyReinforceCorridorEnd" parent="." instance=ExtResource("15_gxlu4")]
+position = Vector2(2800, 3288)
+
+[node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(19288, 9160)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("14_psqu1")
+
+[node name="EnemyCommander" type="Node" parent="."]
+script = ExtResource("16_ywwkp")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("17_4ta82")]
+
+[node name="StrikeDialougePlayer" parent="." instance=ExtResource("18_yry3l")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("19_u4e5d")
+volume_db = 0.001
+autoplay = true
+script = ExtResource("20_8ntwe")
+
+[node name="GameMode" parent="." instance=ExtResource("21_s8ixx")]
+script = ExtResource("22_er6gg")
+GameModeType = 1
+ObjectiveText = "Destroy Enemy Ships"
+TimerAdditionalText = "Left in Match"
+
+[node name="MissionTimer" type="Timer" parent="GameMode"]
+one_shot = true
+
+[node name="PostMissionTimer" type="Timer" parent="GameMode"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="GameMode/MissionTimer" to="GameMode" method="OnMissionClockExpired"]
+[connection signal="timeout" from="GameMode/PostMissionTimer" to="GameMode" method="OnPostMatchTimerExpired"]

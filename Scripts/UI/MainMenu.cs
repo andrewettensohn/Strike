@@ -7,7 +7,7 @@ public partial class MainMenu : Node2D
 	public PackedScene ProtoSkirmishPreMatch;
 
 
-	private Panel _levelSelectPanel;
+	// private Panel _levelSelectPanel;
 
 	private Panel _optionsMenu;
 
@@ -16,11 +16,11 @@ public partial class MainMenu : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_levelSelectPanel = GetNode<Panel>("LevelSelectPanel");
+		//_levelSelectPanel = GetNode<Panel>("LevelSelectPanel");
 		_optionsMenu = GetNode<Panel>("OptionsMenu");
 		_gameManager = GetNode<GameManager>("/root/GameManager");
 
-		_levelSelectPanel.Visible = false;
+		//_levelSelectPanel.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,14 +34,14 @@ public partial class MainMenu : Node2D
         GetTree().Quit();
     }
 
-	public void PlayProtoLevel()
+	public void Play()
 	{
-		_gameManager.GotoScene("res://Levels/ProtoSkirmishPreMatch.tscn");	
+		_gameManager.GotoScene("res://Levels/PreMatch.tscn");
 	}
 
-	public void ToggleLevelSelectPanel()
-	{
-		_optionsMenu.Visible = false;
-		_levelSelectPanel.Visible = !_levelSelectPanel.Visible;
-	}
+	// public void ToggleLevelSelectPanel()
+	// {
+	// 	_optionsMenu.Visible = false;
+	// 	_levelSelectPanel.Visible = !_levelSelectPanel.Visible;
+	// }
 }

@@ -1,0 +1,248 @@
+[gd_scene load_steps=36 format=3 uid="uid://b8se7onatgpnf"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/LevelManager.cs" id="1_rtn3i"]
+[ext_resource type="PackedScene" uid="uid://2hcy5ewe6q6w" path="res://Scenes/PlayerCruiser.tscn" id="2_w0g1e"]
+[ext_resource type="PackedScene" uid="uid://gkkf8tkpocne" path="res://Scenes/PlayerPicket.tscn" id="3_tnc38"]
+[ext_resource type="PackedScene" uid="uid://dw8xn56f1r5to" path="res://Scenes/PlayerDroneControl.tscn" id="4_wvtrv"]
+[ext_resource type="PackedScene" uid="uid://wjh2hqbxkaps" path="res://Scenes/PlayerRepair.tscn" id="5_vbdki"]
+[ext_resource type="PackedScene" uid="uid://c1nbyves1v7s" path="res://Scenes/EnemyCapital.tscn" id="6_jolf1"]
+[ext_resource type="PackedScene" uid="uid://cygv1durr2dbk" path="res://Scenes/EnemyPicket.tscn" id="7_uxoj7"]
+[ext_resource type="PackedScene" uid="uid://cv2n67n30fno5" path="res://Scenes/EnemyCruiser.tscn" id="8_n3t5a"]
+[ext_resource type="PackedScene" uid="uid://b8jfyoplty6fa" path="res://Scenes/EnemyRepair.tscn" id="9_8pd2x"]
+[ext_resource type="PackedScene" uid="uid://cpmhsh1y8sm8i" path="res://Scenes/EnemyDroneControl.tscn" id="10_nr45k"]
+[ext_resource type="Texture2D" uid="uid://b6pxb03u6adyo" path="res://Art/Sprites/Backgrounds/4.png" id="11_yxa4t"]
+[ext_resource type="PackedScene" uid="uid://xv1wt0a2bek4" path="res://Scenes/PlayerView.tscn" id="12_26b3w"]
+[ext_resource type="PackedScene" uid="uid://54o7ayfcv5su" path="res://Scenes/PlayerReinforceCorrdidorEnd.tscn" id="13_wf325"]
+[ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="14_p412t"]
+[ext_resource type="PackedScene" uid="uid://duq768txww0y8" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="15_tl7uc"]
+[ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="16_4w6wh"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="21_s8b8w"]
+[ext_resource type="Script" path="res://Scripts/GameModes/Deathmatch.cs" id="22_8gag6"]
+[ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="22_b1l0c"]
+[ext_resource type="AudioStream" uid="uid://bo0ahucht64tu" path="res://Audio/Music/MysterySaxModified.mp3" id="23_uc6qb"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="24_nrx24"]
+[ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="25_uafd7"]
+[ext_resource type="Texture2D" uid="uid://1q77bhqoolkc" path="res://Art/Sprites/Rocks/Field1.png" id="27_b6851"]
+[ext_resource type="Texture2D" uid="uid://dmj0oom4v1" path="res://Art/Sprites/Rocks/Field2.png" id="28_18eqf"]
+[ext_resource type="Texture2D" uid="uid://bioba7l4iu2q4" path="res://Art/Sprites/Rocks/Field4.png" id="29_046j3"]
+[ext_resource type="Texture2D" uid="uid://bs4odg7ogu845" path="res://Art/Sprites/Rocks/Field6.png" id="30_vts3o"]
+[ext_resource type="Texture2D" uid="uid://d178w4cmxnvpl" path="res://Art/Sprites/Rocks/Rock1.png" id="31_b4xa4"]
+[ext_resource type="Texture2D" uid="uid://gmprjhfgey5o" path="res://Art/Sprites/Rocks/Rock4.png" id="32_8jfl6"]
+[ext_resource type="Texture2D" uid="uid://bs65avd102yqy" path="res://Art/Sprites/Rocks/Field7.png" id="33_upy21"]
+[ext_resource type="Texture2D" uid="uid://g35upp1ppx0p" path="res://Art/Sprites/Rocks/Rock2.png" id="34_61t1q"]
+[ext_resource type="Texture2D" uid="uid://do4u8cfeu5pk4" path="res://Art/Sprites/Rocks/Rock5.png" id="35_edy1y"]
+[ext_resource type="Texture2D" uid="uid://cfwdqtabep013" path="res://Art/Sprites/Rocks/Field3.png" id="36_r8dix"]
+[ext_resource type="Texture2D" uid="uid://5f68xy7n35tu" path="res://Art/Sprites/Rocks/Rock3.png" id="37_eco5l"]
+[ext_resource type="Texture2D" uid="uid://boe50vnkwn8w0" path="res://Art/Sprites/Rocks/Field5.png" id="38_22hjw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uyudb"]
+vertices = PackedVector2Array(6424.38, 1630.24, 6476.19, 1456.81, 13805.7, -485.604, 14750.5, -488.494, 14750.1, 3683.94, 8097.52, 2335.52, 12400.8, -526.071, 7356.95, 725.515, 9953.52, -682.157, 6473.14, 1370.1, 6811.43, 514.508, 6634.67, 789.106, 5159.62, 1546.42, 5141.33, 1349.86, 6086.84, 1476.06, 6049.52, 1647.58, 5589.33, 2315.29, 5104.76, 754.42, 6128.76, 1283.38, 2496.09, 3425.89, -2819.43, 3313.96, -2923.05, 82.3793, 1049.11, -256.818, 3754.67, 898.945, 3318.86, 2138.97, 4144.76, 2020.46, 4507.43, 754.42, 4812.19, 1410.56, 4979.81, 1292.05, 4921.9, 1621.57, 4550.1, 2323.96, 6150.1, 1722.74, 7341.71, 2254.59, 7244.19, 2500.28, 6153.14, 1719.85, 9647.16, 3576.48)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 2, 1), PackedInt32Array(7, 8, 6, 1, 9), PackedInt32Array(10, 7, 9, 11), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(17, 11, 9, 18), PackedInt32Array(19, 20, 21, 22, 23, 24), PackedInt32Array(25, 24, 23, 26, 27), PackedInt32Array(17, 18, 14, 13, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(25, 27, 29, 30), PackedInt32Array(16, 30, 29, 12), PackedInt32Array(16, 15, 31), PackedInt32Array(32, 33, 16, 31, 34, 0), PackedInt32Array(4, 35, 5), PackedInt32Array(32, 0, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2923.05, 82.3793, 1049.11, -256.818, 3754.67, 898.945, 4507.43, 754.42, 5104.76, 754.42, 6634.67, 789.106, 6811.43, 514.508, 7356.95, 725.515, 9953.52, -682.157, 12400.8, -526.071, 13805.7, -485.604, 14750.5, -488.494, 14750.1, 3683.94, 9647.16, 3576.48, 8097.52, 2335.52, 7341.71, 2254.59, 7244.19, 2500.28, 5589.33, 2315.29, 4550.1, 2323.96, 4144.76, 2020.46, 3318.86, 2138.97, 2496.09, 3425.89, -2819.43, 3313.96), PackedVector2Array(4812.19, 1410.56, 4921.9, 1621.57, 5159.62, 1546.42, 5141.33, 1349.86, 4979.81, 1292.05), PackedVector2Array(6128.76, 1283.38, 6086.84, 1476.06, 6049.52, 1647.58, 6150.1, 1722.74, 6153.14, 1719.85, 6424.38, 1630.24, 6476.19, 1456.81, 6473.14, 1370.1)])
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("GameMode")]
+script = ExtResource("1_rtn3i")
+CruiserScene = ExtResource("2_w0g1e")
+PicketScene = ExtResource("3_tnc38")
+DroneControlScene = ExtResource("4_wvtrv")
+RepairScene = ExtResource("5_vbdki")
+EnemyCapitalScene = ExtResource("6_jolf1")
+EnemyPicketScene = ExtResource("7_uxoj7")
+EnemyCruiserScene = ExtResource("8_n3t5a")
+EnemyRepairScene = ExtResource("9_8pd2x")
+EnemyDroneControlScene = ExtResource("10_nr45k")
+GameMode = NodePath("GameMode")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -22496.0
+offset_top = -15160.0
+offset_right = -17656.0
+offset_bottom = -10917.0
+scale = Vector2(9.61719, 7.4043)
+texture = ExtResource("11_yxa4t")
+
+[node name="PlayerView" parent="." instance=ExtResource("12_26b3w")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-14768, -4064)
+scale = Vector2(2.625, 2.76769)
+navigation_polygon = SubResource("NavigationPolygon_uyudb")
+travel_cost = 0.0
+
+[node name="PlayerReinforceCorridorEnd" parent="." instance=ExtResource("13_wf325")]
+position = Vector2(-5320, 60)
+
+[node name="PlayerReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(-21619, -50)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("14_p412t")
+
+[node name="EnemyReinforceCorridorEnd" parent="." instance=ExtResource("15_tl7uc")]
+position = Vector2(5320, 60)
+
+[node name="EnemyReinforceCorridorStart" type="Sprite2D" parent="."]
+position = Vector2(21750, 50)
+scale = Vector2(0.732365, 0.561555)
+texture = ExtResource("14_p412t")
+
+[node name="EnemyCommander" type="Node" parent="."]
+script = ExtResource("16_4w6wh")
+
+[node name="StrikeAudioPlayer" parent="." instance=ExtResource("21_s8b8w")]
+
+[node name="StrikeDialougePlayer" parent="." instance=ExtResource("22_b1l0c")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("23_uc6qb")
+volume_db = 0.001
+autoplay = true
+script = ExtResource("24_nrx24")
+
+[node name="GameMode" parent="." instance=ExtResource("25_uafd7")]
+script = ExtResource("22_8gag6")
+GameModeType = 1
+ObjectiveText = "Destroy Enemy Ships"
+TimerAdditionalText = "Left in Match"
+
+[node name="MissionTimer" type="Timer" parent="GameMode"]
+one_shot = true
+
+[node name="PostMissionTimer" type="Timer" parent="GameMode"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Field1" type="Sprite2D" parent="."]
+position = Vector2(-4077, -3059.5)
+texture = ExtResource("27_b6851")
+
+[node name="Field2" type="Sprite2D" parent="."]
+position = Vector2(-2413, -3123.5)
+texture = ExtResource("28_18eqf")
+
+[node name="Field4" type="Sprite2D" parent="."]
+position = Vector2(-181, -2947.5)
+texture = ExtResource("29_046j3")
+
+[node name="Field6" type="Sprite2D" parent="."]
+position = Vector2(-4336, -2128)
+texture = ExtResource("30_vts3o")
+
+[node name="Rock1" type="Sprite2D" parent="."]
+position = Vector2(-5525, 2403)
+texture = ExtResource("31_b4xa4")
+
+[node name="Rock4" type="Sprite2D" parent="."]
+position = Vector2(-13, 2899)
+texture = ExtResource("32_8jfl6")
+
+[node name="Field3" type="Sprite2D" parent="."]
+position = Vector2(1763, -3483.5)
+texture = ExtResource("27_b6851")
+
+[node name="Field7" type="Sprite2D" parent="."]
+position = Vector2(3859, 3547)
+texture = ExtResource("33_upy21")
+
+[node name="Field8" type="Sprite2D" parent="."]
+position = Vector2(5432, 2744)
+texture = ExtResource("30_vts3o")
+
+[node name="Rock2" type="Sprite2D" parent="."]
+position = Vector2(987, 2755)
+texture = ExtResource("34_61t1q")
+
+[node name="Rock5" type="Sprite2D" parent="."]
+position = Vector2(931, 3699)
+texture = ExtResource("32_8jfl6")
+
+[node name="Field9" type="Sprite2D" parent="."]
+position = Vector2(2331, 3195)
+texture = ExtResource("30_vts3o")
+
+[node name="Field5" type="Sprite2D" parent="."]
+position = Vector2(5275, 3771)
+texture = ExtResource("29_046j3")
+
+[node name="Field10" type="Sprite2D" parent="."]
+position = Vector2(3947, 4563)
+texture = ExtResource("30_vts3o")
+
+[node name="Rock6" type="Sprite2D" parent="."]
+position = Vector2(2243, 4219)
+texture = ExtResource("35_edy1y")
+
+[node name="Field11" type="Sprite2D" parent="."]
+position = Vector2(-797, 3539)
+texture = ExtResource("36_r8dix")
+
+[node name="Field12" type="Sprite2D" parent="."]
+position = Vector2(-2749, 2931)
+texture = ExtResource("28_18eqf")
+
+[node name="Rock3" type="Sprite2D" parent="."]
+position = Vector2(-4024, 1880)
+texture = ExtResource("37_eco5l")
+
+[node name="Field13" type="Sprite2D" parent="."]
+position = Vector2(-541, -4163.5)
+texture = ExtResource("38_22hjw")
+
+[node name="Field14" type="Sprite2D" parent="."]
+position = Vector2(451, -5075.5)
+texture = ExtResource("29_046j3")
+
+[node name="Rock7" type="Sprite2D" parent="."]
+position = Vector2(2299, -4667.5)
+texture = ExtResource("35_edy1y")
+
+[node name="Rock8" type="Sprite2D" parent="."]
+position = Vector2(955, -4091.5)
+texture = ExtResource("31_b4xa4")
+
+[node name="Field15" type="Sprite2D" parent="."]
+position = Vector2(1755, -2443.5)
+texture = ExtResource("38_22hjw")
+
+[node name="Field16" type="Sprite2D" parent="."]
+position = Vector2(3491, -3283.5)
+texture = ExtResource("28_18eqf")
+
+[node name="Rock9" type="Sprite2D" parent="."]
+position = Vector2(-501, -2227.5)
+texture = ExtResource("34_61t1q")
+
+[node name="Rock10" type="Sprite2D" parent="."]
+position = Vector2(-1656, -24)
+texture = ExtResource("32_8jfl6")
+
+[node name="Rock11" type="Sprite2D" parent="."]
+position = Vector2(-4085, 2819)
+texture = ExtResource("32_8jfl6")
+
+[node name="Field17" type="Sprite2D" parent="."]
+position = Vector2(-5525, 3091)
+texture = ExtResource("30_vts3o")
+
+[node name="Rock12" type="Sprite2D" parent="."]
+position = Vector2(-4893, 2315)
+texture = ExtResource("32_8jfl6")
+
+[node name="Rock13" type="Sprite2D" parent="."]
+position = Vector2(4563, -2411.5)
+texture = ExtResource("37_eco5l")
+
+[node name="Rock14" type="Sprite2D" parent="."]
+position = Vector2(1440, 392)
+texture = ExtResource("37_eco5l")
+
+[node name="Rock15" type="Sprite2D" parent="."]
+position = Vector2(1440, -280)
+texture = ExtResource("31_b4xa4")
+
+[node name="Rock16" type="Sprite2D" parent="."]
+position = Vector2(1904, -40)
+texture = ExtResource("34_61t1q")
+
+[connection signal="timeout" from="GameMode/MissionTimer" to="GameMode" method="OnMissionClockExpired"]
+[connection signal="timeout" from="GameMode/PostMissionTimer" to="GameMode" method="OnPostMatchTimerExpired"]
