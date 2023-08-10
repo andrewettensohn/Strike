@@ -16,6 +16,7 @@ public class UnitCommand
 	{
 		HandleClicked();
 		HandleAction();
+		HandleKeyPress();
 	}
 
     public void OnSelected()
@@ -96,6 +97,14 @@ public class UnitCommand
 		else if(_unit.IsSelected)
 		{
 			OnMovementCommandPressed();
+		}
+	}
+
+	private void HandleKeyPress()
+	{
+		if(_unit.IsSelected && Input.IsActionJustPressed("ability"))
+		{
+			_unit.IsTacticalAbilityPressed = true;
 		}
 	}
 

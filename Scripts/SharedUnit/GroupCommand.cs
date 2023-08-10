@@ -18,6 +18,7 @@ public class GroupCommand
 	{
 		HandleClicked();
 		HandleAction();
+		HandleKeyPress();
 	}
 
     private void HandleClicked()
@@ -48,6 +49,14 @@ public class GroupCommand
 		// 	OnRepairTargetActionPressed();
 		// }
 		
+	}
+
+	private void HandleKeyPress()
+	{
+		if(Input.IsActionJustPressed("ability"))
+		{
+			_levelManager.HighlightedShips.ForEach(x => x.IsTacticalAbilityPressed = true);
+		}
 	}
 
 	// The unit is hovered, the action button is pressed, set the hostile target for selected ship
