@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7dldof33d5o"]
+[gd_scene load_steps=10 format=3 uid="uid://7dldof33d5o"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PreMatch.cs" id="1_l8mdh"]
 [ext_resource type="Texture2D" uid="uid://db60lgeu1mpcc" path="res://Art/LevelPreviews/AstroAlleyCapturePreview.png" id="2_sap25"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dgada6xruhetv" path="res://Art/LevelPreviews/BelowAstroCapturePreview.png" id="4_8i1e8"]
 [ext_resource type="Texture2D" uid="uid://qlpw8l6erlli" path="res://Art/LevelPreviews/BelowAstroDeathmatchPreview.png" id="5_g2ymc"]
 [ext_resource type="Texture2D" uid="uid://pqnmro5aum44" path="res://Art/LevelPreviews/VoidDeathmatchPreview.png" id="6_buyy2"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="8_kim35"]
+[ext_resource type="AudioStream" uid="uid://ycbcqyhvvbjt" path="res://Audio/Music/Colony_Short1(loop).wav" id="8_xmgex"]
 
 [node name="ProtoSkirmishPreMatch" type="Control"]
 layout_mode = 3
@@ -275,14 +277,14 @@ text = "Below the Asteroids (Deathmatch)"
 [node name="LevelName" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.122
-anchor_top = 0.054
-anchor_right = 1.122
-anchor_bottom = 0.054
-offset_left = 0.175964
-offset_top = -0.192001
-offset_right = 264.176
-offset_bottom = 31.808
+anchor_left = 1.082
+anchor_top = 0.018
+anchor_right = 1.082
+anchor_bottom = 0.018
+offset_left = -0.144012
+offset_top = -0.0640001
+offset_right = 279.856
+offset_bottom = 55.936
 
 [node name="LevelSelectLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
@@ -298,6 +300,11 @@ text = "Level Select"
 position = Vector2(560, 192)
 scale = Vector2(0.164486, 0.187279)
 texture = ExtResource("2_sap25")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xmgex")
+autoplay = true
+script = ExtResource("8_kim35")
 
 [connection signal="drag_ended" from="Panel/MatchLengthSlider" to="." method="OnMatchLengthSlideEnded"]
 [connection signal="drag_ended" from="Panel/PlayerReinforcePointsSlider" to="." method="OnPlayerReinforcePointsSlideEnded"]

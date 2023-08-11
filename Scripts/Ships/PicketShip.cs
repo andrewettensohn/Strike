@@ -85,7 +85,7 @@ public partial class PicketShip : Unit
         }
     }
 
-    public override async Task Damage(int damage)
+    public override void Damage(int damage)
     {
         if(IsTacticalInUse) return;
         
@@ -93,7 +93,7 @@ public partial class PicketShip : Unit
         
         if(Health <= 0)
         {
-            await HandleDeath();
+            HandleDeath();
         }
 		else if(IsPlayerSide)
 		{

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://udhfl7tmowir"]
+[gd_scene load_steps=5 format=3 uid="uid://udhfl7tmowir"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PostMatch.cs" id="1_67pd8"]
+[ext_resource type="Texture2D" uid="uid://tl3s88heu64g" path="res://Art/Sprites/Backgrounds/10.png" id="2_g87nr"]
+[ext_resource type="AudioStream" uid="uid://ycbcqyhvvbjt" path="res://Audio/Music/Colony_Short1(loop).wav" id="2_l7d2c"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="4_23cun"]
 
 [node name="PostMatch" type="Control"]
 layout_mode = 3
@@ -10,6 +13,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_67pd8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_g87nr")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -26,9 +35,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MatchSummaryText" type="RichTextLabel" parent="Panel"]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 128.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_right = 0.031
+offset_left = 0.0639997
+offset_right = 240.064
+offset_bottom = 160.0
 bbcode_enabled = true
 text = "Player Score:
 Enemy Score:
@@ -48,5 +61,10 @@ offset_top = -1.52588e-05
 offset_right = 104.128
 offset_bottom = 24.0
 text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_l7d2c")
+autoplay = true
+script = ExtResource("4_23cun")
 
 [connection signal="pressed" from="Panel/MainMenuButton" to="." method="ReturnToMainMenu"]

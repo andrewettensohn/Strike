@@ -107,7 +107,7 @@ public partial class Drone : Area2D
 
 		await ToSignal(GetTree().CreateTimer(1), "timeout");
 
-		await Parent.Target.Damage(DamageCaused);
+		Parent.Target.Damage(DamageCaused);
 
         await ToSignal(GetTree().CreateTimer(CombatCoolDownTime), "timeout");
 

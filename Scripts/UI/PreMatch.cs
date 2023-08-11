@@ -136,6 +136,5 @@ public partial class PreMatch : Control
 	public void OnEasyModeToggled(bool button_pressed)
 	{
 		_gameManager.MatchOptions.IsEasyMode = button_pressed;
-		GD.Print(_gameManager.MatchOptions.IsEasyMode);
 	}
 }

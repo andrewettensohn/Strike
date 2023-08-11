@@ -31,40 +31,40 @@ public partial class EnemyCargo : Unit
 
     }
 
-    protected override async Task HandleDeath()
+    protected override void HandleDeath()
     {
-		if(_isDying)
-		{
-			return;
-		}
-		else
-		{
-			_isDying = true;
-		}
+		// if(_isDying)
+		// {
+		// 	return;
+		// }
+		// else
+		// {
+		// 	_isDying = true;
+		// }
 
-		if(IsPlayerSide)
-		{
-			LevelManager.PlayerShipDestroyed(this);
-			LevelManager.PlayerUnits.Remove(this);
-		}
-		else
-		{
-			LevelManager.EnemyUnits.Remove(this);
-		}
+		// if(IsPlayerSide)
+		// {
+		// 	LevelManager.PlayerShipDestroyed(this);
+		// 	LevelManager.PlayerUnits.Remove(this);
+		// }
+		// else
+		// {
+		// 	LevelManager.EnemyUnits.Remove(this);
+		// }
 
-		//_audioStreamPlayer.PlayAudio(_audioStreamPlayer.ShipDestroyedSoundClip);
-		Sprite2D explosion = (Sprite2D)ExplosionScene.Instantiate();
-		explosion.Scale = new Vector2(ExplosionScale, ExplosionScale);
-		explosion.GlobalPosition = GlobalPosition;
+		// //_audioStreamPlayer.PlayAudio(_audioStreamPlayer.ShipDestroyedSoundClip);
+		// Sprite2D explosion = (Sprite2D)ExplosionScene.Instantiate();
+		// explosion.Scale = new Vector2(ExplosionScale, ExplosionScale);
+		// explosion.GlobalPosition = GlobalPosition;
 
-        GetTree().Root.AddChild(explosion);
+        // GetTree().Root.AddChild(explosion);
 
-        await ToSignal(GetTree().CreateTimer(1), "timeout");
+        //await ToSignal(GetTree().CreateTimer(1), "timeout");
 
-        //TODO: Win condition on LevelManager?
-        //await LevelManager.OnWin();
+        // //TODO: Win condition on LevelManager?
+        // //await LevelManager.OnWin();
 
-        QueueFree();
+        // QueueFree();
     }
 
 	public override void HandlePostRetreat()

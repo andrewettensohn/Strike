@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="16_ywwkp"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="17_4ta82"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="18_yry3l"]
-[ext_resource type="AudioStream" uid="uid://bo0ahucht64tu" path="res://Audio/Music/MysterySaxModified.mp3" id="19_u4e5d"]
+[ext_resource type="AudioStream" uid="uid://nt52vrbxonkf" path="res://Audio/Music/OneHundred_NoSpeak(loop).wav" id="19_rxpri"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="20_8ntwe"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="21_s8ixx"]
 [ext_resource type="Script" path="res://Scripts/GameModes/Deathmatch.cs" id="22_er6gg"]
@@ -82,7 +82,7 @@ script = ExtResource("16_ywwkp")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("19_u4e5d")
+stream = ExtResource("19_rxpri")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("20_8ntwe")

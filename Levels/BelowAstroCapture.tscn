@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://qo74x0qjrkpt" path="res://Art/Sprites/Icon/CapturePointRed.png" id="20_22xog"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="21_w042u"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="22_4t648"]
-[ext_resource type="AudioStream" uid="uid://bo0ahucht64tu" path="res://Audio/Music/MysterySaxModified.mp3" id="23_oxvdd"]
+[ext_resource type="AudioStream" uid="uid://dfs3gsrxr0p63" path="res://Audio/Music/Industrial Cinematic.mp3" id="23_7volc"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="24_6sfjg"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="25_xlnrb"]
 [ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="26_6f84h"]
@@ -118,7 +118,7 @@ shape = SubResource("CircleShape2D_cb3dd")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("23_oxvdd")
+stream = ExtResource("23_7volc")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("24_6sfjg")

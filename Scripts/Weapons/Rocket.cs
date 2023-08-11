@@ -41,7 +41,7 @@ public partial class Rocket : Area2D
 		// No friendly fire
 		if(target.MyTargetGroup == MyTargetGroup) return;
 
-		Task.Run(async () => await target.Damage(1));
+		target.Damage(1);
 		QueueFree();
 		
     }

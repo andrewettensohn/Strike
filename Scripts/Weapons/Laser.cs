@@ -47,7 +47,7 @@ public partial class Laser : Node
 
 		await ToSignal(GetTree().CreateTimer(LaserDuration), "timeout");
 
-		await target.Damage(Damage);
+		target.Damage(Damage);
 
 		_line.ClearPoints();
 		_line.Visible = false;

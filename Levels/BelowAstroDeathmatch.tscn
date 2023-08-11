@@ -16,9 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bn5tyieoloni1" path="res://Art/Sprites/Icon/TransportRadarIcon.png" id="14_wj12h"]
 [ext_resource type="PackedScene" uid="uid://duq768txww0y8" path="res://Scenes/EnemyReinforceCorrdidorEnd.tscn" id="15_eyyb3"]
 [ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="16_y0qwt"]
+[ext_resource type="AudioStream" uid="uid://dfs3gsrxr0p63" path="res://Audio/Music/Industrial Cinematic.mp3" id="19_a1b5s"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="21_x4e2f"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="22_xnn17"]
-[ext_resource type="AudioStream" uid="uid://bo0ahucht64tu" path="res://Audio/Music/MysterySaxModified.mp3" id="23_pmk3v"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="24_i07hr"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="25_2owdb"]
 [ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="26_agh5t"]
@@ -94,7 +94,7 @@ script = ExtResource("16_y0qwt")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("23_pmk3v")
+stream = ExtResource("19_a1b5s")
 volume_db = 0.001
 autoplay = true
 script = ExtResource("24_i07hr")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://xv1wt0a2bek4"]
+[gd_scene load_steps=33 format=3 uid="uid://xv1wt0a2bek4"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PlayerView.cs" id="1_gbg1f"]
 [ext_resource type="PackedScene" uid="uid://xj63qx5a0cln" path="res://Scenes/SelectionBox.tscn" id="2_kcewo"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/ReinforceDetails.cs" id="16_u5ddq"]
 [ext_resource type="StyleBox" uid="uid://cbfm3yaxsab18" path="res://StyleBoxes/reinforce_button_style_box_flat.tres" id="19_uv2gd"]
 [ext_resource type="PackedScene" uid="uid://1r3bimxrodjy" path="res://Scenes/ToolTipInfo.tscn" id="21_elbyt"]
+[ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="25_a6kmt"]
 [ext_resource type="Script" path="res://Scripts/UI/ToolTipDetails.cs" id="26_qtexo"]
 
 [sub_resource type="Theme" id="Theme_uk4j0"]
@@ -38,6 +39,10 @@ default_font = ExtResource("5_w06ox")
 
 [sub_resource type="Theme" id="Theme_n8xg8"]
 default_font = ExtResource("5_w06ox")
+
+[sub_resource type="Theme" id="Theme_y7djg"]
+default_font = ExtResource("25_a6kmt")
+default_font_size = 64
 
 [node name="PlayerView" type="Node"]
 script = ExtResource("1_gbg1f")
@@ -469,13 +474,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = -18.0
-offset_right = 204.0
-offset_bottom = 18.0
+offset_left = -349.0
+offset_top = -140.0
+offset_right = 351.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_uk4j0")
+theme = SubResource("Theme_y7djg")
 text = "Mission Status: SUCCESS"
 
 [node name="PauseMenu" type="Panel" parent="CanvasLayer"]

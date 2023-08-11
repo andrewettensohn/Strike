@@ -211,7 +211,7 @@ public partial class Unit : CharacterBody2D
 		}
 		catch(Exception ex)
 		{
-			GD.Print(ex.Message);
+			GD.Print($"Unit Error. {ex.Message}");
 		}
 	}
 
@@ -423,7 +423,7 @@ public partial class Unit : CharacterBody2D
         _isDefenseOnCoolDown = false;
     }
 
-	protected virtual async Task HandleDeath()
+	protected virtual void HandleDeath()
     {
 		if(_isDying)
 		{
@@ -449,8 +449,6 @@ public partial class Unit : CharacterBody2D
 
         GetTree().Root.AddChild(explosion);
 
-        await ToSignal(GetTree().CreateTimer(1), "timeout");
-
         QueueFree();
     }
 
@@ -469,7 +467,7 @@ public partial class Unit : CharacterBody2D
 		QueueFree();
 	}
 
-	public virtual async Task Damage(int damage)
+	public virtual void Damage(int damage)
     {
 		if(!IsPlayerSide && _gameManager.MatchOptions.IsEasyMode)
 		{
@@ -480,7 +478,7 @@ public partial class Unit : CharacterBody2D
         
         if(Health <= 0)
         {
-            await HandleDeath();
+            HandleDeath();
         }
 		else if(IsPlayerSide)
 		{

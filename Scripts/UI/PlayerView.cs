@@ -50,16 +50,24 @@ public partial class PlayerView : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        HandleCursor();
-        HandleGroupCommand();
-        HandleSelectionBox();
-        HandleCameraMovement();
-		HandleCameraZoom();
-        PlaceWaypoint();
-
-        if(!_pauseMenu.Visible && Input.IsActionJustPressed("ui_cancel"))
+        try
         {
-            _pauseMenu.OnPauseMenuOpened();
+            HandleCursor();
+            HandleGroupCommand();
+            HandleSelectionBox();
+            HandleCameraMovement();
+            HandleCameraZoom();
+            PlaceWaypoint();
+
+            if(!_pauseMenu.Visible && Input.IsActionJustPressed("ui_cancel"))
+            {
+                _pauseMenu.OnPauseMenuOpened();
+            }
+        }
+        catch(Exception ex)
+        {
+            GD.Print($"PlayerView Error: {ex.Message}");
+            GD.Print(_levelManager.HighlightedShips.Count);
         }
 	}
 

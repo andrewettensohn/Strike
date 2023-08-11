@@ -126,7 +126,6 @@ public partial class UnitSlot : Control
 
 	public void IsAbilityUnHovered()
 	{
-		GD.Print("Unhovered");
 		_uiLayer.HideToolTip();
 		_isAbilityHovered = false;
 	}
