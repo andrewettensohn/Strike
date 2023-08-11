@@ -36,7 +36,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -196.0
+offset_top = -260.0
 offset_right = 192.0
 offset_bottom = 188.0
 grow_horizontal = 2
@@ -48,7 +48,7 @@ anchors_preset = -1
 anchor_left = 1.02
 anchor_right = 1.02
 offset_left = 0.159973
-offset_right = 312.16
+offset_right = 328.16
 offset_bottom = 384.0
 
 [node name="Panel" type="Panel" parent="Panel"]
@@ -63,12 +63,14 @@ offset_bottom = 384.0
 [node name="MatchDetails" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.041
-anchor_right = 0.041
-offset_left = -0.0720005
-offset_right = 359.928
-offset_bottom = 48.0
-text = "Increase your score by holding capture points or destroying enemy ships."
+anchor_left = 0.082
+anchor_right = 0.082
+offset_left = -0.144001
+offset_right = 359.856
+offset_bottom = 120.0
+text = "Deathmatch: Increase your score by destroying enemy ships.
+
+King of the Hill: Hold the capture point to increase your score."
 
 [node name="MatchLengthSlider" type="HSlider" parent="Panel"]
 layout_mode = 1
@@ -159,38 +161,38 @@ text = "Enemy Reinforce Points: 5000"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.204
-anchor_top = 0.875
+anchor_top = 0.768
 anchor_right = 1.204
-anchor_bottom = 0.875
+anchor_bottom = 0.768
 offset_left = 0.0319519
-offset_top = -6.10352e-05
+offset_top = -0.0639648
 offset_right = 176.032
-offset_bottom = 32.0
+offset_bottom = 31.9361
 text = "Start Match"
 
 [node name="EasyModeButton" type="CheckButton" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.286
-anchor_top = 0.167
-anchor_right = 1.286
-anchor_bottom = 0.167
-offset_left = -424.112
-offset_top = 271.872
-offset_right = -380.112
-offset_bottom = 295.872
+anchor_left = 0.184
+anchor_top = 0.872
+anchor_right = 0.184
+anchor_bottom = 0.872
+offset_left = -0.127945
+offset_top = 0.0639648
+offset_right = 43.8721
+offset_bottom = 24.064
 
 [node name="CasualLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.204
-anchor_top = 0.062
-anchor_right = 1.204
-anchor_bottom = 0.062
-offset_left = -423.968
-offset_top = 272.192
-offset_right = -303.968
-offset_bottom = 304.192
+anchor_left = 0.102
+anchor_top = 0.768
+anchor_right = 0.102
+anchor_bottom = 0.768
+offset_left = 0.0159988
+offset_top = -0.0639954
+offset_right = 120.016
+offset_bottom = 31.936
 text = "Casual Mode"
 
 [node name="CasualDescription" type="RichTextLabel" parent="Panel"]
@@ -273,13 +275,16 @@ text = "Below the Asteroids (Deathmatch)"
 [node name="LevelName" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.02
-anchor_right = 1.02
-offset_left = 0.159973
-offset_right = 304.16
-offset_bottom = 56.0
+anchor_left = 1.122
+anchor_top = 0.054
+anchor_right = 1.122
+anchor_bottom = 0.054
+offset_left = 0.175964
+offset_top = -0.192001
+offset_right = 264.176
+offset_bottom = 31.808
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+[node name="LevelSelectLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.316
@@ -290,7 +295,7 @@ offset_bottom = 40.0
 text = "Level Select"
 
 [node name="LevelPreview" type="Sprite2D" parent="Panel"]
-position = Vector2(556, 194)
+position = Vector2(560, 192)
 scale = Vector2(0.164486, 0.187279)
 texture = ExtResource("2_sap25")
 

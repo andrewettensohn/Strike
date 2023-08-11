@@ -38,7 +38,7 @@ texture = ExtResource("3_ocj3x")
 offset_right = 256.0
 offset_bottom = 288.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainButtonsPanel"]
+[node name="Title" type="RichTextLabel" parent="MainButtonsPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -47,13 +47,13 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -88.0
 offset_top = 8.0
-offset_right = 104.0
-offset_bottom = 72.0
+offset_right = 120.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 theme = SubResource("Theme_r12an")
-text = "STRIKE"
+text = "SOLAR STRIKE"
 
 [node name="PlayButton" type="Button" parent="MainButtonsPanel"]
 layout_mode = 1
