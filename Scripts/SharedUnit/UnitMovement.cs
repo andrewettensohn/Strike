@@ -4,7 +4,7 @@ using Godot;
 
 public class UnitMovement
 {
-    private Unit _unit;
+    private readonly Unit _unit;
 
     public UnitMovement(Unit unit)
     {

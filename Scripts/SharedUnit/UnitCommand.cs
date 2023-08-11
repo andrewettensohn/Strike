@@ -5,7 +5,7 @@ using Godot;
 public class UnitCommand
 {
 
-    private Unit _unit;
+    private readonly Unit _unit;
 
     public UnitCommand(Unit unit)
     {
@@ -94,7 +94,7 @@ public class UnitCommand
 		{
 			OnRepairTargetActionPressed();
 		}
-		else if(_unit.IsSelected)
+		else if(_unit.IsSelected && !_unit.LevelManager.EnemyUnits.Any(x => x.IsHovered))
 		{
 			OnMovementCommandPressed();
 		}

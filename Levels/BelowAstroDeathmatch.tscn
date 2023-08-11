@@ -18,10 +18,10 @@
 [ext_resource type="Script" path="res://Scripts/SharedUnit/EnemyCommander.cs" id="16_y0qwt"]
 [ext_resource type="AudioStream" uid="uid://dfs3gsrxr0p63" path="res://Audio/Music/Industrial Cinematic.mp3" id="19_a1b5s"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="21_x4e2f"]
+[ext_resource type="Script" path="res://Scripts/GameModes/Deathmatch.cs" id="22_ikigy"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeDialougePlayer.tscn" id="22_xnn17"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="24_i07hr"]
 [ext_resource type="PackedScene" uid="uid://cf2b2bgk64pv6" path="res://Scenes/GameModes/MissionOne.tscn" id="25_2owdb"]
-[ext_resource type="Script" path="res://Scripts/GameModes/Skirmish.cs" id="26_agh5t"]
 [ext_resource type="Texture2D" uid="uid://do4u8cfeu5pk4" path="res://Art/Sprites/Rocks/Rock5.png" id="27_ohvtr"]
 [ext_resource type="Texture2D" uid="uid://gmprjhfgey5o" path="res://Art/Sprites/Rocks/Rock4.png" id="28_5ahkm"]
 [ext_resource type="Texture2D" uid="uid://g35upp1ppx0p" path="res://Art/Sprites/Rocks/Rock2.png" id="29_vj8wv"]
@@ -99,9 +99,8 @@ volume_db = 0.001
 autoplay = true
 script = ExtResource("24_i07hr")
 
-[node name="GameMode" parent="." node_paths=PackedStringArray("CapturePoint") instance=ExtResource("25_2owdb")]
-script = ExtResource("26_agh5t")
-CapturePoint = NodePath("")
+[node name="GameMode" parent="." instance=ExtResource("25_2owdb")]
+script = ExtResource("22_ikigy")
 GameModeType = 1
 ObjectiveText = "Destroy Enemy Ships"
 TimerAdditionalText = "LEFT IN MATCH"

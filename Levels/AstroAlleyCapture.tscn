@@ -40,9 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://boe50vnkwn8w0" path="res://Art/Sprites/Rocks/Field5.png" id="38_jviv7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uyudb"]
-vertices = PackedVector2Array(14765.3, -481.268, 14750.1, 3683.94, 6479.24, 1491.5, 6454.86, 1349.86, 5601.14, -536.187, 6128.76, 1266.04, -2819.43, 3313.96, -2923.05, 82.3793, 5013.33, 1228.46, 4821.33, 1338.3, 5208.38, 1425.02, 6043.43, 1552.2, 5092.57, 1693.83, 4833.52, 1612.9, 6061.71, 1696.72, 6323.81, 1656.25, 6186.67, 1725.63)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 4, 8, 9), PackedInt32Array(10, 5, 11, 12), PackedInt32Array(4, 5, 10, 8), PackedInt32Array(6, 9, 13), PackedInt32Array(12, 11, 14, 6), PackedInt32Array(15, 2, 1), PackedInt32Array(16, 15, 1), PackedInt32Array(16, 1, 6), PackedInt32Array(14, 16, 6), PackedInt32Array(6, 13, 12)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-2923.05, 82.3793, 5601.14, -536.187, 14765.3, -481.268, 14750.1, 3683.94, -2819.43, 3313.96), PackedVector2Array(4821.33, 1338.3, 4833.52, 1612.9, 5092.57, 1693.83, 5208.38, 1425.02, 5013.33, 1228.46), PackedVector2Array(6128.76, 1266.04, 6043.43, 1552.2, 6061.71, 1696.72, 6186.67, 1725.63, 6323.81, 1656.25, 6479.24, 1491.5, 6454.86, 1349.86)])
+vertices = PackedVector2Array(-2923.05, 82.3793, 5601.14, -536.187, 14765.3, -481.268, 14750.1, 3683.94, -2819.43, 3313.96)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2923.05, 82.3793, 5601.14, -536.187, 14765.3, -481.268, 14750.1, 3683.94, -2819.43, 3313.96)])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cb3dd"]
 radius = 479.038
@@ -236,10 +236,6 @@ texture = ExtResource("28_sxw1a")
 position = Vector2(-501, -2227.5)
 texture = ExtResource("34_nnhfp")
 
-[node name="Rock10" type="Sprite2D" parent="."]
-position = Vector2(-1656, -24)
-texture = ExtResource("32_5wiy5")
-
 [node name="Rock11" type="Sprite2D" parent="."]
 position = Vector2(-4085, 2819)
 texture = ExtResource("32_5wiy5")
@@ -255,18 +251,6 @@ texture = ExtResource("32_5wiy5")
 [node name="Rock13" type="Sprite2D" parent="."]
 position = Vector2(4563, -2411.5)
 texture = ExtResource("37_3yfbd")
-
-[node name="Rock14" type="Sprite2D" parent="."]
-position = Vector2(1440, 392)
-texture = ExtResource("37_3yfbd")
-
-[node name="Rock15" type="Sprite2D" parent="."]
-position = Vector2(1440, -280)
-texture = ExtResource("31_yg67b")
-
-[node name="Rock16" type="Sprite2D" parent="."]
-position = Vector2(1904, -40)
-texture = ExtResource("34_nnhfp")
 
 [connection signal="body_entered" from="CapturePoint" to="CapturePoint" method="OnShipEntered"]
 [connection signal="body_exited" from="CapturePoint" to="CapturePoint" method="OnShipExitted"]
