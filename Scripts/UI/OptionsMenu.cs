@@ -28,16 +28,6 @@ public partial class OptionsMenu : Panel
 
 	}
 
-	public void OnOptionsMenuOpened()
-	{
-		Visible = true;
-	}
-
-	public void OnCloseButtonPressed()
-	{
-		Visible = false;
-	}
-
 	public void OnMusicVolumeSlideEnded(bool value_changed)
     {
         if(!value_changed) return;

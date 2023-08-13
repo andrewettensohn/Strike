@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://glrukuholjhe"]
+[gd_scene load_steps=17 format=3 uid="uid://glrukuholjhe"]
 
 [ext_resource type="FontFile" uid="uid://dammqfclvy7k6" path="res://Art/Font/C64.ttf" id="1_g0lwh"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_rgc5j"]
@@ -6,7 +6,10 @@
 [ext_resource type="Script" path="res://Scripts/UI/OptionsMenu.cs" id="3_stako"]
 [ext_resource type="FontFile" uid="uid://bd3lf3d3uyjqj" path="res://Art/Font/C64TwoPx.ttf" id="4_2jskl"]
 [ext_resource type="PackedScene" path="res://Scenes/StrikeAudioPlayer.tscn" id="4_ns0xv"]
+[ext_resource type="Texture2D" uid="uid://boc24jtyauskw" path="res://HowToPlay1.png" id="7_8xosp"]
+[ext_resource type="Script" path="res://Scripts/UI/HowToPlayPanel.cs" id="7_j1fcg"]
 [ext_resource type="AudioStream" uid="uid://ciuovx4spkkbp" path="res://Audio/Music/DeepSpace10(loop).wav" id="7_npfi0"]
+[ext_resource type="Texture2D" uid="uid://doye38srtopc2" path="res://HowToPlay2.png" id="8_5383u"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="9_ch0t1"]
 
 [sub_resource type="Theme" id="Theme_r12an"]
@@ -23,10 +26,16 @@ default_font = ExtResource("1_g0lwh")
 default_font = ExtResource("1_g0lwh")
 default_font_size = 20
 
+[sub_resource type="Theme" id="Theme_bu21x"]
+default_font = ExtResource("1_g0lwh")
+default_font_size = 21
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_rgc5j")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 offset_left = -304.0
 offset_top = -240.0
 offset_right = 3792.0
@@ -34,106 +43,120 @@ offset_bottom = 3856.0
 scale = Vector2(0.710937, 0.726563)
 texture = ExtResource("3_ocj3x")
 
-[node name="MainButtonsPanel" type="Panel" parent="."]
-offset_right = 256.0
-offset_bottom = 288.0
-
-[node name="Title" type="RichTextLabel" parent="MainButtonsPanel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -88.0
-offset_top = 8.0
-offset_right = 120.0
-offset_bottom = 120.0
+[node name="Title" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.00694444
+anchor_top = 0.567901
+anchor_right = 0.236111
+anchor_bottom = 0.728395
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 theme = SubResource("Theme_r12an")
-text = "SOLAR STRIKE"
+bbcode_enabled = true
+text = "SOLAR 
+	STRIKE"
+metadata/_edit_use_anchors_ = true
 
-[node name="PlayButton" type="Button" parent="MainButtonsPanel"]
+[node name="MainButtonsPanel" type="Panel" parent="CanvasLayer"]
+offset_right = 256.0
+offset_bottom = 360.0
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MainButtonsPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.486
-anchor_top = 0.104
+anchor_top = 0.113
 anchor_right = 0.486
-anchor_bottom = 0.104
+anchor_bottom = 0.113
 offset_left = -60.416
-offset_top = 2.88
+offset_top = -16.68
 offset_right = 60.584
-offset_bottom = 35.88
+offset_bottom = 16.32
 grow_horizontal = 2
 theme = SubResource("Theme_7an2x")
 text = "PLAY"
 
-[node name="OptionsButton" type="Button" parent="MainButtonsPanel"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/MainButtonsPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.484
-anchor_top = 0.306
+anchor_top = 0.267
 anchor_right = 0.484
-anchor_bottom = 0.306
+anchor_bottom = 0.267
 offset_left = -59.904
-offset_top = 7.872
+offset_top = -16.12
 offset_right = 60.046
-offset_bottom = 40.344
+offset_bottom = 16.352
 grow_horizontal = 2
 theme = SubResource("Theme_7an2x")
 text = "OPTIONS"
 
-[node name="CreditsButton" type="Button" parent="MainButtonsPanel"]
+[node name="CreditsButton" type="Button" parent="CanvasLayer/MainButtonsPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.485
-anchor_top = 0.528
+anchor_top = 0.424
 anchor_right = 0.485
-anchor_bottom = 0.528
+anchor_bottom = 0.424
 offset_left = -60.16
-offset_top = 7.936
+offset_top = -16.64
 offset_right = 60.336
-offset_bottom = 40.936
+offset_bottom = 16.36
 grow_horizontal = 2
 theme = SubResource("Theme_7an2x")
 text = "CREDITS"
 
-[node name="QuitButton" type="Button" parent="MainButtonsPanel"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainButtonsPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.485
-anchor_top = 0.778
+anchor_top = 0.733
 anchor_right = 0.485
-anchor_bottom = 0.778
+anchor_bottom = 0.733
 offset_left = -60.16
-offset_top = -0.0639954
+offset_top = -15.88
 offset_right = 60.336
-offset_bottom = 32.936
+offset_bottom = 17.12
 grow_horizontal = 2
 theme = SubResource("Theme_7an2x")
-text = "EXIT"
+text = "EXIT TO WINDOWS"
 
-[node name="OptionsMenu" type="Panel" parent="."]
+[node name="HowToPlayButton" type="Button" parent="CanvasLayer/MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485
+anchor_top = 0.579
+anchor_right = 0.485
+anchor_bottom = 0.579
+offset_left = -60.16
+offset_top = -16.44
+offset_right = 60.336
+offset_bottom = 16.56
+grow_horizontal = 2
+theme = SubResource("Theme_7an2x")
+text = "HOW TO PLAY"
+
+[node name="OptionsMenu" type="Panel" parent="CanvasLayer"]
 process_mode = 3
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 448.0
-offset_top = 64.0
-offset_right = 878.0
-offset_bottom = 556.0
+offset_left = -215.0
+offset_top = -246.0
+offset_right = 215.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("3_stako")
 
-[node name="StrikeAudioPlayer" parent="OptionsMenu" instance=ExtResource("4_ns0xv")]
+[node name="StrikeAudioPlayer" parent="CanvasLayer/OptionsMenu" instance=ExtResource("4_ns0xv")]
 
-[node name="Close" type="Button" parent="OptionsMenu"]
+[node name="Close" type="Button" parent="CanvasLayer/OptionsMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.719
@@ -147,7 +170,7 @@ offset_bottom = 43.232
 theme = SubResource("Theme_rouy4")
 text = "SAVE"
 
-[node name="MusicSlider" type="HSlider" parent="OptionsMenu"]
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/OptionsMenu"]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 150.0
@@ -156,7 +179,7 @@ offset_bottom = 185.0
 min_value = -50.0
 max_value = 1.0
 
-[node name="SFXSlider" type="HSlider" parent="OptionsMenu"]
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/OptionsMenu"]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 250.0
@@ -165,7 +188,7 @@ offset_bottom = 285.0
 min_value = -50.0
 max_value = 1.0
 
-[node name="MusicSliderLabel" type="RichTextLabel" parent="OptionsMenu"]
+[node name="MusicSliderLabel" type="RichTextLabel" parent="CanvasLayer/OptionsMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06
@@ -180,7 +203,7 @@ grow_vertical = 0
 theme = SubResource("Theme_x8khg")
 text = "Music Volume"
 
-[node name="SFXSliderLabel" type="RichTextLabel" parent="OptionsMenu"]
+[node name="SFXSliderLabel" type="RichTextLabel" parent="CanvasLayer/OptionsMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06
@@ -195,6 +218,177 @@ grow_vertical = 0
 theme = SubResource("Theme_x8khg")
 text = "Sound Effects Volume"
 
+[node name="CreditsPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -280.0
+offset_right = 182.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CreditsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.021
+anchor_bottom = 0.021
+offset_left = 6.0
+offset_top = 8.24
+offset_right = 354.0
+offset_bottom = 32.24
+theme = SubResource("Theme_bu21x")
+bbcode_enabled = true
+text = "[center]CREDITS[/center]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CreditsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.093
+anchor_bottom = 0.093
+offset_top = -0.0800018
+offset_right = 366.0
+offset_bottom = 503.92
+theme = SubResource("Theme_bu21x")
+bbcode_enabled = true
+text = "[indent][center]
+Game Design/Programming/Art/UX
+Andrew Ettensohn
+[/center][/indent]
+[indent][center]
+Playtesters
+Nathan Lavoie
+Carlos Diaz
+[/center][/indent]
+[indent][center]
+UX Special Thanks
+Quinn Richardson
+[/center][/indent]
+[indent][center]
+Additional Art
+ahintoflime itch.io 
+bGregory gamedevmarket
+Mark Krukowski itch.io     
+Kaboff itch.io
+[/center][/indent]
+[indent][center]
+Music
+SPAW Productions itch.io
+[/center][/indent]
+[indent][center]
+Voice Acting
+VOiD1 Gaming
+[/center][/indent]"
+
+[node name="Close" type="Button" parent="CanvasLayer/CreditsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.654
+anchor_top = 0.904
+anchor_right = 0.654
+anchor_bottom = 0.907
+offset_left = -0.0560455
+offset_top = 1.76004
+offset_right = 114.944
+offset_bottom = 43.08
+theme = SubResource("Theme_rouy4")
+text = "CLOSE"
+
+[node name="HowToPlayPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.243056
+anchor_top = 0.0617284
+anchor_right = 0.958333
+anchor_bottom = 0.962963
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_j1fcg")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.021
+anchor_bottom = 0.021
+offset_left = 6.0
+offset_top = 3.736
+offset_right = 208.0
+offset_bottom = 27.736
+theme = SubResource("Theme_bu21x")
+bbcode_enabled = true
+text = "[center]HOW TO PLAY[/center]"
+
+[node name="HowToPlay1" type="TextureRect" parent="CanvasLayer/HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0679612
+anchor_top = 0.136986
+anchor_right = 0.951456
+anchor_bottom = 0.917808
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_8xosp")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HowToPlay2" type="TextureRect" parent="CanvasLayer/HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0679612
+anchor_top = 0.136986
+anchor_right = 0.951456
+anchor_bottom = 0.917808
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_5383u")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Close" type="Button" parent="CanvasLayer/HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.854
+anchor_top = 0.932
+anchor_right = 0.854
+anchor_bottom = 0.932
+offset_left = 0.304016
+offset_top = -0.288025
+offset_right = 115.304
+offset_bottom = 42.784
+theme = SubResource("Theme_rouy4")
+text = "CLOSE"
+
+[node name="Page1Button" type="Button" parent="CanvasLayer/HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.573
+anchor_top = 0.014
+anchor_right = 0.573
+anchor_bottom = 0.014
+offset_left = -0.152008
+offset_top = -0.176001
+offset_right = 151.848
+offset_bottom = 55.824
+theme = SubResource("Theme_rouy4")
+text = "PAGE ONE"
+
+[node name="Page2Button" type="Button" parent="CanvasLayer/HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.816
+anchor_top = 0.014
+anchor_right = 0.816
+anchor_bottom = 0.014
+offset_left = -0.384033
+offset_top = -0.176001
+offset_right = 143.616
+offset_bottom = 55.824
+theme = SubResource("Theme_rouy4")
+text = "PAGE TWO"
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("7_npfi0")
@@ -202,9 +396,15 @@ volume_db = 0.001
 autoplay = true
 script = ExtResource("9_ch0t1")
 
-[connection signal="pressed" from="MainButtonsPanel/PlayButton" to="." method="Play"]
-[connection signal="pressed" from="MainButtonsPanel/OptionsButton" to="OptionsMenu" method="OnOptionsMenuOpened"]
-[connection signal="pressed" from="MainButtonsPanel/QuitButton" to="." method="ExitGame"]
-[connection signal="pressed" from="OptionsMenu/Close" to="OptionsMenu" method="OnCloseButtonPressed"]
-[connection signal="value_changed" from="OptionsMenu/MusicSlider" to="OptionsMenu" method="OnMusicVolumeSlideEnded"]
-[connection signal="drag_ended" from="OptionsMenu/SFXSlider" to="OptionsMenu" method="OnEffectsSlideEnded"]
+[connection signal="pressed" from="CanvasLayer/MainButtonsPanel/PlayButton" to="." method="Play"]
+[connection signal="pressed" from="CanvasLayer/MainButtonsPanel/OptionsButton" to="." method="ToggleOptionsScreen"]
+[connection signal="pressed" from="CanvasLayer/MainButtonsPanel/CreditsButton" to="." method="ToggleCreditsScreen"]
+[connection signal="pressed" from="CanvasLayer/MainButtonsPanel/QuitButton" to="." method="ExitGame"]
+[connection signal="pressed" from="CanvasLayer/MainButtonsPanel/HowToPlayButton" to="." method="ToggleHowToPlayScreen"]
+[connection signal="pressed" from="CanvasLayer/OptionsMenu/Close" to="." method="ToggleOptionsScreen"]
+[connection signal="value_changed" from="CanvasLayer/OptionsMenu/MusicSlider" to="CanvasLayer/OptionsMenu" method="OnMusicVolumeSlideEnded"]
+[connection signal="drag_ended" from="CanvasLayer/OptionsMenu/SFXSlider" to="CanvasLayer/OptionsMenu" method="OnEffectsSlideEnded"]
+[connection signal="pressed" from="CanvasLayer/CreditsPanel/Close" to="." method="ToggleCreditsScreen"]
+[connection signal="pressed" from="CanvasLayer/HowToPlayPanel/Close" to="." method="ToggleHowToPlayScreen"]
+[connection signal="pressed" from="CanvasLayer/HowToPlayPanel/Page1Button" to="CanvasLayer/HowToPlayPanel" method="OnPageOneButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/HowToPlayPanel/Page2Button" to="CanvasLayer/HowToPlayPanel" method="OnPageTwoButtonPressed"]
