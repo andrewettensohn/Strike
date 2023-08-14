@@ -10,6 +10,7 @@ priority = 1.0
 script = ExtResource("1_gahko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+process_priority = -1
 position = Vector2(476.5, 317.25)
 shape = SubResource("RectangleShape2D_hau4q")
 debug_color = Color(0, 0.6, 0.701961, 0.52549)

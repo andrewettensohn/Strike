@@ -162,16 +162,19 @@ public partial class LevelManager : Node2D
     public void OnSelectionBoxFinish()
     {
         IsSelectionBoxActive = false;
+        
+        GD.Print("finished with box");
 
         if(HighlightedShips.Count == 0)
         {
+            GD.Print("No ships");
             return;
         }
         else if(HighlightedShips.Count == 1)
         {
             HighlightedShips.FirstOrDefault().UnitCommand.OnSelected();
             HighlightedShips = new List<Unit>();
-        }   
+        }
         else
         {
             HighlightedShips.ForEach(x => {

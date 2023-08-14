@@ -26,16 +26,16 @@ public partial class SelectionBox : Area2D
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
+		SetCollisionShape();
+
+		QueueRedraw();
+		
 		if(!Input.IsActionPressed("ui_select"))
 		{
 			HandlePostClick();
 		}
-
-		SetCollisionShape();
-
-		QueueRedraw();
 	}
 
 	public override void _Draw()
@@ -43,7 +43,7 @@ public partial class SelectionBox : Area2D
 		Rect2 rect = new (_initalMousePosition, GetGlobalMousePosition() - _initalMousePosition);
 		DrawRect(rect, Colors.Green, false);
 		
-		if(rect.Size.X != _box.Size.X || rect.Size.Y != _box.Size.Y)
+		if((int)rect.Size.X != (int)_box.Size.X || (int)rect.Size.Y != (int)_box.Size.Y)
 		{
 			_box = rect;
 			_isCollisionShapeUpdated = false;
