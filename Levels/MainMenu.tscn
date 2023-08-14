@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://doye38srtopc2" path="res://HowToPlay2.png" id="8_5383u"]
 [ext_resource type="Script" path="res://Scripts/AudioPlayers/StrikeMusicPlayer.cs" id="9_ch0t1"]
 
+[sub_resource type="Theme" id="Theme_7an2x"]
+default_font = ExtResource("1_g0lwh")
+
 [sub_resource type="Theme" id="Theme_r12an"]
 default_font = ExtResource("4_2jskl")
 default_font_size = 64
-
-[sub_resource type="Theme" id="Theme_7an2x"]
-default_font = ExtResource("1_g0lwh")
 
 [sub_resource type="Theme" id="Theme_rouy4"]
 default_font = ExtResource("1_g0lwh")
@@ -42,21 +42,6 @@ offset_right = 3792.0
 offset_bottom = 3856.0
 scale = Vector2(0.710937, 0.726563)
 texture = ExtResource("3_ocj3x")
-
-[node name="Title" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.00694444
-anchor_top = 0.567901
-anchor_right = 0.236111
-anchor_bottom = 0.728395
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-theme = SubResource("Theme_r12an")
-bbcode_enabled = true
-text = "SOLAR 
-	STRIKE"
-metadata/_edit_use_anchors_ = true
 
 [node name="MainButtonsPanel" type="Panel" parent="CanvasLayer"]
 offset_right = 256.0
@@ -136,6 +121,24 @@ offset_bottom = 16.56
 grow_horizontal = 2
 theme = SubResource("Theme_7an2x")
 text = "HOW TO PLAY"
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 1.022
+anchor_right = 0.031
+anchor_bottom = 1.022
+offset_left = 0.0639997
+offset_top = 0.0799866
+offset_right = 304.064
+offset_bottom = 112.08
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_r12an")
+bbcode_enabled = true
+text = "SOLAR 
+	STRIKE"
 
 [node name="OptionsMenu" type="Panel" parent="CanvasLayer"]
 process_mode = 3

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Industrial Cinematic.mp3-7fd317a31e3f3f0a9648
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
